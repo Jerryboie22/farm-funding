@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  /* Exact hex values pulled from farm-funders.com's compiled stylesheet */
+  --color-forest: #4f832a;       /* brand green - headings, section titles, primary buttons */
+  --color-forest-dark: #3f6821;  /* hover state */
+  --color-clay: #496d83;         /* slate blue - secondary buttons, links, footer headers */
+  --color-clay-dark: #3a576a;    /* hover state */
+  --color-gold: #5a4400;         /* article/post title links */
+  --color-cream: #ecf1e4;        /* light green section background */
+  --color-grey-bg: #f8f8f8;      /* light grey section background */
+  --color-charcoal: #231f20;     /* body text */
+  --color-grey-text: #686868;    /* secondary/muted text, tags */
+  --color-line: #c36d15;         /* orange accent border (article dividers, accordion) */
+}
+
+@theme inline {
+  --color-forest: var(--color-forest);
+  --color-forest-dark: var(--color-forest-dark);
+  --color-clay: var(--color-clay);
+  --color-clay-dark: var(--color-clay-dark);
+  --color-gold: var(--color-gold);
+  --color-cream: var(--color-cream);
+  --color-grey-bg: var(--color-grey-bg);
+  --color-charcoal: var(--color-charcoal);
+  --color-grey-text: var(--color-grey-text);
+  --color-line: var(--color-line);
+  --font-display: var(--font-montserrat);
+  --font-sans: var(--font-barlow);
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-charcoal);
+  font-family: var(--font-barlow), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* Exact heading scale from farm-funders.com (desktop).
+   IMPORTANT: wrapped in @layer base. Tailwind puts utility classes
+   (text-sm, text-lg, etc.) in a higher-priority layer than @layer base,
+   so a component that sets its own size — e.g. Footer's
+   <h3 className="text-sm ..."> column headers — will correctly override
+   these tag defaults instead of being overridden by them. Do NOT remove
+   the @layer base wrapper or every h1-h6 in the app will forcibly jump
+   to these sizes regardless of what Tailwind classes are applied. */
+@layer base {
+  h1, .h1 { font-family: var(--font-montserrat), sans-serif; font-weight: 700; font-size: 48px; line-height: 57.6px; }
+  h2, .h2 { font-family: var(--font-montserrat), sans-serif; font-weight: 700; font-size: 40px; line-height: 50.2px; }
+  h3, .h3 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 34px; line-height: 46px; }
+  h4, .h4 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 28px; line-height: 33.6px; }
+  h5, .h5 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 25px; line-height: 32px; }
+  h6, .h6 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 22px; line-height: 33px; }
+  p       { font-family: var(--font-barlow), sans-serif; font-weight: 500; font-size: 18px; line-height: 28.8px; }
+
+  @media (max-width: 991.98px) {
+    h1, .h1 { font-size: 36px; line-height: 43.2px; }
+    h2, .h2 { font-size: 32px; line-height: 38px; }
+    h3, .h3 { font-size: 28px; line-height: 34px; }
+    h4, .h4 { font-size: 25px; line-height: 32.5px; }
+    h5, .h5 { font-size: 22px; line-height: 33px; }
+    h6, .h6 { font-size: 20px; line-height: 30px; }
+    p       { font-size: 16px; line-height: 26px; }
+  }
+}

@@ -1,0 +1,1256 @@
+.farm-calculator-page {
+  --ff-green: #4f832a;
+  --ff-green-dark: #467624;
+  --ff-blue: #4f7489;
+  --ff-blue-dark: #476b7f;
+  --ff-cream: #eef3e7;
+  --ff-gray: #f5f5f5;
+  --ff-line: #d6d6d6;
+  --ff-grid: #bcbcbc;
+
+  width: 100%;
+  color: #111;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.farm-calculator-page *,
+.farm-calculator-page *::before,
+.farm-calculator-page *::after {
+  box-sizing: border-box;
+}
+
+.farm-calculator-page img {
+  display: block;
+  max-width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Accessibility                                                              */
+/* -------------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* HERO                                                                       */
+/* -------------------------------------------------------------------------- */
+
+.ff-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 5.2%;
+  min-height: 477px;
+  padding: 36px 4.1% 31px;
+  background: #fff;
+}
+
+.ff-hero-copy {
+  min-width: 0;
+}
+
+.ff-hero h1 {
+  margin: 0 0 36px;
+  color: var(--ff-green);
+  font-size: 56px;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+}
+
+.ff-subhead {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.ff-hero-image {
+  width: 100%;
+  height: 408px;
+  overflow: hidden;
+}
+
+.ff-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CALCULATOR SECTION                                                         */
+/* -------------------------------------------------------------------------- */
+
+.ff-calculator-section {
+  padding: 151px 4.1% 92px;
+  background: var(--ff-cream);
+}
+
+.ff-calculator-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CALCULATOR                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.kje-calculator {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  border: 1px solid #d7d7d7;
+  border-radius: 6px;
+  background: #f7f7f7;
+}
+
+/* -------------------------------------------------------------------------- */
+/* TOP CONTROLS                                                               */
+/* -------------------------------------------------------------------------- */
+
+.kje-top-controls {
+  position: relative;
+  min-height: 37px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 7px 9px 0;
+}
+
+.kje-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  margin-top: -1px;
+  border-radius: 50%;
+  color: #fff;
+  background: #d0d0d0;
+  font-size: 19px;
+  opacity: 0.75;
+}
+
+.kje-top-actions {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kje-top-button,
+.kje-help-button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.kje-hamburger,
+.kje-hamburger::before,
+.kje-hamburger::after {
+  display: block;
+  width: 24px;
+  height: 4px;
+  border-radius: 1px;
+  background: #222;
+}
+
+.kje-hamburger {
+  position: relative;
+}
+
+.kje-hamburger::before,
+.kje-hamburger::after {
+  position: absolute;
+  left: 0;
+  content: "";
+}
+
+.kje-hamburger::before {
+  top: -8px;
+}
+
+.kje-hamburger::after {
+  top: 8px;
+}
+
+.kje-help-button {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #a6bd7d;
+  border-radius: 50%;
+  color: #5b7e2d;
+  background: #fff;
+  font-size: 15px;
+  line-height: 23px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MENU                                                                       */
+/* -------------------------------------------------------------------------- */
+
+.kje-menu-items {
+  position: absolute;
+  top: 34px;
+  right: 33px;
+  z-index: 100;
+  width: 210px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+.kje-menu-title {
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid #eee;
+  color: #222;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.kje-menu-btn {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 8px 10px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 3px;
+  background: #6f776c;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.kje-menu-btn:hover {
+  background: #565e52;
+}
+
+/* -------------------------------------------------------------------------- */
+/* HELP                                                                       */
+/* -------------------------------------------------------------------------- */
+
+.kje-help-popover {
+  position: absolute;
+  top: 34px;
+  right: 0;
+  z-index: 100;
+  width: 290px;
+  padding: 14px 16px;
+  border: 1px solid #bbb;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  color: #222;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.kje-help-popover strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 16px;
+}
+
+.kje-help-popover p {
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ACTION BUTTONS                                                             */
+/* -------------------------------------------------------------------------- */
+
+.kje-action-row {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: -4px;
+  padding: 0 0 11px;
+}
+
+.kje-btn {
+  min-width: 195px;
+  height: 40px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 3px;
+  background: #505052;
+  color: #fff;
+  font-size: 19px;
+  line-height: 40px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.kje-btn:hover {
+  background: #454547;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MESSAGES                                                                   */
+/* -------------------------------------------------------------------------- */
+
+.kje-required-note {
+  margin: 0 12px 4px;
+  color: #555;
+  text-align: right;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.kje-required {
+  color: #c52f2f;
+  font-weight: 400;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SECTION TOGGLE                                                             */
+/* -------------------------------------------------------------------------- */
+
+.kje-section-toggle,
+.kje-chart-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.kje-section-toggle {
+  min-height: 46px;
+  padding: 10px 13px;
+  border-top: 1px solid #dedede;
+  background: #f7f7f7;
+  color: #222;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.kje-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  color: #222;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* INPUTS                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.kje-inputs {
+  padding: 12px 14px 17px;
+  border-top: 1px solid #dedede;
+  background: #fafafa;
+}
+
+.kje-calculate-row {
+  display: flex;
+  align-items: center;
+  min-height: 53px;
+  padding-left: 140px;
+  gap: 3px;
+  color: #222;
+  font-size: 18px;
+}
+
+.kje-calculate-label {
+  margin-right: 2px;
+  font-weight: 700;
+}
+
+.kje-calculate-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  white-space: nowrap;
+}
+
+.kje-calculate-row input {
+  width: 23px;
+  height: 23px;
+  margin: 0;
+  accent-color: #333;
+}
+
+/* -------------------------------------------------------------------------- */
+/* INPUT ROWS                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.kje-input-row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  min-height: 43px;
+}
+
+.kje-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  color: #222;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.kje-label-row.bold {
+  font-weight: 700;
+}
+
+.kje-label-row label,
+.kje-label-row > span {
+  text-align: right;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CONTROLS                                                                   */
+/* -------------------------------------------------------------------------- */
+
+.kje-control {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+/*
+ * Modifier for controls that render a single child (a read-only result
+ * input, or the frequency <select>) rather than the paired
+ * number-box + slider layout .kje-control expects by default.
+ * Without this, a lone child only ever fills the first 128px track,
+ * leaving the rest of the row visually empty.
+ */
+.kje-control-select,
+.kje-control-single {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.kje-number-wrap {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  overflow: hidden;
+  border: 1px solid #aaa;
+  background: #fff;
+}
+
+.kje-number-wrap > span {
+  padding-left: 8px;
+  color: #333;
+  font-size: 16px;
+}
+
+.kje-number,
+.kje-result-input,
+.kje-select {
+  width: 100%;
+  height: 34px;
+  padding: 5px 8px;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  outline: none;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 16px;
+}
+
+.kje-number-wrap .kje-number {
+  border: 0;
+  padding-left: 4px;
+}
+
+.kje-result-input {
+  background: #dedede;
+  color: #555;
+}
+
+.kje-number:focus,
+.kje-result-input:focus,
+.kje-select:focus {
+  border-color: #777;
+  box-shadow: 0 0 0 1px rgba(77, 133, 38, 0.18);
+}
+
+/* -------------------------------------------------------------------------- */
+/* SLIDERS                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.kje-slider-wrap {
+  position: relative;
+  min-width: 0;
+  padding-top: 20px;
+}
+
+.kje-scale {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  color: #222;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.kje-scale span:not(.left):not(.right) {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.kje-scale span:nth-child(2) {
+  left: 33.33%;
+}
+
+.kje-scale span:nth-child(3) {
+  left: 66.66%;
+}
+
+.kje-range {
+  --kje-progress: 50%;
+
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.kje-range::-webkit-slider-runnable-track {
+  height: 3px;
+  border: 0;
+  background:
+    linear-gradient(
+      to right,
+      var(--ff-green) 0 var(--kje-progress),
+      #bbb var(--kje-progress) 100%
+    );
+}
+
+.kje-range::-moz-range-track {
+  height: 3px;
+  border: 0;
+  background: #bbb;
+}
+
+.kje-range::-moz-range-progress {
+  height: 3px;
+  background: var(--ff-green);
+}
+
+.kje-range::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: 0;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--ff-green);
+}
+
+.kje-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ff-green);
+}
+
+/* -------------------------------------------------------------------------- */
+/* OUTPUTS                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.kje-output-value {
+  align-self: center;
+  color: #111;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.kje-output-divider {
+  height: 1px;
+  margin: 6px -14px 4px;
+  background: #dedede;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DEFINITION POPUPS                                                          */
+/* -------------------------------------------------------------------------- */
+
+.kje-def-anchor {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.kje-definition-icon {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid #a6bd7d;
+  border-radius: 50%;
+  background: #fff;
+  color: #5b7e2d;
+  font-size: 15px;
+  line-height: 23px;
+  cursor: pointer;
+}
+
+.kje-definition-popover {
+  position: absolute;
+  top: 31px;
+  left: 50%;
+  z-index: 60;
+  width: 290px;
+  transform: translateX(-50%);
+  padding: 14px 16px;
+  border: 1px solid #bbb;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+.kje-definition-popover h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.kje-definition-popover p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* -------------------------------------------------------------------------- */
+/* REPORT                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.kje-report {
+  width: 100%;
+  margin: 0 auto 20px;
+  padding: 18px 22px 30px;
+  background: #fff;
+}
+
+.kje-report-header {
+  margin: 0 0 12px;
+  color: #222;
+  font-size: 26px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.kje-report-lead {
+  margin: 0 0 20px;
+  color: #333;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.kje-summary-table {
+  width: 100%;
+  max-width: none;
+  margin: 20px 0;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.kje-summary-table caption {
+  padding: 10px 14px;
+  background: #ebebeb;
+  color: #222;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.kje-summary-table th,
+.kje-summary-table td {
+  padding: 12px 14px;
+  border: 1px solid #d5d5d5;
+  text-align: left;
+}
+
+.kje-summary-table th {
+  width: 60%;
+  font-weight: 400;
+}
+
+.kje-summary-table td {
+  width: 40%;
+  text-align: right;
+}
+
+.kje-summary-table tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+.kje-summary-table tfoot th,
+.kje-summary-table tfoot td {
+  background: #efefef;
+  font-weight: 700;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PAYMENT SCHEDULE                                                           */
+/* -------------------------------------------------------------------------- */
+
+.kje-schedule-header {
+  margin: 30px 0 4px;
+  color: #222;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.kje-schedule-note {
+  margin: 0 0 14px;
+  color: #666;
+  font-size: 12px;
+}
+
+.kje-schedule-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.kje-schedule-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.kje-schedule-table th,
+.kje-schedule-table td {
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+  text-align: right;
+}
+
+.kje-schedule-table th:first-child,
+.kje-schedule-table td:first-child {
+  text-align: left;
+}
+
+.kje-schedule-table thead th {
+  background: #ebebeb;
+  font-weight: 700;
+}
+
+.kje-schedule-odd {
+  background: #fff;
+}
+
+.kje-schedule-even {
+  background: #f7f7f7;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CHARTS                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.kje-collapsible-chart {
+  border-top: 1px solid #e2e2e2;
+  background: #fff;
+}
+
+.kje-chart-toggle {
+  min-height: 48px;
+  padding: 8px 14px;
+  background: #fff;
+  color: #222;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.kje-chart-block {
+  padding: 0 18px 10px;
+  background: #fff;
+}
+
+.kje-chart-title {
+  margin: 0 0 14px;
+  color: #222;
+  text-align: center;
+  font-size: 23px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.kje-chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.kje-chart-gridline {
+  stroke: #bdbdbd;
+  stroke-width: 1;
+}
+
+.kje-chart-axis-label {
+  fill: #222;
+  font-size: 12px;
+}
+
+.kje-chart-axis-title {
+  fill: #222;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.kje-chart-area {
+  fill: #7c9828;
+  stroke: none;
+}
+
+.kje-chart-bar-principal {
+  fill: #7c9828;
+  stroke: none;
+}
+
+.kje-chart-bar-interest {
+  fill: #c87524;
+  stroke: none;
+}
+
+.kje-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.kje-chart-row .kje-chart-svg {
+  flex: 1;
+  min-width: 0;
+}
+
+.kje-chart-legend {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kje-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #222;
+  font-size: 15px;
+}
+
+.kje-chart-legend-swatch {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #52621f;
+  border-radius: 50%;
+}
+
+.kje-chart-legend-principal {
+  background: #7c9828;
+}
+
+.kje-chart-legend-interest {
+  border-color: #805016;
+  background: #c87524;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DEFINITIONS                                                                */
+/* -------------------------------------------------------------------------- */
+
+.kje-definitions-block {
+  padding: 20px 0 22px;
+  background: var(--ff-cream);
+}
+
+.kje-definitions-title {
+  margin: 0 0 19px;
+  color: #111;
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.kje-definition-entry {
+  margin: 0 0 24px;
+  padding: 0 12px;
+}
+
+.kje-definition-entry h4 {
+  margin: 0 0 11px;
+  color: #111;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.kje-definition-entry p {
+  margin: 0;
+  color: #111;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* -------------------------------------------------------------------------- */
+/* DISCLAIMER                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.ff-disclaimer {
+  margin: 0;
+  padding: 0 12px;
+  background: var(--ff-cream);
+  color: #111;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* -------------------------------------------------------------------------- */
+/* FINANCING                                                                  */
+/* -------------------------------------------------------------------------- */
+
+.ff-featured-block {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.4fr);
+  align-items: center;
+  gap: 2.3%;
+  padding: 108px 4.1%;
+  background: #fff;
+}
+
+.ff-featured-image {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.ff-featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ff-featured-copy {
+  padding-right: 1.5%;
+}
+
+.ff-featured-copy h2 {
+  margin: 0 0 24px;
+  color: var(--ff-green);
+  font-size: 44px;
+  line-height: 1.1;
+}
+
+.ff-featured-copy .ff-subhead {
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.ff-featured-buttons {
+  display: flex;
+  gap: 9px;
+  margin-top: 29px;
+}
+
+.ff-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 51px;
+  padding: 0 24px;
+  border-radius: 4px;
+  background: var(--ff-blue);
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.ff-primary-button:hover {
+  background: var(--ff-blue-dark);
+}
+
+/* -------------------------------------------------------------------------- */
+/* NEWSLETTER                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.newsletter {
+  width: 100%;
+  padding: 70px 4.05%;
+  background: #4f832a;
+  color: #fff;
+}
+
+.newsletter-inner {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.newsletter h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+.newsletter-subhead {
+  margin: 38px 0 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.newsletter-form {
+  display: flex;
+  width: 100%;
+  max-width: 560px;
+  margin-top: 30px;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.newsletter-email {
+  min-width: 0;
+  flex: 1;
+  height: 51px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 2px;
+  outline: none;
+  background: #fff;
+  color: #231f20;
+  font-size: 16px;
+}
+
+.newsletter-signup {
+  height: 51px;
+  padding: 0 22px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background: #4f832a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.newsletter-signup:hover {
+  background: #fff;
+  color: #496d83;
+}
+
+/* -------------------------------------------------------------------------- */
+/* RESPONSIVE                                                                 */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+  .newsletter h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .newsletter-subhead {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .ff-hero h1 {
+    font-size: 45px;
+  }
+
+  .kje-input-row {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr);
+  }
+
+  .ff-featured-copy h2 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 760px) {
+  .ff-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 34px 5% 35px;
+  }
+
+  .ff-hero h1 {
+    margin-bottom: 22px;
+    font-size: 42px;
+  }
+
+  .ff-subhead {
+    font-size: 18px;
+  }
+
+  .ff-hero-image {
+    height: 290px;
+  }
+
+  .ff-calculator-section {
+    padding: 60px 3% 55px;
+  }
+
+  .kje-input-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    align-items: start;
+    padding: 7px 0;
+  }
+
+  .kje-label-row {
+    justify-content: flex-start;
+  }
+
+  .kje-label-row label,
+  .kje-label-row > span {
+    text-align: left;
+  }
+
+  .kje-calculate-row {
+    padding-left: 0;
+    flex-wrap: wrap;
+  }
+
+  .kje-control {
+    grid-template-columns:
+      120px
+      minmax(0, 1fr);
+  }
+
+  .kje-control-select,
+  .kje-control-single {
+    display: block;
+  }
+
+  .kje-action-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kje-btn {
+    width: min(100%, 320px);
+  }
+
+  .kje-menu-items {
+    right: 0;
+  }
+
+  .kje-help-popover {
+    right: -5px;
+    width: min(290px, calc(100vw - 30px));
+  }
+
+  .kje-definition-popover {
+    left: 0;
+    transform: none;
+    width: min(290px, calc(100vw - 40px));
+  }
+
+  .ff-featured-block {
+    grid-template-columns: 1fr;
+    padding: 60px 5%;
+  }
+
+  .ff-featured-image {
+    height: 280px;
+  }
+
+  .ff-featured-copy h2 {
+    font-size: 36px;
+  }
+
+  .ff-featured-buttons {
+    flex-direction: column;
+  }
+
+  .ff-primary-button {
+    width: 100%;
+  }
+
+  .newsletter {
+    padding: 70px 4.05%;
+  }
+
+  .newsletter h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-email,
+  .newsletter-signup {
+    width: 100%;
+  }
+
+  .kje-report {
+    padding: 18px 12px 30px;
+  }
+
+  .kje-chart-block {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .kje-chart-title {
+    font-size: 18px;
+  }
+
+  .kje-chart-legend {
+    justify-content: center;
+  }
+}
