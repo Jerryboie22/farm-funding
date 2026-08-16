@@ -67,20 +67,20 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO — two columns at every breakpoint, including mobile */}
-      <section className="grid w-full grid-cols-2 md:min-h-[690px]">
-        <div className="flex items-center bg-white px-[4vw] py-[24px] md:px-[4.05%] md:py-[65px] lg:py-[70px]">
+      {/* HERO — stacked on mobile (text, then image), side-by-side from md up */}
+      <section className="grid w-full grid-cols-1 md:grid-cols-2 md:min-h-[690px]">
+        <div className="flex items-center bg-white px-[4.05%] py-[36px] md:py-[65px] lg:py-[70px]">
           <div className="max-w-[700px]">
             <h1
               className="
                 m-0
                 max-w-[700px]
                 font-display
-                text-[20px]
+                text-[32px]
                 font-normal
                 leading-[1.15]
                 text-[#4f832a]
-                sm:text-[28px]
+                sm:text-[36px]
                 md:text-[40px]
                 md:leading-[1.12]
                 lg:text-[50px]
@@ -93,13 +93,11 @@ export default function Home() {
             <p
               className="
                 m-0
-                mt-[10px]
+                mt-[20px]
                 max-w-[650px]
-                text-[12px]
-                leading-[17px]
+                text-[17px]
+                leading-[27px]
                 text-[#231f20]
-                sm:text-[14px]
-                sm:leading-[20px]
                 md:mt-[28px]
                 md:text-[17px]
                 md:leading-[28px]
@@ -113,33 +111,28 @@ export default function Home() {
               tools and services to help grow your success.
             </p>
 
-            <div className="mt-[14px] flex flex-wrap gap-[8px] md:mt-[28px] md:gap-[12px]">
+            <div className="mt-[24px] grid grid-cols-1 gap-[10px] sm:flex sm:flex-wrap sm:gap-[12px] md:mt-[28px]">
               <Link
                 href="/financing"
                 className="
                   inline-flex
-                  h-[34px]
+                  h-[51px]
+                  w-full
                   items-center
                   justify-center
                   rounded-[4px]
                   border-2
                   border-[#496d83]
                   bg-[#496d83]
-                  px-[12px]
-                  text-[11px]
+                  px-[20px]
+                  text-[16px]
                   font-bold
-                  leading-[14px]
+                  leading-[20px]
                   text-white
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
-                  sm:h-[42px]
-                  sm:px-[16px]
-                  sm:text-[13px]
-                  md:h-[51px]
-                  md:px-[20px]
-                  md:text-[16px]
-                  md:leading-[20px]
+                  sm:w-auto
                 "
               >
                 Explore Financing
@@ -149,28 +142,23 @@ export default function Home() {
                 href="/services"
                 className="
                   inline-flex
-                  h-[34px]
+                  h-[51px]
+                  w-full
                   items-center
                   justify-center
                   rounded-[4px]
                   border-2
                   border-[#496d83]
                   bg-[#496d83]
-                  px-[12px]
-                  text-[11px]
+                  px-[20px]
+                  text-[16px]
                   font-bold
-                  leading-[14px]
+                  leading-[20px]
                   text-white
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
-                  sm:h-[42px]
-                  sm:px-[16px]
-                  sm:text-[13px]
-                  md:h-[51px]
-                  md:px-[20px]
-                  md:text-[16px]
-                  md:leading-[20px]
+                  sm:w-auto
                 "
               >
                 View Services
@@ -179,10 +167,10 @@ export default function Home() {
           </div>
         </div>
 
-        <HeroCarousel className="relative h-full min-h-[280px] md:h-[500px] lg:h-[645px]" />
+        <HeroCarousel className="relative h-[220px] md:h-[500px] lg:h-[645px]" />
       </section>
 
-      {/* PROMO CARDS — sits directly under hero, no gap; stacked with thin divider on mobile */}
+      {/* PROMO CARDS — flush under hero, thin white divider between stacked cards on mobile */}
       <section
         className="
           grid
@@ -196,47 +184,47 @@ export default function Home() {
           md:divide-y-0
         "
       >
-        <div className="flex items-start gap-[14px] px-[4.05%] py-[22px] md:gap-[22px] md:py-[38px] lg:py-[45px]">
+        <div className="flex items-start gap-[22px] px-[4.05%] py-[32px] md:py-[38px] lg:py-[45px]">
           <img
             src="/images/homepage/2026 AgViews Calendar Cover.jpg"
             alt="2026 AgViews Calendar"
-            className="h-[70px] w-[95px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
+            className="h-[115px] w-[155px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
             loading="lazy"
           />
 
           <div>
-            <h3 className="m-0 font-display text-[15px] font-bold leading-[19px] text-[#231f20] md:text-[20px] md:leading-[26px]">
+            <h3 className="m-0 font-display text-[20px] font-bold leading-[26px] text-[#231f20]">
               Calendar Photo Contest
             </h3>
 
-            <p className="m-0 mt-[6px] text-[12px] leading-[17px] text-[#231f20] md:mt-[10px] md:text-[16px] md:leading-[25px]">
+            <p className="m-0 mt-[10px] text-[16px] leading-[25px] text-[#231f20]">
               Submit your photo(s) of modern agriculture, fishing and forestry
               by July 31 for a chance to win $100!
             </p>
 
             <Link
               href="/resources/Calendar-Photo-Contest"
-              className="mt-[6px] inline-block text-[12px] font-bold text-[#496d83] md:mt-[10px] md:text-[16px]"
+              className="mt-[10px] inline-block text-[16px] font-bold text-[#705600]"
             >
               Learn more ›
             </Link>
           </div>
         </div>
 
-        <div className="flex items-start gap-[14px] px-[4.05%] py-[22px] md:gap-[22px] md:py-[38px] lg:py-[45px]">
+        <div className="flex items-start gap-[22px] px-[4.05%] py-[32px] md:py-[38px] lg:py-[45px]">
           <img
             src="/images/homepage/Appreciation Sign.png"
             alt="Customer appreciation event"
-            className="h-[70px] w-[95px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
+            className="h-[115px] w-[155px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
             loading="lazy"
           />
 
           <div>
-            <h3 className="m-0 font-display text-[15px] font-bold leading-[19px] text-[#231f20] md:text-[20px] md:leading-[26px]">
+            <h3 className="m-0 font-display text-[20px] font-bold leading-[26px] text-[#231f20]">
               2026 Customer Appreciation Events
             </h3>
 
-            <p className="m-0 mt-[6px] text-[12px] leading-[17px] text-[#231f20] md:mt-[10px] md:text-[16px] md:leading-[25px]">
+            <p className="m-0 mt-[10px] text-[16px] leading-[25px] text-[#231f20]">
               As a cooperative, our customers are at the core of everything we
               do. We hope you&apos;ll join us at an event this summer to show
               our appreciation.
@@ -244,7 +232,7 @@ export default function Home() {
 
             <Link
               href="/resources/events"
-              className="mt-[6px] inline-block text-[12px] font-bold text-[#496d83] md:mt-[10px] md:text-[16px]"
+              className="mt-[10px] inline-block text-[16px] font-bold text-[#705600]"
             >
               Learn more ›
             </Link>
