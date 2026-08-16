@@ -67,68 +67,79 @@ export default function Home() {
 
   return (
     <>
-    {/* HERO */}
-<section className="grid w-full grid-cols-1 md:grid-cols-2 md:min-h-[690px]">
-  <div className="flex items-center bg-white px-[4.05%] py-[65px] md:py-[70px]">
-    <div className="max-w-[700px]">
-      <h1
-        className="
-          m-0
-          max-w-[700px]
-          font-display
-          text-[40px]
-          font-normal
-          leading-[1.12]
-          text-[#4f832a]
-          md:text-[46px]
-          lg:text-[50px]
-          lg:leading-[1.12]
-        "
-      >
-        Discover an ag lender that works for you.
-      </h1>
+      {/* HERO — two columns at every breakpoint, including mobile */}
+      <section className="grid w-full grid-cols-2 md:min-h-[690px]">
+        <div className="flex items-center bg-white px-[4vw] py-[24px] md:px-[4.05%] md:py-[65px] lg:py-[70px]">
+          <div className="max-w-[700px]">
+            <h1
+              className="
+                m-0
+                max-w-[700px]
+                font-display
+                text-[20px]
+                font-normal
+                leading-[1.15]
+                text-[#4f832a]
+                sm:text-[28px]
+                md:text-[40px]
+                md:leading-[1.12]
+                lg:text-[50px]
+                lg:leading-[1.12]
+              "
+            >
+              Discover an ag lender that works for you.
+            </h1>
 
-      <p
-        className="
-          m-0
-          mt-[28px]
-          max-w-[650px]
-          text-[17px]
-          leading-[28px]
-          text-[#231f20]
-          lg:text-[19px]
-          lg:leading-[31px]
-        "
-      >
-          
+            <p
+              className="
+                m-0
+                mt-[10px]
+                max-w-[650px]
+                text-[12px]
+                leading-[17px]
+                text-[#231f20]
+                sm:text-[14px]
+                sm:leading-[20px]
+                md:mt-[28px]
+                md:text-[17px]
+                md:leading-[28px]
+                lg:text-[19px]
+                lg:leading-[31px]
+              "
+            >
               Farm Funding is made in agriculture - a cooperative owned by the
               customers it serves. More than any other lender, we understand
               your unique credit needs and offer the specialized products,
               tools and services to help grow your success.
             </p>
 
-            <div className="mt-[28px] grid grid-cols-1 gap-[10px] sm:flex sm:flex-wrap sm:gap-[12px]">
+            <div className="mt-[14px] flex flex-wrap gap-[8px] md:mt-[28px] md:gap-[12px]">
               <Link
                 href="/financing"
                 className="
                   inline-flex
-                  h-[51px]
-                  w-full
+                  h-[34px]
                   items-center
                   justify-center
                   rounded-[4px]
                   border-2
                   border-[#496d83]
                   bg-[#496d83]
-                  px-[20px]
-                  text-[16px]
+                  px-[12px]
+                  text-[11px]
                   font-bold
-                  leading-[20px]
+                  leading-[14px]
                   text-white
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
-                  sm:w-auto
+                  sm:h-[42px]
+                  sm:px-[16px]
+                  sm:text-[13px]
+                  md:h-[51px]
+                  md:px-[20px]
+                  md:text-[16px]
+                  md:leading-[20px]
                 "
               >
                 Explore Financing
@@ -138,23 +149,28 @@ export default function Home() {
                 href="/services"
                 className="
                   inline-flex
-                  h-[51px]
-                  w-full
+                  h-[34px]
                   items-center
                   justify-center
                   rounded-[4px]
                   border-2
                   border-[#496d83]
                   bg-[#496d83]
-                  px-[20px]
-                  text-[16px]
+                  px-[12px]
+                  text-[11px]
                   font-bold
-                  leading-[20px]
+                  leading-[14px]
                   text-white
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
-                  sm:w-auto
+                  sm:h-[42px]
+                  sm:px-[16px]
+                  sm:text-[13px]
+                  md:h-[51px]
+                  md:px-[20px]
+                  md:text-[16px]
+                  md:leading-[20px]
                 "
               >
                 View Services
@@ -163,65 +179,64 @@ export default function Home() {
           </div>
         </div>
 
-        <HeroCarousel className="relative h-[303px] md:h-[500px] lg:h-[645px]" />
+        <HeroCarousel className="relative h-full min-h-[280px] md:h-[500px] lg:h-[645px]" />
       </section>
 
-      {/* PROMO CARDS */}
+      {/* PROMO CARDS — sits directly under hero, no gap; stacked with thin divider on mobile */}
       <section
         className="
-          mt-[30px]
           grid
           w-full
           grid-cols-1
+          divide-y
+          divide-white
           bg-[#e8ebef]
-          md:mt-[70px]
           md:grid-cols-2
           md:divide-x
-          md:divide-white
-          lg:mt-[85px]
+          md:divide-y-0
         "
       >
-        <div className="flex items-start gap-[22px] px-[4.05%] py-[38px] lg:py-[45px]">
+        <div className="flex items-start gap-[14px] px-[4.05%] py-[22px] md:gap-[22px] md:py-[38px] lg:py-[45px]">
           <img
             src="/images/homepage/2026 AgViews Calendar Cover.jpg"
             alt="2026 AgViews Calendar"
-            className="h-[115px] w-[155px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
+            className="h-[70px] w-[95px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
             loading="lazy"
           />
 
           <div>
-            <h3 className="m-0 font-display text-[20px] font-bold leading-[26px] text-[#231f20]">
+            <h3 className="m-0 font-display text-[15px] font-bold leading-[19px] text-[#231f20] md:text-[20px] md:leading-[26px]">
               Calendar Photo Contest
             </h3>
 
-            <p className="m-0 mt-[10px] text-[16px] leading-[25px] text-[#231f20]">
+            <p className="m-0 mt-[6px] text-[12px] leading-[17px] text-[#231f20] md:mt-[10px] md:text-[16px] md:leading-[25px]">
               Submit your photo(s) of modern agriculture, fishing and forestry
               by July 31 for a chance to win $100!
             </p>
 
             <Link
               href="/resources/Calendar-Photo-Contest"
-              className="mt-[10px] inline-block text-[16px] font-bold text-[#496d83] underline"
+              className="mt-[6px] inline-block text-[12px] font-bold text-[#496d83] md:mt-[10px] md:text-[16px]"
             >
-              Learn more
+              Learn more ›
             </Link>
           </div>
         </div>
 
-        <div className="flex items-start gap-[22px] px-[4.05%] py-[38px] lg:py-[45px]">
+        <div className="flex items-start gap-[14px] px-[4.05%] py-[22px] md:gap-[22px] md:py-[38px] lg:py-[45px]">
           <img
             src="/images/homepage/Appreciation Sign.png"
             alt="Customer appreciation event"
-            className="h-[115px] w-[155px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
+            className="h-[70px] w-[95px] shrink-0 object-cover md:h-[125px] md:w-[170px]"
             loading="lazy"
           />
 
           <div>
-            <h3 className="m-0 font-display text-[20px] font-bold leading-[26px] text-[#231f20]">
+            <h3 className="m-0 font-display text-[15px] font-bold leading-[19px] text-[#231f20] md:text-[20px] md:leading-[26px]">
               2026 Customer Appreciation Events
             </h3>
 
-            <p className="m-0 mt-[10px] text-[16px] leading-[25px] text-[#231f20]">
+            <p className="m-0 mt-[6px] text-[12px] leading-[17px] text-[#231f20] md:mt-[10px] md:text-[16px] md:leading-[25px]">
               As a cooperative, our customers are at the core of everything we
               do. We hope you&apos;ll join us at an event this summer to show
               our appreciation.
@@ -229,9 +244,9 @@ export default function Home() {
 
             <Link
               href="/resources/events"
-              className="mt-[10px] inline-block text-[16px] font-bold text-[#496d83] underline"
+              className="mt-[6px] inline-block text-[12px] font-bold text-[#496d83] md:mt-[10px] md:text-[16px]"
             >
-              Learn more
+              Learn more ›
             </Link>
           </div>
         </div>
@@ -271,7 +286,9 @@ export default function Home() {
                     mb-[16px]
                     inline-block
                     rounded-[2px]
-                    bg-[#686868]
+                    border
+                    border-white/60
+                    bg-transparent
                     px-[10px]
                     py-[5px]
                     text-[13px]
@@ -285,7 +302,7 @@ export default function Home() {
                 </span>
 
                 <h3 className="m-0 font-display text-[25px] font-bold leading-[32px] text-white">
-                  {feature.title}
+                  {feature.title} <span aria-hidden="true">›</span>
                 </h3>
 
                 {feature.body && (
@@ -320,14 +337,16 @@ export default function Home() {
                       mb-[12px]
                       inline-block
                       rounded-[2px]
-                      bg-[#686868]
+                      border
+                      border-[#231f20]/40
+                      bg-white
                       px-[10px]
                       py-[5px]
                       text-[13px]
                       font-bold
                       uppercase
                       leading-[17px]
-                      text-white
+                      text-[#231f20]
                     "
                   >
                     {post.tag}
@@ -345,7 +364,7 @@ export default function Home() {
                       group-hover:text-[#496d83]
                     "
                   >
-                    {post.title}
+                    {post.title} <span aria-hidden="true">›</span>
                   </h4>
 
                   <span className="mt-[12px] block text-[13px] font-bold uppercase leading-[18px] text-[#686868]">
@@ -442,7 +461,9 @@ export default function Home() {
                     mb-[16px]
                     inline-block
                     rounded-[2px]
-                    bg-[#686868]
+                    border
+                    border-white/60
+                    bg-transparent
                     px-[10px]
                     py-[5px]
                     text-[13px]
@@ -456,7 +477,7 @@ export default function Home() {
                 </span>
 
                 <h3 className="m-0 font-display text-[25px] font-bold leading-[32px] text-white">
-                  {tFeature.title}
+                  {tFeature.title} <span aria-hidden="true">›</span>
                 </h3>
 
                 <p className="m-0 mt-[15px] text-[16px] leading-[25px] text-white">
@@ -497,14 +518,16 @@ export default function Home() {
                       mb-[12px]
                       inline-block
                       rounded-[2px]
-                      bg-[#686868]
+                      border
+                      border-[#231f20]/40
+                      bg-white
                       px-[10px]
                       py-[5px]
                       text-[13px]
                       font-bold
                       uppercase
                       leading-[17px]
-                      text-white
+                      text-[#231f20]
                     "
                   >
                     {post.tag}
@@ -522,7 +545,7 @@ export default function Home() {
                       group-hover:text-[#496d83]
                     "
                   >
-                    {post.title}
+                    {post.title} <span aria-hidden="true">›</span>
                   </h4>
 
                   <span className="mt-[12px] block text-[13px] font-bold uppercase leading-[18px] text-[#686868]">
