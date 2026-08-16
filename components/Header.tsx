@@ -150,7 +150,7 @@ export default function Header() {
             <use href="#logo-petal" transform="rotate(180 20 20)" />
             <use href="#logo-petal" transform="rotate(270 20 20)" />
           </svg>
-          FARM FUNDERS
+          FARM FUNDING
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
