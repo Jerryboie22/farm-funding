@@ -74,7 +74,7 @@ export default function Home() {
             <h1
               className="
                 m-0
-                max-w-[700px]
+                max-w-[750px]
                 font-display
                 text-[32px]
                 font-normal
