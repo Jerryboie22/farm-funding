@@ -101,18 +101,19 @@ export default function Home() {
         "
       >
           
-              Farm Funding is made in agriculture — a cooperative owned by the
+              Farm Funding is made in agriculture - a cooperative owned by the
               customers it serves. More than any other lender, we understand
               your unique credit needs and offer the specialized products,
               tools and services to help grow your success.
             </p>
 
-            <div className="mt-[28px] flex flex-wrap gap-[12px]">
+            <div className="mt-[28px] grid grid-cols-1 gap-[10px] sm:flex sm:flex-wrap sm:gap-[12px]">
               <Link
                 href="/financing"
                 className="
                   inline-flex
                   h-[51px]
+                  w-full
                   items-center
                   justify-center
                   rounded-[4px]
@@ -127,6 +128,7 @@ export default function Home() {
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
+                  sm:w-auto
                 "
               >
                 Explore Financing
@@ -137,6 +139,7 @@ export default function Home() {
                 className="
                   inline-flex
                   h-[51px]
+                  w-full
                   items-center
                   justify-center
                   rounded-[4px]
@@ -151,6 +154,7 @@ export default function Home() {
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
+                  sm:w-auto
                 "
               >
                 View Services
@@ -159,13 +163,13 @@ export default function Home() {
           </div>
         </div>
 
-        <HeroCarousel className="relative min-h-[390px] md:min-h-[475px] lg:min-h-[500px]" />
+        <HeroCarousel className="relative h-[303px] md:h-[500px] lg:h-[645px]" />
       </section>
 
       {/* PROMO CARDS */}
       <section
         className="
-          mt-[55px]
+          mt-[30px]
           grid
           w-full
           grid-cols-1
