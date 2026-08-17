@@ -572,107 +572,127 @@ export default function Home() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="w-full bg-[#4f832a] px-6 pt-[100px] pb-[80px] text-white md:pt-[110px] md:pb-[100px]">
-        <div className="mx-auto max-w-[900px] text-center">
-          <h2
-            className="
-              m-0
-              mx-auto
-              max-w-[560px]
-              font-display
-              text-[42px]
-              font-bold
-              leading-[1.1]
-              text-white
-              md:max-w-[600px]
-              md:text-[46px]
-              lg:max-w-none
-              lg:text-[42px]
-              lg:leading-[52px]
-            "
-          >
-            Sign up for our Today&apos;s Harvest Blog.
-          </h2>
+<section className="w-full bg-[#4f832a] px-[20px] pt-[108px] pb-[150px] text-white md:px-6 md:pt-[110px] md:pb-[150px]">
+  <div className="mx-auto w-full max-w-[900px] text-center">
+    <h2
+      className="
+        m-0
+        mx-auto
+        w-full
+        max-w-[600px]
+        font-display
+        text-[48px]
+        font-bold
+        leading-[1.1]
+        tracking-[-0.5px]
+        text-white
+        sm:text-[50px]
+        md:max-w-[620px]
+        md:text-[52px]
+      "
+    >
+      Sign up for our Today&apos;s Harvest Blog.
+    </h2>
 
-          <p
-            className="
-              m-0
-              mt-[70px]
-              mx-auto
-              max-w-[620px]
-              text-[32px]
-              font-semibold
-              leading-[1.4]
-              text-white
-              md:max-w-[500px]
-              lg:max-w-none
-              lg:text-[19px]
-              lg:font-normal
-              lg:leading-[30px]
-            "
-          >
-            Get the latest blog articles delivered to your inbox.
-          </p>
+    <p
+      className="
+        m-0
+        mx-auto
+        mt-[78px]
+        w-full
+        max-w-[640px]
+        text-[30px]
+        font-medium
+        leading-[1.45]
+        text-white
+        sm:text-[31px]
+        md:max-w-[650px]
+        md:text-[32px]
+      "
+    >
+      Get the latest blog articles delivered to your inbox.
+    </p>
 
-          <form className="mx-auto mt-[60px] flex w-full max-w-[445px] flex-col items-start gap-0">
-            <label
-              htmlFor="newsletter-email"
-              className="mb-[15px] text-[29px] font-bold leading-none text-white"
-            >
-              Enter your email*
-            </label>
+    <form className="mx-auto mt-[69px] flex w-full max-w-[445px] flex-col items-start">
+      <label
+        htmlFor="newsletter-email"
+        className="
+          mb-[20px]
+          text-left
+          text-[28px]
+          font-bold
+          leading-[1.1]
+          text-white
+        "
+      >
+        Enter your email*
+      </label>
 
-            <input
-              id="newsletter-email"
-              type="email"
-              required
-              placeholder="email@address.com"
-              className="
-                h-[76px]
-                w-full
-                rounded-[4px]
-                border
-                border-[#c9c9c9]
-                bg-white
-                px-[20px]
-                text-[28px]
-                text-[#4b4b4b]
-                outline-none
-                placeholder:text-[#8a8a8a]
-              "
-              aria-label="Email address"
-            />
+      <input
+        id="newsletter-email"
+        type="email"
+        required
+        placeholder="email@address.com"
+        className="
+          box-border
+          h-[77px]
+          w-full
+          rounded-[4px]
+          border
+          border-[#c7c7c7]
+          bg-white
+          px-[22px]
+          text-[28px]
+          font-normal
+          leading-none
+          text-[#4b4b4b]
+          outline-none
+          placeholder:text-[#777777]
+          focus:border-[#496d83]
+        "
+        aria-label="Email address"
+      />
 
-            <span className="mt-[8px] text-[22px] italic leading-none text-white">
-              *Required Field
-            </span>
+      <span
+        className="
+          mt-[8px]
+          text-left
+          text-[22px]
+          font-normal
+          italic
+          leading-[1.1]
+          text-white
+        "
+      >
+        *Required Field
+      </span>
 
-            <button
-              type="submit"
-              className="
-                mt-[60px]
-                self-center
-                flex
-                items-center
-                justify-center
-                rounded-[4px]
-                border-[3px]
-                border-white
-                bg-transparent
-                text-[28px]
-                font-bold
-                text-white
-                transition-colors
-                hover:bg-white
-                hover:text-[#4f832a]
-              "
-              style={{ width: "195px", height: "67px" }}
-            >
-              Sign Up
-            </button>
-          </form>
-        </div>
-      </section>
-    </>
-  );
-}
+      <button
+        type="submit"
+        className="
+          mt-[61px]
+          self-center
+          flex
+          h-[67px]
+          w-[195px]
+          items-center
+          justify-center
+          rounded-[6px]
+          border-[3px]
+          border-white
+          bg-transparent
+          px-0
+          text-[28px]
+          font-bold
+          leading-none
+          text-white
+          transition-colors
+          hover:bg-white
+          hover:text-[#4f832a]
+        "
+      >
+        Sign Up
+      </button>
+    </form>
+  </div>
+</section>
