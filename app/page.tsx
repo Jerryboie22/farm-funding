@@ -572,20 +572,20 @@ export default function Home() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="w-full bg-[#4f832a] px-6 pt-[110px] pb-[90px] text-white md:pt-[130px] md:pb-[110px]">
+      <section className="w-full bg-[#4f832a] px-6 pt-[70px] pb-[80px] text-white md:pt-[100px] md:pb-[100px]">
         <div className="mx-auto max-w-[900px] text-center">
           <h2
             className="
               m-0
               mx-auto
-              max-w-[320px]
+              max-w-[520px]
               font-display
-              text-[42px]
+              text-[60px]
               font-bold
-              leading-[1.15]
+              leading-[1.1]
               text-white
-              md:max-w-[600px]
-              md:text-[46px]
+              md:max-w-[620px]
+              md:text-[56px]
               lg:max-w-none
               lg:text-[42px]
               lg:leading-[52px]
@@ -597,26 +597,27 @@ export default function Home() {
           <p
             className="
               m-0
-              mt-[36px]
+              mt-[56px]
               mx-auto
-              max-w-[340px]
-              text-[21px]
-              font-normal
-              leading-[1.5]
+              max-w-[560px]
+              text-[32px]
+              font-semibold
+              leading-[1.35]
               text-white
-              md:max-w-[480px]
+              md:max-w-[500px]
               lg:max-w-none
               lg:text-[19px]
+              lg:font-normal
               lg:leading-[30px]
             "
           >
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form className="mx-auto mt-[48px] flex w-full max-w-[445px] flex-col items-start gap-0 sm:max-w-[560px]">
+          <form className="mx-auto mt-[56px] flex w-full max-w-[445px] flex-col items-start gap-0 sm:max-w-[560px]">
             <label
               htmlFor="newsletter-email"
-              className="mb-[14px] text-[23px] font-bold leading-none text-white"
+              className="mb-[16px] text-[29px] font-bold leading-none text-white"
             >
               Enter your email*
             </label>
@@ -627,7 +628,7 @@ export default function Home() {
               required
               placeholder="email@address.com"
               className="
-                h-[78px]
+                h-[76px]
                 w-full
                 rounded-[6px]
                 border
@@ -649,24 +650,23 @@ export default function Home() {
             <button
               type="submit"
               className="
-                mt-[40px]
+                mt-[44px]
                 self-center
-                inline-flex
-                h-[68px]
+                flex
                 items-center
                 justify-center
                 rounded-[6px]
                 border-[3px]
                 border-white
                 bg-transparent
-                px-[42px]
-                text-[22px]
+                text-[24px]
                 font-bold
                 text-white
                 transition-colors
                 hover:bg-white
                 hover:text-[#4f832a]
               "
+              style={{ width: "195px", height: "67px" }}
             >
               Sign Up
             </button>
