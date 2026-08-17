@@ -572,20 +572,20 @@ export default function Home() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="w-full bg-[#4f832a] px-6 pt-[70px] pb-[80px] text-white md:pt-[100px] md:pb-[100px]">
+      <section className="w-full bg-[#4f832a] px-6 pt-[100px] pb-[80px] text-white md:pt-[110px] md:pb-[100px]">
         <div className="mx-auto max-w-[900px] text-center">
           <h2
             className="
               m-0
               mx-auto
-              max-w-[520px]
+              max-w-[560px]
               font-display
-              text-[60px]
+              text-[42px]
               font-bold
               leading-[1.1]
               text-white
-              md:max-w-[620px]
-              md:text-[56px]
+              md:max-w-[600px]
+              md:text-[46px]
               lg:max-w-none
               lg:text-[42px]
               lg:leading-[52px]
@@ -597,12 +597,12 @@ export default function Home() {
           <p
             className="
               m-0
-              mt-[56px]
+              mt-[70px]
               mx-auto
-              max-w-[560px]
+              max-w-[620px]
               text-[32px]
               font-semibold
-              leading-[1.35]
+              leading-[1.4]
               text-white
               md:max-w-[500px]
               lg:max-w-none
@@ -614,10 +614,10 @@ export default function Home() {
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form className="mx-auto mt-[56px] flex w-full max-w-[445px] flex-col items-start gap-0 sm:max-w-[560px]">
+          <form className="mx-auto mt-[60px] flex w-full max-w-[445px] flex-col items-start gap-0">
             <label
               htmlFor="newsletter-email"
-              className="mb-[16px] text-[29px] font-bold leading-none text-white"
+              className="mb-[15px] text-[29px] font-bold leading-none text-white"
             >
               Enter your email*
             </label>
@@ -630,12 +630,12 @@ export default function Home() {
               className="
                 h-[76px]
                 w-full
-                rounded-[6px]
+                rounded-[4px]
                 border
                 border-[#c9c9c9]
                 bg-white
                 px-[20px]
-                text-[24px]
+                text-[28px]
                 text-[#4b4b4b]
                 outline-none
                 placeholder:text-[#8a8a8a]
@@ -643,23 +643,23 @@ export default function Home() {
               aria-label="Email address"
             />
 
-            <span className="mt-[10px] text-[19px] italic leading-none text-white">
+            <span className="mt-[8px] text-[22px] italic leading-none text-white">
               *Required Field
             </span>
 
             <button
               type="submit"
               className="
-                mt-[44px]
+                mt-[60px]
                 self-center
                 flex
                 items-center
                 justify-center
-                rounded-[6px]
+                rounded-[4px]
                 border-[3px]
                 border-white
                 bg-transparent
-                text-[24px]
+                text-[28px]
                 font-bold
                 text-white
                 transition-colors
