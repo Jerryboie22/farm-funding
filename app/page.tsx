@@ -572,16 +572,21 @@ export default function Home() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="w-full bg-[#4f832a] px-[4.05%] py-[70px] text-white lg:py-[82px]">
+      <section className="w-full bg-[#4f832a] px-6 pt-[110px] pb-[90px] text-white md:pt-[130px] md:pb-[110px]">
         <div className="mx-auto max-w-[900px] text-center">
           <h2
             className="
               m-0
+              mx-auto
+              max-w-[320px]
               font-display
-              text-[32px]
+              text-[42px]
               font-bold
-              leading-[40px]
+              leading-[1.15]
               text-white
+              md:max-w-[600px]
+              md:text-[46px]
+              lg:max-w-none
               lg:text-[42px]
               lg:leading-[52px]
             "
@@ -589,40 +594,73 @@ export default function Home() {
             Sign up for our Today&apos;s Harvest Blog.
           </h2>
 
-          <p className="m-0 mt-[18px] text-[17px] leading-[27px] text-white lg:text-[19px] lg:leading-[30px]">
+          <p
+            className="
+              m-0
+              mt-[36px]
+              mx-auto
+              max-w-[340px]
+              text-[21px]
+              font-normal
+              leading-[1.5]
+              text-white
+              md:max-w-[480px]
+              lg:max-w-none
+              lg:text-[19px]
+              lg:leading-[30px]
+            "
+          >
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form className="mx-auto mt-[28px] flex w-full max-w-[560px] flex-col gap-[10px] sm:flex-row">
+          <form className="mx-auto mt-[48px] flex w-full max-w-[445px] flex-col items-start gap-0 sm:max-w-[560px]">
+            <label
+              htmlFor="newsletter-email"
+              className="mb-[14px] text-[23px] font-bold leading-none text-white"
+            >
+              Enter your email*
+            </label>
+
             <input
+              id="newsletter-email"
               type="email"
               required
               placeholder="email@address.com"
               className="
-                h-[51px]
-                min-w-0
-                flex-1
-                rounded-[2px]
-                border-0
+                h-[78px]
+                w-full
+                rounded-[6px]
+                border
+                border-[#c9c9c9]
                 bg-white
-                px-[16px]
-                text-[16px]
-                text-[#231f20]
+                px-[20px]
+                text-[24px]
+                text-[#4b4b4b]
                 outline-none
+                placeholder:text-[#8a8a8a]
               "
               aria-label="Email address"
             />
 
+            <span className="mt-[10px] text-[19px] italic leading-none text-white">
+              *Required Field
+            </span>
+
             <button
               type="submit"
               className="
-                h-[51px]
-                rounded-[4px]
-                border-2
+                mt-[40px]
+                self-center
+                inline-flex
+                h-[68px]
+                items-center
+                justify-center
+                rounded-[6px]
+                border-[3px]
                 border-white
-                bg-[#4f832a]
-                px-[24px]
-                text-[16px]
+                bg-transparent
+                px-[42px]
+                text-[22px]
                 font-bold
                 text-white
                 transition-colors
@@ -635,6 +673,3 @@ export default function Home() {
           </form>
         </div>
       </section>
-    </>
-  );
-}
