@@ -76,14 +76,24 @@ export default function WhyUsCarousel() {
         >
           {SLIDES.map((slide) => (
             <div key={slide.title} className="w-full shrink-0">
-              <div className="grid items-center gap-[40px] md:grid-cols-[1.1fr_1fr] md:gap-[60px] lg:gap-[80px]">
-                {/* TEXT */}
-                <div>
-                  <h3 className="font-display text-[28px] font-bold leading-[34px] text-[#4f832a] md:text-[32px] md:leading-[38px]">
+              {/* CARD */}
+              <div className="mx-auto flex w-[calc(100%-80px)] flex-col overflow-hidden rounded-[14px] bg-white shadow-[0_2px_14px_rgba(0,0,0,0.12)] md:w-full md:grid md:grid-cols-2 md:items-center md:gap-[50px] md:rounded-none md:bg-transparent md:shadow-none">
+                {/* IMAGE — first on mobile, second column on desktop */}
+                <div className="order-1 h-[190px] w-full md:order-2 md:h-[340px] lg:h-[380px]">
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+
+                {/* TEXT — second on mobile, first column on desktop */}
+                <div className="order-2 px-[22px] pb-[30px] pt-[32px] md:order-1 md:px-0 md:pt-0">
+                  <h3 className="font-display text-[26px] font-bold leading-[1.2] text-[#496d83] md:text-[32px] md:leading-[38px]">
                     {slide.title}
                   </h3>
 
-                  <p className="mt-[18px] max-w-[480px] text-[17px] leading-[27px] text-[#231f20]">
+                  <p className="mt-[16px] text-[18px] leading-[1.5] text-[#231f20] md:mt-[18px] md:max-w-[480px] md:text-[17px] md:leading-[27px]">
                     {slide.bodyParts.map((part, partIndex) =>
                       typeof part === "string" ? (
                         <span key={partIndex}>{part}</span>
@@ -99,15 +109,6 @@ export default function WhyUsCarousel() {
                     )}
                   </p>
                 </div>
-
-                {/* IMAGE */}
-                <div className="h-[260px] overflow-hidden md:h-[340px] lg:h-[380px]">
-                  <img
-                    src={slide.image}
-                    alt={slide.alt}
-                    className="h-full w-full object-cover object-center"
-                  />
-                </div>
               </div>
             </div>
           ))}
@@ -115,21 +116,21 @@ export default function WhyUsCarousel() {
       </div>
 
       {/* CAROUSEL CONTROLS */}
-      <div className="mt-[36px] flex items-center justify-center gap-[14px]">
+      <div className="mt-[28px] flex items-center justify-center gap-[14px] md:mt-[36px]">
         {/* PLAY / PAUSE */}
         <button
           type="button"
           onClick={() => setPlaying((p) => !p)}
           aria-label={playing ? "Pause carousel" : "Play carousel"}
-          className="flex h-[24px] w-[24px] items-center justify-center rounded-full border border-[#496d83] text-[#496d83] transition-colors hover:bg-[#496d83] hover:text-white"
+          className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#8a8a8a] text-white md:h-[24px] md:w-[24px] md:border md:border-[#496d83] md:bg-transparent md:text-[#496d83] md:hover:bg-[#496d83] md:hover:text-white md:transition-colors"
         >
           {playing ? (
-            <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor">
+            <svg width="16" height="16" viewBox="0 0 10 10" fill="currentColor" className="md:h-[8px] md:w-[8px]">
               <rect x="1" width="3" height="10" />
               <rect x="6" width="3" height="10" />
             </svg>
           ) : (
-            <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor">
+            <svg width="16" height="16" viewBox="0 0 10 10" fill="currentColor" className="md:h-[8px] md:w-[8px]">
               <path d="M0 0l10 5-10 5z" />
             </svg>
           )}
@@ -142,7 +143,7 @@ export default function WhyUsCarousel() {
             type="button"
             aria-label={`Show ${s.title}`}
             onClick={() => setI(idx)}
-            className={`h-[10px] w-[10px] rounded-full border-2 border-[#4f832a] transition-colors ${
+            className={`h-[28px] w-[28px] shrink-0 rounded-full border-2 border-[#4f832a] transition-colors md:h-[10px] md:w-[10px] ${
               idx === i ? "bg-[#4f832a]" : "bg-white"
             }`}
           />
