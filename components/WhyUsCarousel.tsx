@@ -71,39 +71,27 @@ export default function WhyUsCarousel() {
         <div
           className="flex transition-transform duration-700 ease-out"
           style={{
-            transform: `translateX(calc(-${i * 100}% + ${i * 32}px))`,
+            transform: `translateX(-${i * 100}%)`,
           }}
         >
-          {SLIDES.map((slide, idx) => (
-            <div
-              key={slide.title}
-              className="w-full shrink-0 px-4"
-            >
-              <div className="grid items-center gap-8 rounded-sm border border-line bg-white p-8 shadow-sm md:grid-cols-2 md:p-12">
-
+          {SLIDES.map((slide) => (
+            <div key={slide.title} className="w-full shrink-0">
+              <div className="grid items-center gap-[40px] md:grid-cols-[1.1fr_1fr] md:gap-[60px] lg:gap-[80px]">
                 {/* TEXT */}
                 <div>
-                  <h3
-                    className={`font-display text-2xl font-bold md:text-3xl ${
-                      idx % 2 === 0
-                        ? "text-clay"
-                        : "text-forest"
-                    }`}
-                  >
+                  <h3 className="font-display text-[28px] font-bold leading-[34px] text-[#4f832a] md:text-[32px] md:leading-[38px]">
                     {slide.title}
                   </h3>
 
-                  <p className="mt-4 max-w-md text-sm leading-relaxed text-charcoal/80 md:text-base">
+                  <p className="mt-[18px] max-w-[480px] text-[17px] leading-[27px] text-[#231f20]">
                     {slide.bodyParts.map((part, partIndex) =>
                       typeof part === "string" ? (
-                        <span key={partIndex}>
-                          {part}
-                        </span>
+                        <span key={partIndex}>{part}</span>
                       ) : (
                         <Link
                           key={partIndex}
                           href={part.href}
-                          className="text-clay-light underline hover:text-clay"
+                          className="font-bold text-[#496d83] underline hover:text-[#4f832a]"
                         >
                           {part.text}
                         </Link>
@@ -112,15 +100,14 @@ export default function WhyUsCarousel() {
                   </p>
                 </div>
 
-                {/* REAL IMAGE */}
-                <div className="h-56 overflow-hidden rounded-sm md:h-72">
+                {/* IMAGE */}
+                <div className="h-[260px] overflow-hidden md:h-[340px] lg:h-[380px]">
                   <img
                     src={slide.image}
                     alt={slide.alt}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-center"
                   />
                 </div>
-
               </div>
             </div>
           ))}
@@ -128,44 +115,21 @@ export default function WhyUsCarousel() {
       </div>
 
       {/* CAROUSEL CONTROLS */}
-      <div className="mt-6 flex items-center justify-center gap-3">
-
+      <div className="mt-[36px] flex items-center justify-center gap-[14px]">
         {/* PLAY / PAUSE */}
         <button
           type="button"
           onClick={() => setPlaying((p) => !p)}
-          aria-label={
-            playing
-              ? "Pause carousel"
-              : "Play carousel"
-          }
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-charcoal text-white"
+          aria-label={playing ? "Pause carousel" : "Play carousel"}
+          className="flex h-[24px] w-[24px] items-center justify-center rounded-full border border-[#496d83] text-[#496d83] transition-colors hover:bg-[#496d83] hover:text-white"
         >
           {playing ? (
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="currentColor"
-            >
-              <rect
-                x="1"
-                width="3"
-                height="10"
-              />
-              <rect
-                x="6"
-                width="3"
-                height="10"
-              />
+            <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor">
+              <rect x="1" width="3" height="10" />
+              <rect x="6" width="3" height="10" />
             </svg>
           ) : (
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="currentColor"
-            >
+            <svg width="8" height="8" viewBox="0 0 10 10" fill="currentColor">
               <path d="M0 0l10 5-10 5z" />
             </svg>
           )}
@@ -178,10 +142,8 @@ export default function WhyUsCarousel() {
             type="button"
             aria-label={`Show ${s.title}`}
             onClick={() => setI(idx)}
-            className={`h-3.5 w-3.5 rounded-full border-2 border-forest transition-colors ${
-              idx === i
-                ? "bg-forest"
-                : "bg-white"
+            className={`h-[10px] w-[10px] rounded-full border-2 border-[#4f832a] transition-colors ${
+              idx === i ? "bg-[#4f832a]" : "bg-white"
             }`}
           />
         ))}
