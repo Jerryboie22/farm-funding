@@ -152,7 +152,7 @@ const LEGAL_LINKS: [string, string][] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-charcoal mt-24 border-t border-line">
+    <footer className="bg-white text-charcoal border-t border-line">
       <div className="max-w-[1680px] mx-auto px-6 md:px-16 py-14">
         <div className="grid grid-cols-2 md:grid-cols-7 gap-8">
           {/* Logo + utility/social column */}
