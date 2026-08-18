@@ -571,9 +571,6 @@ export default function Home() {
         </div>
       </section>
 
-export default function NewsletterSection() {
-  return (
-    <>
       {/* NEWSLETTER */}
       <section className="w-full bg-[#4f832a] px-[4.05%] py-[70px] text-white lg:py-[82px]">
         <div className="mx-auto max-w-[900px] text-center">
