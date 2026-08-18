@@ -572,119 +572,58 @@ export default function Home() {
       </section>
 
             {/* NEWSLETTER */}
-      <section className="w-full bg-[#4f832a] px-[20px] pt-[108px] pb-[150px] text-white md:px-6 md:pt-[110px] md:pb-[150px]">
-        <div className="mx-auto w-full max-w-[900px] text-center">
+      <section className="w-full bg-[#4f832a] px-[4.05%] py-[70px] text-white lg:py-[82px]">
+        <div className="mx-auto max-w-[900px] text-center">
           <h2
             className="
               m-0
-              mx-auto
-              w-full
-              max-w-[600px]
               font-display
-              text-[48px]
+              text-[32px]
               font-bold
-              leading-[1.1]
-              tracking-[-0.5px]
+              leading-[40px]
               text-white
-              sm:text-[50px]
-              md:max-w-[620px]
-              md:text-[52px]
+              lg:text-[42px]
+              lg:leading-[52px]
             "
           >
             Sign up for our Today&apos;s Harvest Blog.
           </h2>
 
-          <p
-            className="
-              m-0
-              mx-auto
-              mt-[78px]
-              w-full
-              max-w-[640px]
-              text-[30px]
-              font-medium
-              leading-[1.45]
-              text-white
-              sm:text-[31px]
-              md:max-w-[650px]
-              md:text-[32px]
-            "
-          >
+          <p className="m-0 mt-[18px] text-[17px] leading-[27px] text-white lg:text-[19px] lg:leading-[30px]">
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form className="mx-auto mt-[69px] flex w-full max-w-[445px] flex-col items-start">
-            <label
-              htmlFor="newsletter-email"
-              className="
-                mb-[20px]
-                text-left
-                text-[28px]
-                font-bold
-                leading-[1.1]
-                text-white
-              "
-            >
-              Enter your email*
-            </label>
-
+          <form className="mx-auto mt-[28px] flex w-full max-w-[560px] flex-col gap-[10px] sm:flex-row">
             <input
-              id="newsletter-email"
               type="email"
               required
               placeholder="email@address.com"
               className="
-                box-border
-                h-[77px]
-                w-full
-                rounded-[4px]
-                border
-                border-[#c7c7c7]
+                h-[51px]
+                min-w-0
+                flex-1
+                rounded-[2px]
+                border-0
                 bg-white
-                px-[22px]
-                text-[28px]
-                font-normal
-                leading-none
-                text-[#4b4b4b]
+                px-[16px]
+                text-[16px]
+                text-[#231f20]
                 outline-none
-                placeholder:text-[#777777]
-                focus:border-[#496d83]
               "
               aria-label="Email address"
             />
 
-            <span
-              className="
-                mt-[8px]
-                text-left
-                text-[22px]
-                font-normal
-                italic
-                leading-[1.1]
-                text-white
-              "
-            >
-              *Required Field
-            </span>
-
             <button
               type="submit"
               className="
-                mt-[61px]
-                self-center
-                flex
-                h-[67px]
-                w-[195px]
-                items-center
-                justify-center
-                rounded-[6px]
-                border-[3px]
+                h-[51px]
+                rounded-[4px]
+                border-2
                 border-white
-                bg-transparent
-                px-0
-                text-[28px]
+                bg-[#4f832a]
+                px-[24px]
+                text-[16px]
                 font-bold
-                leading-none
                 text-white
                 transition-colors
                 hover:bg-white
