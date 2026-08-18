@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const NAV = [
@@ -142,29 +143,66 @@ export default function Header() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileOpenIdx, setMobileOpenIdx] = useState<number | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  function submitSearch(e: React.FormEvent) {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    setSearchOpen(false);
+    router.push(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+  }
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="sticky top-0 z-50 bg-white border-b border-line">
       {/* utility bar */}
-      <div className="hidden md:flex items-center justify-end gap-6 px-8 py-3 text-sm font-bold text-grey-text border-b border-line">
-        <Link
-          href="/search"
-          className="flex items-center gap-1.5 hover:text-clay transition-colors"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            aria-hidden="true"
+      <div className="hidden md:flex items-center justify-end gap-6 px-8 py-2.5 text-sm font-bold text-grey-text">
+        {searchOpen ? (
+          <form
+            onSubmit={submitSearch}
+            className="flex items-center gap-2 flex-1 max-w-sm"
           >
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
-          </svg>
-          Search
-        </Link>
+            <input
+              autoFocus
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search farmfunding.com"
+              className="flex-1 border border-line rounded-[2px] px-3 py-1.5 text-sm text-charcoal focus:outline-none focus:border-clay"
+            />
+            <button
+              type="button"
+              onClick={() => setSearchOpen(false)}
+              aria-label="Close search"
+              className="flex items-center justify-center text-grey-text hover:text-clay transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+              </svg>
+            </button>
+          </form>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="flex items-center gap-1.5 hover:text-clay transition-colors"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+            </svg>
+            Search
+          </button>
+        )}
 
         <Link
           href="/resources/calculators"
@@ -232,38 +270,25 @@ export default function Header() {
 
         <Link
           href="/sign-in"
-          className="px-5 py-2.5 bg-clay text-white font-display font-bold rounded-[4px] border-2 border-clay hover:bg-white hover:text-clay transition-colors"
+          className="px-5 py-2 bg-clay text-white font-display font-bold rounded-[4px] hover:bg-clay-dark transition-colors"
         >
           Sign in
         </Link>
       </div>
 
       {/* main nav */}
-      <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-line">
+      <div className="flex items-center justify-between px-6 md:px-8 py-3">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-2xl font-extrabold text-charcoal tracking-tight"
+          className="flex items-center gap-2 font-display text-xl font-extrabold text-charcoal tracking-tight"
         >
           <svg
-            width="34"
-            height="34"
+            width="30"
+            height="30"
             viewBox="0 0 40 40"
             fill="none"
             aria-hidden="true"
           >
-            <defs>
-              <g id="logo-petal">
-                <path
-                  d="M20 20C13 15 13 5 20 2c2 6 2 12 0 18Z"
-                  fill="#6ea23f"
-                />
-                <path
-                  d="M20 20c0-6 0-12 0-18 5 3 5 13 0 18Z"
-                  fill="#3e6e2e"
-                />
-              </g>
-            </defs>
-
             <use href="#logo-petal" />
             <use href="#logo-petal" transform="rotate(90 20 20)" />
             <use href="#logo-petal" transform="rotate(180 20 20)" />
@@ -283,9 +308,23 @@ export default function Header() {
             >
               <Link
                 href={section.href}
-                className="px-4 py-2 text-sm font-bold uppercase tracking-wide text-charcoal hover:text-clay transition-colors"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-bold uppercase tracking-wide text-charcoal hover:text-clay transition-colors"
               >
                 {section.label}
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                  className={`shrink-0 transition-transform ${
+                    openIdx === idx ? "rotate-180" : ""
+                  }`}
+                >
+                  <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
 
               {openIdx === idx && (
@@ -332,7 +371,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* mobile full-screen menu — pixel-spec corrected */}
+      {/* mobile full-screen menu — unchanged */}
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-white overflow-y-auto">
           {/* header: logo + close, ~54px tall */}
