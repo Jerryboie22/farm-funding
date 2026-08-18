@@ -13,21 +13,21 @@ const OVERVIEW_CARDS = [
     description: "Learn about the different policy types and which is best for you.",
     href: "/crop-insurance/products",
     imageAlt: "Close-up of soybeans in sunlight",
-    imagePath: "/images/crop-insurance/soybeans-sunlight.jpg",
+    imagePath: "/images/crop-insurance/Cash Grain_shutterstock_1153070285.jpg",
   },
   {
     title: "Dairy & Livestock Insurance",
     description: "Protect your dairy and livestock revenue.",
     href: "/crop-insurance/dairy-livestock",
     imageAlt: "A lineup of cows eating feed",
-    imagePath: "/images/crop-insurance/cows-feeding.jpg",
+    imagePath: "/images/crop-insurance/Dairy_Farm Image.jpg",
   },
   {
     title: "Insurance Resources",
     description: "Find market prices, insurance providers and additional information.",
     href: "/crop-insurance/resources",
     imageAlt: "Tractor in field with row crop sprouting",
-    imagePath: "/images/crop-insurance/tractor-row-crop.jpg",
+    imagePath: "/images/crop-insurance/Insurance-Resources.jpg",
   },
 ];
 
@@ -84,7 +84,7 @@ export default function CropInsurancePage() {
         <div className="max-w-[1140px] mx-auto px-[15px] py-[50px] lg:py-[100px]">
           <div className="relative w-full h-[303px] md:h-[500px] lg:h-[645px]">
             <Image
-              src="/images/crop-insurance/hands-seedling.jpg"
+              src="/images/crop-insurance/Crop  Livestock Insuranceshutterstock55253641.jpg"
               alt="Hands holding crop seedling"
               fill
               className="object-cover"
@@ -245,7 +245,7 @@ export default function CropInsurancePage() {
           <div className="flex flex-col gap-[24px]">
             <div className="relative w-full h-[220px] lg:h-[280px]">
               <Image
-                src="/images/crop-insurance/young-woman-farmer.jpg"
+                src="/images/crop-insurance/Beginning-Veteran-Farmer.jpg"
                 alt="Young woman farmer in field during harvest"
                 fill
                 className="object-cover"
@@ -253,7 +253,7 @@ export default function CropInsurancePage() {
             </div>
             <div className="relative w-full h-[180px] lg:h-[220px]">
               <Image
-                src="/images/crop-insurance/cranberry-bog.jpg"
+                src="/images/crop-insurance/Industries_cran.jpg"
                 alt="Cranberry bog during harvest"
                 fill
                 className="object-cover"
