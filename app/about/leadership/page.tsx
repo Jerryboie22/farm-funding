@@ -13,7 +13,7 @@ export default function LeadershipPage() {
           PAGE HERO / INTRO — full-width dark green band, white text
       ========================================================= */}
       <section className="w-full bg-forest">
-        <div className="max-w-[1200px] mx-auto px-[5%] pt-[55px] pb-[55px] md:pt-[70px] md:pb-[65px]">
+        <div className="max-w-[1600px] mx-auto px-[5%] pt-[55px] pb-[55px] md:pt-[70px] md:pb-[65px]">
           <h1 className="font-display text-[38px] md:text-[52px] font-[700] leading-[1.1] text-white">
             Leadership
           </h1>
@@ -31,7 +31,7 @@ export default function LeadershipPage() {
           BOARD OF DIRECTORS — text+links | image
       ========================================================= */}
       <section className="w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
+        <div className="max-w-[1600px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
           <div>
             <h2 className="font-display text-[32px] md:text-[38px] font-[700] leading-[1.2] text-forest">
               Board of Directors
@@ -63,7 +63,7 @@ export default function LeadershipPage() {
           <img
             src="/images/about/leadership/2025-board.jpg"
             alt="Farm Funding 2025 Board of Directors"
-            className="block w-full h-[420px] md:h-[560px] object-cover"
+            className="block w-full h-[460px] md:h-[620px] object-cover"
           />
         </div>
       </section>
@@ -73,11 +73,11 @@ export default function LeadershipPage() {
           (uses the real matching asset already in the project)
       ========================================================= */}
       <section className="w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
+        <div className="max-w-[1600px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
           <img
             src="/images/about/Who-We-Are_SpringPlanting_TheMillers_812_Overview-Card.jpg"
             alt="Smiling Farm Funding customer in front of tractor after a hard day of planting"
-            className="block w-full h-[380px] md:h-[520px] object-cover order-2 md:order-1"
+            className="block w-full h-[420px] md:h-[580px] object-cover order-2 md:order-1"
           />
 
           <div className="order-1 md:order-2">
@@ -105,7 +105,7 @@ export default function LeadershipPage() {
           SENIOR OFFICERS — text+link | image
       ========================================================= */}
       <section className="w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
+        <div className="max-w-[1600px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
           <div>
             <h2 className="font-display text-[32px] md:text-[38px] font-[700] leading-[1.2] text-forest">
               Senior Officers
@@ -128,7 +128,7 @@ export default function LeadershipPage() {
           <img
             src="/images/about/leadership/2025-executive-team.jpg"
             alt="Farm Funding 2025 Executive Leadership Team"
-            className="block w-full h-[380px] md:h-[520px] object-cover"
+            className="block w-full h-[420px] md:h-[580px] object-cover"
           />
         </div>
       </section>
@@ -137,11 +137,11 @@ export default function LeadershipPage() {
           CODE OF ETHICS — image | text
       ========================================================= */}
       <section className="w-full bg-white">
-        <div className="max-w-[1200px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
+        <div className="max-w-[1600px] mx-auto px-[5%] py-[55px] md:py-[70px] grid grid-cols-1 md:grid-cols-2 gap-x-[60px] gap-y-[36px] items-center">
           <img
             src="/images/about/leadership/code-of-ethics-family.jpg"
             alt="Three generations of family farmers smiling"
-            className="block w-full h-[380px] md:h-[520px] object-cover order-2 md:order-1"
+            className="block w-full h-[420px] md:h-[580px] object-cover order-2 md:order-1"
           />
 
           <div className="order-1 md:order-2">
@@ -170,7 +170,7 @@ export default function LeadershipPage() {
           heading+button share a row, paragraph sits below
       ========================================================= */}
       <section className="w-full bg-cream">
-        <div className="max-w-[1200px] mx-auto px-[5%] py-[50px] md:py-[60px]">
+        <div className="max-w-[1600px] mx-auto px-[5%] py-[50px] md:py-[60px]">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-[24px]">
             <h2 className="font-display text-[32px] md:text-[38px] font-[700] leading-[1.2] text-forest">
               Have Additional Questions?
