@@ -393,7 +393,7 @@ export default function CropInsurancePage() {
             </p>
 
             <div className="mt-[28px]">
-              <ButtonLink href="/crop-insurance/resources/beginning-farmer-rancher-benefits">
+              <ButtonLink href="/resources/beginning-farmer-rancher-benefits">
                 Learn More
               </ButtonLink>
             </div>
