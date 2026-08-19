@@ -72,7 +72,7 @@ function ButtonLink({
         "transition-colors duration-200",
         styles[variant],
       ].join(" ")}
-      style={{ fontFamily: "Montserrat-Bold" }}
+      style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
     >
       {children}
     </Link>
@@ -159,7 +159,7 @@ export default function CropInsurancePage() {
                 lg:text-[52px]
                 xl:text-[54px]
               "
-              style={{ fontFamily: "Montserrat-Bold" }}
+              style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
             >
               Crop Insurance by Crop Growers
             </h1>
@@ -175,7 +175,7 @@ export default function CropInsurancePage() {
                 sm:text-[18px]
                 sm:leading-[1.78]
               "
-              style={{ fontFamily: "Barlow-Medium" }}
+              style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
             >
               Crop Growers is the crop insurance team at Farm Funders. That
               means along with knowing agriculture, we understand your
@@ -230,7 +230,7 @@ export default function CropInsurancePage() {
         <div className="mx-auto w-full">
           <h2
             className="max-w-[1600px] text-[26px] leading-[32px] font-medium text-[#4f832a] sm:text-[32px] sm:leading-[38px] lg:text-[48px] lg:leading-[58px]"
-            style={{ fontFamily: "Montserrat-Bold" }}
+            style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
           >
             Our Crop Growers agents help you make the best risk management
             decisions to protect your operation and family&apos;s future.
@@ -256,14 +256,14 @@ export default function CropInsurancePage() {
                   <Link
                     href={card.href}
                     className="inline-block text-[22px] leading-[30px] text-[#5a4400] hover:underline sm:text-[26px] sm:leading-[34px]"
-                    style={{ fontFamily: "Montserrat-Bold" }}
+                    style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
                   >
                     {card.title}&nbsp;›
                   </Link>
 
                   <p
                     className="mt-[14px] text-[16px] leading-[25.6px] text-[#231f20] sm:mt-[18px] sm:text-[18px] sm:leading-[28.8px]"
-                    style={{ fontFamily: "Barlow-Medium" }}
+                    style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
                   >
                     {card.description}
                   </p>
@@ -304,7 +304,7 @@ export default function CropInsurancePage() {
               sm:text-[42px]
               lg:text-[44px]
             "
-            style={{ fontFamily: "Montserrat-Bold" }}
+            style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
           >
             Want to talk to Crop Growers?
           </h2>
@@ -319,7 +319,7 @@ export default function CropInsurancePage() {
               text-white
               sm:text-[18px]
             "
-            style={{ fontFamily: "Barlow-Medium" }}
+            style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
           >
             Not sure where to start? Let our team of crop insurance
             specialists answer any questions and find the coverage that fits
@@ -368,7 +368,7 @@ export default function CropInsurancePage() {
                 text-[#4f832a]
                 sm:text-[36px]
               "
-              style={{ fontFamily: "Montserrat-Bold" }}
+              style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
             >
               Beginning/Veteran Farmer &amp; Rancher Benefits
             </h2>
@@ -381,7 +381,7 @@ export default function CropInsurancePage() {
                 text-[#231f20]
                 sm:text-[18px]
               "
-              style={{ fontFamily: "Barlow-Medium" }}
+              style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
             >
               Beginning and veteran farmers are eligible for special rules
               and provisions under the federal crop insurance program. Some
@@ -453,7 +453,7 @@ export default function CropInsurancePage() {
                 text-[#4f832a]
                 sm:text-[36px]
               "
-              style={{ fontFamily: "Montserrat-Bold" }}
+              style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
             >
               Industries We Serve
             </h2>
@@ -466,7 +466,7 @@ export default function CropInsurancePage() {
                 text-[#231f20]
                 sm:text-[18px]
               "
-              style={{ fontFamily: "Barlow-Medium" }}
+              style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
             >
               Crop Growers insurance works with crop producers, fruit and
               vegetable growers, dairy farmers, livestock producers and more.
@@ -506,7 +506,7 @@ export default function CropInsurancePage() {
               sm:text-[40px]
               lg:text-[44px]
             "
-            style={{ fontFamily: "Montserrat-Bold" }}
+            style={{ fontFamily: "var(--font-montserrat)", fontWeight: 700 }}
           >
             File a Crop Insurance Notice of Loss
           </h2>
@@ -521,7 +521,7 @@ export default function CropInsurancePage() {
               text-white
               sm:text-[18px]
             "
-            style={{ fontFamily: "Barlow-Medium" }}
+            style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
           >
             Crop Growers crop insurance policyholders may electronically
             submit a notice of loss. If an adjuster has not been in contact
