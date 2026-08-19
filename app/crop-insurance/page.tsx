@@ -22,7 +22,7 @@ const OVERVIEW_CARDS = [
     description: "Protect your dairy and livestock revenue.",
     href: "/crop-insurance/dairy-livestock",
     imagePath: "/images/crop-insurance/Dairy_Farm Image.jpg",
-    imageAlt: "A lineup of cows eating feed",
+    imageAlt: "Dairy cattle in a barn",
   },
   {
     title: "Insurance Resources",
@@ -30,89 +30,7 @@ const OVERVIEW_CARDS = [
       "Find market prices, insurance providers and additional information.",
     href: "/crop-insurance/resources",
     imagePath: "/images/crop-insurance/Insurance-Resources.jpg",
-    imageAlt: "Tractor in field with row crop sprouting",
-  },
-];
-
-const FOOTER_COLUMNS = [
-  {
-    title: "FINANCING",
-    links: [
-      ["Land Loans", "/financing/land-loans"],
-      ["Rural Home Loans", "/financing/rural-home-loans"],
-      ["Operating Loans", "/financing/operating-loans"],
-      ["Facility Loans", "/financing/facility-loans"],
-      ["Equipment Financing", "/financing/equipment-financing"],
-      ["Leases", "/financing/leases"],
-      ["Beginning Farmer Programs", "/financing/beginning-farmer-programs"],
-    ],
-  },
-  {
-    title: "SERVICES",
-    links: [
-      ["Tax Planning and Prep", "/services/tax-planning-and-prep"],
-      ["Recordkeeping", "/services/recordkeeping"],
-      ["Appraisals", "/services/appraisals"],
-      ["Business Consulting", "/services/business-consulting"],
-      ["Financial Benchmarking", "/services/financial-benchmarking"],
-      ["Estate Planning", "/services/estate-planning"],
-      ["Grant Writing", "/services/grant-writing"],
-      ["Farm Credit Connect", "/services/farm-credit-connect"],
-    ],
-  },
-  {
-    title: "CROP INSURANCE",
-    links: [
-      ["Crop Insurance Products", "/crop-insurance/products"],
-      [
-        "Dairy & Livestock Insurance Products",
-        "/crop-insurance/dairy-livestock",
-      ],
-      ["Insurance Resources", "/crop-insurance/resources"],
-      ["Crop Insurance Agent Finder", "/crop-insurance/agent-finder"],
-      ["File Notice of Loss", "/crop-insurance/notice-of-loss"],
-      ["Non-Discrimination Statement", "/about/non-discrimination"],
-    ],
-  },
-  {
-    title: "INDUSTRIES",
-    links: [
-      ["Cash Grain", "/industries/cash-grain"],
-      ["Dairy", "/industries/dairy"],
-      ["Livestock/Equine", "/industries/livestock-equine"],
-      ["Timber/Forestry", "/industries/timber-forestry"],
-      ["Fruit/Winery", "/industries/fruit-winery"],
-      ["Vegetables", "/industries/vegetables"],
-      ["Fishing/Aquatic", "/industries/fishing-aquatic"],
-      ["Greenhouse/Nursery", "/industries/greenhouse-nursery"],
-      ["Maple", "/industries/maple"],
-    ],
-  },
-  {
-    title: "RESOURCES",
-    links: [
-      ["Today's Harvest Blog", "/resources/blog"],
-      ["Industry Trends & Outlooks", "/resources/industry-trends"],
-      ["Events & Webinars", "/resources/events"],
-      ["Calculators", "/resources/calculators"],
-      ["DTN Markets & Weather", "/resources/dtn"],
-      ["Northeast Farm Fresh Guide", "/resources/farm-fresh-guide"],
-      ["Calendar Photo Contest", "/resources/photo-contest"],
-      ["Go To Assist", "/resources/go-to-assist"],
-    ],
-  },
-  {
-    title: "ABOUT",
-    links: [
-      ["Who We Are", "/about/who-we-are"],
-      ["Leadership", "/about/leadership"],
-      ["Cooperative Involvement", "/about/cooperative-involvement"],
-      ["Newsroom", "/about/newsroom"],
-      ["Financial Reports", "/about/financial-reports"],
-      ["Community Support", "/about/community-support"],
-      ["Information Security", "/about/information-security"],
-      ["Careers", "/about/careers"],
-    ],
+    imageAlt: "Tractor working in a crop field",
   },
 ];
 
@@ -125,18 +43,34 @@ function ButtonLink({
   children: React.ReactNode;
   variant?: "blue" | "outline-white";
 }) {
+  const styles = {
+    blue: [
+      "border-[#496d83]",
+      "bg-[#496d83]",
+      "text-white",
+      "hover:bg-[#3d5d70]",
+    ].join(" "),
+    "outline-white": [
+      "border-white",
+      "bg-transparent",
+      "text-white",
+      "hover:bg-white",
+      "hover:text-[#4f832a]",
+    ].join(" "),
+  };
+
   return (
     <Link
       href={href}
       className={[
-        "inline-flex items-center justify-center rounded-[4px] border-2",
-        "px-[19px] py-[10px]",
+        "inline-flex items-center justify-center",
+        "rounded-[4px]",
+        "border-2",
+        "px-[20px] py-[11px]",
         "text-[16px] leading-[24px]",
         "font-bold",
         "transition-colors duration-200",
-        variant === "blue"
-          ? "border-[#496d83] bg-[#496d83] text-white hover:bg-white hover:text-[#496d83]"
-          : "border-white bg-transparent text-white hover:bg-white hover:text-[#4f832a]",
+        styles[variant],
       ].join(" ")}
       style={{ fontFamily: "Montserrat-Bold" }}
     >
@@ -147,33 +81,100 @@ function ButtonLink({
 
 export default function CropInsurancePage() {
   return (
-    <main className="w-full overflow-hidden">
+    <main className="w-full overflow-x-hidden">
+
       {/* =========================================================
-          HERO — white bg, text left / image right (stacks on mobile)
+          HERO
+          Matches the supplied Farm Funders screenshot:
+          - very light grey/white background
+          - left text
+          - Crop Growers logo above heading
+          - large image on right
+          - generous horizontal spacing
       ========================================================= */}
-      <section className="w-full bg-white">
-        <div className="mx-auto grid w-full max-w-[1140px] grid-cols-1 items-center gap-[30px] px-[15px] py-[50px] lg:grid-cols-2 lg:gap-[60px] lg:py-[85px]">
-          {/* TEXT COLUMN */}
-          <div className="flex flex-col items-start">
-            <div className="relative h-[50px] w-[190px]">
+      <section className="w-full bg-[#f8f8f8]">
+        <div
+          className="
+            mx-auto
+            grid
+            w-full
+            max-w-[1630px]
+            grid-cols-1
+            lg:grid-cols-2
+          "
+        >
+          {/* LEFT HERO CONTENT */}
+          <div
+            className="
+              flex
+              flex-col
+              justify-center
+              px-[30px]
+              py-[55px]
+              sm:px-[45px]
+              sm:py-[65px]
+              lg:px-[67px]
+              lg:py-[36px]
+            "
+          >
+            {/* =====================================================
+                CROP GROWERS LOGO
+
+                IMPORTANT:
+                The source file is named "CG_White_Web3_1.png".
+                Because the screenshot has the logo GREEN on a
+                white background, the white logo is converted to
+                the Crop Growers green using CSS filtering.
+            ===================================================== */}
+            <div className="mb-[28px] h-auto w-fit">
               <Image
                 src="/images/crop-insurance/CG_White_Web3_1.png"
-                alt="Crop Growers logo"
-                fill
+                alt="Crop Growers"
+                width={320}
+                height={80}
                 priority
-                className="object-contain object-left"
+                unoptimized
+                className="
+                  block
+                  h-auto
+                  w-[215px]
+                  sm:w-[230px]
+                  lg:w-[240px]
+                "
+                style={{
+                  filter:
+                    "brightness(0) saturate(100%) invert(43%) sepia(37%) saturate(1000%) hue-rotate(52deg) brightness(90%) contrast(90%)",
+                }}
               />
             </div>
 
+            {/* HERO HEADING */}
             <h1
-              className="mt-[18px] text-[36px] leading-[43.2px] text-[#4f832a] lg:text-[48px] lg:leading-[57.6px]"
+              className="
+                max-w-[700px]
+                text-[#4f832a]
+                text-[40px]
+                leading-[1.12]
+                sm:text-[47px]
+                lg:text-[52px]
+                xl:text-[54px]
+              "
               style={{ fontFamily: "Montserrat-Bold" }}
             >
               Crop Insurance by Crop Growers
             </h1>
 
+            {/* HERO DESCRIPTION */}
             <p
-              className="mt-[20px] max-w-[560px] text-[16px] leading-[26px] text-[#231f20] lg:text-[18px] lg:leading-[28.8px]"
+              className="
+                mt-[32px]
+                max-w-[700px]
+                text-[#231f20]
+                text-[17px]
+                leading-[1.7]
+                sm:text-[18px]
+                sm:leading-[1.78]
+              "
               style={{ fontFamily: "Barlow-Medium" }}
             >
               Crop Growers is the crop insurance team at Farm Funders. That
@@ -183,63 +184,153 @@ export default function CropInsurancePage() {
               your livelihood.
             </p>
 
-            <div className="mt-[26px]">
+            {/* FIND AN AGENT */}
+            <div className="mt-[31px]">
               <ButtonLink href="/crop-insurance/agent-finder">
                 Find an Agent
               </ButtonLink>
             </div>
           </div>
 
-          {/* IMAGE COLUMN */}
-          <div className="relative h-[260px] w-full overflow-hidden md:h-[420px] lg:h-[560px]">
+          {/* RIGHT HERO IMAGE */}
+          <div
+            className="
+              relative
+              h-[300px]
+              w-full
+              overflow-hidden
+              sm:h-[380px]
+              lg:h-[408px]
+              lg:self-center
+          "
+          >
             <Image
               src="/images/crop-insurance/Crop  Livestock Insuranceshutterstock55253641.jpg"
-              alt="Hands holding crop seedling"
+              alt="Hands holding a young crop seedling"
               fill
               priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
+              style={{
+                objectPosition: "center center",
+              }}
             />
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          RISK MANAGEMENT HEADING + OVERVIEW CARDS
-          (single continuous cream section — image lives in hero, not here)
+          RISK MANAGEMENT SECTION
+
+          Screenshot:
+          pale green background
+          large green heading
+          three equal white cards
       ========================================================= */}
-      <section className="w-full bg-[#ecf1e4] px-[15px] py-[50px] lg:py-[80px]">
-        <div className="mx-auto w-full max-w-[1140px]">
+      <section className="w-full bg-[#ecf1e4]">
+        <div
+          className="
+            mx-auto
+            w-full
+            max-w-[1630px]
+            px-[30px]
+            pb-[80px]
+            pt-[65px]
+            sm:px-[45px]
+            sm:pb-[90px]
+            sm:pt-[75px]
+            lg:px-[67px]
+            lg:pb-[82px]
+            lg:pt-[67px]
+          "
+        >
+          {/* SECTION HEADING */}
           <h2
-            className="max-w-[900px] text-[32px] leading-[38px] text-[#4f832a] lg:text-[40px] lg:leading-[50.2px]"
+            className="
+              max-w-[1400px]
+              text-[#4f832a]
+              text-[37px]
+              leading-[1.2]
+              sm:text-[42px]
+              lg:text-[44px]
+              lg:leading-[1.22]
+            "
             style={{ fontFamily: "Montserrat-Bold" }}
           >
             Our Crop Growers agents help you make the best risk management
             decisions to protect your operation and family&apos;s future.
           </h2>
 
-          <div className="mt-[45px] grid grid-cols-1 gap-y-[45px] md:grid-cols-3 md:gap-x-[30px] md:gap-y-[30px]">
+          {/* THREE CARDS */}
+          <div
+            className="
+              mt-[45px]
+              grid
+              grid-cols-1
+              gap-[25px]
+              sm:mt-[50px]
+              md:grid-cols-3
+            "
+          >
             {OVERVIEW_CARDS.map((card) => (
-              <article key={card.href} className="flex flex-col bg-white">
-                <div className="relative h-[158px] w-full overflow-hidden md:h-[129px] lg:h-[158px]">
+              <article
+                key={card.href}
+                className="
+                  flex
+                  min-h-[390px]
+                  flex-col
+                  overflow-hidden
+                  border
+                  border-[#d7d9d4]
+                  bg-white
+                "
+              >
+                {/* CARD IMAGE */}
+                <div className="relative h-[190px] w-full overflow-hidden">
                   <Image
                     src={card.imagePath}
                     alt={card.imageAlt}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                   />
                 </div>
 
-                <div className="p-[24px]">
+                {/* CARD TEXT */}
+                <div
+                  className="
+                    flex
+                    flex-1
+                    flex-col
+                    items-center
+                    px-[18px]
+                    pb-[28px]
+                    pt-[21px]
+                    text-center
+                  "
+                >
                   <Link
                     href={card.href}
-                    className="text-[22px] leading-[32px] text-[#5a4400] hover:underline"
+                    className="
+                      text-[#5a4400]
+                      text-[22px]
+                      leading-[1.35]
+                      hover:underline
+                      lg:text-[23px]
+                    "
                     style={{ fontFamily: "Montserrat-Bold" }}
                   >
-                    {card.title} &gt;
+                    {card.title}›
                   </Link>
 
                   <p
-                    className="mt-[10px] text-[18px] leading-[28.8px] text-[#231f20]"
+                    className="
+                      mt-[22px]
+                      max-w-[340px]
+                      text-[#231f20]
+                      text-[17px]
+                      leading-[1.65]
+                    "
                     style={{ fontFamily: "Barlow-Medium" }}
                   >
                     {card.description}
@@ -252,31 +343,61 @@ export default function CropInsurancePage() {
       </section>
 
       {/* =========================================================
-          CONTACT CROP GROWERS — solid green, white text, outline button
+          CONTACT CROP GROWERS
+          Matches screenshot:
+          solid Crop Growers green
+          centered white heading
+          centered white paragraph
+          outlined white button
       ========================================================= */}
-      <section className="w-full bg-[#4f832a] px-[15px] py-[50px] text-center lg:py-[100px]">
-        <div className="mx-auto max-w-[760px]">
+      <section className="w-full bg-[#4f832a]">
+        <div
+          className="
+            mx-auto
+            max-w-[1630px]
+            px-[30px]
+            py-[75px]
+            text-center
+            sm:px-[45px]
+            sm:py-[90px]
+            lg:px-[67px]
+            lg:py-[108px]
+          "
+        >
           <h2
-            className="text-[32px] leading-[38px] text-white lg:text-[40px] lg:leading-[50.2px]"
+            className="
+              text-[36px]
+              leading-[1.2]
+              text-white
+              sm:text-[42px]
+              lg:text-[44px]
+            "
             style={{ fontFamily: "Montserrat-Bold" }}
           >
             Want to talk to Crop Growers?
           </h2>
 
           <p
-            className="mt-[20px] text-[18px] leading-[28.8px] text-white lg:text-[20px] lg:leading-[32px]"
+            className="
+              mx-auto
+              mt-[38px]
+              max-w-[1100px]
+              text-[17px]
+              leading-[1.8]
+              text-white
+              sm:text-[18px]
+            "
             style={{ fontFamily: "Barlow-Medium" }}
           >
             Not sure where to start? Let our team of crop insurance
             specialists answer any questions and find the coverage that fits
-            your operation. Contact the Crop Growers Service Center at{" "}
-            <a href="tel:8002347012" className="underline">
-              800-234-7012
-            </a>{" "}
-            or submit an email inquiry by clicking below.
+            your operation.
+            <br />
+            Contact the Crop Growers Service Center at 800-234-7012 or submit
+            an email inquiry by clicking below.
           </p>
 
-          <div className="mt-[30px]">
+          <div className="mt-[38px] flex justify-center">
             <ButtonLink href="/contact" variant="outline-white">
               Contact Us
             </ButtonLink>
@@ -285,102 +406,189 @@ export default function CropInsurancePage() {
       </section>
 
       {/* =========================================================
-          BENEFITS + INDUSTRIES — both rows share white bg,
-          alternating text/image sides (stacks image-below-text on mobile)
+          BEGINNING / VETERAN FARMER BENEFITS
       ========================================================= */}
-      <section className="w-full bg-white px-[15px] py-[50px] lg:py-[100px]">
-        <div className="mx-auto w-full max-w-[1140px]">
-          {/* ROW 1: text left, image right */}
-          <div className="grid grid-cols-1 items-center gap-[30px] lg:grid-cols-2 lg:gap-[60px]">
-            <div>
-              <h2
-                className="text-[28px] leading-[34px] text-[#4f832a] lg:text-[34px] lg:leading-[46px]"
-                style={{ fontFamily: "Montserrat-Bold" }}
-              >
-                Beginning/Veteran Farmer &amp; Rancher Benefits
-              </h2>
+      <section className="w-full bg-white">
+        <div
+          className="
+            mx-auto
+            grid
+            w-full
+            max-w-[1630px]
+            grid-cols-1
+            items-center
+            gap-[40px]
+            px-[30px]
+            py-[70px]
+            sm:px-[45px]
+            sm:py-[80px]
+            lg:grid-cols-2
+            lg:gap-[70px]
+            lg:px-[67px]
+            lg:py-[95px]
+          "
+        >
+          <div>
+            <h2
+              className="
+                text-[30px]
+                leading-[1.25]
+                text-[#4f832a]
+                sm:text-[36px]
+              "
+              style={{ fontFamily: "Montserrat-Bold" }}
+            >
+              Beginning/Veteran Farmer &amp; Rancher Benefits
+            </h2>
 
-              <p
-                className="mt-[18px] text-[16px] leading-[26px] text-[#231f20] lg:text-[18px] lg:leading-[28.8px]"
-                style={{ fontFamily: "Barlow-Medium" }}
-              >
-                Beginning and veteran farmers are eligible for special rules
-                and provisions under the federal crop insurance program. Some
-                of the benefits include exemption from paying the
-                administrative fee for catastrophic and additional coverage
-                level policies, additional premium subsidy resulting in lower
-                grower premium, and other policy adjustments. There are
-                specific qualification requirements for each program.
-              </p>
+            <p
+              className="
+                mt-[22px]
+                text-[17px]
+                leading-[1.75]
+                text-[#231f20]
+                sm:text-[18px]
+              "
+              style={{ fontFamily: "Barlow-Medium" }}
+            >
+              Beginning and veteran farmers are eligible for special rules
+              and provisions under the federal crop insurance program. Some
+              of the benefits include exemption from paying the
+              administrative fee for catastrophic and additional coverage
+              level policies, additional premium subsidy resulting in lower
+              grower premium, and other policy adjustments. There are
+              specific qualification requirements for each program.
+            </p>
 
-              <div className="mt-[20px]">
-                <ButtonLink href="/crop-insurance/resources/beginning-farmer-rancher-benefits">
-                  Learn More
-                </ButtonLink>
-              </div>
-            </div>
-
-            <div className="relative h-[260px] w-full overflow-hidden md:h-[380px] lg:h-[440px]">
-              <Image
-                src="/images/crop-insurance/Beginning-Veteran-Farmer.jpg"
-                alt="Young woman farmer in field during harvest"
-                fill
-                className="object-cover"
-              />
+            <div className="mt-[28px]">
+              <ButtonLink href="/crop-insurance/resources/beginning-farmer-rancher-benefits">
+                Learn More
+              </ButtonLink>
             </div>
           </div>
 
-          {/* ROW 2: image left, text right (mobile: image still first) */}
-          <div className="mt-[60px] grid grid-cols-1 items-center gap-[30px] lg:mt-[80px] lg:grid-cols-2 lg:gap-[60px]">
-            <div className="relative order-1 h-[220px] w-full overflow-hidden md:h-[320px] lg:h-[380px]">
-              <Image
-                src="/images/crop-insurance/Industries_cran.jpg"
-                alt="Cranberry bog during harvest"
-                fill
-                className="object-cover"
-              />
-            </div>
+          <div className="relative h-[280px] w-full overflow-hidden sm:h-[360px] lg:h-[400px]">
+            <Image
+              src="/images/crop-insurance/Beginning-Veteran-Farmer.jpg"
+              alt="Young woman farmer in field during harvest"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
 
-            <div className="order-2">
-              <h2
-                className="text-[28px] leading-[34px] text-[#4f832a] lg:text-[34px] lg:leading-[46px]"
-                style={{ fontFamily: "Montserrat-Bold" }}
-              >
-                Industries We Serve
-              </h2>
+      {/* =========================================================
+          INDUSTRIES WE SERVE
+      ========================================================= */}
+      <section className="w-full bg-white">
+        <div
+          className="
+            mx-auto
+            grid
+            w-full
+            max-w-[1630px]
+            grid-cols-1
+            items-center
+            gap-[40px]
+            px-[30px]
+            pb-[85px]
+            sm:px-[45px]
+            lg:grid-cols-2
+            lg:gap-[70px]
+            lg:px-[67px]
+            lg:pb-[100px]
+          "
+        >
+          {/* IMAGE */}
+          <div className="relative h-[260px] w-full overflow-hidden sm:h-[330px] lg:h-[340px]">
+            <Image
+              src="/images/crop-insurance/Industries_cran.jpg"
+              alt="Cranberry bog during harvest"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
 
-              <p
-                className="mt-[18px] text-[16px] leading-[26px] text-[#231f20] lg:text-[18px] lg:leading-[28.8px]"
-                style={{ fontFamily: "Barlow-Medium" }}
-              >
-                Crop Growers insurance works with crop producers, fruit and
-                vegetable growers, dairy farmers, livestock producers and
-                more.
-              </p>
+          {/* TEXT */}
+          <div>
+            <h2
+              className="
+                text-[30px]
+                leading-[1.25]
+                text-[#4f832a]
+                sm:text-[36px]
+              "
+              style={{ fontFamily: "Montserrat-Bold" }}
+            >
+              Industries We Serve
+            </h2>
 
-              <div className="mt-[20px]">
-                <ButtonLink href="/industries">Visit Industries</ButtonLink>
-              </div>
+            <p
+              className="
+                mt-[22px]
+                text-[17px]
+                leading-[1.75]
+                text-[#231f20]
+                sm:text-[18px]
+              "
+              style={{ fontFamily: "Barlow-Medium" }}
+            >
+              Crop Growers insurance works with crop producers, fruit and
+              vegetable growers, dairy farmers, livestock producers and more.
+            </p>
+
+            <div className="mt-[28px]">
+              <ButtonLink href="/industries">
+                Visit Industries
+              </ButtonLink>
             </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          NOTICE OF LOSS — solid green, white text, outline button
-          (already matched the live site — unchanged)
+          NOTICE OF LOSS
       ========================================================= */}
-      <section className="w-full bg-[#4f832a] px-[15px] py-[50px] text-center text-white lg:py-[100px]">
-        <div className="mx-auto max-w-[820px]">
+      <section className="w-full bg-[#4f832a]">
+        <div
+          className="
+            mx-auto
+            max-w-[1630px]
+            px-[30px]
+            py-[75px]
+            text-center
+            sm:px-[45px]
+            sm:py-[90px]
+            lg:px-[67px]
+            lg:py-[108px]
+          "
+        >
           <h2
-            className="text-[32px] leading-[38px] text-white lg:text-[40px] lg:leading-[50.2px]"
+            className="
+              text-[34px]
+              leading-[1.2]
+              text-white
+              sm:text-[40px]
+              lg:text-[44px]
+            "
             style={{ fontFamily: "Montserrat-Bold" }}
           >
             File a Crop Insurance Notice of Loss
           </h2>
 
           <p
-            className="mt-[20px] text-[16px] leading-[26px] text-white lg:text-[18px] lg:leading-[28.8px]"
+            className="
+              mx-auto
+              mt-[28px]
+              max-w-[1100px]
+              text-[17px]
+              leading-[1.8]
+              text-white
+              sm:text-[18px]
+            "
             style={{ fontFamily: "Barlow-Medium" }}
           >
             Crop Growers crop insurance policyholders may electronically
@@ -389,7 +597,7 @@ export default function CropInsurancePage() {
             800-234-7012 immediately.
           </p>
 
-          <div className="mt-[26px]">
+          <div className="mt-[35px] flex justify-center">
             <ButtonLink
               href="/crop-insurance/notice-of-loss"
               variant="outline-white"
