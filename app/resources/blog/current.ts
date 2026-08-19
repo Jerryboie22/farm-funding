@@ -41,7 +41,7 @@ export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
     author: "Austin Weaver",
     image: "/images/resources/Logger-Calculating.jpg",
     excerpt:
-      "Trump Accounts officially kicked off July 4, 2026, offering a new way to save for a child's future. A Trump Account is a traditional IRA with specific rules that enable families to start saving and investing for a child early.",
+      "Trump Accounts officially kicked off July 4, 2026, offering a new way to save for a child's future. A Trump Account is a traditional IRA with specific rules that enable families to start saving and investing for a child early with greater flexibility than a standard retirement account. Any child under age 18 with a Social Security number is eligible for a Trump Account.",
     sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog/260728ANewSavingsAccountForChildren",
     sections: [
       { heading: "What is a Trump Account?", body: "A Trump Account is a traditional IRA with special rules for children. The account is structured so that the child owns the assets while an authorized adult manages the account until the child reaches age 18." },
