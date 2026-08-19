@@ -26,7 +26,7 @@ export default function CropInsuranceAgentFinderPage() {
           <h1
             className="mt-[24px] text-[32px] leading-[38px] text-white md:text-[50px] md:leading-[60px]"
             style={{
-              fontFamily: "Montserrat-Bold, Montserrat, sans-serif",
+              fontFamily: "var(--font-montserrat)", fontWeight: 700,
             }}
           >
             Crop Insurance Agent Finder
@@ -36,7 +36,7 @@ export default function CropInsuranceAgentFinderPage() {
           <p
             className="mt-[29px] max-w-full text-[17px] leading-[28px] text-white md:max-w-[1490px] md:text-[20px] md:leading-[34px]"
             style={{
-              fontFamily: "Barlow-Medium, Barlow, sans-serif",
+              fontFamily: "var(--font-barlow)", fontWeight: 500,
             }}
           >
             Thank you for your interest in Crop Growers insurance. You can
@@ -52,7 +52,7 @@ export default function CropInsuranceAgentFinderPage() {
         <h2
           className="text-[32px] leading-[38px] text-[#4f832a] md:text-[42px] md:leading-[51px]"
           style={{
-            fontFamily: "Montserrat-Bold, Montserrat, sans-serif",
+            fontFamily: "var(--font-montserrat)", fontWeight: 700,
           }}
         >
           All Crop Insurance Agents
@@ -63,7 +63,7 @@ export default function CropInsuranceAgentFinderPage() {
           <h3
             className="text-[24px] leading-[30px] text-[#231f20] md:text-[28px] md:leading-[35px]"
             style={{
-              fontFamily: "Montserrat-Bold, Montserrat, sans-serif",
+              fontFamily: "var(--font-montserrat)", fontWeight: 700,
             }}
           >
             White River Junction
@@ -73,7 +73,7 @@ export default function CropInsuranceAgentFinderPage() {
           <p
             className="mt-[7px] text-[16px] leading-[24px] text-[#496d83] md:text-[18px] md:leading-[27px]"
             style={{
-              fontFamily: "Barlow-Medium, Barlow, sans-serif",
+              fontFamily: "var(--font-barlow)", fontWeight: 500,
             }}
           >
             52 FarmVu Dr.
@@ -82,7 +82,7 @@ export default function CropInsuranceAgentFinderPage() {
           <p
             className="text-[16px] leading-[24px] text-[#496d83] md:text-[18px] md:leading-[27px]"
             style={{
-              fontFamily: "Barlow-Medium, Barlow, sans-serif",
+              fontFamily: "var(--font-barlow)", fontWeight: 500,
             }}
           >
             White River Junction, VT 05001
@@ -92,13 +92,13 @@ export default function CropInsuranceAgentFinderPage() {
           <p
             className="text-[16px] leading-[24px] text-[#496d83] md:text-[18px] md:leading-[27px]"
             style={{
-              fontFamily: "Barlow-Medium, Barlow, sans-serif",
+              fontFamily: "var(--font-barlow)", fontWeight: 500,
             }}
           >
             <span
               className="text-[#231f20]"
               style={{
-                fontFamily: "Montserrat-Bold, Montserrat, sans-serif",
+                fontFamily: "var(--font-montserrat)", fontWeight: 700,
               }}
             >
               Financial Services:
@@ -110,7 +110,7 @@ export default function CropInsuranceAgentFinderPage() {
           <p
             className="text-[16px] leading-[24px] text-[#231f20] md:text-[18px] md:leading-[27px]"
             style={{
-              fontFamily: "Barlow-Medium, Barlow, sans-serif",
+              fontFamily: "var(--font-barlow)", fontWeight: 500,
             }}
           >
             Email: info@farm-funding.com
@@ -126,7 +126,7 @@ export default function CropInsuranceAgentFinderPage() {
             <h2
               className="text-[32px] leading-[38px] text-[#4f832a] md:text-[42px] md:leading-[51px]"
               style={{
-                fontFamily: "Montserrat-Bold, Montserrat, sans-serif",
+                fontFamily: "var(--font-montserrat)", fontWeight: 700,
               }}
             >
               Have general questions?
@@ -135,7 +135,7 @@ export default function CropInsuranceAgentFinderPage() {
             <p
               className="mt-[24px] text-[18px] leading-[26px] text-[#231f20] md:mt-[42px] md:text-[20px] md:leading-[30px]"
               style={{
-                fontFamily: "Barlow-Medium, Barlow, sans-serif",
+                fontFamily: "var(--font-barlow)", fontWeight: 500,
               }}
             >
               Let&apos;s get in touch!
@@ -148,7 +148,7 @@ export default function CropInsuranceAgentFinderPage() {
               href="/contact"
               className="inline-flex h-[46px] min-w-[144px] items-center justify-center rounded-[4px] bg-[#496d83] px-[22px] text-[17px] leading-[24px] text-white transition hover:bg-[#3e5d70]"
               style={{
-                fontFamily: "Montserrat-Bold, Montserrat, sans-serif",
+                fontFamily: "var(--font-montserrat)", fontWeight: 700,
               }}
             >
               Contact Us
