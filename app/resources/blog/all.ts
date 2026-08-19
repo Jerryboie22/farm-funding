@@ -1,5 +1,5 @@
-import { ALL_HARVEST_ARTICLES } from "./catalog";
-import { CURRENT_REFERENCE_ARTICLES } from "./current";
+import { ALL_HARVEST_ARTICLES, FEATURED_ARTICLE, LATEST_TAX_TALK } from "./catalog";
+import { CURRENT_REFERENCE_ARTICLES, FEATURED_ARTICLE as CURRENT_FEATURED_ARTICLE, LATEST_TAX_TALK as CURRENT_LATEST_TAX_TALK } from "./current";
 
 export const ALL_REFERENCE_ARTICLES = [
   ...CURRENT_REFERENCE_ARTICLES,
@@ -9,17 +9,8 @@ export const ALL_REFERENCE_ARTICLES = [
     array.findIndex((item) => item.slug === article.slug) === index,
 );
 
-export const CURRENT_FEATURED_ARTICLE = CURRENT_REFERENCE_ARTICLES.find(
-  (article) =>
-    article.slug ===
-    "employee-spotlight-a-day-in-the-life-of-a-dairy-risk-management-advisor",
-)!;
-
-export const CURRENT_LATEST_TAX_TALK = CURRENT_REFERENCE_ARTICLES.find(
-  (article) =>
-    article.slug ===
-    "tax-talks-highlights-from-the-fiscal-year-2026-2027-nys-budget",
-)!;
+export const CURRENT_FEATURED_ARTICLE = CURRENT_FEATURED_ARTICLE;
+export const CURRENT_LATEST_TAX_TALK = CURRENT_LATEST_TAX_TALK;
 
 export function getReferenceArticle(slug: string) {
   return ALL_REFERENCE_ARTICLES.find((article) => article.slug === slug);
