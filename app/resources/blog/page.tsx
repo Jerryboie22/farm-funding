@@ -26,8 +26,28 @@ const CATEGORIES = [
   "Transition Planning",
 ];
 
-const YEARS = ["2023", "2024", "2025", "2026"];
+const YEARS = ["2026", "2025", "2024", "2023"];
 const PAGE_SIZE = 4;
+
+function pageHref({
+  query,
+  category,
+  year,
+  page,
+}: {
+  query: string;
+  category: string;
+  year: string;
+  page?: number;
+}) {
+  const params = new URLSearchParams();
+  if (query) params.set("q", query);
+  if (category) params.set("category", category);
+  if (year) params.set("year", year);
+  if (page && page > 1) params.set("page", String(page));
+  const value = params.toString();
+  return `/resources/blog${value ? `?${value}` : ""}`;
+}
 
 export default async function TodaysHarvestBlogPage({
   searchParams,
@@ -40,39 +60,28 @@ export default async function TodaysHarvestBlogPage({
   }>;
 }) {
   const params = await searchParams;
-  const query = (params.q ?? "").trim().toLowerCase();
+  const query = (params.q ?? "").trim();
+  const normalizedQuery = query.toLowerCase();
   const category = params.category ?? "";
   const year = params.year ?? "";
-  const page = Math.max(1, Number(params.page ?? "1") || 1);
+  const requestedPage = Math.max(1, Number(params.page ?? "1") || 1);
 
   const filtered = ALL_REFERENCE_ARTICLES.filter((article) => {
-    const matchesQuery =
-      !query ||
-      article.title.toLowerCase().includes(query) ||
-      article.excerpt.toLowerCase().includes(query) ||
-      article.category.toLowerCase().includes(query);
-    const matchesCategory = !category || article.category === category;
-    const matchesYear = !year || article.date.endsWith(year);
-    return matchesQuery && matchesCategory && matchesYear;
+    const haystack = `${article.title} ${article.excerpt} ${article.category}`.toLowerCase();
+    return (
+      (!normalizedQuery || haystack.includes(normalizedQuery)) &&
+      (!category || article.category === category) &&
+      (!year || article.date.endsWith(year))
+    );
   });
 
-  const start = (page - 1) * PAGE_SIZE;
-  const visiblePosts = filtered.slice(start, start + PAGE_SIZE);
-  const hasNext = start + PAGE_SIZE < filtered.length;
-  const hasPrevious = page > 1;
-
-  const makePageHref = (nextPage: number) => {
-    const search = new URLSearchParams();
-    if (query) search.set("q", query);
-    if (category) search.set("category", category);
-    if (year) search.set("year", year);
-    if (nextPage > 1) search.set("page", String(nextPage));
-    const value = search.toString();
-    return `/resources/blog${value ? `?${value}` : ""}`;
-  };
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const page = Math.min(requestedPage, totalPages);
+  const visiblePosts = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <main className="w-full bg-white">
+      {/* HERO */}
       <section className="w-full bg-cream mt-8">
         <div className="grid grid-cols-1 md:grid-cols-12 px-[4%]">
           <div className="md:col-span-6 flex flex-col justify-center py-10 md:py-12 lg:py-14 md:pr-12 lg:pr-16">
@@ -95,19 +104,16 @@ export default async function TodaysHarvestBlogPage({
         </div>
       </section>
 
+      {/* FEATURED */}
       <section className="w-full px-[4%] py-12 md:py-16 bg-white">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-forest">
           Latest From Today&apos;s Harvest Blog
         </h2>
-
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <Link
-            href={`/resources/blog/${CURRENT_FEATURED_ARTICLE.slug}`}
-            className="block"
-          >
+          <Link href={`/resources/blog/${CURRENT_FEATURED_ARTICLE.slug}`} className="block">
             <img
               src={CURRENT_FEATURED_ARTICLE.image}
-              alt={CURRENT_FEATURED_ARTICLE.title}
+              alt="Colorful bell peppers growing in a greenhouse"
               className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm"
             />
           </Link>
@@ -133,18 +139,16 @@ export default async function TodaysHarvestBlogPage({
         </div>
       </section>
 
+      {/* TAX TALK */}
       <section className="w-full px-[4%] py-12 md:py-16 bg-grey-bg">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-forest">
           Latest Tax Talk
         </h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <Link
-            href={`/resources/blog/${CURRENT_LATEST_TAX_TALK.slug}`}
-            className="block"
-          >
+          <Link href={`/resources/blog/${CURRENT_LATEST_TAX_TALK.slug}`} className="block">
             <img
               src={CURRENT_LATEST_TAX_TALK.image}
-              alt="Woman in front of tractor in agriculture field holding and looking at a laptop computer"
+              alt="Family, farm and cattle in an agricultural field"
               className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm"
             />
           </Link>
@@ -170,177 +174,138 @@ export default async function TodaysHarvestBlogPage({
         </div>
       </section>
 
+      {/* ARCHIVE */}
       <section className="w-full px-[4%] py-12 md:py-16 bg-white">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-forest">
           Today&apos;s Harvest Blog
         </h2>
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-x-12 gap-y-10">
-          <aside className="order-2 lg:order-1">
-            <form method="get" action="/resources/blog" className="space-y-8">
-              <div>
-                <h3 className="font-display text-lg font-semibold text-charcoal">
-                  Category
-                </h3>
-                <div className="mt-4 space-y-2.5">
-                  {CATEGORIES.map((item) => (
-                    <label
-                      key={item}
-                      className="flex items-start gap-2.5 text-sm text-charcoal/80 cursor-pointer"
-                    >
-                      <input
-                        type="radio"
-                        name="category"
-                        value={item}
-                        defaultChecked={category === item}
-                        className="mt-1 accent-clay"
-                      />
-                      {item}
-                    </label>
-                  ))}
-                  <label className="flex items-start gap-2.5 text-sm text-charcoal/80 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="category"
-                      value=""
-                      defaultChecked={!category}
-                      className="mt-1 accent-clay"
-                    />
-                    All categories
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-display text-lg font-semibold text-charcoal">
-                  Year
-                </h3>
-                <div className="mt-4 space-y-2.5">
-                  {YEARS.map((item) => (
-                    <label
-                      key={item}
-                      className="flex items-center gap-2.5 text-sm text-charcoal/80 cursor-pointer"
-                    >
-                      <input
-                        type="radio"
-                        name="year"
-                        value={item}
-                        defaultChecked={year === item}
-                        className="accent-clay"
-                      />
-                      {item}
-                    </label>
-                  ))}
-                  <label className="flex items-center gap-2.5 text-sm text-charcoal/80 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="year"
-                      value=""
-                      defaultChecked={!year}
-                      className="accent-clay"
-                    />
-                    All years
-                  </label>
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="blog-search"
-                  className="font-display text-lg font-semibold text-charcoal"
-                >
-                  Search
-                </label>
-                <input
-                  id="blog-search"
-                  name="q"
-                  defaultValue={params.q ?? ""}
-                  placeholder="Search articles"
-                  className="mt-4 w-full px-3 py-2.5 border border-charcoal/20 rounded-sm text-sm bg-white text-charcoal"
-                />
-                <button
-                  type="submit"
-                  className="mt-3 px-5 py-2.5 bg-clay text-white text-sm font-bold rounded-sm hover:bg-clay-dark transition-colors"
-                >
-                  Search
-                </button>
-                {(query || category || year) && (
-                  <Link
-                    href="/resources/blog"
-                    className="mt-3 ml-3 inline-block text-sm font-semibold text-clay hover:text-forest"
-                  >
-                    Reset Filters
-                  </Link>
-                )}
-              </div>
-            </form>
-          </aside>
-
-          <div className="order-1 lg:order-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
-              {visiblePosts.map((post) => (
-                <article key={post.slug}>
-                  <Link
-                    href={`/resources/blog/${post.slug}`}
-                    className="block"
-                  >
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="block w-full h-[200px] object-cover rounded-sm"
-                    />
-                  </Link>
-                  <span className="mt-4 inline-block text-grey-text text-xs font-bold uppercase tracking-wide">
-                    {post.category}
-                  </span>
-                  <Link href={`/resources/blog/${post.slug}`}>
-                    <h3 className="mt-2 font-display text-lg font-semibold text-gold leading-snug hover:underline">
-                      {post.title}
-                    </h3>
-                  </Link>
-                  <p className="mt-3 text-sm text-charcoal/80 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <p className="mt-3 text-xs text-grey-text">{post.date}</p>
-                </article>
-              ))}
-            </div>
-
-            {visiblePosts.length === 0 && (
-              <p className="py-12 text-center text-sm text-grey-text">
-                No results found. Please modify your search criteria and try
-                again.
-              </p>
-            )}
-
-            {(hasPrevious || hasNext) && (
-              <div className="mt-12 flex items-center justify-between border-t border-charcoal/10 pt-6">
-                {hasPrevious ? (
-                  <Link
-                    href={makePageHref(page - 1)}
-                    className="text-sm font-bold text-clay hover:text-forest"
-                  >
-                    ← Previous
-                  </Link>
-                ) : (
-                  <span />
-                )}
-                {hasNext ? (
-                  <Link
-                    href={makePageHref(page + 1)}
-                    className="text-sm font-bold text-clay hover:text-forest"
-                  >
-                    Next →
-                  </Link>
-                ) : (
-                  <span />
-                )}
-              </div>
-            )}
+        <form
+          method="get"
+          action="/resources/blog"
+          className="mt-8 flex flex-col md:flex-row md:items-end gap-4"
+        >
+          <div className="w-full md:flex-1">
+            <label htmlFor="blog-search" className="sr-only">
+              Type Search here
+            </label>
+            <input
+              id="blog-search"
+              name="q"
+              defaultValue={query}
+              placeholder="Type Search here"
+              className="w-full h-12 px-4 border border-charcoal/20 rounded-sm bg-white text-sm text-charcoal placeholder:text-grey-text focus:outline-none focus:border-clay"
+            />
           </div>
+
+          <div className="w-full md:w-[250px]">
+            <label htmlFor="blog-category" className="sr-only">
+              Filter by category
+            </label>
+            <select
+              id="blog-category"
+              name="category"
+              defaultValue={category}
+              className="w-full h-12 px-4 border border-charcoal/20 rounded-sm bg-white text-sm text-charcoal focus:outline-none focus:border-clay"
+            >
+              <option value="">Filter by category</option>
+              {CATEGORIES.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="w-full md:w-[180px]">
+            <label htmlFor="blog-year" className="sr-only">
+              Filter by year
+            </label>
+            <select
+              id="blog-year"
+              name="year"
+              defaultValue={year}
+              className="w-full h-12 px-4 border border-charcoal/20 rounded-sm bg-white text-sm text-charcoal focus:outline-none focus:border-clay"
+            >
+              <option value="">Filter by year</option>
+              {YEARS.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="h-12 px-6 bg-clay text-white text-sm font-bold rounded-sm hover:bg-clay-dark transition-colors"
+          >
+            Search
+          </button>
+
+          {(query || category || year) && (
+            <Link
+              href="/resources/blog"
+              className="h-12 inline-flex items-center text-sm font-semibold text-clay hover:text-forest whitespace-nowrap"
+            >
+              Reset Filters
+            </Link>
+          )}
+        </form>
+
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-7 gap-y-12">
+          {visiblePosts.map((post) => (
+            <article key={post.slug}>
+              <Link href={`/resources/blog/${post.slug}`} className="block">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="block w-full h-[190px] object-cover rounded-sm"
+                />
+              </Link>
+              <span className="mt-4 inline-block text-grey-text text-xs font-bold uppercase tracking-wide">
+                {post.category}
+              </span>
+              <Link href={`/resources/blog/${post.slug}`}>
+                <h3 className="mt-2 font-display text-lg font-semibold text-gold leading-snug hover:underline">
+                  {post.title}
+                </h3>
+              </Link>
+              <p className="mt-3 text-sm text-charcoal/80 leading-relaxed">
+                {post.excerpt}
+              </p>
+              <p className="mt-3 text-xs text-grey-text">{post.date}</p>
+            </article>
+          ))}
         </div>
+
+        {visiblePosts.length === 0 && (
+          <p className="py-12 text-center text-sm text-grey-text">
+            No results found. Please modify your search criteria and try again.
+          </p>
+        )}
+
+        {totalPages > 1 && (
+          <nav aria-label="Blog pagination" className="mt-12 flex justify-center items-center gap-2">
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => (
+              <Link
+                key={number}
+                href={pageHref({ query, category, year, page: number })}
+                aria-current={page === number ? "page" : undefined}
+                className={`min-w-10 h-10 px-3 inline-flex items-center justify-center border text-sm font-semibold transition-colors ${
+                  page === number
+                    ? "bg-clay text-white border-clay"
+                    : "bg-white text-charcoal border-charcoal/20 hover:border-clay hover:text-clay"
+                }`}
+              >
+                {number}
+              </Link>
+            ))}
+          </nav>
+        )}
       </section>
 
+      {/* AUTHORS */}
       <section className="w-full bg-forest-dark text-white text-center py-14 md:py-16 px-[4%]">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
           Meet the Authors
@@ -357,6 +322,7 @@ export default async function TodaysHarvestBlogPage({
         </Link>
       </section>
 
+      {/* NEWSLETTER */}
       <section className="w-full bg-cream px-[4%] py-12 md:py-16 text-center">
         <h2 className="font-display text-2xl md:text-3xl font-bold text-forest">
           Sign up for our Today&apos;s Harvest Blog.
