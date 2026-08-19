@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllHarvestArticles, getCatalogArticle } from "../catalog";
+import { ALL_REFERENCE_ARTICLES, getReferenceArticle } from "../all";
 
 export function generateStaticParams() {
-  return getAllHarvestArticles().map((article) => ({ slug: article.slug }));
+  return ALL_REFERENCE_ARTICLES.map((article) => ({ slug: article.slug }));
 }
 
 export async function generateMetadata({
@@ -12,7 +12,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getCatalogArticle(slug);
+  const article = getReferenceArticle(slug);
   if (!article) return { title: "Today's Harvest Blog | Farm Funding" };
 
   return {
@@ -27,7 +27,7 @@ export default async function HarvestArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getCatalogArticle(slug);
+  const article = getReferenceArticle(slug);
   if (!article) notFound();
 
   return (
@@ -41,9 +41,7 @@ export default async function HarvestArticlePage({
             <h1 className="mt-3 font-display text-4xl md:text-5xl lg:text-[52px] font-bold text-forest leading-tight">
               {article.title}
             </h1>
-            <p className="mt-5 text-sm text-grey-text">
-              By: {article.author}
-            </p>
+            <p className="mt-5 text-sm text-grey-text">By: {article.author}</p>
             <p className="mt-1 text-sm text-grey-text">{article.date}</p>
           </div>
         </div>
