@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
-  ALL_HARVEST_ARTICLES,
-  FEATURED_ARTICLE,
-  LATEST_TAX_TALK,
-} from "./catalog";
+  CURRENT_FEATURED_ARTICLE,
+  CURRENT_LATEST_TAX_TALK,
+  ALL_REFERENCE_ARTICLES,
+} from "./all";
 
 export const metadata = {
   title: "Today's Harvest Blog | Farm Funding",
@@ -32,7 +32,12 @@ const PAGE_SIZE = 4;
 export default async function TodaysHarvestBlogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; category?: string; year?: string; page?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    category?: string;
+    year?: string;
+    page?: string;
+  }>;
 }) {
   const params = await searchParams;
   const query = (params.q ?? "").trim().toLowerCase();
@@ -40,7 +45,7 @@ export default async function TodaysHarvestBlogPage({
   const year = params.year ?? "";
   const page = Math.max(1, Number(params.page ?? "1") || 1);
 
-  const filtered = ALL_HARVEST_ARTICLES.filter((article) => {
+  const filtered = ALL_REFERENCE_ARTICLES.filter((article) => {
     const matchesQuery =
       !query ||
       article.title.toLowerCase().includes(query) ||
@@ -96,29 +101,34 @@ export default async function TodaysHarvestBlogPage({
         </h2>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <Link href={`/resources/blog/${FEATURED_ARTICLE.slug}`} className="block">
+          <Link
+            href={`/resources/blog/${CURRENT_FEATURED_ARTICLE.slug}`}
+            className="block"
+          >
             <img
-              src={FEATURED_ARTICLE.image}
-              alt={FEATURED_ARTICLE.title}
+              src={CURRENT_FEATURED_ARTICLE.image}
+              alt={CURRENT_FEATURED_ARTICLE.title}
               className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm"
             />
           </Link>
           <div>
             <span className="inline-block text-grey-text text-xs font-bold uppercase tracking-wide">
-              {FEATURED_ARTICLE.category}
+              {CURRENT_FEATURED_ARTICLE.category}
             </span>
-            <Link href={`/resources/blog/${FEATURED_ARTICLE.slug}`}>
+            <Link href={`/resources/blog/${CURRENT_FEATURED_ARTICLE.slug}`}>
               <h3 className="mt-3 font-display text-2xl md:text-3xl font-semibold text-gold leading-snug hover:underline">
-                {FEATURED_ARTICLE.title}
+                {CURRENT_FEATURED_ARTICLE.title}
               </h3>
             </Link>
             <p className="mt-3 text-sm text-grey-text">
-              {FEATURED_ARTICLE.author}
+              {CURRENT_FEATURED_ARTICLE.author}
             </p>
             <p className="mt-4 text-base text-charcoal/80 leading-relaxed">
-              {FEATURED_ARTICLE.excerpt}
+              {CURRENT_FEATURED_ARTICLE.excerpt}
             </p>
-            <p className="mt-4 text-sm text-grey-text">{FEATURED_ARTICLE.date}</p>
+            <p className="mt-4 text-sm text-grey-text">
+              {CURRENT_FEATURED_ARTICLE.date}
+            </p>
           </div>
         </div>
       </section>
@@ -128,27 +138,34 @@ export default async function TodaysHarvestBlogPage({
           Latest Tax Talk
         </h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <Link href={`/resources/blog/${LATEST_TAX_TALK.slug}`} className="block">
+          <Link
+            href={`/resources/blog/${CURRENT_LATEST_TAX_TALK.slug}`}
+            className="block"
+          >
             <img
-              src={LATEST_TAX_TALK.image}
+              src={CURRENT_LATEST_TAX_TALK.image}
               alt="Woman in front of tractor in agriculture field holding and looking at a laptop computer"
               className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm"
             />
           </Link>
           <div>
             <span className="inline-block text-grey-text text-xs font-bold uppercase tracking-wide">
-              {LATEST_TAX_TALK.category}
+              {CURRENT_LATEST_TAX_TALK.category}
             </span>
-            <Link href={`/resources/blog/${LATEST_TAX_TALK.slug}`}>
+            <Link href={`/resources/blog/${CURRENT_LATEST_TAX_TALK.slug}`}>
               <h3 className="mt-3 font-display text-2xl md:text-3xl font-semibold text-gold leading-snug hover:underline">
-                {LATEST_TAX_TALK.title}
+                {CURRENT_LATEST_TAX_TALK.title}
               </h3>
             </Link>
-            <p className="mt-3 text-sm text-grey-text">{LATEST_TAX_TALK.author}</p>
-            <p className="mt-4 text-base text-charcoal/80 leading-relaxed">
-              {LATEST_TAX_TALK.excerpt}
+            <p className="mt-3 text-sm text-grey-text">
+              {CURRENT_LATEST_TAX_TALK.author}
             </p>
-            <p className="mt-4 text-sm text-grey-text">{LATEST_TAX_TALK.date}</p>
+            <p className="mt-4 text-base text-charcoal/80 leading-relaxed">
+              {CURRENT_LATEST_TAX_TALK.excerpt}
+            </p>
+            <p className="mt-4 text-sm text-grey-text">
+              {CURRENT_LATEST_TAX_TALK.date}
+            </p>
           </div>
         </div>
       </section>
@@ -167,7 +184,10 @@ export default async function TodaysHarvestBlogPage({
                 </h3>
                 <div className="mt-4 space-y-2.5">
                   {CATEGORIES.map((item) => (
-                    <label key={item} className="flex items-start gap-2.5 text-sm text-charcoal/80 cursor-pointer">
+                    <label
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-charcoal/80 cursor-pointer"
+                    >
                       <input
                         type="radio"
                         name="category"
@@ -197,7 +217,10 @@ export default async function TodaysHarvestBlogPage({
                 </h3>
                 <div className="mt-4 space-y-2.5">
                   {YEARS.map((item) => (
-                    <label key={item} className="flex items-center gap-2.5 text-sm text-charcoal/80 cursor-pointer">
+                    <label
+                      key={item}
+                      className="flex items-center gap-2.5 text-sm text-charcoal/80 cursor-pointer"
+                    >
                       <input
                         type="radio"
                         name="year"
@@ -222,7 +245,10 @@ export default async function TodaysHarvestBlogPage({
               </div>
 
               <div>
-                <label htmlFor="blog-search" className="font-display text-lg font-semibold text-charcoal">
+                <label
+                  htmlFor="blog-search"
+                  className="font-display text-lg font-semibold text-charcoal"
+                >
                   Search
                 </label>
                 <input
@@ -239,7 +265,10 @@ export default async function TodaysHarvestBlogPage({
                   Search
                 </button>
                 {(query || category || year) && (
-                  <Link href="/resources/blog" className="mt-3 ml-3 inline-block text-sm font-semibold text-clay hover:text-forest">
+                  <Link
+                    href="/resources/blog"
+                    className="mt-3 ml-3 inline-block text-sm font-semibold text-clay hover:text-forest"
+                  >
                     Reset Filters
                   </Link>
                 )}
@@ -251,7 +280,10 @@ export default async function TodaysHarvestBlogPage({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
               {visiblePosts.map((post) => (
                 <article key={post.slug}>
-                  <Link href={`/resources/blog/${post.slug}`} className="block">
+                  <Link
+                    href={`/resources/blog/${post.slug}`}
+                    className="block"
+                  >
                     <img
                       src={post.image}
                       alt={post.title}
@@ -276,22 +308,33 @@ export default async function TodaysHarvestBlogPage({
 
             {visiblePosts.length === 0 && (
               <p className="py-12 text-center text-sm text-grey-text">
-                No results found. Please modify your search criteria and try again.
+                No results found. Please modify your search criteria and try
+                again.
               </p>
             )}
 
             {(hasPrevious || hasNext) && (
               <div className="mt-12 flex items-center justify-between border-t border-charcoal/10 pt-6">
                 {hasPrevious ? (
-                  <Link href={makePageHref(page - 1)} className="text-sm font-bold text-clay hover:text-forest">
+                  <Link
+                    href={makePageHref(page - 1)}
+                    className="text-sm font-bold text-clay hover:text-forest"
+                  >
                     ← Previous
                   </Link>
-                ) : <span />}
+                ) : (
+                  <span />
+                )}
                 {hasNext ? (
-                  <Link href={makePageHref(page + 1)} className="text-sm font-bold text-clay hover:text-forest">
+                  <Link
+                    href={makePageHref(page + 1)}
+                    className="text-sm font-bold text-clay hover:text-forest"
+                  >
                     Next →
                   </Link>
-                ) : <span />}
+                ) : (
+                  <span />
+                )}
               </div>
             )}
           </div>
@@ -303,9 +346,13 @@ export default async function TodaysHarvestBlogPage({
           Meet the Authors
         </h2>
         <p className="mt-5 max-w-2xl mx-auto text-base text-white/85">
-          Connect with and discover our Today&apos;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.
+          Connect with and discover our Today&apos;s Harvest blog authors and
+          their broad range of financial and Northeast agricultural expertise.
         </p>
-        <Link href="/contact" className="mt-7 inline-flex w-fit mx-auto px-6 py-3.5 bg-white text-forest-dark text-sm font-bold rounded-sm hover:bg-cream transition-colors">
+        <Link
+          href="/contact"
+          className="mt-7 inline-flex w-fit mx-auto px-6 py-3.5 bg-white text-forest-dark text-sm font-bold rounded-sm hover:bg-cream transition-colors"
+        >
           Meet the Authors
         </Link>
       </section>
@@ -318,7 +365,9 @@ export default async function TodaysHarvestBlogPage({
           Get the latest blog articles delivered to your inbox.
         </p>
         <form className="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address
+          </label>
           <input
             id="newsletter-email"
             type="email"
@@ -326,7 +375,10 @@ export default async function TodaysHarvestBlogPage({
             placeholder="Enter your email*"
             className="flex-1 px-4 py-3 border border-charcoal/20 rounded-sm text-sm text-charcoal placeholder:text-grey-text bg-white"
           />
-          <button type="submit" className="px-6 py-3 bg-clay text-white text-sm font-bold rounded-sm hover:bg-clay-dark transition-colors">
+          <button
+            type="submit"
+            className="px-6 py-3 bg-clay text-white text-sm font-bold rounded-sm hover:bg-clay-dark transition-colors"
+          >
             Sign Up
           </button>
         </form>
