@@ -129,7 +129,7 @@ export default function BeginningFarmerProgramsPage() {
 
 
     {/* HERO IMAGE */}
-    <div className="flex items-center justify-center pl-[8px] pr-[28px] py-[18px]">
+    <div className="flex items-center justify-center px-[32px] py-[18px] md:px-[48px] lg:py-[20px] lg:pl-0 lg:pr-[68px]">
 
       <div className="w-full max-w-[705px] border border-white">
 
@@ -153,10 +153,10 @@ export default function BeginningFarmerProgramsPage() {
       ========================================================= */}
       <section className="w-full bg-[#e9edf1]">
 
-        <div className="mx-auto flex min-h-[270px] max-w-[850px] items-center px-[25px] py-[30px] sm:px-0">
+        <div className="mx-auto flex min-h-[270px] max-w-[850px] flex-col items-start gap-[20px] px-[25px] py-[30px] sm:flex-row sm:items-center sm:gap-0 sm:px-0">
 
           {/* FFA IMAGE */}
-          <div className="h-[171px] w-[200px] shrink-0">
+          <div className="h-[137px] w-[160px] shrink-0 sm:h-[171px] sm:w-[200px]">
 
             <img
               src="/images/financing/beginning-farmer-programs/FFA-AdobeStock_178028122_Hero.jpg"
@@ -168,7 +168,7 @@ export default function BeginningFarmerProgramsPage() {
 
 
           {/* FFA TEXT */}
-          <div className="ml-[28px]">
+          <div className="sm:ml-[28px]">
 
             <h2 className="font-display text-[20px] font-[700] leading-[1.3] text-[#171717]">
               FFA Student Scholarships
@@ -482,18 +482,18 @@ export default function BeginningFarmerProgramsPage() {
           YOU MIGHT ALSO LIKE
       ========================================================= */}
       <section className="w-full bg-[#ecf1e4]">
-        <div className="mx-auto max-w-[1632px] px-[66px] py-[60px]">
+        <div className="mx-auto max-w-[1632px] px-[5%] py-[45px] md:px-[66px] md:py-[60px]">
 
-          <h2 className="font-display text-[45px] font-[700] leading-[1.16] text-[#4f832a]">
+          <h2 className="font-display text-[28px] font-[700] leading-[1.16] text-[#4f832a] md:text-[45px]">
             You Might Also Like
           </h2>
 
-          <div className="mt-[35px] grid grid-cols-3">
+          <div className="mt-[24px] grid grid-cols-1 divide-y divide-[#d4d8cf] md:mt-[35px] md:grid-cols-3 md:divide-y-0">
 
             {RELATED_ARTICLES.map((article) => (
               <article
                 key={article.title}
-                className="border-r border-[#d4d8cf] py-[30px] pr-[40px] first:pl-0 first:pr-[40px] last:border-r-0 last:pl-[40px]"
+                className="py-[30px] first:pt-0 md:border-r md:border-[#d4d8cf] md:py-[30px] md:pr-[40px] md:first:pl-0 md:first:pr-[40px] md:last:border-r-0 md:last:pl-[40px]"
               >
                 <Link
                   href={article.categoryHref}
@@ -539,7 +539,7 @@ export default function BeginningFarmerProgramsPage() {
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form className="mt-[30px] flex w-full max-w-[520px] gap-[12px]">
+          <form className="mt-[30px] flex w-full max-w-[520px] flex-col gap-[12px] sm:flex-row">
             <input
               type="email"
               required

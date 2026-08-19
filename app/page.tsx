@@ -67,52 +67,57 @@ export default function Home() {
 
   return (
     <>
-    {/* HERO */}
-<section className="grid w-full grid-cols-1 md:grid-cols-2 md:min-h-[690px]">
-  <div className="flex items-center bg-white px-[4.05%] py-[65px] md:py-[70px]">
-    <div className="max-w-[700px]">
-      <h1
-        className="
-          m-0
-          max-w-[700px]
-          font-display
-          text-[40px]
-          font-normal
-          leading-[1.12]
-          text-[#4f832a]
-          md:text-[46px]
-          lg:text-[50px]
-          lg:leading-[1.12]
-        "
-      >
-        Discover an ag lender that works for you.
-      </h1>
+      {/* HERO — stacked on mobile (text, then image), side-by-side from md up */}
+      <section className="grid w-full grid-cols-1 md:grid-cols-2 md:min-h-[690px]">
+        <div className="flex items-center bg-white px-[4.05%] py-[36px] md:py-[65px] lg:py-[70px]">
+          <div className="max-w-[700px]">
+            <h1
+              className="
+                m-0
+                max-w-[750px]
+                font-display
+                text-[32px]
+                font-normal
+                leading-[1.15]
+                text-[#4f832a]
+                sm:text-[36px]
+                md:text-[40px]
+                md:leading-[1.12]
+                lg:text-[50px]
+                lg:leading-[1.12]
+              "
+            >
+              Discover an ag lender that works for you.
+            </h1>
 
-      <p
-        className="
-          m-0
-          mt-[28px]
-          max-w-[650px]
-          text-[17px]
-          leading-[28px]
-          text-[#231f20]
-          lg:text-[19px]
-          lg:leading-[31px]
-        "
-      >
-          
-              Farm Funding is made in agriculture — a cooperative owned by the
+            <p
+              className="
+                m-0
+                mt-[20px]
+                max-w-[650px]
+                text-[17px]
+                leading-[27px]
+                text-[#231f20]
+                md:mt-[28px]
+                md:text-[17px]
+                md:leading-[28px]
+                lg:text-[19px]
+                lg:leading-[31px]
+              "
+            >
+              Farm Funding is made in agriculture - a cooperative owned by the
               customers it serves. More than any other lender, we understand
               your unique credit needs and offer the specialized products,
               tools and services to help grow your success.
             </p>
 
-            <div className="mt-[28px] flex flex-wrap gap-[12px]">
+            <div className="mt-[24px] grid grid-cols-1 gap-[10px] sm:flex sm:flex-wrap sm:gap-[12px] md:mt-[28px]">
               <Link
                 href="/financing"
                 className="
                   inline-flex
                   h-[51px]
+                  w-full
                   items-center
                   justify-center
                   rounded-[4px]
@@ -127,6 +132,7 @@ export default function Home() {
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
+                  sm:w-auto
                 "
               >
                 Explore Financing
@@ -137,6 +143,7 @@ export default function Home() {
                 className="
                   inline-flex
                   h-[51px]
+                  w-full
                   items-center
                   justify-center
                   rounded-[4px]
@@ -151,6 +158,7 @@ export default function Home() {
                   transition-colors
                   hover:bg-white
                   hover:text-[#496d83]
+                  sm:w-auto
                 "
               >
                 View Services
@@ -159,25 +167,24 @@ export default function Home() {
           </div>
         </div>
 
-        <HeroCarousel className="relative min-h-[390px] md:min-h-[475px] lg:min-h-[500px]" />
+        <HeroCarousel className="relative h-[220px] md:h-[500px] lg:h-[645px]" />
       </section>
 
-      {/* PROMO CARDS */}
+      {/* PROMO CARDS — flush under hero, thin white divider between stacked cards on mobile */}
       <section
         className="
-          mt-[55px]
           grid
           w-full
           grid-cols-1
+          divide-y
+          divide-white
           bg-[#e8ebef]
-          md:mt-[70px]
           md:grid-cols-2
           md:divide-x
-          md:divide-white
-          lg:mt-[85px]
+          md:divide-y-0
         "
       >
-        <div className="flex items-start gap-[22px] px-[4.05%] py-[38px] lg:py-[45px]">
+        <div className="flex items-start gap-[22px] px-[4.05%] py-[32px] md:py-[38px] lg:py-[45px]">
           <img
             src="/images/homepage/2026 AgViews Calendar Cover.jpg"
             alt="2026 AgViews Calendar"
@@ -197,14 +204,14 @@ export default function Home() {
 
             <Link
               href="/resources/Calendar-Photo-Contest"
-              className="mt-[10px] inline-block text-[16px] font-bold text-[#496d83] underline"
+              className="mt-[10px] inline-block text-[16px] font-bold text-[#705600]"
             >
-              Learn more
+              Learn more ›
             </Link>
           </div>
         </div>
 
-        <div className="flex items-start gap-[22px] px-[4.05%] py-[38px] lg:py-[45px]">
+        <div className="flex items-start gap-[22px] px-[4.05%] py-[32px] md:py-[38px] lg:py-[45px]">
           <img
             src="/images/homepage/Appreciation Sign.png"
             alt="Customer appreciation event"
@@ -225,9 +232,9 @@ export default function Home() {
 
             <Link
               href="/resources/events"
-              className="mt-[10px] inline-block text-[16px] font-bold text-[#496d83] underline"
+              className="mt-[10px] inline-block text-[16px] font-bold text-[#705600]"
             >
-              Learn more
+              Learn more ›
             </Link>
           </div>
         </div>
@@ -267,7 +274,9 @@ export default function Home() {
                     mb-[16px]
                     inline-block
                     rounded-[2px]
-                    bg-[#686868]
+                    border
+                    border-white/60
+                    bg-transparent
                     px-[10px]
                     py-[5px]
                     text-[13px]
@@ -281,7 +290,7 @@ export default function Home() {
                 </span>
 
                 <h3 className="m-0 font-display text-[25px] font-bold leading-[32px] text-white">
-                  {feature.title}
+                  {feature.title} <span aria-hidden="true">›</span>
                 </h3>
 
                 {feature.body && (
@@ -316,14 +325,16 @@ export default function Home() {
                       mb-[12px]
                       inline-block
                       rounded-[2px]
-                      bg-[#686868]
+                      border
+                      border-[#231f20]/40
+                      bg-white
                       px-[10px]
                       py-[5px]
                       text-[13px]
                       font-bold
                       uppercase
                       leading-[17px]
-                      text-white
+                      text-[#231f20]
                     "
                   >
                     {post.tag}
@@ -341,7 +352,7 @@ export default function Home() {
                       group-hover:text-[#496d83]
                     "
                   >
-                    {post.title}
+                    {post.title} <span aria-hidden="true">›</span>
                   </h4>
 
                   <span className="mt-[12px] block text-[13px] font-bold uppercase leading-[18px] text-[#686868]">
@@ -438,7 +449,9 @@ export default function Home() {
                     mb-[16px]
                     inline-block
                     rounded-[2px]
-                    bg-[#686868]
+                    border
+                    border-white/60
+                    bg-transparent
                     px-[10px]
                     py-[5px]
                     text-[13px]
@@ -452,7 +465,7 @@ export default function Home() {
                 </span>
 
                 <h3 className="m-0 font-display text-[25px] font-bold leading-[32px] text-white">
-                  {tFeature.title}
+                  {tFeature.title} <span aria-hidden="true">›</span>
                 </h3>
 
                 <p className="m-0 mt-[15px] text-[16px] leading-[25px] text-white">
@@ -493,14 +506,16 @@ export default function Home() {
                       mb-[12px]
                       inline-block
                       rounded-[2px]
-                      bg-[#686868]
+                      border
+                      border-[#231f20]/40
+                      bg-white
                       px-[10px]
                       py-[5px]
                       text-[13px]
                       font-bold
                       uppercase
                       leading-[17px]
-                      text-white
+                      text-[#231f20]
                     "
                   >
                     {post.tag}
@@ -518,7 +533,7 @@ export default function Home() {
                       group-hover:text-[#496d83]
                     "
                   >
-                    {post.title}
+                    {post.title} <span aria-hidden="true">›</span>
                   </h4>
 
                   <span className="mt-[12px] block text-[13px] font-bold uppercase leading-[18px] text-[#686868]">
