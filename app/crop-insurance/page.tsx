@@ -219,74 +219,30 @@ export default function CropInsurancePage() {
         </div>
       </section>
 
-      {/* =========================================================
-          RISK MANAGEMENT SECTION
-
-          Screenshot:
-          pale green background
-          large green heading
-          three equal white cards
+            {/* =========================================================
+          RISK MANAGEMENT + CARDS
+          Corrected against a full-resolution live screenshot:
+          fluid width (~78px side padding, no fixed max-width cap),
+          cards have a thin light-gray border, image ~200px tall
+          at this width, ~30px gap between cards.
       ========================================================= */}
-      <section className="w-full bg-[#ecf1e4]">
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-[1630px]
-            px-[30px]
-            pb-[80px]
-            pt-[65px]
-            sm:px-[45px]
-            sm:pb-[90px]
-            sm:pt-[75px]
-            lg:px-[67px]
-            lg:pb-[82px]
-            lg:pt-[67px]
-          "
-        >
-          {/* SECTION HEADING */}
+      <section className="w-full bg-[#ecf1e4] px-[15px] py-[40px] sm:px-[24px] sm:py-[60px] lg:px-[78px] lg:py-[70px]">
+        <div className="mx-auto w-full">
           <h2
-            className="
-              max-w-[1400px]
-              text-[#4f832a]
-              text-[37px]
-              leading-[1.2]
-              sm:text-[42px]
-              lg:text-[44px]
-              lg:leading-[1.22]
-            "
+            className="max-w-[1600px] text-[26px] leading-[32px] font-medium text-[#4f832a] sm:text-[32px] sm:leading-[38px] lg:text-[48px] lg:leading-[58px]"
             style={{ fontFamily: "Montserrat-Bold" }}
           >
             Our Crop Growers agents help you make the best risk management
             decisions to protect your operation and family&apos;s future.
           </h2>
 
-          {/* THREE CARDS */}
-          <div
-            className="
-              mt-[45px]
-              grid
-              grid-cols-1
-              gap-[25px]
-              sm:mt-[50px]
-              md:grid-cols-3
-            "
-          >
+          <div className="mt-[32px] grid grid-cols-1 gap-y-[32px] sm:mt-[45px] md:grid-cols-3 md:gap-x-[30px] md:gap-y-[30px]">
             {OVERVIEW_CARDS.map((card) => (
               <article
                 key={card.href}
-                className="
-                  flex
-                  min-h-[390px]
-                  flex-col
-                  overflow-hidden
-                  border
-                  border-[#d7d9d4]
-                  bg-white
-                "
+                className="flex flex-col border border-[#d9d9d9] bg-white text-center"
               >
-                {/* CARD IMAGE */}
-                <div className="relative h-[190px] w-full overflow-hidden">
+                <div className="relative h-[170px] w-full overflow-hidden sm:h-[195px] lg:h-[200px]">
                   <Image
                     src={card.imagePath}
                     alt={card.imageAlt}
@@ -296,41 +252,17 @@ export default function CropInsurancePage() {
                   />
                 </div>
 
-                {/* CARD TEXT */}
-                <div
-                  className="
-                    flex
-                    flex-1
-                    flex-col
-                    items-center
-                    px-[18px]
-                    pb-[28px]
-                    pt-[21px]
-                    text-center
-                  "
-                >
+                <div className="px-[24px] py-[24px] sm:px-[28px] sm:py-[28px]">
                   <Link
                     href={card.href}
-                    className="
-                      text-[#5a4400]
-                      text-[22px]
-                      leading-[1.35]
-                      hover:underline
-                      lg:text-[23px]
-                    "
+                    className="inline-block text-[22px] leading-[30px] text-[#5a4400] hover:underline sm:text-[26px] sm:leading-[34px]"
                     style={{ fontFamily: "Montserrat-Bold" }}
                   >
-                    {card.title}›
+                    {card.title}&nbsp;›
                   </Link>
 
                   <p
-                    className="
-                      mt-[22px]
-                      max-w-[340px]
-                      text-[#231f20]
-                      text-[17px]
-                      leading-[1.65]
-                    "
+                    className="mt-[14px] text-[16px] leading-[25.6px] text-[#231f20] sm:mt-[18px] sm:text-[18px] sm:leading-[28.8px]"
                     style={{ fontFamily: "Barlow-Medium" }}
                   >
                     {card.description}
