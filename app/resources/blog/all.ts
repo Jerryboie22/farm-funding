@@ -4,9 +4,11 @@ import {
   FEATURED_ARTICLE as LIVE_FEATURED_ARTICLE,
   LATEST_TAX_TALK as LIVE_LATEST_TAX_TALK,
 } from "./current";
+import { LATEST_REFERENCE_ARTICLES } from "./latest";
 
 export const ALL_REFERENCE_ARTICLES = [
   ...CURRENT_REFERENCE_ARTICLES,
+  ...LATEST_REFERENCE_ARTICLES,
   ...ALL_HARVEST_ARTICLES,
 ].filter(
   (article, index, array) =>
