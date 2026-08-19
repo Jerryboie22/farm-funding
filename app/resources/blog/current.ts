@@ -1,25 +1,26 @@
 import type { HarvestArticle } from "./articles";
 
 const CURRENT_FEATURED_ARTICLE: HarvestArticle = {
-  slug: "fresh-market-pepper-coverage-expands-in-the-northeast-what-it-means-for-producers",
-  title: "Fresh Market Pepper Coverage Expands in the Northeast: What It Means for Producers",
-  category: "Crop Insurance",
-  date: "August 12, 2026",
-  author: "Patrick Jennings",
-  image: "/images/crop-insurance/Insurance-Resources.jpg",
+  slug: "260714EmployeeSpotlightRiskManagementAdvisor",
+  title: "Employee Spotlight: A Day in the Life of a Dairy Risk Management Advisor",
+  category: "Farm Credit",
+  date: "July 14, 2026",
+  author: "Elisabeth Olcott",
+  image: "/images/homepage/Megan Clancy spotlight.jpg",
   excerpt:
-    "The USDA Risk Management Agency has expanded fresh market pepper crop insurance coverage to additional counties in Connecticut, Massachusetts, and New Jersey, offering producers enhanced risk management tools aligned with production cycles and market conditions.",
-  sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog",
+    "Shifting dairy markets and late-day price updates are daily challenges for Dairy & Livestock Risk Management Senior Advisor Megan Clancy. Read on as Megan shares what a typical week looks like, why collaboration matters and how her work helps protect dairy farms across the Northeast for the long haul.",
+  sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog/260714EmployeeSpotlightRiskManagementAdvisor",
   sections: [
-    { heading: "Expanded coverage", body: "The updated fresh market pepper crop insurance availability reaches additional counties in Connecticut, Massachusetts and New Jersey, giving eligible producers another tool for managing production and market risks." },
-    { heading: "Why it matters", body: "Fresh market vegetables can face weather, yield and market risks at different points in the production cycle. Crop insurance can help producers manage those exposures alongside their broader farm risk-management plan." },
-    { heading: "Talk with your agent", body: "Producers should review county eligibility, sales-closing requirements and available coverage options with their crop insurance agent before making coverage decisions." },
+    { heading: "The Big Picture", body: "Megan Clancy works at the intersection of changing dairy markets and the long-term sustainability of Northeast farms. Her work helps producers understand risk-management tools and turn market information into practical decisions." },
+    { heading: "Day-to-Day Decisions", body: "Her week combines market analysis, customer meetings, writing a weekly dairy market update and helping producers build risk-management strategies around their operations." },
+    { heading: "Collaboration is Key", body: "Working across departments helps loan officers, consultants and risk-management specialists provide customers with coordinated strategies that support long-term success." },
+    { heading: "Honing a Leadership Mindset", body: "Leadership development and involvement with young professionals have helped Megan grow beyond her job title while staying connected to agriculture and the next generation of industry leaders." },
   ],
 };
 
 export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
   {
-    slug: "new-report-examines-dairy-price-support-policies-across-the-northeast",
+    slug: "260805DairyPriceSupportPolicies",
     title: "New Report Examines Dairy Price Support Policies Across the Northeast",
     category: "Ag Economy",
     date: "August 5, 2026",
@@ -34,7 +35,7 @@ export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
     ],
   },
   {
-    slug: "reminder-to-stay-vigilant-be-aware-of-impersonation-calls",
+    slug: "260803ImpersonationCalls",
     title: "Reminder to Stay Vigilant: Be Aware of Impersonation Calls",
     category: "Business Tips and Tools",
     date: "August 3, 2026",
@@ -49,7 +50,7 @@ export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
     ],
   },
   {
-    slug: "a-summer-of-learning-and-growth-the-farm-credit-east-internship-experience",
+    slug: "260721FarmCreditEastInternshipExperience",
     title: "A Summer of Learning and Growth: The Farm Credit East Internship Experience",
     category: "Farm Credit",
     date: "July 21, 2026",
@@ -63,37 +64,22 @@ export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
       { heading: "Building the next generation", body: "Hands-on learning and professional development help students understand career opportunities in agriculture, finance, accounting, communications and related fields." },
     ],
   },
-  {
-    slug: "employee-spotlight-a-day-in-the-life-of-a-dairy-risk-management-advisor",
-    title: "Employee Spotlight: A Day in the Life of a Dairy Risk Management Advisor",
-    category: "Farm Credit",
-    date: "July 14, 2026",
-    author: "Elisabeth Olcott",
-    image: "/images/homepage/Megan Clancy spotlight.jpg",
-    excerpt: "Shifting dairy markets and late-day price updates are daily challenges for Dairy & Livestock Risk Management Senior Advisor Megan Clancy. Read on as Megan shares what a typical week looks like, why collaboration matters and how her work helps protect dairy farms across the Northeast for the long haul.",
-    sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog",
-    sections: [
-      { heading: "A typical week", body: "Dairy risk management moves with the market. Megan Clancy works with producers as prices change, helping customers understand market information and evaluate risk-management decisions." },
-      { heading: "Collaboration matters", body: "Risk management is most effective when producers, advisors and other members of the farm team share information and understand the goals of the operation." },
-      { heading: "Protecting farms for the long haul", body: "The work is focused on helping Northeast dairy farms manage volatility and make informed decisions that fit their individual financial and production plans." },
-    ],
-  },
 ];
 
 export const FEATURED_ARTICLE = CURRENT_FEATURED_ARTICLE;
 
 export const LATEST_TAX_TALK: HarvestArticle = {
-  slug: "trump-accounts-a-new-savings-option-for-children",
-  title: "Trump Accounts: A New Savings Option for Children",
+  slug: "260604FarmHighlightsNYSBudget",
+  title: "Tax Talks Highlights from the Fiscal Year 2026-2027 NYS Budget",
   category: "Tax Talks",
-  date: "July 28, 2026",
+  date: "June 4, 2026",
   author: "Austin Weaver",
   image: "/images/resources/Logger-Calculating.jpg",
-  excerpt: "Trump Accounts officially kicked off July 4, 2026, offering a new way to save for a child’s future. A Trump Account is a traditional IRA with specific rules that enable families to start saving and investing for a child early with greater flexibility than a standard retirement account. Any child under age 18 with a Social Security number is eligible for a Trump Account.",
-  sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog/260728ANewSavingsAccountForChildren",
+  excerpt: "Following three-months of delays, the New York State legislature has passed the Fiscal Year 2026-2027 (FY 26-27) budget. The final budget, signed into law by Gov. Kathy Hochul, includes many provisions relevant to our farm and agribusiness customers. The following are a few highlights of the recently passed legislation.",
+  sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog/260604FarmHighlightsNYSBudget",
   sections: [
-    { heading: "What is a Trump Account?", body: "A Trump Account is a traditional IRA with special rules for children. The account is structured so that the child owns the assets while an authorized adult manages the account until the child reaches age 18." },
-    { heading: "Who is eligible?", body: "Children under age 18 with a Social Security number are eligible. A Treasury pilot program also provides a one-time $1,000 seed contribution for qualifying U.S. citizens born between January 1, 2025 and December 31, 2028 when the required election is made." },
-    { heading: "How to open an account", body: "The election can be made using Form 4547 with a parent’s or guardian’s tax return or through the applicable online process. Families should review the current rules and contribution requirements before making an election." },
+    { heading: "Extension of Refundable Investment Tax Credit for Farmers", body: "The FY 26-27 budget extends New York's refundable investment tax credit for eligible farmers, keeping the benefit available for a longer planning horizon." },
+    { heading: "Standardization of Eligible Farmer Definition", body: "The budget establishes a single eligible-farmer definition for several New York agricultural tax credits, helping standardize the eligibility test across programs." },
+    { heading: "$30 Million Tariff Relief Fund", body: "The budget also establishes funding for direct tariff relief intended to help New York farmers offset increased costs for fertilizer, equipment and supplies." },
   ],
 };
