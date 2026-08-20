@@ -80,7 +80,7 @@ export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
     category: "Business Tips and Tools",
     date: "July 1, 2026",
     author: "Dario Arezzo",
-    image: "/images/homepage/Dairy cows milking.jpg",
+    image: "/images/homepage/5-cow_adobestock_206891243.jpg",
     excerpt:
       "The Agricultural Resiliency Against Tariffs Program was appropriated $30 million to provide payments directly to agricultural producers. Payments range from $1,000 to $25,000 per entity, and eligible New York producers must complete the application process within the program window.",
     sourceUrl:
