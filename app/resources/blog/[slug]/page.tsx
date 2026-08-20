@@ -16,12 +16,14 @@ const ARTICLE_TAGS: Record<string, string[]> = {
   "260310RoadAHeadForOysterGrowers": ["ag economy", "outlook", "fishing", "aquaculture"],
   "260505AgTechTrends": ["technology", "ag tech", "innovation", "business planning"],
   "260512MentalHealthResourcesforAgriculture": ["community support", "mental health", "wellness", "agriculture"],
+  "key-changes-coming-to-drp-lgm-and-lrp-programs": ["crop insurance", "dairy", "livestock", "risk management"],
 };
 
 const IMAGE_OVERRIDES: Record<string, string> = {
   "high-supply-with-tight-margins-2026-apple-outlook": "/images/homepage/1-orchard_adobestock_292882711.jpg",
   "2026-forest-products-outlook-key-takeaways-for-a-shifting-industry": "/images/homepage/3-logs_adobestock_73937079.jpg",
   "the-road-ahead-for-oyster-growers-trends-risks-and-opportunities-for-2026": "/images/homepage/4-fisherman-and-vessel.jpg",
+  "key-changes-coming-to-drp-lgm-and-lrp-programs": "/images/homepage/5-cow_adobestock_206891243.jpg",
 };
 
 const AUTHOR_ROLES: Record<string, string> = {
@@ -30,6 +32,7 @@ const AUTHOR_ROLES: Record<string, string> = {
   "Marty Knapp, CPA": "Senior Financial Consultant",
   "Elisabeth Olcott": "Farm Credit East",
   "Kristen Santos": "Farm Credit East",
+  "Megan Clancy": "Livestock Insurance Specialist",
 };
 
 const AUTHOR_CARD_SLUGS = new Set([
@@ -38,12 +41,14 @@ const AUTHOR_CARD_SLUGS = new Set([
   "260623-EmployeeSpotlightADayInTheLifeOfAnInternalAuditDirector",
   "260616-StayAlertToMisleadingMailMortageandHomeWarrantyCommunications",
   "2026-forest-products-outlook-key-takeaways-for-a-shifting-industry",
+  "key-changes-coming-to-drp-lgm-and-lrp-programs",
 ]);
 
 const CTA_SLUGS = new Set([
   "260701TariffReliefProgramNYProducers",
   "260630NewUSDAPaymentRulesForYourFarm",
   "260623-EmployeeSpotlightADayInTheLifeOfAnInternalAuditDirector",
+  "key-changes-coming-to-drp-lgm-and-lrp-programs",
 ]);
 
 const RELATED: Record<string, string[]> = {
@@ -61,6 +66,21 @@ const RELATED: Record<string, string[]> = {
     "2026 Apple Outlook: High Supply with Tight Margins",
     "Building Resilient Dairy Businesses: Key Takeaways from Crop Growers Dairy Producer Meeting",
     "Dairy Markets Show Positive Trends",
+  ],
+  "key-changes-coming-to-drp-lgm-and-lrp-programs": [
+    "Beyond Dairy Revenue Protection: A Smarter Approach to Managing Dairy Risk",
+    "Building Resilient Dairy Businesses: Key Takeaways from Crop Growers Dairy Producer Meeting",
+    "Ensuring Stability in the Year Ahead: Protecting Farm Revenue in Uncertain Markets",
+  ],
+};
+
+const REFERENCE_HEADINGS: Record<string, string[]> = {
+  "key-changes-coming-to-drp-lgm-and-lrp-programs": [
+    "Uniform Changes Across Programs",
+    "DRP Updates",
+    "LGM Changes",
+    "Updates to LRP Coverage",
+    "What This Means for Producers",
   ],
 };
 
@@ -98,6 +118,10 @@ function relatedArticles(slug: string) {
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 }
 
+function displayHeading(slug: string, heading: string, index: number) {
+  return REFERENCE_HEADINGS[slug]?.[index] ?? heading;
+}
+
 export default async function HarvestArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = getReferenceArticle(slug);
@@ -129,9 +153,9 @@ export default async function HarvestArticlePage({ params }: { params: Promise<{
           {article.sections.map((section, index) => (
             <section key={`${section.heading}-${index}`} className="mb-7 last:mb-0">
               {isNestedHeading(section.heading, slug) ? (
-                <h4 className="mb-2 font-display text-[18px] font-bold leading-[1.35] text-forest md:text-[20px]">{section.heading}</h4>
+                <h4 className="mb-2 font-display text-[18px] font-bold leading-[1.35] text-forest md:text-[20px]">{displayHeading(slug, section.heading, index)}</h4>
               ) : (
-                <h3 className="mb-2 font-display text-[19px] font-bold leading-[1.35] text-forest md:text-[21px]">{section.heading}</h3>
+                <h3 className="mb-2 font-display text-[19px] font-bold leading-[1.35] text-forest md:text-[21px]">{displayHeading(slug, section.heading, index)}</h3>
               )}
               <p className="whitespace-pre-line">{section.body}</p>
             </section>
