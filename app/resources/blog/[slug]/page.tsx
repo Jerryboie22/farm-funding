@@ -4,6 +4,14 @@ import { ALL_REFERENCE_ARTICLES, getReferenceArticle } from "../registry";
 
 const BLOG_PATH = "/resources/blog";
 
+const ARTICLE_TAGS: Record<string, string[]> = {
+  "260707_2026FarmBillTakesShape": ["farm bill", "public policy", "ag policy"],
+  "260701TariffReliefProgramNYProducers": ["tariff relief", "New York", "business tips and tools"],
+  "260630NewUSDAPaymentRulesForYourFarm": ["USDA", "farm payments", "business tips and tools"],
+  "260623-EmployeeSpotlightADayInTheLifeOfAnInternalAuditDirector": ["Farm Credit", "employee spotlight", "leadership"],
+  "260616-StayAlertToMisleadingMailMortageandHomeWarrantyCommunications": ["business tips and tools", "fraud prevention", "security"],
+};
+
 export function generateStaticParams() {
   return ALL_REFERENCE_ARTICLES.map((article) => ({ slug: article.slug }));
 }
@@ -23,42 +31,91 @@ function formatDate(date: string) {
   return parsed.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 }
 
+function getTags(slug: string, category: string) {
+  return ARTICLE_TAGS[slug] ?? [category];
+}
+
 export default async function HarvestArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = getReferenceArticle(slug);
   if (!article) notFound();
 
+  const tags = getTags(slug, article.category);
+  const related = ALL_REFERENCE_ARTICLES.filter((item) => item.slug !== article.slug && item.category === article.category).slice(0, 3);
+
   return (
     <main className="w-full bg-white text-charcoal">
-      <header className="mx-auto w-full max-w-[1200px] px-6 pb-8 pt-12 md:px-10 md:pt-14 lg:px-12 lg:pt-16">
-        <time dateTime={article.date} className="block font-body text-[15px] leading-6 text-grey-text">{formatDate(article.date)}</time>
-        <Link href={BLOG_PATH} className="mt-3 inline-block font-display text-[15px] font-bold leading-6 text-clay hover:underline">{article.category}</Link>
-        <h1 className="mt-2 max-w-[1050px] font-display text-[38px] font-extrabold leading-[1.12] text-forest md:text-[48px] lg:text-[54px]">{article.title}</h1>
-        <p className="mt-4 font-body text-[17px] leading-7 text-charcoal">By: {article.author}</p>
+      {/* Reference article header: category/date/title/byline stay together above the hero. */}
+      <header className="mx-auto w-full max-w-[1180px] px-6 pb-9 pt-12 md:px-10 md:pt-14 lg:px-12 lg:pt-16">
+        <Link href={`${BLOG_PATH}?category=${encodeURIComponent(article.category)}`} className="font-display text-[15px] font-bold leading-6 text-clay hover:underline">
+          {article.category}
+        </Link>
+        <time dateTime={article.date} className="mt-2 block font-body text-[15px] leading-6 text-grey-text">
+          {formatDate(article.date)}
+        </time>
+        <h1 className="mt-3 max-w-[1050px] font-display text-[38px] font-extrabold leading-[1.1] text-forest md:text-[48px] lg:text-[54px]">
+          {article.title}
+        </h1>
+        <p className="mt-4 font-body text-[16px] leading-7 text-charcoal">By: {article.author}</p>
       </header>
 
-      <section aria-label="Article image" className="mx-auto w-full max-w-[1200px] px-6 md:px-10 lg:px-12">
-        <img src={article.image} alt={article.title} className="block h-[300px] w-full object-cover md:h-[450px] lg:h-[560px]" />
+      <section aria-label="Article image" className="mx-auto w-full max-w-[1180px] px-6 md:px-10 lg:px-12">
+        <img src={article.image} alt="" className="block h-[300px] w-full object-cover md:h-[440px] lg:h-[520px]" />
       </section>
 
-      <article className="mx-auto w-full max-w-[900px] px-6 pb-12 pt-10 md:px-10 md:pb-16 md:pt-12 lg:pb-20 lg:pt-14">
+      <article className="mx-auto w-full max-w-[850px] px-6 pb-12 pt-10 md:px-10 md:pb-16 md:pt-12 lg:pb-20 lg:pt-14">
         <p className="font-body text-[17px] leading-[1.8] text-charcoal md:text-[18px]">{article.excerpt}</p>
 
         <div className="mt-9 font-body text-[17px] leading-[1.8] text-charcoal md:text-[18px]">
           {article.sections.map((section, index) => (
             <section key={`${section.heading}-${index}`} className="mb-8 last:mb-0">
-              <h2 className="mb-3 font-display text-[24px] font-bold leading-[1.3] text-forest md:text-[28px]">{section.heading}</h2>
+              <h2 className="mb-3 font-display text-[23px] font-bold leading-[1.3] text-forest md:text-[27px]">{section.heading}</h2>
               <p className="whitespace-pre-line">{section.body}</p>
             </section>
           ))}
         </div>
 
-        <div className="mt-10 border-t border-charcoal/10 pt-6">
-          <p className="font-body text-sm leading-6 text-grey-text">
-            Tags: <Link href={`${BLOG_PATH}?category=${encodeURIComponent(article.category)}`} className="text-clay hover:underline">{article.category.toLowerCase()}</Link>
-          </p>
+        {/* Article-specific tags, rather than automatically treating the category as the only tag. */}
+        <div className="mt-11 border-t border-charcoal/10 pt-6">
+          <p className="font-display text-sm font-bold text-charcoal">Tags</p>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+            {tags.map((tag) => (
+              <Link key={tag} href={`${BLOG_PATH}?tag=${encodeURIComponent(tag)}`} className="font-body text-sm text-clay hover:underline">
+                {tag}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Reference article closing actions. */}
+        <div className="mt-8 flex flex-col gap-4 border-t border-charcoal/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <span className="font-display text-sm font-bold text-forest">Share this post on</span>
+          <div className="flex gap-3">
+            <button type="button" aria-label="Share on Facebook" className="h-9 w-9 border border-charcoal/15 font-display text-sm text-forest">f</button>
+            <button type="button" aria-label="Share on LinkedIn" className="h-9 w-9 border border-charcoal/15 font-display text-sm text-forest">in</button>
+            <button type="button" aria-label="Copy article link" className="h-9 border border-charcoal/15 px-3 font-display text-xs text-forest">Copy link</button>
+          </div>
         </div>
       </article>
+
+      {related.length > 0 && (
+        <section className="w-full bg-cream px-6 py-12 md:py-16">
+          <div className="mx-auto max-w-[1180px]">
+            <h2 className="font-display text-[28px] font-bold leading-[1.2] text-forest md:text-[34px]">You Might Also Like</h2>
+            <div className="mt-7 grid gap-6 md:grid-cols-3">
+              {related.map((item) => (
+                <Link key={item.slug} href={`${BLOG_PATH}/${item.slug}`} className="group bg-white">
+                  <img src={item.image} alt="" className="h-[190px] w-full object-cover" />
+                  <div className="p-5">
+                    <p className="font-body text-xs text-grey-text">{formatDate(item.date)}</p>
+                    <h3 className="mt-2 font-display text-[19px] font-bold leading-[1.25] text-forest group-hover:underline">{item.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="w-full bg-forest-dark px-6 py-14 text-center text-white md:py-16">
         <div className="mx-auto max-w-[700px]">
