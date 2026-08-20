@@ -23,6 +23,17 @@ const ARTICLE_OVERRIDES: Record<string, Partial<HarvestArticle>> = {
       { heading: "Biologicals in Agriculture", body: "Artificial intelligence, biologicals, automation and connected systems are among the areas producers may consider as technology continues to evolve." },
     ],
   },
+  "high-supply-with-tight-margins-2026-apple-outlook": {
+    image: "/images/homepage/1-orchard_adobestock_292882711.jpg",
+    tags: ["ag economy", "outlook", "apple", "fruit"],
+    sections: [
+      { heading: "Supply is Still Large", body: "Large U.S. production continues to put pressure on margins. Growers should consider supply conditions alongside their own yield, labor and marketing assumptions." },
+      { heading: "Variety Mix is Shifting", body: "The industry's variety mix is evolving as older plantings leave production and newer varieties come into bearing, creating both opportunities and competitive pressures." },
+      { heading: "Strong Movement", body: "Shipment activity has been encouraging, but supply growth continues to exceed demand at profitable prices in a challenging margin environment." },
+      { heading: "Exports Can Provide Relief", body: "Exports remain an important market outlet, with Mexico and Canada representing key destinations and trade conditions remaining important to growers." },
+      { heading: "Higher Costs Will Define Profitability", body: "Labor and other production costs continue to shape profitability. Growers should evaluate break-even by block and variety, manage fresh pack-out, stay engaged in export development and consider appropriate channel diversification." },
+    ],
+  },
 };
 
 function applyOverrides(article: HarvestArticle): HarvestArticle {
