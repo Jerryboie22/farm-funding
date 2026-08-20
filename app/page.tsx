@@ -6,31 +6,32 @@ import WhyUsCarousel from "@/components/WhyUsCarousel";
 
 const BLOG = [
   {
-    tag: "Business Tips and Tools",
+    tag: "Today's Harvest Blog",
+    title:
+      "Employee Spotlight: A Day in the Life of a Dairy Risk Management Advisor",
+    date: "July 14, 2026",
+    href: "/resources/todays-harvest-Blog/260714EmployeeSpotlightRiskManagementAdvisor",
+    body:
+      "Shifting dairy markets and late-day price updates are daily challenges for Dairy & Livestock Risk Management Senior Advisor Megan Clancy. Read on as Megan shares what a typical week looks like, why collaboration matters and how her work helps protect dairy farms across the Northeast for the long haul.",
+  },
+  {
+    tag: "Today's Harvest Blog",
+    title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
+    date: "July 7, 2026",
+    href: "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape",
+  },
+  {
+    tag: "Today's Harvest Blog",
+    title: "Tariff Relief Program Available for New York Producers",
+    date: "July 1, 2026",
+    href: "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers",
+  },
+  {
+    tag: "Today's Harvest Blog",
     title:
       "A Smarter Safety Net: What the New USDA Payment Rules Mean for Your Farm",
     date: "June 30, 2026",
-    href: "/resources/blog",
-    body:
-      "New USDA payment rules could have an important impact on farm operations. Here’s what producers should know and how proactive planning can help.",
-  },
-  {
-    tag: "Tax Talks",
-    title: "Highlights from the Fiscal Year 2026-2027 NYS Budget",
-    date: "June 4, 2026",
-    href: "/resources/blog",
-  },
-  {
-    tag: "Tax Talks",
-    title: "Research & Development Tax Credits for Farms: A Case Study",
-    date: "April 22, 2026",
-    href: "/resources/blog",
-  },
-  {
-    tag: "Press Releases",
-    title: "Farm Funding Reports Strong 2025 Financial Results",
-    date: "March 23, 2026",
-    href: "/resources/blog",
+    href: "/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForYourFarm",
   },
 ];
 
@@ -39,7 +40,7 @@ const TRENDS_FEATURE = {
   title:
     "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",
   date: "July 7, 2026",
-  href: "/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_USCISClearsH2APathforDairyEmployers",
+  href: "/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers",
 };
 
 const TRENDS_LIST = [
@@ -47,14 +48,14 @@ const TRENDS_LIST = [
     tag: "Reports",
     title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
     date: "July 10, 2026",
-    href: "/resources/Industry-Trends-and-Outlooks/Reports/2607_2025NortheastDairyFarmSummaryMidYearOutlook",
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
   },
   {
     tag: "Reports",
     title:
       "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",
     date: "July 7, 2026",
-    href: "/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_USCISClearsH2APathforDairyEmployers",
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers",
   },
   {
     tag: "Reports",
@@ -66,7 +67,7 @@ const TRENDS_LIST = [
     tag: "Reports",
     title: "Dairy Markets Show Positive Trends",
     date: "May 3, 2026",
-    href: "/resources/Industry-Trends-and-Outlooks/Reports/2605_DairyMarketsShowPositiveTrends",
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
   },
 ];
 
@@ -301,36 +302,39 @@ export default function Home() {
                     mb-[14px]
                     inline-block
                     w-fit
-                    rounded-[2px]
+                    rounded-none
                     border
-                    border-white/60
-                    bg-transparent
+                    border-white/50
+                    bg-[#686a5c]
                     px-[10px]
                     py-[5px]
                     text-[12px]
                     font-bold
                     uppercase
                     leading-[16px]
+                    tracking-wide
                     text-white
                     sm:mb-[16px]
                     sm:text-[13px]
                     sm:leading-[17px]
+                    lg:text-[14px]
+                    lg:leading-[18px]
                   "
                 >
                   {feature.tag}
                 </span>
 
-                <h3 className="m-0 font-display text-[21px] font-bold leading-[27px] text-white sm:text-[25px] sm:leading-[32px]">
+                <h3 className="m-0 font-display text-[21px] font-bold leading-[27px] text-white sm:text-[25px] sm:leading-[32px] lg:text-[29px] lg:leading-[36px]">
                   {feature.title} <span aria-hidden="true">›</span>
                 </h3>
 
                 {feature.body && (
-                  <p className="m-0 mt-[14px] text-[15px] leading-[23px] text-white sm:mt-[15px] sm:text-[16px] sm:leading-[25px]">
+                  <p className="m-0 mt-[14px] text-[15px] leading-[23px] text-white sm:mt-[15px] sm:text-[16px] sm:leading-[25px] lg:text-[18px] lg:leading-[28px]">
                     {feature.body}
                   </p>
                 )}
 
-                <span className="mt-auto pt-[18px] block text-[12px] font-bold uppercase leading-[18px] text-white/90 sm:text-[13px]">
+                <span className="mt-auto pt-[18px] block text-[12px] font-bold uppercase leading-[18px] text-white/90 sm:text-[13px] lg:text-[14px]">
                   {feature.date}
                 </span>
               </div>
@@ -356,20 +360,23 @@ export default function Home() {
                     className="
                       mb-[10px]
                       inline-block
-                      rounded-[2px]
+                      rounded-none
                       border
-                      border-[#231f20]/40
-                      bg-white
+                      border-white/50
+                      bg-[#686a5c]
                       px-[10px]
                       py-[5px]
                       text-[12px]
                       font-bold
                       uppercase
                       leading-[16px]
-                      text-[#231f20]
+                      tracking-wide
+                      text-white
                       sm:mb-[12px]
                       sm:text-[13px]
                       sm:leading-[17px]
+                      lg:text-[14px]
+                      lg:leading-[18px]
                     "
                   >
                     {post.tag}
@@ -387,19 +394,21 @@ export default function Home() {
                       group-hover:text-[#496d83]
                       sm:text-[22px]
                       sm:leading-[29px]
+                      lg:text-[25px]
+                      lg:leading-[32px]
                     "
                   >
                     {post.title} <span aria-hidden="true">›</span>
                   </h4>
 
-                  <span className="mt-[10px] block text-[12px] font-bold uppercase leading-[18px] text-[#686868] sm:mt-[12px] sm:text-[13px]">
+                  <span className="mt-[10px] block text-[12px] font-bold uppercase leading-[18px] text-[#686868] sm:mt-[12px] sm:text-[13px] lg:text-[14px]">
                     {post.date}
                   </span>
                 </Link>
               ))}
 
               <Link
-                href="/resources/blog"
+                href="/resources/todays-harvest-Blog"
                 className="
                   mt-[18px]
                   inline-flex
