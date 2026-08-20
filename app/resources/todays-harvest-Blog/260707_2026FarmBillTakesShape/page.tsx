@@ -606,7 +606,7 @@ export default function FarmBillArticlePage() {
         </p>
 
         <Link
-          href="/contact"
+          href="/resources/meet-the-authors"
           className="mx-auto mt-7 inline-flex rounded-sm bg-white px-6 py-3.5 font-body text-sm font-bold text-forest-dark transition-colors hover:bg-cream"
         >
           Meet the Authors
