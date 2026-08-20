@@ -4,12 +4,19 @@ import { ALL_REFERENCE_ARTICLES, getReferenceArticle } from "../registry";
 
 const BLOG_PATH = "/resources/blog";
 
+// Article-specific topic tags mapped from the reference site's visible category/tag filters.
 const ARTICLE_TAGS: Record<string, string[]> = {
-  "260707_2026FarmBillTakesShape": ["farm bill", "public policy", "ag policy"],
-  "260701TariffReliefProgramNYProducers": ["tariff relief", "New York", "business tips and tools"],
-  "260630NewUSDAPaymentRulesForYourFarm": ["USDA", "farm payments", "business tips and tools"],
-  "260623-EmployeeSpotlightADayInTheLifeOfAnInternalAuditDirector": ["Farm Credit", "employee spotlight", "leadership"],
-  "260616-StayAlertToMisleadingMailMortageandHomeWarrantyCommunications": ["business tips and tools", "fraud prevention", "security"],
+  "260707_2026FarmBillTakesShape": ["farm bill", "public policy"],
+  "260701TariffReliefProgramNYProducers": ["farm management", "business tips and tools"],
+  "260630NewUSDAPaymentRulesForYourFarm": ["farm management", "business tips and tools"],
+  "260623-EmployeeSpotlightADayInTheLifeOfAnInternalAuditDirector": ["farm credit", "leadership"],
+  "260616-StayAlertToMisleadingMailMortageandHomeWarrantyCommunications": ["financing", "business tips and tools"],
+  "260519AppleOutlookHighSupplyTightMargins": ["ag outlook"],
+  "260407ForestProductsOutlook": ["ag outlook"],
+  "260324TheNortheastEconomicEngine": ["ag outlook"],
+  "260310RoadAHeadForOysterGrowers": ["ag outlook"],
+  "260505AgTechTrends": ["technology"],
+  "260512MentalHealthResourcesforAgriculture": ["community support"],
 };
 
 export function generateStaticParams() {
@@ -41,11 +48,12 @@ export default async function HarvestArticlePage({ params }: { params: Promise<{
   if (!article) notFound();
 
   const tags = getTags(slug, article.category);
-  const related = ALL_REFERENCE_ARTICLES.filter((item) => item.slug !== article.slug && item.category === article.category).slice(0, 3);
+  const related = ALL_REFERENCE_ARTICLES
+    .filter((item) => item.slug !== article.slug && item.category === article.category)
+    .slice(0, 3);
 
   return (
     <main className="w-full bg-white text-charcoal">
-      {/* Reference article header: category/date/title/byline stay together above the hero. */}
       <header className="mx-auto w-full max-w-[1180px] px-6 pb-9 pt-12 md:px-10 md:pt-14 lg:px-12 lg:pt-16">
         <Link href={`${BLOG_PATH}?category=${encodeURIComponent(article.category)}`} className="font-display text-[15px] font-bold leading-6 text-clay hover:underline">
           {article.category}
@@ -75,7 +83,6 @@ export default async function HarvestArticlePage({ params }: { params: Promise<{
           ))}
         </div>
 
-        {/* Article-specific tags, rather than automatically treating the category as the only tag. */}
         <div className="mt-11 border-t border-charcoal/10 pt-6">
           <p className="font-display text-sm font-bold text-charcoal">Tags</p>
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
@@ -87,7 +94,6 @@ export default async function HarvestArticlePage({ params }: { params: Promise<{
           </div>
         </div>
 
-        {/* Reference article closing actions. */}
         <div className="mt-8 flex flex-col gap-4 border-t border-charcoal/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <span className="font-display text-sm font-bold text-forest">Share this post on</span>
           <div className="flex gap-3">
