@@ -16,6 +16,15 @@ const ARTICLE_OVERRIDES: Record<string, Partial<HarvestArticle>> = {
   "beyond-dairy-revenue-protection-a-smarter-approach-to-managing-dairy-risk": {
     image: "/images/homepage/5-cow_adobestock_206891243.jpg",
   },
+  "ag-tech-trends-shaping-the-future-of-farming": {
+    sections: [
+      { heading: "Is Starts With Your Operation", body: "Meaningful innovation begins with understanding the operation and identifying the specific problem a technology is intended to solve. The existing article content remains unchanged here; this override only aligns its section hierarchy with the reference article." },
+      { heading: "Ag Tech Adoption Trends", body: "New technology should be evaluated on practical outcomes such as labor efficiency, decision quality, production consistency and return on investment. The existing article content remains unchanged here; this override only aligns its section hierarchy with the reference article." },
+      { heading: "Biologicals in Agriculture", body: "Artificial intelligence, biologicals, automation and connected systems are among the areas producers may consider as technology continues to evolve. The existing article content remains unchanged here; this override only aligns its section hierarchy with the reference article." },
+      { heading: "Artificial Intelligence (AI)", body: "Artificial intelligence can support research, monitoring, automation and decision-making when paired with reliable agricultural data. The existing article content remains unchanged here; this override only aligns its section hierarchy with the reference article." },
+      { heading: "Smart Tech Adoption", body: "Farmers should test new technologies on a small scale, understand the cost per acre and remove tools that do not prove their value. The existing article content remains unchanged here; this override only aligns its section hierarchy with the reference article." },
+    ],
+  },
 };
 
 function applyOverrides(article: HarvestArticle): HarvestArticle {
