@@ -10,7 +10,7 @@ const sections = [
   {
     title: "Board of Directors",
     text: "As a financial cooperative, we are governed by a Board of Directors elected by their peers – people with active roles in production agriculture who understand the needs of our customers and who work for their success.",
-    image: "/images/about/leadership/2025%20FCE%20Board.jpg",
+    image: "/images/about/2025%20FCE%20Board.jpg",
     imageAlt: "Farm Funding 2025 Board of Directors",
     href: "/about/leadership/board-of-directors",
     label: "Meet Our Board",
@@ -22,7 +22,7 @@ const sections = [
     title: "Regional Advisory Committees",
     text: "Regional Advisory Committees are an important component of Farm Funding's governance and a critical source of grassroots feedback.",
     image:
-      "/images/about/leadership/Who-We-Are_SpringPlanting_TheMillers_812_Featured-Content.jpg",
+      "/images/about/Who-We-Are_SpringPlanting_TheMillers_812_Featured-Content.jpg",
     imageAlt:
       "Farm Funding customer standing in a field during spring planting",
     href: "/about/leadership/regional-advisory-committees",
@@ -32,7 +32,7 @@ const sections = [
   {
     title: "Senior Officers",
     text: "Our executive team and Board of Directors work together to ensure Farm Funding remains a strong financial partner for Northeast agriculture, commercial fishing and forest products.",
-    image: "/images/about/leadership/2025%20ELT.jpg",
+    image: "/images/about/2025%20ELT.jpg",
     imageAlt: "Farm Funding 2025 Executive Leadership Team",
     href: "/about/leadership/senior-officers",
     label: "See Our Senior Officers",
@@ -42,7 +42,7 @@ const sections = [
     title: "Code of Ethics",
     text: "Farm Funding employees and Directors follow the published Code of Ethics. This standard is met, in basic terms, by telling the truth and being honest.",
     image:
-      "/images/about/leadership/Code-of-Ethics_iStock-1340002658_Featured-Content.jpg",
+      "/images/about/Code-of-Ethics_iStock-1340002658_Featured-Content.jpg",
     imageAlt: "Farm family representing Farm Funding's commitment to ethics",
     href: "/about/leadership/code-of-ethics",
     label: "View Code of Ethics",
