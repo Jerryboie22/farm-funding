@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -70,17 +71,11 @@ function ActionLink({
 export default function LeadershipPage() {
   return (
     <main className="w-full overflow-x-hidden bg-white">
-      {/* =========================================================
-          HERO
-          The proportions deliberately follow the reference site while
-          allowing the content to breathe on smaller screens.
-      ========================================================= */}
       <section className="w-full bg-forest">
         <div className="mx-auto flex min-h-[236px] w-[91.8%] max-w-[1536px] flex-col justify-center py-[48px] sm:min-h-[260px] sm:py-[54px] md:py-[60px] lg:min-h-[280px] lg:py-[66px]">
           <h1 className="font-display text-[38px] font-bold leading-[1.08] tracking-[-0.4px] text-white sm:text-[44px] md:text-[48px] lg:text-[52px]">
             Leadership
           </h1>
-
           <p className="mt-[20px] max-w-[900px] font-sans text-[16px] leading-[1.6] text-cream sm:mt-[23px] sm:text-[17px] md:text-[18px] lg:text-[19px]">
             As a mission-driven financial cooperative, we are owned and
             governed by our customers. In addition, Regional Advisory
@@ -90,11 +85,6 @@ export default function LeadershipPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          LEADERSHIP CONTENT
-          Desktop: alternating text/image columns.
-          Tablet/mobile: one column with deliberate reading order.
-      ========================================================= */}
       <div className="mx-auto w-[91.8%] max-w-[1536px]">
         {sections.map((section, index) => {
           const imageFirstMobile = section.imageFirstMobile;
@@ -114,14 +104,11 @@ export default function LeadershipPage() {
                 <h2 className="max-w-[650px] font-display text-[30px] font-bold leading-[1.18] tracking-[-0.2px] text-forest sm:text-[34px] md:text-[37px] lg:text-[40px]">
                   {section.title}
                 </h2>
-
                 <p className="mt-[18px] max-w-[620px] font-sans text-[16px] leading-[1.65] text-charcoal sm:mt-[21px] sm:text-[17px] sm:leading-[1.7] lg:mt-[24px] lg:text-[18px] lg:leading-[1.7]">
                   {section.text}
                 </p>
-
                 <div className="mt-[24px] flex w-full flex-col items-stretch gap-[12px] sm:mt-[28px] sm:flex-row sm:flex-wrap sm:items-center sm:gap-[14px]">
                   <ActionLink href={section.href}>{section.label}</ActionLink>
-
                   {section.secondaryHref && section.secondaryLabel ? (
                     <ActionLink href={section.secondaryHref}>
                       {section.secondaryLabel}
@@ -135,15 +122,14 @@ export default function LeadershipPage() {
                   imageFirstMobile ? "order-1 lg:order-1" : "order-2 lg:order-2"
                 }`}
               >
-                <div className="w-full overflow-hidden bg-[#eef1ed]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                <div className="relative w-full overflow-hidden bg-[#eef1ed]">
+                  <Image
                     src={section.image}
                     alt={section.imageAlt}
                     width={1200}
                     height={900}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
+                    priority={index === 0}
+                    sizes="(max-width: 1023px) 100vw, (max-width: 1536px) 41vw, 614px"
                     className="block h-auto max-h-[620px] w-full object-cover"
                   />
                 </div>
@@ -153,9 +139,6 @@ export default function LeadershipPage() {
         })}
       </div>
 
-      {/* =========================================================
-          QUESTIONS / CTA
-      ========================================================= */}
       <section className="w-full bg-cream">
         <div className="mx-auto w-[91.8%] max-w-[1536px] py-[46px] sm:py-[54px] md:py-[62px]">
           <div className="flex flex-col gap-[22px] sm:gap-[26px] md:flex-row md:items-center md:justify-between md:gap-[40px]">
@@ -163,12 +146,10 @@ export default function LeadershipPage() {
               <h2 className="font-display text-[29px] font-bold leading-[1.18] text-forest sm:text-[34px] md:text-[38px] lg:text-[40px]">
                 Have Additional Questions?
               </h2>
-
               <p className="mt-[14px] font-sans text-[16px] leading-[1.6] text-charcoal sm:text-[17px]">
                 Let&apos;s get in touch!
               </p>
             </div>
-
             <div className="shrink-0">
               <ActionLink href="/contact">Contact Us</ActionLink>
             </div>
