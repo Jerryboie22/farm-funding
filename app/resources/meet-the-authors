@@ -703,67 +703,153 @@ export default function MeetTheAuthorsPage() {
         </div>
       </div>
 
-      {/* =========================================================
+            {/* =========================================================
           NEWSLETTER — sits immediately before the global footer
       ========================================================= */}
-      <section className="bg-[#eef2ee]">
-        <div className="mx-auto w-[91.8%] max-w-[1760px] py-[58px] sm:py-[64px]">
-          <div
+      <section className="w-full bg-[#4f832a]">
+        <div
+          className="
+            mx-auto flex min-h-[320px] w-[91.8%] max-w-[1760px]
+            flex-col items-center justify-center
+            py-[48px] text-center
+            sm:min-h-[390px]
+            lg:min-h-[400px] lg:py-[60px]
+          "
+        >
+          <h2
             className="
-              flex flex-col items-start justify-between gap-7
-              lg:flex-row lg:items-center lg:gap-12
+              m-0
+              max-w-[900px]
+              font-display
+              text-[26px]
+              font-bold
+              leading-[1.2]
+              text-white
+              sm:text-[38px]
+              lg:text-[44px]
+              xl:text-[46px]
             "
           >
-            <div className="max-w-[680px]">
-              <h2 className="font-display text-[28px] font-bold leading-[1.2] text-forest sm:text-[32px]">
-                Sign up for our Today&apos;s Harvest Blog.
-              </h2>
-              <p className="mt-3 font-sans text-[17px] leading-[1.6] text-charcoal">
-                Get the latest blog articles delivered to your inbox.
-              </p>
-            </div>
+            Sign up for our Today&apos;s Harvest Blog.
+          </h2>
 
-            <form
-              action="#"
-              method="post"
-              className="flex w-full max-w-[620px] flex-col gap-3 sm:flex-row"
+          <p
+            className="
+              m-0
+              mt-[18px]
+              max-w-[700px]
+              text-[16px]
+              font-semibold
+              leading-[1.4]
+              text-white
+              sm:mt-[26px]
+              sm:text-[18px]
+              lg:mt-[42px]
+              lg:text-[21px]
+            "
+          >
+            Get the latest blog articles delivered to your inbox.
+          </p>
+
+          <form
+            action="#"
+            method="post"
+            className="
+              mt-[22px]
+              flex w-full max-w-[360px]
+              flex-col items-center
+              sm:mt-[28px]
+              lg:mt-[38px]
+            "
+          >
+            <label
+              htmlFor="authors-newsletter-email"
+              className="
+                mb-[10px]
+                text-[16px]
+                font-bold
+                leading-[22px]
+                text-white
+                sm:mb-[12px]
+                sm:text-[18px]
+                lg:text-[20px]
+              "
             >
-              <label htmlFor="authors-newsletter-email" className="sr-only">
-                Email address
-              </label>
+              Enter your email*
+            </label>
 
+            <div className="flex w-full items-stretch gap-[8px]">
               <input
                 id="authors-newsletter-email"
                 name="email"
                 type="email"
-                placeholder="email@address.com"
                 required
+                placeholder="email@address.com"
                 className="
-                  h-[52px] min-w-0 flex-1
-                  border border-[#aeb7ad]
-                  bg-white px-4
-                  font-sans text-[16px] text-charcoal
+                  h-[44px]
+                  w-full
+                  min-w-0
+                  flex-1
+                  rounded-[2px]
+                  border-0
+                  bg-white
+                  px-[14px]
+                  text-[15px]
+                  text-[#231f20]
+                  placeholder:text-[13px]
+                  placeholder:text-[#686868]
                   outline-none
-                  placeholder:text-[#777]
-                  focus:border-forest
+                  sm:w-[245px]
+                  sm:flex-none
+                  sm:text-[16px]
+                  sm:placeholder:text-[18px]
                 "
               />
 
               <button
                 type="submit"
                 className="
-                  h-[52px] shrink-0
-                  bg-[#496f85]
-                  px-8
-                  font-display text-[16px] font-bold text-white
-                  transition-colors hover:bg-forest
-                  sm:min-w-[125px]
+                  inline-flex
+                  h-[44px]
+                  w-[92px]
+                  shrink-0
+                  items-center
+                  justify-center
+                  whitespace-nowrap
+                  rounded-[4px]
+                  border-2
+                  border-white
+                  bg-[#4f832a]
+                  text-[15px]
+                  font-bold
+                  leading-[20px]
+                  text-white
+                  transition-colors
+                  hover:bg-[#436d23]
+                  sm:w-[112px]
+                  sm:text-[18px]
                 "
               >
                 Sign Up
               </button>
-            </form>
-          </div>
+            </div>
+
+            <p
+              className="
+                mt-[12px]
+                text-[13px]
+                font-bold
+                italic
+                leading-[18px]
+                text-white
+                sm:mt-[14px]
+                sm:text-[14px]
+                lg:text-[15px]
+              "
+            >
+              *Required Field
+            </p>
+          </form>
         </div>
       </section>
     </main>
