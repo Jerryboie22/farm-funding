@@ -467,253 +467,347 @@ function groupByLetter(authors: Author[]) {
 
   for (const author of authors) {
     const firstLetter = author.name.trim().charAt(0).toUpperCase();
-    (groups[firstLetter] ??= []).push(author);
+
+    if (!groups[firstLetter]) {
+      groups[firstLetter] = [];
+    }
+
+    groups[firstLetter].push(author);
   }
 
   return groups;
 }
 
-function AuthorIcons({ author, compact = false }: { author: Author; compact?: boolean }) {
-  const size = compact ? "h-[30px] w-[30px]" : "h-[40px] w-[40px]";
-  const imageSize = compact ? "h-[30px] w-[30px]" : "h-[40px] w-[40px]";
-
-  if (!author.email && !author.linkedin) return null;
-
-  return (
-    <div className={`flex items-center ${compact ? "gap-[7px]" : "gap-[8px]"}`}>
-      {author.email && (
-        <a
-          href={`mailto:${author.email}`}
-          aria-label={`Email ${author.name}`}
-          className={`inline-flex ${size} items-center justify-center transition-opacity hover:opacity-70`}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`${ICON_BASE}/Email.png`}
-            alt=""
-            width={40}
-            height={40}
-            loading="lazy"
-            decoding="async"
-            referrerPolicy="no-referrer"
-            className={`${imageSize} object-contain`}
-          />
-        </a>
-      )}
-
-      {author.linkedin && (
-        <a
-          href={author.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${author.name} on LinkedIn`}
-          className={`inline-flex ${size} items-center justify-center transition-opacity hover:opacity-70`}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`${ICON_BASE}/LinkedIn.png`}
-            alt=""
-            width={40}
-            height={40}
-            loading="lazy"
-            decoding="async"
-            referrerPolicy="no-referrer"
-            className={`${imageSize} object-contain`}
-          />
-        </a>
-      )}
-    </div>
-  );
-}
-
 export default function MeetTheAuthorsPage() {
   const grouped = groupByLetter(AUTHORS);
-  const activeLetters = LETTERS.filter((letter) => grouped[letter]?.length);
+  const activeLetters = LETTERS.filter(
+    (letter) => grouped[letter] && grouped[letter].length > 0
+  );
 
   return (
-    <main className="w-full overflow-x-hidden bg-white">
+    <main className="meet-authors-page w-full overflow-x-hidden bg-white">
       {/* HERO */}
       <section className="w-full bg-[#4f832a]">
-        <div className="mx-auto flex min-h-[369px] w-[91.8%] max-w-[1786px] flex-col justify-center py-[42px] sm:min-h-[310px] sm:py-[54px] lg:min-h-[286px] lg:py-[58px]">
-          <h1 className="max-w-[980px] font-display text-[40px] font-bold leading-[1.14] tracking-[-0.5px] text-[#ecf1e4] sm:text-[48px] lg:text-[52px]">
+        <div className="mx-auto flex min-h-[368px] w-full max-w-[1920px] flex-col justify-center px-[14px] py-[52px] sm:min-h-[300px] sm:px-[32px] md:min-h-[330px] md:px-[48px] lg:min-h-[360px] lg:px-[67px] xl:px-[5.2vw]">
+          <h1
+            className="meet-authors-hero-title max-w-[620px] font-bold text-[#ecf1e4]"
+            style={{
+              display: "block",
+              visibility: "visible",
+              opacity: 1,
+              fontFamily: "var(--font-montserrat), Montserrat, Arial, sans-serif",
+              fontSize: "42px",
+              lineHeight: "1.08",
+              letterSpacing: "-0.6px",
+              margin: 0,
+            }}
+          >
             {TITLE}
           </h1>
 
-          <p className="mt-[34px] max-w-[380px] font-sans text-[22px] font-semibold leading-[1.55] text-[#ecf1e4] sm:mt-[25px] sm:max-w-[720px] sm:text-[22px] lg:max-w-[820px]">
+          <p
+            className="meet-authors-hero-description max-w-[650px] text-[#ecf1e4]"
+            style={{
+              fontFamily: "var(--font-barlow), Barlow, Arial, sans-serif",
+              fontSize: "20px",
+              fontWeight: 700,
+              lineHeight: 1.6,
+              marginTop: "28px",
+              marginBottom: 0,
+            }}
+          >
             {DESCRIPTION}
           </p>
         </div>
       </section>
 
-      {/* PAGE BODY */}
-      <div className="mx-auto grid w-[91.8%] max-w-[1786px] grid-cols-1 py-[32px] sm:py-[42px] lg:grid-cols-[344px_minmax(0,1fr)] lg:gap-[clamp(64px,8vw,180px)] lg:py-[48px]">
-        {/* LAST-NAME SEARCH / LETTER INDEX */}
-        <aside className="z-10 h-fit self-start lg:sticky lg:top-[32px]">
-          <div className="overflow-hidden rounded-[6px] border border-[#d0d5da] bg-[#e7ebef] shadow-[5px_6px_0_rgba(0,0,0,0.12)]">
-            <div className="flex min-h-[61px] items-center justify-between border border-[#c36d15] px-[24px] py-[13px]">
-              <h2 className="font-display text-[24px] font-semibold leading-[1.35] text-[#231f20] sm:text-[26px]">
-                Search by Last Name
-              </h2>
-              <span aria-hidden="true" className="ml-[12px] text-[28px] leading-none text-[#496d83]">⌃</span>
-            </div>
-
-            <nav aria-label="Search authors by last name" className="px-[25px] pb-[28px] pt-[20px]">
-              <ul className="grid grid-cols-6 gap-x-[13px] gap-y-[7px] sm:gap-x-[18px] sm:gap-y-[11px]">
-                {LETTERS.map((letter) => {
-                  const active = activeLetters.includes(letter);
-
-                  return (
-                    <li key={letter} className="list-none">
-                      {active ? (
-                        <a
-                          href={`#${letter}`}
-                          className="inline-flex min-h-[24px] min-w-[18px] items-center justify-center font-sans text-[17px] leading-[1.25] text-[#496d83] underline decoration-1 underline-offset-2 hover:text-[#4f832a]"
-                        >
-                          {letter}
-                        </a>
-                      ) : (
-                        <span className="inline-flex min-h-[24px] min-w-[18px] items-center justify-center font-sans text-[17px] leading-[1.25] text-[#496d83]">
-                          {letter}
-                        </span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-          </div>
-        </aside>
-
-        {/* AUTHORS */}
-        <div className="min-w-0">
-          {activeLetters.map((letter, letterIndex) => (
-            <section
-              key={letter}
-              id={letter}
-              aria-labelledby={`${letter}-heading`}
-              className="scroll-mt-[28px]"
+      {/* SEARCH + AUTHORS */}
+      <div className="mx-auto w-full max-w-[1920px] px-[14px] py-[32px] sm:px-[32px] sm:py-[42px] md:px-[48px] lg:px-[67px] lg:py-[56px] xl:px-[5.2vw]">
+        <div className="grid grid-cols-1 gap-[38px] lg:grid-cols-12 lg:gap-[54px] xl:gap-[72px]">
+          {/* Search by last name */}
+          <aside className="h-fit lg:sticky lg:top-[24px] lg:col-span-4">
+            <details
+              open
+              className="group overflow-hidden border border-[#c7cdd1] bg-[#eef1f3] shadow-[5px_6px_0_rgba(0,0,0,0.12)]"
             >
-              <h2
-                id={`${letter}-heading`}
-                className={`font-display text-[44px] font-bold leading-none text-[#4f832a] sm:text-[48px] lg:text-[54px] ${
-                  letterIndex === 0
-                    ? "mt-[34px] lg:mt-0"
-                    : "mt-[54px] border-t-[2px] border-[#c36d15] pt-[32px] sm:mt-[68px] sm:pt-[38px]"
-                }`}
+              <summary
+                className="meet-authors-search-summary flex cursor-pointer list-none items-center justify-between border border-[#c36d15] bg-[#eef1f3] px-[22px] py-[16px] font-bold leading-[1.18] text-[#231f20] marker:content-none sm:px-[24px] sm:py-[18px] lg:px-[26px] lg:py-[20px]"
+                style={{
+                  fontFamily: "var(--font-montserrat), Montserrat, Arial, sans-serif",
+                  fontSize: "24px",
+                  minHeight: "68px",
+                }}
               >
-                {letter}
-              </h2>
-
-              {grouped[letter].map((author) => (
-                <article
-                  key={author.id}
-                  id={author.id}
-                  className="grid scroll-mt-[28px] grid-cols-1 border-b border-[#d9dde0] py-[30px] sm:py-[38px] md:grid-cols-[33.333%_66.667%] lg:py-[44px]"
+                <span>Search by Last Name</span>
+                <span
+                  aria-hidden="true"
+                  className="ml-4 inline-block shrink-0 text-[24px] font-normal leading-none transition-transform duration-200 group-open:rotate-180"
                 >
-                  {/* Desktop image column: mirrors the original 4/12 + 8/12 relationship */}
-                  <div className="hidden md:flex md:items-start md:pr-[28px] lg:pr-[42px]">
-                    <div className="aspect-square w-full max-w-[212px] overflow-hidden bg-[#f8f8f8] shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={author.image}
-                        alt={author.name}
-                        width={212}
-                        height={212}
-                        loading="lazy"
-                        decoding="async"
-                        referrerPolicy="no-referrer"
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  </div>
+                  ⌃
+                </span>
+              </summary>
 
-                  <div className="min-w-0">
-                    {/* Mobile: photo remains beside name/title exactly as in the reference */}
-                    <div className="flex items-start gap-[26px] md:hidden">
-                      <div className="h-[68px] w-[68px] shrink-0 overflow-hidden bg-[#f8f8f8] shadow-[3px_3px_4px_rgba(0,0,0,0.18)] min-[340px]:h-[82px] min-[340px]:w-[82px] sm:h-[110px] sm:w-[110px]">
+              <div className="border-t border-[#c7cdd1] px-[22px] pb-[24px] pt-[20px] sm:px-[26px] sm:pb-[28px] lg:border-t-0 lg:pt-[6px]">
+                <ul className="grid grid-cols-6 gap-x-[12px] gap-y-[10px] sm:gap-x-[16px] sm:gap-y-[14px] lg:gap-x-[18px]">
+                  {LETTERS.map((letter) => {
+                    const active = activeLetters.includes(letter);
+
+                    return (
+                      <li key={letter} className="list-none text-center">
+                        {active ? (
+                          <a
+                            href={`#${letter}`}
+                            className="font-display text-[16px] font-medium leading-[1.6] text-[#496d83] underline decoration-1 underline-offset-2 transition-colors hover:text-[#4f832a]"
+                          >
+                            {letter}
+                          </a>
+                        ) : (
+                          <span className="font-display text-[16px] font-medium leading-[1.6] text-[#496d83]">
+                            {letter}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          {/* Author content */}
+          <div className="min-w-0 lg:col-span-8">
+            {activeLetters.map((letter, letterIndex) => (
+              <section
+                key={letter}
+                id={letter}
+                aria-labelledby={`${letter}-heading`}
+                className="scroll-mt-[24px]"
+              >
+                <h2
+                  id={`${letter}-heading`}
+                  className={`font-display text-[42px] font-bold leading-none text-[#4f832a] sm:text-[48px] lg:text-[56px] ${
+                    letterIndex === 0 ? "mt-0" : "mt-[48px] sm:mt-[64px] lg:mt-[76px]"
+                  }`}
+                >
+                  {letter}
+                </h2>
+
+                {grouped[letter].map((author, authorIndex) => (
+                  <article
+                    key={author.id}
+                    id={author.id}
+                    className={`scroll-mt-[24px] py-[28px] sm:py-[36px] lg:py-[44px] ${
+                      authorIndex > 0
+                        ? "border-t-2 border-[#c36d15]"
+                        : ""
+                    }`}
+                  >
+                    {/* Mobile: photo beside name/title; all supporting content stays under the text column */}
+                    <div className="grid grid-cols-[66px_minmax(0,1fr)] items-start gap-x-[18px] md:hidden">
+                      <div className="h-[66px] w-[66px] overflow-hidden bg-[#f8f8f8] shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={author.image}
                           alt={author.name}
-                          width={212}
-                          height={212}
+                          width={120}
+                          height={120}
                           loading="lazy"
                           decoding="async"
                           referrerPolicy="no-referrer"
-                          className="h-full w-full object-cover"
+                          className="block h-full w-full object-cover"
                         />
                       </div>
 
-                      <div className="min-w-0 flex-1 pt-[1px]">
-                        <h3 className="font-display text-[28px] font-bold leading-[1.08] text-[#231f20] min-[340px]:text-[30px] sm:text-[34px]">
+                      <div className="min-w-0">
+                        <h3 className="font-display text-[28px] font-bold leading-[1.1] text-[#231f20]">
                           {author.name}
                         </h3>
 
                         {author.title && (
-                          <p className="mt-[10px] font-display text-[20px] font-bold leading-[1.5] text-[#686868] min-[340px]:text-[21px] sm:text-[23px]">
+                          <p className="mt-[12px] font-display text-[20px] font-bold leading-[1.48] text-[#686868]">
                             {author.title}
                           </p>
                         )}
 
-                        <div className="mt-[16px]">
-                          <AuthorIcons author={author} />
+                        {(author.email || author.linkedin) && (
+                          <div className="mt-[18px] flex items-center gap-[10px]">
+                            {author.email && (
+                              <a
+                                href={`mailto:${author.email}`}
+                                aria-label={`Email ${author.name}`}
+                                className="inline-flex h-[34px] w-[42px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/Email.png`}
+                                  alt=""
+                                  width={42}
+                                  height={34}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[34px] w-[42px] object-contain"
+                                />
+                              </a>
+                            )}
+
+                            {author.linkedin && (
+                              <a
+                                href={author.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${author.name} on LinkedIn`}
+                                className="inline-flex h-[34px] w-[34px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/LinkedIn.png`}
+                                  alt=""
+                                  width={34}
+                                  height={34}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[34px] w-[34px] object-contain"
+                                />
+                              </a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="col-start-2 min-w-0 pt-[20px]">
+                        <p className="font-sans text-[16px] leading-[1.68] text-[#231f20]">
+                          {author.bio}
+                        </p>
+
+                        <Link
+                          href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
+                            author.id
+                          )}`}
+                          className="mt-[22px] inline-flex min-h-[44px] items-center justify-center bg-[#496d83] px-[20px] font-display text-[16px] font-bold text-white transition-colors hover:bg-[#3e5e71]"
+                        >
+                          See All Articles
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Desktop/tablet: original-style 4/8 author structure */}
+                    <div className="hidden md:grid md:grid-cols-[30%_minmax(0,1fr)] md:gap-x-[34px] lg:grid-cols-[29%_minmax(0,1fr)] lg:gap-x-[42px]">
+                      <div className="flex items-start justify-start">
+                        <div className="h-[184px] w-[184px] overflow-hidden bg-[#f8f8f8] shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={author.image}
+                            alt={author.name}
+                            width={212}
+                            height={212}
+                            loading="lazy"
+                            decoding="async"
+                            referrerPolicy="no-referrer"
+                            className="block h-full w-full object-cover"
+                          />
                         </div>
                       </div>
-                    </div>
 
-                    {/* Desktop author information */}
-                    <div className="hidden md:block">
-                      <h3 className="font-display text-[30px] font-bold leading-[1.15] text-[#231f20] lg:text-[32px]">
-                        {author.name}
-                      </h3>
+                      <div className="min-w-0">
+                        <h3 className="font-display text-[34px] font-bold leading-[1.18] text-[#231f20] lg:text-[38px]">
+                          {author.name}
+                        </h3>
 
-                      {author.title && (
-                        <p className="mt-[10px] max-w-[650px] font-display text-[20px] font-bold leading-[1.5] text-[#686868] lg:text-[22px]">
-                          {author.title}
+                        {author.title && (
+                          <p className="mt-[10px] max-w-[650px] font-display text-[21px] font-bold leading-[1.42] text-[#686868] lg:text-[23px]">
+                            {author.title}
+                          </p>
+                        )}
+
+                        {(author.email || author.linkedin) && (
+                          <div className="mt-[20px] flex items-center gap-[12px]">
+                            {author.email && (
+                              <a
+                                href={`mailto:${author.email}`}
+                                aria-label={`Email ${author.name}`}
+                                className="inline-flex h-[42px] w-[52px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/Email.png`}
+                                  alt=""
+                                  width={52}
+                                  height={42}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[42px] w-[52px] object-contain"
+                                />
+                              </a>
+                            )}
+
+                            {author.linkedin && (
+                              <a
+                                href={author.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${author.name} on LinkedIn`}
+                                className="inline-flex h-[38px] w-[38px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/LinkedIn.png`}
+                                  alt=""
+                                  width={38}
+                                  height={38}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[38px] w-[38px] object-contain"
+                                />
+                              </a>
+                            )}
+                          </div>
+                        )}
+
+                        <p className="mt-[28px] max-w-[780px] font-sans text-[17px] leading-[1.7] text-[#231f20] lg:text-[18px]">
+                          {author.bio}
                         </p>
-                      )}
 
-                      <div className="mt-[22px]">
-                        <AuthorIcons author={author} />
+                        <Link
+                          href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
+                            author.id
+                          )}`}
+                          className="mt-[24px] inline-flex min-h-[48px] items-center justify-center bg-[#496d83] px-[24px] font-display text-[17px] font-bold text-white transition-colors hover:bg-[#3e5e71]"
+                        >
+                          See All Articles
+                        </Link>
                       </div>
                     </div>
-
-                    {/* Biography and article link */}
-                    <div className="ml-[94px] mt-[24px] min-[340px]:ml-[108px] sm:mt-[28px] sm:ml-[0] md:mt-[28px]">
-                      <p className="max-w-[760px] font-sans text-[17px] leading-[1.65] text-[#231f20] sm:text-[18px] md:text-[18px] md:leading-[1.6]">
-                        {author.bio}
-                      </p>
-
-                      <Link
-                        href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(author.id)}`}
-                        className="mt-[22px] inline-flex min-h-[48px] items-center justify-center bg-[#496d83] px-[24px] font-display text-[16px] font-bold text-white transition-opacity hover:opacity-90 sm:px-[28px]"
-                      >
-                        See All Articles
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </section>
-          ))}
+                  </article>
+                ))}
+              </section>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* NEWSLETTER */}
       <section className="w-full bg-[#4f832a]">
-        <div className="mx-auto flex min-h-[390px] w-[91.8%] max-w-[1786px] flex-col items-center justify-center py-[54px] text-center lg:min-h-[400px] lg:py-[60px]">
-          <h2 className="max-w-[1000px] font-display text-[32px] font-bold leading-[1.15] text-white sm:text-[40px] lg:text-[46px]">
+        <div className="mx-auto flex min-h-[390px] w-full max-w-[1920px] flex-col items-center justify-center px-[14px] py-[56px] text-center sm:px-[32px] sm:py-[60px] lg:min-h-[400px] lg:px-[67px] lg:py-[64px]">
+          <h2 className="max-w-[1000px] font-display text-[34px] font-bold leading-[1.14] text-white sm:text-[42px] lg:text-[46px]">
             Sign up for our Today&apos;s Harvest Blog.
           </h2>
 
-          <p className="mt-[28px] max-w-[760px] font-sans text-[18px] font-semibold leading-[1.4] text-white lg:mt-[42px] lg:text-[21px]">
+          <p className="mt-[26px] max-w-[760px] font-sans text-[18px] font-semibold leading-[1.4] text-white lg:mt-[42px] lg:text-[21px]">
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form action="#" method="post" className="mt-[30px] flex w-full max-w-[365px] flex-col items-start lg:mt-[38px]">
+          <form
+            action="#"
+            method="post"
+            className="mt-[28px] flex w-full max-w-[365px] flex-col items-start text-left lg:mt-[38px]"
+          >
             <label
               htmlFor="authors-newsletter-email"
-              className="mb-[10px] font-sans text-[18px] font-bold leading-[1.3] text-white lg:text-[20px]"
+              className="mb-[10px] text-[18px] font-bold leading-[1.3] text-white lg:text-[20px]"
             >
               Enter your email*
             </label>
@@ -725,23 +819,99 @@ export default function MeetTheAuthorsPage() {
                 type="email"
                 required
                 placeholder="email@address.com"
-                className="h-[44px] min-w-0 flex-1 rounded-[2px] border-0 bg-white px-[14px] text-[16px] text-[#231f20] outline-none placeholder:text-[16px] placeholder:text-[#686868]"
+                className="h-[44px] min-w-0 flex-1 rounded-[2px] border-0 bg-white px-[12px] text-[15px] text-[#231f20] outline-none placeholder:text-[14px] placeholder:text-[#686868] sm:w-[245px] sm:flex-none sm:px-[14px] sm:text-[16px] sm:placeholder:text-[18px]"
               />
 
               <button
                 type="submit"
-                className="inline-flex h-[44px] w-[112px] shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-[#4f832a] font-sans text-[18px] font-bold text-white transition-colors hover:bg-[#436d23]"
+                className="inline-flex h-[44px] w-[96px] shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-[#4f832a] text-[16px] font-bold text-white transition-colors hover:bg-[#436d23] sm:w-[112px] sm:text-[18px]"
               >
                 Sign Up
               </button>
             </div>
 
-            <p className="mt-[14px] font-sans text-[14px] font-bold italic leading-[1.3] text-white">
+            <p className="mt-[12px] text-[14px] font-bold italic leading-[1.3] text-white lg:mt-[14px] lg:text-[15px]">
               *Required Field
             </p>
           </form>
         </div>
       </section>
+      <style jsx global>{`
+        .meet-authors-page h1.meet-authors-hero-title {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          color: #ecf1e4 !important;
+          font-family: var(--font-montserrat), Montserrat, Arial, sans-serif !important;
+          font-size: 42px !important;
+          line-height: 1.08 !important;
+          font-weight: 700 !important;
+          letter-spacing: -0.6px !important;
+          margin: 0 !important;
+        }
+
+        .meet-authors-page .meet-authors-hero-description {
+          color: #ecf1e4 !important;
+          font-family: var(--font-barlow), Barlow, Arial, sans-serif !important;
+          font-size: 20px !important;
+          line-height: 1.6 !important;
+          font-weight: 700 !important;
+        }
+
+        .meet-authors-page details > summary {
+          list-style: none !important;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+
+        .meet-authors-page details > summary::-webkit-details-marker {
+          display: none !important;
+        }
+
+        .meet-authors-page details[open] > summary {
+          border-bottom-color: #c36d15 !important;
+        }
+
+        .meet-authors-page .meet-authors-search-summary span:last-child {
+          transform: rotate(0deg);
+        }
+
+        .meet-authors-page details[open] .meet-authors-search-summary span:last-child {
+          transform: rotate(180deg);
+        }
+
+        @media (min-width: 640px) {
+          .meet-authors-page h1.meet-authors-hero-title {
+            font-size: 50px !important;
+          }
+          .meet-authors-page .meet-authors-hero-description {
+            font-size: 22px !important;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .meet-authors-page h1.meet-authors-hero-title {
+            font-size: 58px !important;
+          }
+          .meet-authors-page .meet-authors-hero-description {
+            font-size: 23px !important;
+          }
+        }
+
+        @media (max-width: 359px) {
+          .meet-authors-page h1.meet-authors-hero-title {
+            font-size: 40px !important;
+            max-width: 245px !important;
+          }
+          .meet-authors-page .meet-authors-hero-description {
+            font-size: 19px !important;
+            line-height: 1.55 !important;
+          }
+          .meet-authors-page .meet-authors-search-summary {
+            font-size: 23px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
