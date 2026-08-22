@@ -24,7 +24,7 @@ const BLOG = [
     tag: "Today's Harvest Blog",
     title: "Tariff Relief Program Available for New York Producers",
     date: "July 1, 2026",
-    href: "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers",
+    href: "/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers",
   },
   {
     tag: "Today's Harvest Blog",
