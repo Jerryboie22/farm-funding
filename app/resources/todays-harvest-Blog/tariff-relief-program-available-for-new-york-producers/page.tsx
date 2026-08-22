@@ -808,7 +808,7 @@ export default function TariffReliefArticlePage() {
         {/* Dynamic image */}
         <div className="featured-image">
           <img
-            src="https://farm-funders.com/-/media/farm-credit-east/featured-images/DFS_2018.ashx"
+            src=""/images/homepage/DFS_2018.jpg"
             alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
             className="h-full w-full"
           />
