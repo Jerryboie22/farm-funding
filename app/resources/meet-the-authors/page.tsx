@@ -480,170 +480,137 @@ function groupByLetter(authors: Author[]) {
 
 export default function MeetTheAuthorsPage() {
   const grouped = groupByLetter(AUTHORS);
-
   const activeLetters = LETTERS.filter(
     (letter) => grouped[letter] && grouped[letter].length > 0
   );
 
   return (
-        <main className="w-full overflow-x-hidden bg-white">
-      {/* =========================================================
-          HERO — matched to the supplied Farm Funders reference
-      ========================================================= */}
-      <section className="bg-forest">
-        <div className="mx-auto flex min-h-[180px] w-[91.8%] max-w-[1760px] flex-col justify-center py-[36px] sm:min-h-[236px] sm:py-[52px]">
-          <h1 className="font-display text-[32px] font-bold leading-[1.12] tracking-[-0.5px] text-white sm:text-[46px] md:text-[50px] lg:text-[52px]">
+    <main className="meet-authors-page w-full overflow-x-hidden bg-white">
+      {/* HERO */}
+      <section className="w-full bg-[#4f832a]">
+        <div className="mx-auto flex min-h-[368px] w-full max-w-[1920px] flex-col justify-center px-[14px] py-[52px] sm:min-h-[300px] sm:px-[32px] md:min-h-[330px] md:px-[48px] lg:min-h-[360px] lg:px-[67px] xl:px-[5.2vw]">
+          <h1
+            className="meet-authors-hero-title max-w-[620px] font-bold text-[#ecf1e4]"
+            style={{
+              display: "block",
+              visibility: "visible",
+              opacity: 1,
+              fontFamily: "var(--font-montserrat), Montserrat, Arial, sans-serif",
+              fontSize: "42px",
+              lineHeight: "1.08",
+              letterSpacing: "-0.6px",
+              margin: 0,
+            }}
+          >
             {TITLE}
           </h1>
 
-          <p className="mt-[16px] max-w-[900px] font-sans text-[15px] leading-[1.55] text-cream sm:mt-[25px] sm:text-[18px]">
+          <p
+            className="meet-authors-hero-description max-w-[650px] text-[#ecf1e4]"
+            style={{
+              fontFamily: "var(--font-barlow), Barlow, Arial, sans-serif",
+              fontSize: "20px",
+              fontWeight: 700,
+              lineHeight: 1.6,
+              marginTop: "28px",
+              marginBottom: 0,
+            }}
+          >
             {DESCRIPTION}
           </p>
         </div>
       </section>
 
-      {/* =========================================================
-          MAIN CONTENT
-          The left card is sticky on desktop and remains visible while
-          the author list scrolls.
-      ========================================================= */}
-      <div
-        className="
-          mx-auto grid w-[93.4%] max-w-[1760px]
-          grid-cols-1 gap-6
-          py-[24px]
-          sm:gap-10 sm:py-[40px]
-          lg:grid-cols-[344px_minmax(0,1fr)]
-          lg:gap-[clamp(80px,12.86vw,212px)]
-          lg:py-[32px]
-        "
-      >
-        {/* =======================================================
-            STICKY LETTER NAVIGATION
-        ======================================================= */}
-                <aside
-          className="
-            z-20 h-fit self-start rounded-[6px]
-            border border-[#d0d5da]
-            bg-[#e9edf1]
-            p-[18px]
-            shadow-[5px_5px_0_#d4d4d4]
-            sm:p-[25px]
-            lg:sticky lg:top-[32px]
-          "
-        >
-          <h2 className="font-display text-[19px] font-semibold leading-[1.25] text-charcoal sm:text-[23px]">
-            Search by Last Name
-          </h2>
-
-                    <ul className="mt-[18px] flex flex-wrap gap-x-[10px] gap-y-[14px] sm:mt-[25px] sm:gap-x-[14px] sm:gap-y-[18px] lg:gap-x-[16px] lg:gap-y-[21px]">
-            {LETTERS.map((letter) => {
-              const active = activeLetters.includes(letter);
-
-              return (
-                <li key={letter} className="list-none">
-                  {active ? (
-                    <a
-                      href={`#${letter}`}
-                      className="
-                        flex items-center justify-center
-                        font-display text-[16px] font-bold
-                        text-[#496f85] underline decoration-1
-                        underline-offset-2
-                        transition-colors hover:text-forest-dark
-                      "
-                      style={{ minHeight: "32px", minWidth: "24px" }}
-                    >
-                      {letter}
-                    </a>
-                  ) : (
-                    <span
-                      aria-hidden="true"
-                      className="flex items-center justify-center font-display text-[16px] font-bold text-[#496f85]"
-                      style={{ minHeight: "32px", minWidth: "24px" }}
-                    >
-                      {letter}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </aside>
-
-        {/* =======================================================
-            AUTHORS
-        ======================================================= */}
-        <div className="min-w-0">
-          {activeLetters.map((letter, letterIndex) => (
-            <section
-              key={letter}
-              id={letter}
-              aria-labelledby={`${letter}-heading`}
-              className="scroll-mt-[32px]"
+      {/* SEARCH + AUTHORS */}
+      <div className="mx-auto w-full max-w-[1920px] px-[14px] py-[32px] sm:px-[32px] sm:py-[42px] md:px-[48px] lg:px-[67px] lg:py-[56px] xl:px-[5.2vw]">
+        <div className="grid grid-cols-1 gap-[38px] lg:grid-cols-12 lg:gap-[54px] xl:gap-[72px]">
+          {/* Search by last name */}
+          <aside className="h-fit lg:sticky lg:top-[24px] lg:col-span-4">
+            <details
+              open
+              className="group overflow-hidden border border-[#c7cdd1] bg-[#eef1f3] shadow-[5px_6px_0_rgba(0,0,0,0.12)]"
             >
-              <h2
-                id={`${letter}-heading`}
-                className={`
-                  font-display text-[28px] font-bold leading-[1.15]
-                  text-forest sm:text-[36px] lg:text-[40px]
-                  ${letterIndex === 0 ? "mt-[40px] sm:mt-[98px] lg:mt-[98px]" : "mt-[40px] sm:mt-[64px]"}
-                `}
+              <summary
+                className="meet-authors-search-summary flex cursor-pointer list-none items-center justify-between border border-[#c36d15] bg-[#eef1f3] px-[22px] py-[16px] font-bold leading-[1.18] text-[#231f20] marker:content-none sm:px-[24px] sm:py-[18px] lg:px-[26px] lg:py-[20px]"
+                style={{
+                  fontFamily: "var(--font-montserrat), Montserrat, Arial, sans-serif",
+                  fontSize: "24px",
+                  minHeight: "68px",
+                }}
               >
-                {letter}
-              </h2>
-
-                            {grouped[letter].map((author) => (
-                <article
-                  key={author.id}
-                  id={author.id}
-                  className="
-                    grid scroll-mt-[32px]
-                    grid-cols-1
-                    border-b border-[#dee2e6]
-                    py-[20px]
-                    sm:py-[28px]
-                    md:grid-cols-[240px_minmax(0,1fr)]
-                    lg:grid-cols-[315px_minmax(0,1fr)]
-                    md:gap-0
-                  "
+                <span>Search by Last Name</span>
+                <span
+                  aria-hidden="true"
+                  className="ml-4 inline-block shrink-0 text-[24px] font-normal leading-none transition-transform duration-200 group-open:rotate-180"
                 >
-                  {/* =================================================
-                      AUTHOR IMAGE — desktop column only (md and up).
-                      On mobile the photo instead renders inline with
-                      the name/title/icons below, matching the reference.
-                  ================================================= */}
-                                    <div className="hidden md:flex md:w-full md:items-start md:pl-[30px] lg:pl-[55px]">
-                    <div className="h-[184px] w-[184px] overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={author.image}
-                        alt={author.name}
-                        width={212}
-                        height={212}
-                        loading="lazy"
-                        decoding="async"
-                        referrerPolicy="no-referrer"
-                        className="block h-full w-full object-cover"
-                      />
-                    </div>
-                  </div>
+                  ⌃
+                </span>
+              </summary>
 
-                  {/* =================================================
-                      AUTHOR CONTENT
-                  ================================================= */}
-                                    <div className="min-w-0">
-                    {/* MOBILE HEADER ROW: photo beside name/title/icons.
-                        Hidden from md up, where the column layout above
-                        takes over instead. */}
-                    <div className="flex items-start gap-[14px] md:hidden">
-                      <div className="h-[110px] w-[110px] shrink-0 overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)] sm:h-[150px] sm:w-[150px]">
+              <div className="border-t border-[#c7cdd1] px-[22px] pb-[24px] pt-[20px] sm:px-[26px] sm:pb-[28px] lg:border-t-0 lg:pt-[6px]">
+                <ul className="grid grid-cols-6 gap-x-[12px] gap-y-[10px] sm:gap-x-[16px] sm:gap-y-[14px] lg:gap-x-[18px]">
+                  {LETTERS.map((letter) => {
+                    const active = activeLetters.includes(letter);
+
+                    return (
+                      <li key={letter} className="list-none text-center">
+                        {active ? (
+                          <a
+                            href={`#${letter}`}
+                            className="font-display text-[16px] font-medium leading-[1.6] text-[#496d83] underline decoration-1 underline-offset-2 transition-colors hover:text-[#4f832a]"
+                          >
+                            {letter}
+                          </a>
+                        ) : (
+                          <span className="font-display text-[16px] font-medium leading-[1.6] text-[#496d83]">
+                            {letter}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          {/* Author content */}
+          <div className="min-w-0 lg:col-span-8">
+            {activeLetters.map((letter, letterIndex) => (
+              <section
+                key={letter}
+                id={letter}
+                aria-labelledby={`${letter}-heading`}
+                className="scroll-mt-[24px]"
+              >
+                <h2
+                  id={`${letter}-heading`}
+                  className={`font-display text-[42px] font-bold leading-none text-[#4f832a] sm:text-[48px] lg:text-[56px] ${
+                    letterIndex === 0 ? "mt-0" : "mt-[48px] sm:mt-[64px] lg:mt-[76px]"
+                  }`}
+                >
+                  {letter}
+                </h2>
+
+                {grouped[letter].map((author, authorIndex) => (
+                  <article
+                    key={author.id}
+                    id={author.id}
+                    className={`scroll-mt-[24px] py-[28px] sm:py-[36px] lg:py-[44px] ${
+                      authorIndex > 0
+                        ? "border-t-2 border-[#c36d15]"
+                        : ""
+                    }`}
+                  >
+                    {/* Mobile: photo beside name/title; all supporting content stays under the text column */}
+                    <div className="grid grid-cols-[66px_minmax(0,1fr)] items-start gap-x-[18px] md:hidden">
+                      <div className="h-[66px] w-[66px] overflow-hidden bg-[#f8f8f8] shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={author.image}
                           alt={author.name}
-                          width={212}
-                          height={212}
+                          width={120}
+                          height={120}
                           loading="lazy"
                           decoding="async"
                           referrerPolicy="no-referrer"
@@ -651,35 +618,35 @@ export default function MeetTheAuthorsPage() {
                         />
                       </div>
 
-                      <div className="min-w-0 pt-[2px]">
-                        <h3 className="font-display text-[19px] font-bold leading-[1.28] text-charcoal sm:text-[22px] sm:leading-[1.3]">
+                      <div className="min-w-0">
+                        <h3 className="font-display text-[28px] font-bold leading-[1.1] text-[#231f20]">
                           {author.name}
                         </h3>
 
                         {author.title && (
-                          <p className="mt-[2px] font-display text-[13px] font-bold leading-[1.4] text-[#727272] sm:text-[15px]">
+                          <p className="mt-[12px] font-display text-[20px] font-bold leading-[1.48] text-[#686868]">
                             {author.title}
                           </p>
                         )}
 
                         {(author.email || author.linkedin) && (
-                          <div className="mt-[10px] flex items-center gap-[4px]">
+                          <div className="mt-[18px] flex items-center gap-[10px]">
                             {author.email && (
                               <a
                                 href={`mailto:${author.email}`}
                                 aria-label={`Email ${author.name}`}
-                                className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
+                                className="inline-flex h-[34px] w-[42px] items-center justify-center transition-opacity hover:opacity-70"
                               >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                   src={`${ICON_BASE}/Email.png`}
                                   alt=""
-                                  width={20}
-                                  height={20}
+                                  width={42}
+                                  height={34}
                                   loading="lazy"
                                   decoding="async"
                                   referrerPolicy="no-referrer"
-                                  className="h-[22px] w-[22px] object-contain"
+                                  className="h-[34px] w-[42px] object-contain"
                                 />
                               </a>
                             )}
@@ -690,179 +657,157 @@ export default function MeetTheAuthorsPage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`${author.name} on LinkedIn`}
-                                className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
+                                className="inline-flex h-[34px] w-[34px] items-center justify-center transition-opacity hover:opacity-70"
                               >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                   src={`${ICON_BASE}/LinkedIn.png`}
                                   alt=""
-                                  width={20}
-                                  height={20}
+                                  width={34}
+                                  height={34}
                                   loading="lazy"
                                   decoding="async"
                                   referrerPolicy="no-referrer"
-                                  className="h-[22px] w-[22px] object-contain"
+                                  className="h-[34px] w-[34px] object-contain"
                                 />
                               </a>
                             )}
                           </div>
                         )}
                       </div>
-                    </div>
 
-                    {/* DESKTOP HEADER: name/title/icons (md and up).
-                        Hidden on mobile, where the row above shows this
-                        content instead. */}
-                    <div className="hidden md:block">
-                      <h3 className="font-display text-[25px] font-bold leading-[32px] text-charcoal">
-                        {author.name}
-                      </h3>
-
-                      {author.title && (
-                        <p className="mt-[2px] font-display text-[17px] font-bold leading-[1.5] text-[#727272]">
-                          {author.title}
+                      <div className="col-start-2 min-w-0 pt-[20px]">
+                        <p className="font-sans text-[16px] leading-[1.68] text-[#231f20]">
+                          {author.bio}
                         </p>
-                      )}
 
-                      {(author.email || author.linkedin) && (
-                        <div className="mt-[17px] flex items-center gap-[8px]">
-                          {author.email && (
-                            <a
-                              href={`mailto:${author.email}`}
-                              aria-label={`Email ${author.name}`}
-                              className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
-                            >
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={`${ICON_BASE}/Email.png`}
-                                alt=""
-                                width={20}
-                                height={20}
-                                loading="lazy"
-                                decoding="async"
-                                referrerPolicy="no-referrer"
-                                className="h-[32px] w-[32px] object-contain"
-                              />
-                            </a>
-                          )}
-
-                          {author.linkedin && (
-                            <a
-                              href={author.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${author.name} on LinkedIn`}
-                              className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
-                            >
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={`${ICON_BASE}/LinkedIn.png`}
-                                alt=""
-                                width={20}
-                                height={20}
-                                loading="lazy"
-                                decoding="async"
-                                referrerPolicy="no-referrer"
-                                className="h-[32px] w-[32px] object-contain"
-                              />
-                            </a>
-                          )}
-                        </div>
-                      )}
+                        <Link
+                          href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
+                            author.id
+                          )}`}
+                          className="mt-[22px] inline-flex min-h-[44px] items-center justify-center bg-[#496d83] px-[20px] font-display text-[16px] font-bold text-white transition-colors hover:bg-[#3e5e71]"
+                        >
+                          See All Articles
+                        </Link>
+                      </div>
                     </div>
 
-                    {/* BIO — full width below the header on every size */}
-                    <p className="mt-[16px] max-w-[68ch] font-sans text-[14px] leading-[1.55] text-charcoal sm:mt-[31px] sm:text-[17px] sm:leading-[28.8px]">
-                      {author.bio}
-                    </p>
+                    {/* Desktop/tablet: original-style 4/8 author structure */}
+                    <div className="hidden md:grid md:grid-cols-[30%_minmax(0,1fr)] md:gap-x-[34px] lg:grid-cols-[29%_minmax(0,1fr)] lg:gap-x-[42px]">
+                      <div className="flex items-start justify-start">
+                        <div className="h-[184px] w-[184px] overflow-hidden bg-[#f8f8f8] shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={author.image}
+                            alt={author.name}
+                            width={212}
+                            height={212}
+                            loading="lazy"
+                            decoding="async"
+                            referrerPolicy="no-referrer"
+                            className="block h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
 
-                    <Link
-                      href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
-                        author.id
-                      )}`}
-                      className="mt-[13px] inline-block font-display text-[14px] font-bold text-clay underline decoration-1 underline-offset-2 transition-colors hover:text-forest-dark sm:mt-[17px] sm:text-[16px]"
-                    >
-                      See All Articles
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </section>
-          ))}
+                      <div className="min-w-0">
+                        <h3 className="font-display text-[34px] font-bold leading-[1.18] text-[#231f20] lg:text-[38px]">
+                          {author.name}
+                        </h3>
+
+                        {author.title && (
+                          <p className="mt-[10px] max-w-[650px] font-display text-[21px] font-bold leading-[1.42] text-[#686868] lg:text-[23px]">
+                            {author.title}
+                          </p>
+                        )}
+
+                        {(author.email || author.linkedin) && (
+                          <div className="mt-[20px] flex items-center gap-[12px]">
+                            {author.email && (
+                              <a
+                                href={`mailto:${author.email}`}
+                                aria-label={`Email ${author.name}`}
+                                className="inline-flex h-[42px] w-[52px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/Email.png`}
+                                  alt=""
+                                  width={52}
+                                  height={42}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[42px] w-[52px] object-contain"
+                                />
+                              </a>
+                            )}
+
+                            {author.linkedin && (
+                              <a
+                                href={author.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${author.name} on LinkedIn`}
+                                className="inline-flex h-[38px] w-[38px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/LinkedIn.png`}
+                                  alt=""
+                                  width={38}
+                                  height={38}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[38px] w-[38px] object-contain"
+                                />
+                              </a>
+                            )}
+                          </div>
+                        )}
+
+                        <p className="mt-[28px] max-w-[780px] font-sans text-[17px] leading-[1.7] text-[#231f20] lg:text-[18px]">
+                          {author.bio}
+                        </p>
+
+                        <Link
+                          href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
+                            author.id
+                          )}`}
+                          className="mt-[24px] inline-flex min-h-[48px] items-center justify-center bg-[#496d83] px-[24px] font-display text-[17px] font-bold text-white transition-colors hover:bg-[#3e5e71]"
+                        >
+                          See All Articles
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </section>
+            ))}
+          </div>
         </div>
       </div>
 
-            {/* =========================================================
-          NEWSLETTER — sits immediately before the global footer
-      ========================================================= */}
+      {/* NEWSLETTER */}
       <section className="w-full bg-[#4f832a]">
-        <div
-          className="
-            mx-auto flex min-h-[320px] w-[91.8%] max-w-[1760px]
-            flex-col items-center justify-center
-            py-[48px] text-center
-            sm:min-h-[390px]
-            lg:min-h-[400px] lg:py-[60px]
-          "
-        >
-          <h2
-            className="
-              m-0
-              max-w-[900px]
-              font-display
-              text-[26px]
-              font-bold
-              leading-[1.2]
-              text-white
-              sm:text-[38px]
-              lg:text-[44px]
-              xl:text-[46px]
-            "
-          >
+        <div className="mx-auto flex min-h-[390px] w-full max-w-[1920px] flex-col items-center justify-center px-[14px] py-[56px] text-center sm:px-[32px] sm:py-[60px] lg:min-h-[400px] lg:px-[67px] lg:py-[64px]">
+          <h2 className="max-w-[1000px] font-display text-[34px] font-bold leading-[1.14] text-white sm:text-[42px] lg:text-[46px]">
             Sign up for our Today&apos;s Harvest Blog.
           </h2>
 
-          <p
-            className="
-              m-0
-              mt-[18px]
-              max-w-[700px]
-              text-[16px]
-              font-semibold
-              leading-[1.4]
-              text-white
-              sm:mt-[26px]
-              sm:text-[18px]
-              lg:mt-[42px]
-              lg:text-[21px]
-            "
-          >
+          <p className="mt-[26px] max-w-[760px] font-sans text-[18px] font-semibold leading-[1.4] text-white lg:mt-[42px] lg:text-[21px]">
             Get the latest blog articles delivered to your inbox.
           </p>
 
           <form
             action="#"
             method="post"
-            className="
-              mt-[22px]
-              flex w-full max-w-[360px]
-              flex-col items-center
-              sm:mt-[28px]
-              lg:mt-[38px]
-            "
+            className="mt-[28px] flex w-full max-w-[365px] flex-col items-start text-left lg:mt-[38px]"
           >
             <label
               htmlFor="authors-newsletter-email"
-              className="
-                mb-[10px]
-                text-[16px]
-                font-bold
-                leading-[22px]
-                text-white
-                sm:mb-[12px]
-                sm:text-[18px]
-                lg:text-[20px]
-              "
+              className="mb-[10px] text-[18px] font-bold leading-[1.3] text-white lg:text-[20px]"
             >
               Enter your email*
             </label>
@@ -874,73 +819,99 @@ export default function MeetTheAuthorsPage() {
                 type="email"
                 required
                 placeholder="email@address.com"
-                className="
-                  h-[44px]
-                  w-full
-                  min-w-0
-                  flex-1
-                  rounded-[2px]
-                  border-0
-                  bg-white
-                  px-[14px]
-                  text-[15px]
-                  text-[#231f20]
-                  placeholder:text-[13px]
-                  placeholder:text-[#686868]
-                  outline-none
-                  sm:w-[245px]
-                  sm:flex-none
-                  sm:text-[16px]
-                  sm:placeholder:text-[18px]
-                "
+                className="h-[44px] min-w-0 flex-1 rounded-[2px] border-0 bg-white px-[12px] text-[15px] text-[#231f20] outline-none placeholder:text-[14px] placeholder:text-[#686868] sm:w-[245px] sm:flex-none sm:px-[14px] sm:text-[16px] sm:placeholder:text-[18px]"
               />
 
               <button
                 type="submit"
-                className="
-                  inline-flex
-                  h-[44px]
-                  w-[92px]
-                  shrink-0
-                  items-center
-                  justify-center
-                  whitespace-nowrap
-                  rounded-[4px]
-                  border-2
-                  border-white
-                  bg-[#4f832a]
-                  text-[15px]
-                  font-bold
-                  leading-[20px]
-                  text-white
-                  transition-colors
-                  hover:bg-[#436d23]
-                  sm:w-[112px]
-                  sm:text-[18px]
-                "
+                className="inline-flex h-[44px] w-[96px] shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-[#4f832a] text-[16px] font-bold text-white transition-colors hover:bg-[#436d23] sm:w-[112px] sm:text-[18px]"
               >
                 Sign Up
               </button>
             </div>
 
-            <p
-              className="
-                mt-[12px]
-                text-[13px]
-                font-bold
-                italic
-                leading-[18px]
-                text-white
-                sm:mt-[14px]
-                sm:text-[14px]
-                lg:text-[15px]
-              "
-            >
+            <p className="mt-[12px] text-[14px] font-bold italic leading-[1.3] text-white lg:mt-[14px] lg:text-[15px]">
               *Required Field
             </p>
           </form>
         </div>
       </section>
+      <style jsx global>{`
+        .meet-authors-page h1.meet-authors-hero-title {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          color: #ecf1e4 !important;
+          font-family: var(--font-montserrat), Montserrat, Arial, sans-serif !important;
+          font-size: 42px !important;
+          line-height: 1.08 !important;
+          font-weight: 700 !important;
+          letter-spacing: -0.6px !important;
+          margin: 0 !important;
+        }
+
+        .meet-authors-page .meet-authors-hero-description {
+          color: #ecf1e4 !important;
+          font-family: var(--font-barlow), Barlow, Arial, sans-serif !important;
+          font-size: 20px !important;
+          line-height: 1.6 !important;
+          font-weight: 700 !important;
+        }
+
+        .meet-authors-page details > summary {
+          list-style: none !important;
+          -webkit-user-select: none;
+          user-select: none;
+        }
+
+        .meet-authors-page details > summary::-webkit-details-marker {
+          display: none !important;
+        }
+
+        .meet-authors-page details[open] > summary {
+          border-bottom-color: #c36d15 !important;
+        }
+
+        .meet-authors-page .meet-authors-search-summary span:last-child {
+          transform: rotate(0deg);
+        }
+
+        .meet-authors-page details[open] .meet-authors-search-summary span:last-child {
+          transform: rotate(180deg);
+        }
+
+        @media (min-width: 640px) {
+          .meet-authors-page h1.meet-authors-hero-title {
+            font-size: 50px !important;
+          }
+          .meet-authors-page .meet-authors-hero-description {
+            font-size: 22px !important;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .meet-authors-page h1.meet-authors-hero-title {
+            font-size: 58px !important;
+          }
+          .meet-authors-page .meet-authors-hero-description {
+            font-size: 23px !important;
+          }
+        }
+
+        @media (max-width: 359px) {
+          .meet-authors-page h1.meet-authors-hero-title {
+            font-size: 40px !important;
+            max-width: 245px !important;
+          }
+          .meet-authors-page .meet-authors-hero-description {
+            font-size: 19px !important;
+            line-height: 1.55 !important;
+          }
+          .meet-authors-page .meet-authors-search-summary {
+            font-size: 23px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
