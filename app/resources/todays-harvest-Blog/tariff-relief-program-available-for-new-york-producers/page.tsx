@@ -83,9 +83,16 @@ const pageStyles = `
   .tariff-article-page {
     --forest: #4f832a;
     --forest-dark: #3f6e20;
+
+    /* Reference heading/title tone */
+    --heading-brown: #5a4400;
+    --heading-brown-dark: #493600;
+
     --clay: #496d83;
     --clay-dark: #3b5a6d;
+
     --cream: #ecf1e4;
+    --grey-bg: #f8f8f8;
     --grey-badge: #686868;
     --grey-text: #686868;
     --charcoal: #231f20;
@@ -107,13 +114,13 @@ const pageStyles = `
   .tariff-article-page .article-hero {
     position: relative;
     width: 100%;
+    padding: 24px 20px 28px;
     background: var(--clay);
     color: #fff;
-    padding: 24px 20px 30px;
   }
 
   .tariff-article-page .article-date {
-    margin: 0 0 22px;
+    margin: 0 0 20px;
     text-align: right;
     color: #fff;
     font-family:
@@ -127,33 +134,32 @@ const pageStyles = `
   }
 
   .tariff-article-page .article-heading {
-    max-width: 1480px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 
   .tariff-article-page .article-category {
     display: inline-block;
-    margin: 0 0 30px;
-    padding: 7px 14px;
+    margin: 0 0 14px;
+    padding: 6px 12px;
     border: 1px solid #fff;
     color: #fff;
+    text-decoration: none;
     font-family:
       var(--font-montserrat),
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
-    line-height: 1.2;
-    text-decoration: none;
+    line-height: 1.3;
   }
 
-  .tariff-article-page .article-category:hover {
+  .tariff-article-page .article-category:hover,
+  .tariff-article-page .article-author:hover {
     text-decoration: underline;
   }
 
   .tariff-article-page .article-title {
-    max-width: 1480px;
     margin: 0;
     color: var(--cream);
     font-family:
@@ -161,21 +167,21 @@ const pageStyles = `
       Montserrat,
       Arial,
       sans-serif;
-    font-size: clamp(34px, 4vw, 52px);
+    font-size: clamp(28px, 7vw, 40px);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.5px;
+    line-height: 1.12;
+    letter-spacing: -0.3px;
   }
 
   .tariff-article-page .article-byline {
-    margin: 26px 0 0;
+    margin: 14px 0 0;
     color: #fff;
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.5;
   }
 
@@ -189,10 +195,10 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .hero-image-wrap {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
     position: relative;
-    width: 645px;
-    max-width: calc(100% - 40px);
-    margin: 24px auto 0;
   }
 
   .tariff-article-page .hero-image-wrap img {
@@ -205,7 +211,7 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     ARTICLE CONTENT
+     ARTICLE BODY
      ========================================================== */
 
   .tariff-article-page .article-content {
@@ -213,12 +219,18 @@ const pageStyles = `
     margin: 0 auto;
   }
 
+  /*
+    Narrow centered reading column.
+    This is what creates the "starts from the middle"
+    appearance from the reference.
+  */
   .tariff-article-page .article-copy {
     width: min(100% - 40px, 860px);
     margin: 0 auto;
-    padding: 58px 0 20px;
+    padding: 52px 0 20px;
   }
 
+  .tariff-article-page .article-copy,
   .tariff-article-page .article-copy p,
   .tariff-article-page .article-copy li {
     font-family:
@@ -226,6 +238,10 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
+  }
+
+  .tariff-article-page .article-copy p,
+  .tariff-article-page .article-copy li {
     font-size: 18px;
     line-height: 1.7;
   }
@@ -237,7 +253,7 @@ const pageStyles = `
   .tariff-article-page .article-copy h3,
   .tariff-article-page .article-copy h4 {
     margin: 38px 0 16px;
-    color: var(--forest);
+    color: var(--heading-brown);
     font-family:
       var(--font-montserrat),
       Montserrat,
@@ -280,7 +296,7 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .contact-wrap {
-    padding: 10px 0 34px;
+    padding: 8px 0 30px;
     text-align: center;
   }
 
@@ -290,6 +306,7 @@ const pageStyles = `
     align-items: center;
     justify-content: center;
     padding: 13px 28px;
+    border: 0;
     background: var(--clay);
     color: #fff !important;
     font-family:
@@ -313,14 +330,14 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .tags {
-    width: min(100% - 40px, 860px);
-    margin: 0 auto;
-    padding: 22px 0 28px;
-    border-top: 1px solid var(--line);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
+    width: min(100% - 40px, 860px);
+    margin: 0 auto;
+    padding: 22px 0 28px;
+    border-top: 1px solid var(--line);
     color: var(--charcoal);
     font-family:
       var(--font-barlow),
@@ -336,12 +353,16 @@ const pageStyles = `
     width: 17px;
     height: 17px;
     margin-right: 2px;
-    color: var(--forest);
+    color: var(--heading-brown);
   }
 
   .tariff-article-page .tags a {
     color: var(--clay);
     text-decoration: underline;
+  }
+
+  .tariff-article-page .tags a:hover {
+    color: var(--heading-brown);
   }
 
   .tariff-article-page .tag-separator {
@@ -354,13 +375,12 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .social-author-row {
-    width: min(100% - 40px, 860px);
-    margin: 0 auto;
-    padding: 20px 0 52px;
-
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
+    width: min(100% - 40px, 1180px);
+    margin: 0 auto;
+    padding: 20px 0 52px;
   }
 
   .tariff-article-page .grey-box {
@@ -384,7 +404,7 @@ const pageStyles = `
   }
 
   .tariff-article-page .author-name {
-    color: var(--forest);
+    color: var(--heading-brown);
     font-family:
       var(--font-montserrat),
       Montserrat,
@@ -477,15 +497,18 @@ const pageStyles = `
     background: var(--cream);
   }
 
+  /*
+    Constrained rather than stretched across the whole viewport.
+  */
   .tariff-article-page .related {
-    width: min(100% - 40px, 1760px);
+    width: min(100% - 40px, 1180px);
     margin: 0 auto;
     padding: 34px 0 54px;
   }
 
-  .tariff-article-page .section-title {
+  .tariff-article-page .related .section-title {
     margin: 0;
-    color: var(--forest);
+    color: var(--heading-brown);
     font-family:
       var(--font-montserrat),
       Montserrat,
@@ -504,6 +527,7 @@ const pageStyles = `
   }
 
   .tariff-article-page .related-card {
+    min-width: 0;
     padding-top: 26px;
   }
 
@@ -519,6 +543,7 @@ const pageStyles = `
       sans-serif;
     font-size: 13px;
     font-weight: 700;
+    line-height: 1.2;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     text-decoration: none;
@@ -527,7 +552,7 @@ const pageStyles = `
   .tariff-article-page .related-title {
     display: block;
     margin-top: 26px;
-    color: var(--forest);
+    color: var(--heading-brown);
     font-family:
       var(--font-montserrat),
       Montserrat,
@@ -540,6 +565,7 @@ const pageStyles = `
   }
 
   .tariff-article-page .related-title:hover {
+    color: var(--heading-brown-dark);
     text-decoration: underline;
   }
 
@@ -553,6 +579,7 @@ const pageStyles = `
       sans-serif;
     font-size: 14px;
     font-weight: 700;
+    line-height: 1.3;
     text-transform: uppercase;
   }
 
@@ -561,22 +588,30 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .authors-cta {
-    width: min(100% - 40px, 1760px);
-    margin: 0 auto;
-    padding: 50px 0;
-
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
     align-items: center;
     gap: 28px;
+    width: min(100% - 40px, 1180px);
+    margin: 0 auto;
+    padding: 50px 0;
   }
 
   .tariff-article-page .authors-cta .section-title {
-    margin-bottom: 14px;
+    margin: 0 0 14px;
+    color: var(--heading-brown);
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
   }
 
   .tariff-article-page .authors-cta-text {
-    max-width: 900px;
+    max-width: 760px;
     margin: 0;
     color: var(--charcoal);
     font-family:
@@ -585,6 +620,7 @@ const pageStyles = `
       Arial,
       sans-serif;
     font-size: 20px;
+    font-weight: 400;
     line-height: 1.5;
   }
 
@@ -717,24 +753,78 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     TABLET / SMALL DESKTOP
+     DESKTOP
+     ========================================================== */
+
+  @media (min-width: 992px) {
+    .tariff-article-page .article-hero {
+      height: 312px;
+      padding: 15px 67px 0;
+      overflow: visible;
+    }
+
+    .tariff-article-page .article-heading {
+      max-width: 1480px;
+    }
+
+    .tariff-article-page .article-category {
+      margin-bottom: 34px;
+      padding: 7px 14px;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .tariff-article-page .article-title {
+      max-width: 1480px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+    }
+
+    .tariff-article-page .article-byline {
+      margin-top: 30px;
+      font-size: 17px;
+    }
+
+    .tariff-article-page .hero-image-wrap {
+      width: 645px;
+      max-width: 645px;
+      margin: -37px auto 0;
+    }
+
+    .tariff-article-page .hero-image-wrap img {
+      height: 403px;
+      aspect-ratio: auto;
+    }
+
+    .tariff-article-page .article-copy {
+      padding-top: 60px;
+    }
+
+    .tariff-article-page .related,
+    .tariff-article-page .authors-cta {
+      width: min(100% - 40px, 1180px);
+    }
+  }
+
+  /* ==========================================================
+     TABLET
      ========================================================== */
 
   @media (max-width: 991px) {
-    .tariff-article-page .article-heading {
-      max-width: 100%;
-    }
-
     .tariff-article-page .article-title {
       font-size: 45px;
     }
 
-    .tariff-article-page .article-copy,
-    .tariff-article-page .tags,
-    .tariff-article-page .social-author-row {
-      width: calc(100% - 56px);
+    .tariff-article-page .article-copy {
+      width: min(100% - 56px, 860px);
     }
 
+    .tariff-article-page .tags {
+      width: min(100% - 56px, 860px);
+    }
+
+    .tariff-article-page .social-author-row,
     .tariff-article-page .related,
     .tariff-article-page .authors-cta {
       width: calc(100% - 56px);
@@ -742,10 +832,6 @@ const pageStyles = `
 
     .tariff-article-page .related-grid {
       gap: 24px;
-    }
-
-    .tariff-article-page .authors-cta-text {
-      font-size: 18px;
     }
   }
 
@@ -755,7 +841,7 @@ const pageStyles = `
 
   @media (max-width: 767px) {
     .tariff-article-page .article-hero {
-      padding: 24px 14px 30px;
+      padding: 20px 16px 24px;
     }
 
     .tariff-article-page .article-date {
@@ -786,7 +872,8 @@ const pageStyles = `
     }
 
     .tariff-article-page .hero-image-wrap img {
-      aspect-ratio: 645 / 403;
+      height: 230px;
+      aspect-ratio: auto;
     }
 
     .tariff-article-page .article-copy {
@@ -856,7 +943,7 @@ const pageStyles = `
       padding-bottom: 35px;
     }
 
-    .tariff-article-page .section-title {
+    .tariff-article-page .related .section-title {
       font-size: 27px;
     }
 
@@ -865,8 +952,22 @@ const pageStyles = `
       gap: 25px;
     }
 
+    .tariff-article-page .related-card {
+      padding-top: 20px;
+    }
+
+    .tariff-article-page .related-category {
+      font-size: 12px;
+    }
+
     .tariff-article-page .related-title {
+      margin-top: 20px;
       font-size: 20px;
+    }
+
+    .tariff-article-page .related-date {
+      margin-top: 20px;
+      font-size: 14px;
     }
 
     .tariff-article-page .authors-cta {
@@ -874,6 +975,10 @@ const pageStyles = `
       grid-template-columns: 1fr;
       gap: 18px;
       padding: 38px 0;
+    }
+
+    .tariff-article-page .authors-cta .section-title {
+      font-size: 27px;
     }
 
     .tariff-article-page .authors-cta-text {
@@ -1136,7 +1241,7 @@ export default function TariffReliefArticlePage() {
               fill="currentColor"
               aria-hidden="true"
             >
-              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 8 6.5 8z" />
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86-.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 5 6.5 5 8 5.67 8 6.5 7.33 8 6.5 8z" />
             </svg>
 
             <span>Tags:</span>{" "}
@@ -1273,8 +1378,8 @@ export default function TariffReliefArticlePage() {
             YOU MIGHT ALSO LIKE
             ====================================================== */}
 
-        <div className="related-wrap">
-          <section className="related">
+        <section className="related-wrap">
+          <div className="related">
             <h2 className="section-title">You Might Also Like</h2>
 
             <div className="related-grid">
@@ -1296,8 +1401,8 @@ export default function TariffReliefArticlePage() {
                 </article>
               ))}
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
 
         {/* ======================================================
             MEET THE AUTHORS
