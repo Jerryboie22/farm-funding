@@ -609,10 +609,12 @@ export default function MeetTheAuthorsPage() {
                   "
                 >
                   {/* =================================================
-                      AUTHOR IMAGE
+                      AUTHOR IMAGE — desktop column only (md and up).
+                      On mobile the photo instead renders inline with
+                      the name/title/icons below, matching the reference.
                   ================================================= */}
-                                    <div className="flex w-full items-start md:pl-[30px] lg:pl-[55px]">
-                    <div className="h-[128px] w-[128px] shrink-0 overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)] sm:h-[184px] sm:w-[184px]">
+                                    <div className="hidden md:flex md:w-full md:items-start md:pl-[30px] lg:pl-[55px]">
+                    <div className="h-[184px] w-[184px] overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={author.image}
@@ -630,63 +632,146 @@ export default function MeetTheAuthorsPage() {
                   {/* =================================================
                       AUTHOR CONTENT
                   ================================================= */}
-                                    <div className="mt-[14px] min-w-0 sm:mt-0">
-                    <h3 className="font-display text-[19px] font-bold leading-[1.28] text-charcoal sm:text-[25px] sm:leading-[32px]">
-                      {author.name}
-                    </h3>
+                                    <div className="min-w-0">
+                    {/* MOBILE HEADER ROW: photo beside name/title/icons.
+                        Hidden from md up, where the column layout above
+                        takes over instead. */}
+                    <div className="flex items-start gap-[14px] md:hidden">
+                      <div className="h-[110px] w-[110px] shrink-0 overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)] sm:h-[150px] sm:w-[150px]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={author.image}
+                          alt={author.name}
+                          width={212}
+                          height={212}
+                          loading="lazy"
+                          decoding="async"
+                          referrerPolicy="no-referrer"
+                          className="block h-full w-full object-cover"
+                        />
+                      </div>
 
-                    {author.title && (
-                      <p className="mt-[2px] font-display text-[14px] font-bold leading-[1.4] text-[#727272] sm:text-[17px] sm:leading-[1.5]">
-                        {author.title}
-                      </p>
-                    )}
+                      <div className="min-w-0 pt-[2px]">
+                        <h3 className="font-display text-[19px] font-bold leading-[1.28] text-charcoal sm:text-[22px] sm:leading-[1.3]">
+                          {author.name}
+                        </h3>
 
-                    {(author.email || author.linkedin) && (
-                      <div className="mt-[13px] flex items-center gap-[4px] sm:mt-[17px] sm:gap-[8px]">
-                        {author.email && (
-                          <a
-                            href={`mailto:${author.email}`}
-                            aria-label={`Email ${author.name}`}
-                            className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
-                          >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={`${ICON_BASE}/Email.png`}
-                              alt=""
-                              width={20}
-                              height={20}
-                              loading="lazy"
-                              decoding="async"
-                              referrerPolicy="no-referrer"
-                              className="h-[22px] w-[22px] object-contain sm:h-[26px] sm:w-[26px]"
-                            />
-                          </a>
+                        {author.title && (
+                          <p className="mt-[2px] font-display text-[13px] font-bold leading-[1.4] text-[#727272] sm:text-[15px]">
+                            {author.title}
+                          </p>
                         )}
 
-                        {author.linkedin && (
-                          <a
-                            href={author.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${author.name} on LinkedIn`}
-                            className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
-                          >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={`${ICON_BASE}/LinkedIn.png`}
-                              alt=""
-                              width={20}
-                              height={20}
-                              loading="lazy"
-                              decoding="async"
-                              referrerPolicy="no-referrer"
-                              className="h-[22px] w-[22px] object-contain sm:h-[26px] sm:w-[26px]"
-                            />
-                          </a>
+                        {(author.email || author.linkedin) && (
+                          <div className="mt-[10px] flex items-center gap-[4px]">
+                            {author.email && (
+                              <a
+                                href={`mailto:${author.email}`}
+                                aria-label={`Email ${author.name}`}
+                                className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/Email.png`}
+                                  alt=""
+                                  width={20}
+                                  height={20}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[22px] w-[22px] object-contain"
+                                />
+                              </a>
+                            )}
+
+                            {author.linkedin && (
+                              <a
+                                href={author.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${author.name} on LinkedIn`}
+                                className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={`${ICON_BASE}/LinkedIn.png`}
+                                  alt=""
+                                  width={20}
+                                  height={20}
+                                  loading="lazy"
+                                  decoding="async"
+                                  referrerPolicy="no-referrer"
+                                  className="h-[22px] w-[22px] object-contain"
+                                />
+                              </a>
+                            )}
+                          </div>
                         )}
                       </div>
-                    )}
+                    </div>
 
+                    {/* DESKTOP HEADER: name/title/icons (md and up).
+                        Hidden on mobile, where the row above shows this
+                        content instead. */}
+                    <div className="hidden md:block">
+                      <h3 className="font-display text-[25px] font-bold leading-[32px] text-charcoal">
+                        {author.name}
+                      </h3>
+
+                      {author.title && (
+                        <p className="mt-[2px] font-display text-[17px] font-bold leading-[1.5] text-[#727272]">
+                          {author.title}
+                        </p>
+                      )}
+
+                      {(author.email || author.linkedin) && (
+                        <div className="mt-[17px] flex items-center gap-[8px]">
+                          {author.email && (
+                            <a
+                              href={`mailto:${author.email}`}
+                              aria-label={`Email ${author.name}`}
+                              className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
+                            >
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={`${ICON_BASE}/Email.png`}
+                                alt=""
+                                width={20}
+                                height={20}
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
+                                className="h-[32px] w-[32px] object-contain"
+                              />
+                            </a>
+                          )}
+
+                          {author.linkedin && (
+                            <a
+                              href={author.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${author.name} on LinkedIn`}
+                              className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
+                            >
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={`${ICON_BASE}/LinkedIn.png`}
+                                alt=""
+                                width={20}
+                                height={20}
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
+                                className="h-[32px] w-[32px] object-contain"
+                              />
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* BIO — full width below the header on every size */}
                     <p className="mt-[16px] max-w-[68ch] font-sans text-[14px] leading-[1.55] text-charcoal sm:mt-[31px] sm:text-[17px] sm:leading-[28.8px]">
                       {author.bio}
                     </p>
