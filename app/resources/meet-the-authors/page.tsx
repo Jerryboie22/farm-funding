@@ -467,154 +467,152 @@ function groupByLetter(authors: Author[]) {
 
   for (const author of authors) {
     const firstLetter = author.name.trim().charAt(0).toUpperCase();
-
-    if (!groups[firstLetter]) {
-      groups[firstLetter] = [];
-    }
-
-    groups[firstLetter].push(author);
+    (groups[firstLetter] ??= []).push(author);
   }
 
   return groups;
 }
 
-export default function MeetTheAuthorsPage() {
-  const grouped = groupByLetter(AUTHORS);
+function AuthorIcons({ author, compact = false }: { author: Author; compact?: boolean }) {
+  const size = compact ? "h-[30px] w-[30px]" : "h-[40px] w-[40px]";
+  const imageSize = compact ? "h-[30px] w-[30px]" : "h-[40px] w-[40px]";
 
-  const activeLetters = LETTERS.filter(
-    (letter) => grouped[letter] && grouped[letter].length > 0
-  );
+  if (!author.email && !author.linkedin) return null;
 
   return (
-        <main className="w-full overflow-x-hidden bg-white">
-      {/* =========================================================
-          HERO — matched to the supplied Farm Funders reference
-      ========================================================= */}
-      <section className="bg-forest">
-        <div className="mx-auto flex min-h-[180px] w-[91.8%] max-w-[1760px] flex-col justify-center py-[36px] sm:min-h-[236px] sm:py-[52px]">
-          <h1 className="font-display text-[32px] font-bold leading-[1.12] tracking-[-0.5px] text-white sm:text-[46px] md:text-[50px] lg:text-[52px]">
+    <div className={`flex items-center ${compact ? "gap-[7px]" : "gap-[8px]"}`}>
+      {author.email && (
+        <a
+          href={`mailto:${author.email}`}
+          aria-label={`Email ${author.name}`}
+          className={`inline-flex ${size} items-center justify-center transition-opacity hover:opacity-70`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${ICON_BASE}/Email.png`}
+            alt=""
+            width={40}
+            height={40}
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+            className={`${imageSize} object-contain`}
+          />
+        </a>
+      )}
+
+      {author.linkedin && (
+        <a
+          href={author.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${author.name} on LinkedIn`}
+          className={`inline-flex ${size} items-center justify-center transition-opacity hover:opacity-70`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${ICON_BASE}/LinkedIn.png`}
+            alt=""
+            width={40}
+            height={40}
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+            className={`${imageSize} object-contain`}
+          />
+        </a>
+      )}
+    </div>
+  );
+}
+
+export default function MeetTheAuthorsPage() {
+  const grouped = groupByLetter(AUTHORS);
+  const activeLetters = LETTERS.filter((letter) => grouped[letter]?.length);
+
+  return (
+    <main className="w-full overflow-x-hidden bg-white">
+      {/* HERO */}
+      <section className="w-full bg-[#4f832a]">
+        <div className="mx-auto flex min-h-[369px] w-[91.8%] max-w-[1786px] flex-col justify-center py-[42px] sm:min-h-[310px] sm:py-[54px] lg:min-h-[286px] lg:py-[58px]">
+          <h1 className="max-w-[980px] font-display text-[40px] font-bold leading-[1.14] tracking-[-0.5px] text-[#ecf1e4] sm:text-[48px] lg:text-[52px]">
             {TITLE}
           </h1>
 
-          <p className="mt-[16px] max-w-[900px] font-sans text-[15px] leading-[1.55] text-cream sm:mt-[25px] sm:text-[18px]">
+          <p className="mt-[34px] max-w-[380px] font-sans text-[22px] font-semibold leading-[1.55] text-[#ecf1e4] sm:mt-[25px] sm:max-w-[720px] sm:text-[22px] lg:max-w-[820px]">
             {DESCRIPTION}
           </p>
         </div>
       </section>
 
-      {/* =========================================================
-          MAIN CONTENT
-          The left card is sticky on desktop and remains visible while
-          the author list scrolls.
-      ========================================================= */}
-      <div
-        className="
-          mx-auto grid w-[93.4%] max-w-[1760px]
-          grid-cols-1 gap-6
-          py-[24px]
-          sm:gap-10 sm:py-[40px]
-          lg:grid-cols-[344px_minmax(0,1fr)]
-          lg:gap-[clamp(80px,12.86vw,212px)]
-          lg:py-[32px]
-        "
-      >
-        {/* =======================================================
-            STICKY LETTER NAVIGATION
-        ======================================================= */}
-                <aside
-          className="
-            z-20 h-fit self-start rounded-[6px]
-            border border-[#d0d5da]
-            bg-[#e9edf1]
-            p-[18px]
-            shadow-[5px_5px_0_#d4d4d4]
-            sm:p-[25px]
-            lg:sticky lg:top-[32px]
-          "
-        >
-          <h2 className="font-display text-[19px] font-semibold leading-[1.25] text-charcoal sm:text-[23px]">
-            Search by Last Name
-          </h2>
+      {/* PAGE BODY */}
+      <div className="mx-auto grid w-[91.8%] max-w-[1786px] grid-cols-1 py-[32px] sm:py-[42px] lg:grid-cols-[344px_minmax(0,1fr)] lg:gap-[clamp(64px,8vw,180px)] lg:py-[48px]">
+        {/* LAST-NAME SEARCH / LETTER INDEX */}
+        <aside className="z-10 h-fit self-start lg:sticky lg:top-[32px]">
+          <div className="overflow-hidden rounded-[6px] border border-[#d0d5da] bg-[#e7ebef] shadow-[5px_6px_0_rgba(0,0,0,0.12)]">
+            <div className="flex min-h-[61px] items-center justify-between border border-[#c36d15] px-[24px] py-[13px]">
+              <h2 className="font-display text-[24px] font-semibold leading-[1.35] text-[#231f20] sm:text-[26px]">
+                Search by Last Name
+              </h2>
+              <span aria-hidden="true" className="ml-[12px] text-[28px] leading-none text-[#496d83]">⌃</span>
+            </div>
 
-                    <ul className="mt-[18px] flex flex-wrap gap-x-[10px] gap-y-[14px] sm:mt-[25px] sm:gap-x-[14px] sm:gap-y-[18px] lg:gap-x-[16px] lg:gap-y-[21px]">
-            {LETTERS.map((letter) => {
-              const active = activeLetters.includes(letter);
+            <nav aria-label="Search authors by last name" className="px-[25px] pb-[28px] pt-[20px]">
+              <ul className="grid grid-cols-6 gap-x-[13px] gap-y-[7px] sm:gap-x-[18px] sm:gap-y-[11px]">
+                {LETTERS.map((letter) => {
+                  const active = activeLetters.includes(letter);
 
-              return (
-                <li key={letter} className="list-none">
-                  {active ? (
-                    <a
-                      href={`#${letter}`}
-                      className="
-                        flex items-center justify-center
-                        font-display text-[16px] font-bold
-                        text-[#496f85] underline decoration-1
-                        underline-offset-2
-                        transition-colors hover:text-forest-dark
-                      "
-                      style={{ minHeight: "32px", minWidth: "24px" }}
-                    >
-                      {letter}
-                    </a>
-                  ) : (
-                    <span
-                      aria-hidden="true"
-                      className="flex items-center justify-center font-display text-[16px] font-bold text-[#496f85]"
-                      style={{ minHeight: "32px", minWidth: "24px" }}
-                    >
-                      {letter}
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+                  return (
+                    <li key={letter} className="list-none">
+                      {active ? (
+                        <a
+                          href={`#${letter}`}
+                          className="inline-flex min-h-[24px] min-w-[18px] items-center justify-center font-sans text-[17px] leading-[1.25] text-[#496d83] underline decoration-1 underline-offset-2 hover:text-[#4f832a]"
+                        >
+                          {letter}
+                        </a>
+                      ) : (
+                        <span className="inline-flex min-h-[24px] min-w-[18px] items-center justify-center font-sans text-[17px] leading-[1.25] text-[#496d83]">
+                          {letter}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
         </aside>
 
-        {/* =======================================================
-            AUTHORS
-        ======================================================= */}
+        {/* AUTHORS */}
         <div className="min-w-0">
           {activeLetters.map((letter, letterIndex) => (
             <section
               key={letter}
               id={letter}
               aria-labelledby={`${letter}-heading`}
-              className="scroll-mt-[32px]"
+              className="scroll-mt-[28px]"
             >
               <h2
                 id={`${letter}-heading`}
-                className={`
-                  font-display text-[28px] font-bold leading-[1.15]
-                  text-forest sm:text-[36px] lg:text-[40px]
-                  ${letterIndex === 0 ? "mt-[40px] sm:mt-[98px] lg:mt-[98px]" : "mt-[40px] sm:mt-[64px]"}
-                `}
+                className={`font-display text-[44px] font-bold leading-none text-[#4f832a] sm:text-[48px] lg:text-[54px] ${
+                  letterIndex === 0
+                    ? "mt-[34px] lg:mt-0"
+                    : "mt-[54px] border-t-[2px] border-[#c36d15] pt-[32px] sm:mt-[68px] sm:pt-[38px]"
+                }`}
               >
                 {letter}
               </h2>
 
-                            {grouped[letter].map((author) => (
+              {grouped[letter].map((author) => (
                 <article
                   key={author.id}
                   id={author.id}
-                  className="
-                    grid scroll-mt-[32px]
-                    grid-cols-1
-                    border-b border-[#dee2e6]
-                    py-[20px]
-                    sm:py-[28px]
-                    md:grid-cols-[240px_minmax(0,1fr)]
-                    lg:grid-cols-[315px_minmax(0,1fr)]
-                    md:gap-0
-                  "
+                  className="grid scroll-mt-[28px] grid-cols-1 border-b border-[#d9dde0] py-[30px] sm:py-[38px] md:grid-cols-[33.333%_66.667%] lg:py-[44px]"
                 >
-                  {/* =================================================
-                      AUTHOR IMAGE — desktop column only (md and up).
-                      On mobile the photo instead renders inline with
-                      the name/title/icons below, matching the reference.
-                  ================================================= */}
-                                    <div className="hidden md:flex md:w-full md:items-start md:pl-[30px] lg:pl-[55px]">
-                    <div className="h-[184px] w-[184px] overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
+                  {/* Desktop image column: mirrors the original 4/12 + 8/12 relationship */}
+                  <div className="hidden md:flex md:items-start md:pr-[28px] lg:pr-[42px]">
+                    <div className="aspect-square w-full max-w-[212px] overflow-hidden bg-[#f8f8f8] shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={author.image}
@@ -624,20 +622,15 @@ export default function MeetTheAuthorsPage() {
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
-                        className="block h-full w-full object-cover"
+                        className="h-full w-full object-cover"
                       />
                     </div>
                   </div>
 
-                  {/* =================================================
-                      AUTHOR CONTENT
-                  ================================================= */}
-                                    <div className="min-w-0">
-                    {/* MOBILE HEADER ROW: photo beside name/title/icons.
-                        Hidden from md up, where the column layout above
-                        takes over instead. */}
-                    <div className="flex items-start gap-[14px] md:hidden">
-                      <div className="h-[110px] w-[110px] shrink-0 overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)] sm:h-[150px] sm:w-[150px]">
+                  <div className="min-w-0">
+                    {/* Mobile: photo remains beside name/title exactly as in the reference */}
+                    <div className="flex items-start gap-[26px] md:hidden">
+                      <div className="h-[68px] w-[68px] shrink-0 overflow-hidden bg-[#f8f8f8] shadow-[3px_3px_4px_rgba(0,0,0,0.18)] min-[340px]:h-[82px] min-[340px]:w-[82px] sm:h-[110px] sm:w-[110px]">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={author.image}
@@ -647,143 +640,57 @@ export default function MeetTheAuthorsPage() {
                           loading="lazy"
                           decoding="async"
                           referrerPolicy="no-referrer"
-                          className="block h-full w-full object-cover"
+                          className="h-full w-full object-cover"
                         />
                       </div>
 
-                      <div className="min-w-0 pt-[2px]">
-                        <h3 className="font-display text-[19px] font-bold leading-[1.28] text-charcoal sm:text-[22px] sm:leading-[1.3]">
+                      <div className="min-w-0 flex-1 pt-[1px]">
+                        <h3 className="font-display text-[28px] font-bold leading-[1.08] text-[#231f20] min-[340px]:text-[30px] sm:text-[34px]">
                           {author.name}
                         </h3>
 
                         {author.title && (
-                          <p className="mt-[2px] font-display text-[13px] font-bold leading-[1.4] text-[#727272] sm:text-[15px]">
+                          <p className="mt-[10px] font-display text-[20px] font-bold leading-[1.5] text-[#686868] min-[340px]:text-[21px] sm:text-[23px]">
                             {author.title}
                           </p>
                         )}
 
-                        {(author.email || author.linkedin) && (
-                          <div className="mt-[10px] flex items-center gap-[4px]">
-                            {author.email && (
-                              <a
-                                href={`mailto:${author.email}`}
-                                aria-label={`Email ${author.name}`}
-                                className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
-                              >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  src={`${ICON_BASE}/Email.png`}
-                                  alt=""
-                                  width={20}
-                                  height={20}
-                                  loading="lazy"
-                                  decoding="async"
-                                  referrerPolicy="no-referrer"
-                                  className="h-[22px] w-[22px] object-contain"
-                                />
-                              </a>
-                            )}
-
-                            {author.linkedin && (
-                              <a
-                                href={author.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`${author.name} on LinkedIn`}
-                                className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
-                              >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  src={`${ICON_BASE}/LinkedIn.png`}
-                                  alt=""
-                                  width={20}
-                                  height={20}
-                                  loading="lazy"
-                                  decoding="async"
-                                  referrerPolicy="no-referrer"
-                                  className="h-[22px] w-[22px] object-contain"
-                                />
-                              </a>
-                            )}
-                          </div>
-                        )}
+                        <div className="mt-[16px]">
+                          <AuthorIcons author={author} />
+                        </div>
                       </div>
                     </div>
 
-                    {/* DESKTOP HEADER: name/title/icons (md and up).
-                        Hidden on mobile, where the row above shows this
-                        content instead. */}
+                    {/* Desktop author information */}
                     <div className="hidden md:block">
-                      <h3 className="font-display text-[25px] font-bold leading-[32px] text-charcoal">
+                      <h3 className="font-display text-[30px] font-bold leading-[1.15] text-[#231f20] lg:text-[32px]">
                         {author.name}
                       </h3>
 
                       {author.title && (
-                        <p className="mt-[2px] font-display text-[17px] font-bold leading-[1.5] text-[#727272]">
+                        <p className="mt-[10px] max-w-[650px] font-display text-[20px] font-bold leading-[1.5] text-[#686868] lg:text-[22px]">
                           {author.title}
                         </p>
                       )}
 
-                      {(author.email || author.linkedin) && (
-                        <div className="mt-[17px] flex items-center gap-[8px]">
-                          {author.email && (
-                            <a
-                              href={`mailto:${author.email}`}
-                              aria-label={`Email ${author.name}`}
-                              className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
-                            >
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={`${ICON_BASE}/Email.png`}
-                                alt=""
-                                width={20}
-                                height={20}
-                                loading="lazy"
-                                decoding="async"
-                                referrerPolicy="no-referrer"
-                                className="h-[32px] w-[32px] object-contain"
-                              />
-                            </a>
-                          )}
-
-                          {author.linkedin && (
-                            <a
-                              href={author.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`${author.name} on LinkedIn`}
-                              className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
-                            >
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={`${ICON_BASE}/LinkedIn.png`}
-                                alt=""
-                                width={20}
-                                height={20}
-                                loading="lazy"
-                                decoding="async"
-                                referrerPolicy="no-referrer"
-                                className="h-[32px] w-[32px] object-contain"
-                              />
-                            </a>
-                          )}
-                        </div>
-                      )}
+                      <div className="mt-[22px]">
+                        <AuthorIcons author={author} />
+                      </div>
                     </div>
 
-                    {/* BIO — full width below the header on every size */}
-                    <p className="mt-[16px] max-w-[68ch] font-sans text-[14px] leading-[1.55] text-charcoal sm:mt-[31px] sm:text-[17px] sm:leading-[28.8px]">
-                      {author.bio}
-                    </p>
+                    {/* Biography and article link */}
+                    <div className="ml-[94px] mt-[24px] min-[340px]:ml-[108px] sm:mt-[28px] sm:ml-[0] md:mt-[28px]">
+                      <p className="max-w-[760px] font-sans text-[17px] leading-[1.65] text-[#231f20] sm:text-[18px] md:text-[18px] md:leading-[1.6]">
+                        {author.bio}
+                      </p>
 
-                    <Link
-                      href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
-                        author.id
-                      )}`}
-                      className="mt-[13px] inline-block font-display text-[14px] font-bold text-clay underline decoration-1 underline-offset-2 transition-colors hover:text-forest-dark sm:mt-[17px] sm:text-[16px]"
-                    >
-                      See All Articles
-                    </Link>
+                      <Link
+                        href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(author.id)}`}
+                        className="mt-[22px] inline-flex min-h-[48px] items-center justify-center bg-[#496d83] px-[24px] font-display text-[16px] font-bold text-white transition-opacity hover:opacity-90 sm:px-[28px]"
+                      >
+                        See All Articles
+                      </Link>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -792,77 +699,21 @@ export default function MeetTheAuthorsPage() {
         </div>
       </div>
 
-            {/* =========================================================
-          NEWSLETTER — sits immediately before the global footer
-      ========================================================= */}
+      {/* NEWSLETTER */}
       <section className="w-full bg-[#4f832a]">
-        <div
-          className="
-            mx-auto flex min-h-[320px] w-[91.8%] max-w-[1760px]
-            flex-col items-center justify-center
-            py-[48px] text-center
-            sm:min-h-[390px]
-            lg:min-h-[400px] lg:py-[60px]
-          "
-        >
-          <h2
-            className="
-              m-0
-              max-w-[900px]
-              font-display
-              text-[26px]
-              font-bold
-              leading-[1.2]
-              text-white
-              sm:text-[38px]
-              lg:text-[44px]
-              xl:text-[46px]
-            "
-          >
+        <div className="mx-auto flex min-h-[390px] w-[91.8%] max-w-[1786px] flex-col items-center justify-center py-[54px] text-center lg:min-h-[400px] lg:py-[60px]">
+          <h2 className="max-w-[1000px] font-display text-[32px] font-bold leading-[1.15] text-white sm:text-[40px] lg:text-[46px]">
             Sign up for our Today&apos;s Harvest Blog.
           </h2>
 
-          <p
-            className="
-              m-0
-              mt-[18px]
-              max-w-[700px]
-              text-[16px]
-              font-semibold
-              leading-[1.4]
-              text-white
-              sm:mt-[26px]
-              sm:text-[18px]
-              lg:mt-[42px]
-              lg:text-[21px]
-            "
-          >
+          <p className="mt-[28px] max-w-[760px] font-sans text-[18px] font-semibold leading-[1.4] text-white lg:mt-[42px] lg:text-[21px]">
             Get the latest blog articles delivered to your inbox.
           </p>
 
-          <form
-            action="#"
-            method="post"
-            className="
-              mt-[22px]
-              flex w-full max-w-[360px]
-              flex-col items-center
-              sm:mt-[28px]
-              lg:mt-[38px]
-            "
-          >
+          <form action="#" method="post" className="mt-[30px] flex w-full max-w-[365px] flex-col items-start lg:mt-[38px]">
             <label
               htmlFor="authors-newsletter-email"
-              className="
-                mb-[10px]
-                text-[16px]
-                font-bold
-                leading-[22px]
-                text-white
-                sm:mb-[12px]
-                sm:text-[18px]
-                lg:text-[20px]
-              "
+              className="mb-[10px] font-sans text-[18px] font-bold leading-[1.3] text-white lg:text-[20px]"
             >
               Enter your email*
             </label>
@@ -874,68 +725,18 @@ export default function MeetTheAuthorsPage() {
                 type="email"
                 required
                 placeholder="email@address.com"
-                className="
-                  h-[44px]
-                  w-full
-                  min-w-0
-                  flex-1
-                  rounded-[2px]
-                  border-0
-                  bg-white
-                  px-[14px]
-                  text-[15px]
-                  text-[#231f20]
-                  placeholder:text-[13px]
-                  placeholder:text-[#686868]
-                  outline-none
-                  sm:w-[245px]
-                  sm:flex-none
-                  sm:text-[16px]
-                  sm:placeholder:text-[18px]
-                "
+                className="h-[44px] min-w-0 flex-1 rounded-[2px] border-0 bg-white px-[14px] text-[16px] text-[#231f20] outline-none placeholder:text-[16px] placeholder:text-[#686868]"
               />
 
               <button
                 type="submit"
-                className="
-                  inline-flex
-                  h-[44px]
-                  w-[92px]
-                  shrink-0
-                  items-center
-                  justify-center
-                  whitespace-nowrap
-                  rounded-[4px]
-                  border-2
-                  border-white
-                  bg-[#4f832a]
-                  text-[15px]
-                  font-bold
-                  leading-[20px]
-                  text-white
-                  transition-colors
-                  hover:bg-[#436d23]
-                  sm:w-[112px]
-                  sm:text-[18px]
-                "
+                className="inline-flex h-[44px] w-[112px] shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-[#4f832a] font-sans text-[18px] font-bold text-white transition-colors hover:bg-[#436d23]"
               >
                 Sign Up
               </button>
             </div>
 
-            <p
-              className="
-                mt-[12px]
-                text-[13px]
-                font-bold
-                italic
-                leading-[18px]
-                text-white
-                sm:mt-[14px]
-                sm:text-[14px]
-                lg:text-[15px]
-              "
-            >
+            <p className="mt-[14px] font-sans text-[14px] font-bold italic leading-[1.3] text-white">
               *Required Field
             </p>
           </form>
