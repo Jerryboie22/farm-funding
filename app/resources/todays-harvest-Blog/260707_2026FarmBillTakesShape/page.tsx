@@ -51,7 +51,8 @@ const RELATED_ARTICLES = [
     category: "Ag Economy",
     categoryHref: `${BLOG_PATH}?category=ag-economy`,
     title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
-    href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
+    href:
+      "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
     date: "July 10, 2026",
   },
   {
@@ -91,6 +92,7 @@ const pageStyles = `
 
     --cream: #ecf1e4;
     --grey-bg: #f8f8f8;
+    --grey-box: #f1f3f4;
     --grey-badge: #686868;
     --grey-text: #686868;
     --charcoal: #231f20;
@@ -209,7 +211,7 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     ARTICLE BODY
+     ARTICLE CONTENT
      ========================================================== */
 
   .farm-bill-page .article-content {
@@ -244,7 +246,7 @@ const pageStyles = `
   }
 
   .farm-bill-page .article-copy h2 {
-    margin: 40px 0 16px;
+    margin: 38px 0 16px;
     color: var(--heading-brown);
     font-family:
       var(--font-montserrat),
@@ -273,11 +275,51 @@ const pageStyles = `
   }
 
   .farm-bill-page .article-copy a:hover {
-    color: var(--forest);
+    color: var(--heading-brown);
   }
 
   .farm-bill-page .article-copy strong {
     font-weight: 700;
+  }
+
+  .farm-bill-page .article-copy em {
+    font-style: italic;
+  }
+
+  /* ==========================================================
+     CONTACT BUTTON
+     ========================================================== */
+
+  .farm-bill-page .contact-wrap {
+    padding: 10px 0 32px;
+    text-align: center;
+  }
+
+  .farm-bill-page .primary-button {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 28px;
+    border: 0;
+    background: var(--clay);
+    color: #fff !important;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none !important;
+    transition:
+      background-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .farm-bill-page .primary-button:hover {
+    background: var(--clay-dark);
   }
 
   /* ==========================================================
@@ -303,6 +345,14 @@ const pageStyles = `
     line-height: 1.7;
   }
 
+  .farm-bill-page .tag-icon {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin-right: 2px;
+    color: var(--heading-brown);
+  }
+
   .farm-bill-page .tag-label {
     font-weight: 600;
   }
@@ -322,31 +372,40 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     AUTHOR
+     AUTHOR + SHARE CARD
      ========================================================== */
 
-  .farm-bill-page .author-row {
-    width: min(100% - 40px, 860px);
+  .farm-bill-page .social-author-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    width: min(100% - 40px, 1180px);
     margin: 0 auto;
-    padding: 18px 0 48px;
-    border-bottom: 1px solid var(--line);
+    padding: 20px 0 52px;
+  }
+
+  .farm-bill-page .grey-box {
+    min-height: 176px;
+    padding: 22px;
+    background: var(--grey-box);
   }
 
   .farm-bill-page .author-box {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 22px;
   }
 
-  .farm-bill-page .author-initials {
-    display: flex;
-    width: 72px;
-    height: 72px;
-    flex: 0 0 72px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--cream);
+  .farm-bill-page .author-photo {
+    display: block;
+    width: 176px;
+    height: 176px;
+    flex: 0 0 176px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .farm-bill-page .author-name {
     color: var(--heading-brown);
     font-family:
       var(--font-montserrat),
@@ -355,54 +414,80 @@ const pageStyles = `
       sans-serif;
     font-size: 21px;
     font-weight: 700;
-  }
-
-  .farm-bill-page .author-name {
-    display: inline-block;
-    color: var(--heading-brown);
-    font-family:
-      var(--font-montserrat),
-      Montserrat,
-      Arial,
-      sans-serif;
-    font-size: 19px;
-    font-weight: 700;
     line-height: 1.3;
     text-decoration: underline;
   }
 
   .farm-bill-page .author-role {
-    margin: 6px 0 0;
-    color: var(--grey-text);
+    margin: 8px 0 0;
+    color: var(--charcoal);
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 700;
     line-height: 1.4;
   }
 
-  /* ==========================================================
-     BACK TO BLOG
-     ========================================================== */
-
-  .farm-bill-page .back-to-blog {
-    width: min(100% - 40px, 860px);
-    margin: 0 auto;
-    padding: 20px 0 50px;
+  .farm-bill-page .share-box {
+    display: flex;
+    min-height: 176px;
+    align-items: center;
   }
 
-  .farm-bill-page .back-to-blog a {
-    color: var(--clay);
+  .farm-bill-page .share-label {
+    margin: 0 0 16px;
+    color: var(--charcoal);
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: underline;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .farm-bill-page .share-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .farm-bill-page .share-list a {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .farm-bill-page .share-list svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .farm-bill-page .share-x {
+    background: #14171a;
+  }
+
+  .farm-bill-page .share-facebook {
+    background: #1877f2;
+  }
+
+  .farm-bill-page .share-linkedin {
+    background: #0a66c2;
+  }
+
+  .farm-bill-page .share-email {
+    background: #34a853;
   }
 
   /* ==========================================================
@@ -420,7 +505,7 @@ const pageStyles = `
     padding: 34px 0 54px;
   }
 
-  .farm-bill-page .section-title {
+  .farm-bill-page .related-title-main {
     margin: 0;
     color: var(--heading-brown);
     font-family:
@@ -503,7 +588,7 @@ const pageStyles = `
 
   .farm-bill-page .authors-cta {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
     align-items: center;
     gap: 28px;
     width: min(100% - 40px, 1180px);
@@ -525,7 +610,7 @@ const pageStyles = `
   }
 
   .farm-bill-page .authors-cta-text {
-    max-width: 760px;
+    max-width: 900px;
     margin: 0;
     color: var(--charcoal);
     font-family:
@@ -726,12 +811,11 @@ const pageStyles = `
     }
 
     .farm-bill-page .article-copy,
-    .farm-bill-page .tags,
-    .farm-bill-page .author-row,
-    .farm-bill-page .back-to-blog {
+    .farm-bill-page .tags {
       width: min(100% - 56px, 860px);
     }
 
+    .farm-bill-page .social-author-row,
     .farm-bill-page .related,
     .farm-bill-page .authors-cta {
       width: calc(100% - 56px);
@@ -799,33 +883,40 @@ const pageStyles = `
       font-size: 23px;
     }
 
-    .farm-bill-page .tags,
-    .farm-bill-page .author-row,
-    .farm-bill-page .back-to-blog {
+    .farm-bill-page .tags {
       width: calc(100% - 28px);
+      font-size: 15px;
     }
 
-    .farm-bill-page .tags {
-      font-size: 15px;
+    .farm-bill-page .social-author-row {
+      width: calc(100% - 28px);
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-bottom: 35px;
+    }
+
+    .farm-bill-page .grey-box {
+      min-height: 0;
+      padding: 18px;
     }
 
     .farm-bill-page .author-box {
       align-items: flex-start;
+      gap: 15px;
     }
 
-    .farm-bill-page .author-initials {
-      width: 62px;
-      height: 62px;
-      flex-basis: 62px;
-      font-size: 18px;
+    .farm-bill-page .author-photo {
+      width: 96px;
+      height: 96px;
+      flex-basis: 96px;
     }
 
     .farm-bill-page .author-name {
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .farm-bill-page .author-role {
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .farm-bill-page .related {
@@ -834,7 +925,7 @@ const pageStyles = `
       padding-bottom: 35px;
     }
 
-    .farm-bill-page .section-title {
+    .farm-bill-page .related-title-main {
       font-size: 27px;
     }
 
@@ -966,7 +1057,7 @@ export default function FarmBillArticlePage() {
         </div>
 
         {/* ======================================================
-            ARTICLE
+            ARTICLE BODY
             ====================================================== */}
 
         <div className="article-content">
@@ -1014,17 +1105,12 @@ export default function FarmBillArticlePage() {
                 Increase statutory reference prices under the Price Loss
                 Coverage (PLC) program;
               </li>
-
               <li>Raise marketing assistance loan rates;</li>
-
               <li>
                 Update Agriculture Risk Coverage (ARC) benchmark calculations;
               </li>
-
               <li>Continue Dairy Margin Coverage (DMC); and</li>
-
               <li>Reauthorize disaster assistance programs.</li>
-
               <li>
                 Both bills also include a provision for ad-hoc assistance for
                 specialty crop producers via the Specialty Crop Assistance
@@ -1115,7 +1201,6 @@ export default function FarmBillArticlePage() {
                 other lenders to finance essential community facilities like
                 senior and childcare centers and healthcare facilities.
               </li>
-
               <li>
                 <strong>H.R. 1063</strong>, which would confirm the role of
                 the Farm Credit Administration (FCA) as the Farm Credit
@@ -1123,14 +1208,12 @@ export default function FarmBillArticlePage() {
                 certain loan applicants&rsquo; demographic information in a
                 way that protects their privacy.
               </li>
-
               <li>
                 <strong>S.899/H.R. 1991</strong>, which would increase the
                 amounts for USDA&rsquo;s Farm Service Agency loan guarantees —
                 an important tool for Farm Credit lenders working with
                 beginning farmers or customers facing financial challenges.
               </li>
-
               <li>
                 <strong>S.1217/H.R. 2518</strong>, which would expand Farm
                 Credit&rsquo;s ability to lend to businesses that support the
@@ -1149,7 +1232,6 @@ export default function FarmBillArticlePage() {
                 expand eligibility for direct loans to individuals or entity
                 members that hold at least a 50 percent interest.
               </li>
-
               <li>
                 <strong>H.R. 7426 USDA Express Loan Act</strong>, which
                 simplifies the application process for real estate and
@@ -1169,17 +1251,14 @@ export default function FarmBillArticlePage() {
                 businesses by eliminating unnecessary restrictions on Rural
                 Business Investment Companies (RBIC).
               </li>
-
               <li>
                 Promoting U.S. ag exports by increasing the amount of export
                 financing CoBank is allowed to provide.
               </li>
-
               <li>
                 Clarifying CoBank&rsquo;s renewable and waste authority to
                 lower operational and energy costs for customers.
               </li>
-
               <li>
                 Improving the transparency and safety and soundness of the
                 Federal Agricultural Mortgage Company (Farmer Mac).
@@ -1269,26 +1348,22 @@ export default function FarmBillArticlePage() {
                 changes to SNAP eligibility, administration, and spending than
                 the Senate proposal.
               </li>
-
               <li>
                 <em>Year-round E15</em> — The House incorporates language
                 addressing nationwide year-round sales of E15 gasoline, while
                 the Senate proposal does not.
               </li>
-
               <li>
                 <em>California Proposition 12</em> — The House includes
                 language addressing livestock production standards associated
                 with Proposition 12. The Senate proposal omits those
                 provisions.
               </li>
-
               <li>
                 <em>Foreign ownership of agricultural land</em> — While both
                 proposals address agricultural security, the House adopts
                 broader restrictions on foreign ownership of farmland.
               </li>
-
               <li>
                 <em>Regulatory reforms</em> — The House contains more expansive
                 pesticide and environmental regulatory provisions than the
@@ -1350,6 +1425,15 @@ export default function FarmBillArticlePage() {
               ==================================================== */}
 
           <div className="tags">
+            <svg
+              className="tag-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 5 6.5 5 8 5.67 8 6.5 7.33 8 6.5 8z" />
+            </svg>
+
             <span className="tag-label">Tags:</span>{" "}
 
             {TAGS.map(([label, slug], index) => (
@@ -1364,14 +1448,19 @@ export default function FarmBillArticlePage() {
           </div>
 
           {/* ====================================================
-              AUTHOR
+              AUTHOR + SHARE
               ==================================================== */}
 
-          <div className="author-row">
-            <div className="author-box">
-              <div className="author-initials" aria-hidden="true">
-                DC
-              </div>
+          <section
+            className="social-author-row"
+            aria-label="Article author and sharing"
+          >
+            <div className="grey-box author-box">
+              <img
+                src="/images/homepage/DanielleCummins_web.jpg"
+                alt="Professional portrait of Danielle Cummins"
+                className="author-photo"
+              />
 
               <div>
                 <Link
@@ -1386,17 +1475,93 @@ export default function FarmBillArticlePage() {
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* ====================================================
-              BACK TO BLOG
-              ==================================================== */}
+            <div className="grey-box share-box">
+              <div>
+                <p className="share-label">Share this post on</p>
 
-          <div className="back-to-blog">
-            <Link href={BLOG_PATH}>
-              ← Back to Today&apos;s Harvest
-            </Link>
-          </div>
+                <ul className="share-list">
+                  <li>
+                    <a
+                      className="share-x"
+                      href={`https://twitter.com/share?text=${encodeURIComponent(
+                        TITLE
+                      )}&url=${encodeURIComponent(ARTICLE_URL)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on X"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      className="share-facebook"
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                        ARTICLE_URL
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on Facebook"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" />
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      className="share-linkedin"
+                      href={`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
+                        ARTICLE_URL
+                      )}&title=${encodeURIComponent(TITLE)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on LinkedIn"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      className="share-email"
+                      href={`mailto:?subject=${encodeURIComponent(
+                        TITLE
+                      )}&body=${encodeURIComponent(ARTICLE_URL)}`}
+                      aria-label="Share by email"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
         </div>
 
         {/* ======================================================
@@ -1405,7 +1570,7 @@ export default function FarmBillArticlePage() {
 
         <section className="related-wrap">
           <div className="related">
-            <h2 className="section-title">You Might Also Like</h2>
+            <h2 className="related-title-main">You Might Also Like</h2>
 
             <div className="related-grid">
               {RELATED_ARTICLES.map((item) => (
