@@ -1,68 +1,10 @@
 @import "tailwindcss";
 
-:root {
-  /* Exact hex values pulled from farm-funders.com's compiled stylesheet */
-  --color-forest: #4f832a;       /* brand green - headings, section titles, primary buttons */
-  --color-forest-dark: #3f6821;  /* hover state */
-  --color-clay: #496d83;         /* slate blue - secondary buttons, links, footer headers */
-  --color-clay-dark: #3a576a;    /* hover state */
-  --color-gold: #5a4400;         /* article/post title links */
-  --color-cream: #ecf1e4;        /* light green section background */
-  --color-grey-bg: #f8f8f8;      /* light grey section background */
-  --color-charcoal: #231f20;     /* body text */
-  --color-grey-text: #686868;    /* secondary/muted text, tags */
-  --color-line: #c36d15;         /* orange accent border (article dividers, accordion) */
-}
+:root{--color-forest:#4f832a;--color-forest-dark:#3f6821;--color-clay:#496d83;--color-clay-dark:#3a576a;--color-gold:#5a4400;--color-cream:#ecf1e4;--color-grey-bg:#f8f8f8;--color-charcoal:#231f20;--color-grey-text:#686868;--color-line:#c36d15}
 
-@theme inline {
-  --color-forest: var(--color-forest);
-  --color-forest-dark: var(--color-forest-dark);
-  --color-clay: var(--color-clay);
-  --color-clay-dark: var(--color-clay-dark);
-  --color-gold: var(--color-gold);
-  --color-cream: var(--color-cream);
-  --color-grey-bg: var(--color-grey-bg);
-  --color-charcoal: var(--color-charcoal);
-  --color-grey-text: var(--color-grey-text);
-  --color-line: var(--color-line);
-  --font-display: var(--font-montserrat);
-  --font-sans: var(--font-barlow);
-}
-
-body {
-  background: #ffffff;
-  color: var(--color-charcoal);
-  font-family: var(--font-barlow), sans-serif;
-}
-
-.font-display {
-  font-family: var(--font-montserrat), sans-serif;
-}
-
-/* Exact heading scale from farm-funders.com (desktop).
-   IMPORTANT: wrapped in @layer base. Tailwind puts utility classes
-   (text-sm, text-lg, etc.) in a higher-priority layer than @layer base,
-   so a component that sets its own size — e.g. Footer's
-   <h3 className="text-sm ..."> column headers — will correctly override
-   these tag defaults instead of being overridden by them. Do NOT remove
-   the @layer base wrapper or every h1-h6 in the app will forcibly jump
-   to these sizes regardless of what Tailwind classes are applied. */
-@layer base {
-  h1, .h1 { font-family: var(--font-montserrat), sans-serif; font-weight: 700; font-size: 48px; line-height: 57.6px; }
-  h2, .h2 { font-family: var(--font-montserrat), sans-serif; font-weight: 700; font-size: 40px; line-height: 50.2px; }
-  h3, .h3 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 34px; line-height: 46px; }
-  h4, .h4 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 28px; line-height: 33.6px; }
-  h5, .h5 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 25px; line-height: 32px; }
-  h6, .h6 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 22px; line-height: 33px; }
-  p       { font-family: var(--font-barlow), sans-serif; font-weight: 500; font-size: 18px; line-height: 28.8px; }
-
-  @media (max-width: 991.98px) {
-    h1, .h1 { font-size: 36px; line-height: 43.2px; }
-    h2, .h2 { font-size: 32px; line-height: 38px; }
-    h3, .h3 { font-size: 28px; line-height: 34px; }
-    h4, .h4 { font-size: 25px; line-height: 32.5px; }
-    h5, .h5 { font-size: 22px; line-height: 33px; }
-    h6, .h6 { font-size: 20px; line-height: 30px; }
-    p       { font-size: 16px; line-height: 26px; }
-  }
-}
+@theme inline{--color-forest:var(--color-forest);--color-forest-dark:var(--color-forest-dark);--color-clay:var(--color-clay);--color-clay-dark:var(--color-clay-dark);--color-gold:var(--color-gold);--color-cream:var(--color-cream);--color-grey-bg:var(--color-grey-bg);--color-charcoal:var(--color-charcoal);--color-grey-text:var(--color-grey-text);--color-line:var(--color-line);--font-display:var(--font-montserrat);--font-sans:var(--font-barlow)}
+body{background:#fff;color:var(--color-charcoal);font-family:var(--font-barlow),sans-serif}.font-display{font-family:var(--font-montserrat),sans-serif}
+@layer base{h1,.h1{font-family:var(--font-montserrat),sans-serif;font-weight:700;font-size:48px;line-height:57.6px}h2,.h2{font-family:var(--font-montserrat),sans-serif;font-weight:700;font-size:40px;line-height:50.2px}h3,.h3{font-family:var(--font-montserrat),sans-serif;font-weight:600;font-size:34px;line-height:46px}h4,.h4{font-family:var(--font-montserrat),sans-serif;font-weight:600;font-size:28px;line-height:33.6px}h5,.h5{font-family:var(--font-montserrat),sans-serif;font-weight:600;font-size:25px;line-height:32px}h6,.h6{font-family:var(--font-montserrat),sans-serif;font-weight:600;font-size:22px;line-height:33px}p{font-family:var(--font-barlow),sans-serif;font-weight:500;font-size:18px;line-height:28.8px}@media(max-width:991.98px){h1,.h1{font-size:36px;line-height:43.2px}h2,.h2{font-size:32px;line-height:38px}h3,.h3{font-size:28px;line-height:34px}h4,.h4{font-size:25px;line-height:32.5px}h5,.h5{font-size:22px;line-height:33px}h6,.h6{font-size:20px;line-height:30px}p{font-size:16px;line-height:26px}}}
+.meet-authors-page>section:first-child>div{min-height:370px!important;padding-top:52px!important;padding-bottom:52px!important}.meet-authors-page h1.meet-authors-hero-title{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:2!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;clip-path:none!important;color:#ecf1e4!important;font-family:var(--font-montserrat),Montserrat,Arial,sans-serif!important;font-size:58px!important;line-height:1.08!important;font-weight:700!important;letter-spacing:-.6px!important;margin:0!important}.meet-authors-page .meet-authors-hero-description{display:block!important;visibility:visible!important;opacity:1!important;color:#ecf1e4!important;font-family:var(--font-barlow),Barlow,Arial,sans-serif!important;font-size:23px!important;font-weight:700!important;line-height:1.58!important;margin-top:28px!important;margin-bottom:0!important}.meet-authors-page details{display:block!important;width:100%!important;overflow:hidden!important}.meet-authors-page details>summary{display:flex!important;width:100%!important;min-height:68px!important;box-sizing:border-box!important;cursor:pointer!important;pointer-events:auto!important;position:relative!important;z-index:5!important;list-style:none!important;-webkit-user-select:none!important;user-select:none!important;font-family:var(--font-montserrat),Montserrat,Arial,sans-serif!important;color:#231f20!important;background:#eef1f3!important;border:1px solid #c36d15!important}.meet-authors-page details>summary::-webkit-details-marker,.meet-authors-page details>summary::marker{display:none!important;content:""!important}.meet-authors-page details[open]>div{display:block!important}.meet-authors-page details:not([open])>div{display:none!important}.meet-authors-page details .meet-authors-search-summary span:last-child{transition:transform 180ms ease!important;transform:rotate(0deg)!important}.meet-authors-page details[open] .meet-authors-search-summary span:last-child{transform:rotate(180deg)!important}.meet-authors-page details>div ul{margin:0!important;padding-left:0!important}
+@media(max-width:767.98px){.meet-authors-page>section:first-child>div{min-height:370px!important;padding:52px 14px!important;justify-content:center!important}.meet-authors-page h1.meet-authors-hero-title{font-size:40px!important;line-height:1.12!important;letter-spacing:-.35px!important;max-width:300px!important}.meet-authors-page .meet-authors-hero-description{max-width:300px!important;margin-top:30px!important;font-size:20px!important;line-height:1.62!important}.meet-authors-page details>summary{min-height:100px!important;padding:18px 22px!important;font-size:24px!important;line-height:1.25!important}.meet-authors-page details>div{padding:20px 22px 24px!important}.meet-authors-page details>div ul{row-gap:10px!important;column-gap:10px!important}.meet-authors-page details>div li,.meet-authors-page details>div a,.meet-authors-page details>div span{font-size:16px!important;line-height:1.55!important}}
+@media(min-width:768px) and (max-width:1023.98px){.meet-authors-page>section:first-child>div{min-height:330px!important}.meet-authors-page h1.meet-authors-hero-title{font-size:50px!important}.meet-authors-page .meet-authors-hero-description{font-size:22px!important}}
