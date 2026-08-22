@@ -25,6 +25,9 @@ const DESCRIPTION =
 const BLOG_PATH = "/resources/todays-harvest-Blog";
 const AUTHORS_PATH = "/resources/meet-the-authors";
 
+const ARTICLE_URL =
+  "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers";
+
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
@@ -82,14 +85,11 @@ const pageStyles = `
     --forest-dark: #3f6e20;
     --clay: #496d83;
     --clay-dark: #3b5a6d;
-    --gold-line: #c36d15;
     --cream: #ecf1e4;
-    --grey-bg: #f8f8f8;
     --grey-badge: #686868;
     --grey-text: #686868;
     --charcoal: #231f20;
     --line: #d8d8d8;
-    --gutter: 20px;
 
     color: var(--charcoal);
     background: #fff;
@@ -107,13 +107,13 @@ const pageStyles = `
   .tariff-article-page .article-hero {
     position: relative;
     width: 100%;
-    padding: 24px var(--gutter) 28px;
     background: var(--clay);
     color: #fff;
+    padding: 24px 20px 30px;
   }
 
   .tariff-article-page .article-date {
-    margin: 0 0 20px;
+    margin: 0 0 22px;
     text-align: right;
     color: #fff;
     font-family:
@@ -127,32 +127,33 @@ const pageStyles = `
   }
 
   .tariff-article-page .article-heading {
-    max-width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
   }
 
   .tariff-article-page .article-category {
     display: inline-block;
-    margin: 0 0 14px;
-    padding: 6px 12px;
+    margin: 0 0 30px;
+    padding: 7px 14px;
     border: 1px solid #fff;
     color: #fff;
-    text-decoration: none;
     font-family:
       var(--font-montserrat),
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.2;
+    text-decoration: none;
   }
 
-  .tariff-article-page .article-category:hover,
-  .tariff-article-page .article-author:hover {
+  .tariff-article-page .article-category:hover {
     text-decoration: underline;
   }
 
   .tariff-article-page .article-title {
+    max-width: 1480px;
     margin: 0;
     color: var(--cream);
     font-family:
@@ -160,21 +161,21 @@ const pageStyles = `
       Montserrat,
       Arial,
       sans-serif;
-    font-size: clamp(28px, 7vw, 40px);
+    font-size: clamp(34px, 4vw, 52px);
     font-weight: 700;
-    line-height: 1.12;
-    letter-spacing: -0.3px;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
   }
 
   .tariff-article-page .article-byline {
-    margin: 14px 0 0;
+    margin: 26px 0 0;
     color: #fff;
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.5;
   }
 
@@ -188,10 +189,10 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .hero-image-wrap {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto 0;
     position: relative;
+    width: 645px;
+    max-width: calc(100% - 40px);
+    margin: 24px auto 0;
   }
 
   .tariff-article-page .hero-image-wrap img {
@@ -208,17 +209,16 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .article-content {
-    width: min(94%, 1400px);
+    width: 100%;
     margin: 0 auto;
   }
 
   .tariff-article-page .article-copy {
-    width: min(100%, 1040px);
+    width: min(100% - 40px, 860px);
     margin: 0 auto;
-    padding: 26px 0;
+    padding: 58px 0 20px;
   }
 
-  .tariff-article-page .article-copy,
   .tariff-article-page .article-copy p,
   .tariff-article-page .article-copy li {
     font-family:
@@ -226,11 +226,7 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-  }
-
-  .tariff-article-page .article-copy p,
-  .tariff-article-page .article-copy li {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.7;
   }
 
@@ -240,8 +236,8 @@ const pageStyles = `
 
   .tariff-article-page .article-copy h3,
   .tariff-article-page .article-copy h4 {
-    margin: 34px 0 16px;
-    color: var(--grey-text);
+    margin: 38px 0 16px;
+    color: var(--forest);
     font-family:
       var(--font-montserrat),
       Montserrat,
@@ -252,16 +248,16 @@ const pageStyles = `
   }
 
   .tariff-article-page .article-copy h3 {
-    font-size: 23px;
+    font-size: 25px;
   }
 
   .tariff-article-page .article-copy h4 {
-    font-size: 20px;
+    font-size: 21px;
   }
 
   .tariff-article-page .article-copy ul {
     margin: 0 0 24px;
-    padding-left: 28px;
+    padding-left: 30px;
   }
 
   .tariff-article-page .article-copy li {
@@ -284,17 +280,16 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .contact-wrap {
-    padding: 8px 0 30px;
+    padding: 10px 0 34px;
     text-align: center;
   }
 
   .tariff-article-page .primary-button {
     display: inline-flex;
-    min-height: 46px;
+    min-height: 50px;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    border: 0;
+    padding: 13px 28px;
     background: var(--clay);
     color: #fff !important;
     font-family:
@@ -302,7 +297,7 @@ const pageStyles = `
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.2;
     text-decoration: none !important;
@@ -318,28 +313,28 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .tags {
+    width: min(100% - 40px, 860px);
+    margin: 0 auto;
+    padding: 22px 0 28px;
+    border-top: 1px solid var(--line);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
-    margin: 0 auto;
-    width: min(100%, 1040px);
-    padding: 20px 0 24px;
-    border-top: 1px solid var(--line);
     color: var(--charcoal);
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
   }
 
   .tariff-article-page .tag-icon {
     flex: 0 0 auto;
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     margin-right: 2px;
     color: var(--forest);
   }
@@ -349,45 +344,42 @@ const pageStyles = `
     text-decoration: underline;
   }
 
-  .tariff-article-page .tags a:hover {
-    color: var(--forest);
-  }
-
   .tariff-article-page .tag-separator {
     margin: 0 2px;
     color: var(--grey-text);
   }
 
   /* ==========================================================
-     AUTHOR + SOCIAL
+     AUTHOR + SHARE
      ========================================================== */
 
   .tariff-article-page .social-author-row {
+    width: min(100% - 40px, 860px);
+    margin: 0 auto;
+    padding: 20px 0 52px;
+
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    width: min(100%, 1040px);
-    margin: 0 auto;
-    padding: 18px 0 48px;
+    gap: 28px;
   }
 
   .tariff-article-page .grey-box {
-    min-height: 160px;
-    padding: 20px;
+    min-height: 176px;
+    padding: 22px;
     background: #f1f3f4;
   }
 
   .tariff-article-page .author-box {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
   }
 
   .tariff-article-page .author-photo {
     display: block;
-    width: 160px;
-    height: 160px;
-    flex: 0 0 160px;
+    width: 176px;
+    height: 176px;
+    flex: 0 0 176px;
     object-fit: cover;
   }
 
@@ -398,7 +390,7 @@ const pageStyles = `
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 700;
     line-height: 1.3;
     text-decoration: underline;
@@ -412,26 +404,26 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     line-height: 1.4;
   }
 
   .tariff-article-page .share-box {
     display: flex;
-    min-height: 160px;
+    min-height: 176px;
     align-items: center;
   }
 
   .tariff-article-page .share-label {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     color: var(--charcoal);
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
   }
 
@@ -446,8 +438,8 @@ const pageStyles = `
 
   .tariff-article-page .share-list a {
     display: inline-flex;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
@@ -456,8 +448,8 @@ const pageStyles = `
   }
 
   .tariff-article-page .share-list svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 
   .tariff-article-page .share-x {
@@ -477,7 +469,7 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     RELATED ARTICLES
+     YOU MIGHT ALSO LIKE
      ========================================================== */
 
   .tariff-article-page .related-wrap {
@@ -486,9 +478,9 @@ const pageStyles = `
   }
 
   .tariff-article-page .related {
-    width: min(94%, 1400px);
+    width: min(100% - 40px, 1760px);
     margin: 0 auto;
-    padding: 30px 0 46px;
+    padding: 34px 0 54px;
   }
 
   .tariff-article-page .section-title {
@@ -499,7 +491,7 @@ const pageStyles = `
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1.25;
   }
@@ -507,12 +499,12 @@ const pageStyles = `
   .tariff-article-page .related-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-    margin-top: 18px;
+    gap: 34px;
+    margin-top: 20px;
   }
 
   .tariff-article-page .related-card {
-    padding-top: 22px;
+    padding-top: 26px;
   }
 
   .tariff-article-page .related-category {
@@ -525,7 +517,7 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -534,28 +526,32 @@ const pageStyles = `
 
   .tariff-article-page .related-title {
     display: block;
-    margin-top: 22px;
+    margin-top: 26px;
     color: var(--forest);
     font-family:
       var(--font-montserrat),
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 19px;
+    font-size: 21px;
     font-weight: 700;
     line-height: 1.35;
     text-decoration: none;
   }
 
+  .tariff-article-page .related-title:hover {
+    text-decoration: underline;
+  }
+
   .tariff-article-page .related-date {
-    margin: 22px 0 0;
+    margin: 26px 0 0;
     color: var(--grey-text);
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -565,35 +561,36 @@ const pageStyles = `
      ========================================================== */
 
   .tariff-article-page .authors-cta {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(200px, 1fr);
-    align-items: center;
-    gap: 24px;
-    width: min(94%, 1400px);
+    width: min(100% - 40px, 1760px);
     margin: 0 auto;
-    padding: 42px 0;
+    padding: 50px 0;
+
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    align-items: center;
+    gap: 28px;
   }
 
   .tariff-article-page .authors-cta .section-title {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .tariff-article-page .authors-cta-text {
-    max-width: 820px;
+    max-width: 900px;
+    margin: 0;
     color: var(--charcoal);
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.5;
   }
 
   .tariff-article-page .authors-cta-button {
     justify-self: end;
-    min-width: 190px;
-    background: var(--clay);
+    min-width: 205px;
   }
 
   /* ==========================================================
@@ -602,7 +599,7 @@ const pageStyles = `
 
   .tariff-article-page .newsletter {
     width: 100%;
-    padding: 52px 20px;
+    padding: 60px 20px;
     background: var(--forest);
     color: #fff;
     text-align: center;
@@ -616,20 +613,20 @@ const pageStyles = `
       Montserrat,
       Arial,
       sans-serif;
-    font-size: 36px;
+    font-size: 44px;
     font-weight: 700;
     line-height: 1.15;
   }
 
   .tariff-article-page .newsletter-subhead {
-    margin-top: 20px;
+    margin: 22px 0 0;
     color: #fff;
     font-family:
       var(--font-barlow),
       Barlow,
       Arial,
       sans-serif;
-    font-size: 19px;
+    font-size: 21px;
     font-weight: 500;
     line-height: 1.4;
   }
@@ -637,7 +634,7 @@ const pageStyles = `
   .tariff-article-page .newsletter-input {
     display: flex;
     justify-content: center;
-    margin-top: 26px;
+    margin-top: 30px;
   }
 
   .tariff-article-page .newsletter-inner {
@@ -659,14 +656,14 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 1.3;
   }
 
   .tariff-article-page .newsletter-email {
-    width: 230px;
-    height: 42px;
+    width: 245px;
+    height: 44px;
     border: 0;
     border-radius: 2px;
     padding: 0 13px;
@@ -677,7 +674,7 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     outline: none;
   }
 
@@ -693,16 +690,16 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-style: italic;
   }
 
   .tariff-article-page .signup-button {
-    height: 42px;
-    min-width: 108px;
+    height: 44px;
+    min-width: 112px;
     border: 2px solid #fff;
     border-radius: 4px;
-    padding: 0 18px;
+    padding: 0 20px;
     background: var(--forest);
     color: #fff;
     font-family:
@@ -710,7 +707,7 @@ const pageStyles = `
       Barlow,
       Arial,
       sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     cursor: pointer;
   }
@@ -720,52 +717,35 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     DESKTOP
+     TABLET / SMALL DESKTOP
      ========================================================== */
 
-  @media (min-width: 992px) {
-    .tariff-article-page .article-hero {
-      height: 312px;
-      padding: 15px 67px 0;
-      overflow: visible;
-    }
-
+  @media (max-width: 991px) {
     .tariff-article-page .article-heading {
-      max-width: 1480px;
-    }
-
-    .tariff-article-page .article-category {
-      margin-bottom: 34px;
-      padding: 7px 14px;
-      font-size: 14px;
-      line-height: 1.2;
+      max-width: 100%;
     }
 
     .tariff-article-page .article-title {
-      max-width: 1480px;
-      font-size: 52px;
-      line-height: 1.08;
-      letter-spacing: -0.5px;
+      font-size: 45px;
     }
 
-    .tariff-article-page .article-byline {
-      margin-top: 30px;
-      font-size: 17px;
+    .tariff-article-page .article-copy,
+    .tariff-article-page .tags,
+    .tariff-article-page .social-author-row {
+      width: calc(100% - 56px);
     }
 
-    .tariff-article-page .hero-image-wrap {
-      width: 645px;
-      max-width: 645px;
-      margin: -37px auto 0;
+    .tariff-article-page .related,
+    .tariff-article-page .authors-cta {
+      width: calc(100% - 56px);
     }
 
-    .tariff-article-page .hero-image-wrap img {
-      height: 403px;
-      aspect-ratio: auto;
+    .tariff-article-page .related-grid {
+      gap: 24px;
     }
 
-    .tariff-article-page .article-copy {
-      padding-top: 60px;
+    .tariff-article-page .authors-cta-text {
+      font-size: 18px;
     }
   }
 
@@ -775,60 +755,130 @@ const pageStyles = `
 
   @media (max-width: 767px) {
     .tariff-article-page .article-hero {
-      padding: 20px 16px 24px;
+      padding: 24px 14px 30px;
     }
 
     .tariff-article-page .article-date {
-      font-size: 13px;
+      margin-bottom: 22px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .tariff-article-page .article-category {
+      margin-bottom: 14px;
+      font-size: 14px;
     }
 
     .tariff-article-page .article-title {
-      font-size: clamp(27px, 8vw, 38px);
+      font-size: 35px;
+      line-height: 1.12;
+    }
+
+    .tariff-article-page .article-byline {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    .tariff-article-page .hero-image-wrap {
+      width: 100%;
+      max-width: none;
+      margin-top: 20px;
+    }
+
+    .tariff-article-page .hero-image-wrap img {
+      aspect-ratio: 645 / 403;
+    }
+
+    .tariff-article-page .article-copy {
+      width: calc(100% - 28px);
+      padding-top: 34px;
+    }
+
+    .tariff-article-page .article-copy p,
+    .tariff-article-page .article-copy li {
+      font-size: 17px;
+      line-height: 1.72;
+    }
+
+    .tariff-article-page .article-copy h3 {
+      margin-top: 32px;
+      font-size: 23px;
+    }
+
+    .tariff-article-page .article-copy h4 {
+      margin-top: 28px;
+      font-size: 20px;
+    }
+
+    .tariff-article-page .tags {
+      width: calc(100% - 28px);
+      font-size: 15px;
     }
 
     .tariff-article-page .social-author-row {
+      width: calc(100% - 28px);
       grid-template-columns: 1fr;
-      gap: 16px;
-      padding-bottom: 32px;
+      gap: 18px;
+      padding-bottom: 35px;
     }
 
     .tariff-article-page .grey-box {
       min-height: 0;
-      padding: 16px;
+      padding: 18px;
     }
 
     .tariff-article-page .author-box {
       align-items: flex-start;
-      gap: 14px;
+      gap: 15px;
     }
 
     .tariff-article-page .author-photo {
-      width: 88px;
-      height: 88px;
-      flex-basis: 88px;
+      width: 96px;
+      height: 96px;
+      flex-basis: 96px;
     }
 
     .tariff-article-page .author-name {
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .tariff-article-page .author-role {
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .tariff-article-page .share-box {
       min-height: 0;
     }
 
+    .tariff-article-page .related {
+      width: calc(100% - 28px);
+      padding-top: 25px;
+      padding-bottom: 35px;
+    }
+
+    .tariff-article-page .section-title {
+      font-size: 27px;
+    }
+
     .tariff-article-page .related-grid {
       grid-template-columns: 1fr;
-      gap: 22px;
+      gap: 25px;
+    }
+
+    .tariff-article-page .related-title {
+      font-size: 20px;
     }
 
     .tariff-article-page .authors-cta {
+      width: calc(100% - 28px);
       grid-template-columns: 1fr;
-      gap: 16px;
-      padding: 32px 0;
+      gap: 18px;
+      padding: 38px 0;
+    }
+
+    .tariff-article-page .authors-cta-text {
+      font-size: 17px;
+      line-height: 1.55;
     }
 
     .tariff-article-page .authors-cta-button {
@@ -836,11 +886,20 @@ const pageStyles = `
     }
 
     .tariff-article-page .newsletter {
-      padding: 40px 14px 44px;
+      padding: 48px 14px 52px;
     }
 
     .tariff-article-page .newsletter-title {
-      font-size: 27px;
+      font-size: 31px;
+    }
+
+    .tariff-article-page .newsletter-subhead {
+      margin-top: 18px;
+      font-size: 17px;
+    }
+
+    .tariff-article-page .newsletter-input {
+      margin-top: 24px;
     }
 
     .tariff-article-page .newsletter-inner {
@@ -911,7 +970,7 @@ export default function TariffReliefArticlePage() {
         </div>
 
         {/* ======================================================
-            ARTICLE
+            ARTICLE BODY
             ====================================================== */}
 
         <div className="article-content">
@@ -1039,7 +1098,7 @@ export default function TariffReliefArticlePage() {
             </p>
 
             <p>
-              Farm Funding’s team of agricultural advisors can help applicants
+              Farm Funders’s team of agricultural advisors can help applicants
               navigate the process. Relief programs are helpful, but they are
               most effective when aligned with a broader financial plan,
               including budgeting and risk mitigation tools such as Dairy
@@ -1047,14 +1106,14 @@ export default function TariffReliefArticlePage() {
             </p>
 
             <p>
-              Farm Funding’s whole-farm, advisory approach connects programs,
+              Farm Funders’s whole-farm, advisory approach connects programs,
               insurance and financial strategy into a clear path forward.
               Applicants are encouraged to start the application process now
               and reach out to their advisors along the way.
             </p>
 
             <p>
-              At Farm Funding, we are committed to being a trusted advisor to
+              At Farm Funders, we are committed to being a trusted advisor to
               New York’s agricultural producers, helping you navigate
               uncertainty and strengthen your operation for the future.
             </p>
@@ -1077,7 +1136,7 @@ export default function TariffReliefArticlePage() {
               fill="currentColor"
               aria-hidden="true"
             >
-              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 5 6.5 5 8 5.67 8 6.5 7.33 8 6.5 8z" />
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 8 6.5 8z" />
             </svg>
 
             <span>Tags:</span>{" "}
@@ -1127,15 +1186,12 @@ export default function TariffReliefArticlePage() {
                 <p className="share-label">Share this post on</p>
 
                 <ul className="share-list">
-                  {/* X */}
                   <li>
                     <a
                       className="share-x"
                       href={`https://twitter.com/share?text=${encodeURIComponent(
                         TITLE
-                      )}&url=${encodeURIComponent(
-                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
-                      )}`}
+                      )}&url=${encodeURIComponent(ARTICLE_URL)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Share on X"
@@ -1150,12 +1206,11 @@ export default function TariffReliefArticlePage() {
                     </a>
                   </li>
 
-                  {/* Facebook */}
                   <li>
                     <a
                       className="share-facebook"
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
+                        ARTICLE_URL
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -1171,12 +1226,11 @@ export default function TariffReliefArticlePage() {
                     </a>
                   </li>
 
-                  {/* LinkedIn */}
                   <li>
                     <a
                       className="share-linkedin"
                       href={`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
-                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
+                        ARTICLE_URL
                       )}&title=${encodeURIComponent(TITLE)}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -1192,15 +1246,12 @@ export default function TariffReliefArticlePage() {
                     </a>
                   </li>
 
-                  {/* Email */}
                   <li>
                     <a
                       className="share-email"
                       href={`mailto:?subject=${encodeURIComponent(
                         TITLE
-                      )}&body=${encodeURIComponent(
-                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
-                      )}`}
+                      )}&body=${encodeURIComponent(ARTICLE_URL)}`}
                       aria-label="Share by email"
                     >
                       <svg
