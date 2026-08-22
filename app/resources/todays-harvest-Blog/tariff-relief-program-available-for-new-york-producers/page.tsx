@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Montserrat, Barlow } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-barlow",
+  display: "swap",
+});
 
 const TITLE = "Tariff Relief Program Available for New York Producers";
 const DESCRIPTION =
@@ -773,7 +789,9 @@ export default function TariffReliefArticlePage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
 
-      <main className="tariff-article-page w-full overflow-x-hidden">
+      <main
+        className={`tariff-article-page w-full overflow-x-hidden ${montserrat.variable} ${barlow.variable}`}
+      >
         {/* Hero */}
         <section className="article-hero">
           <p className="article-date">July 1, 2026</p>
