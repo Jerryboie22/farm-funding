@@ -804,7 +804,7 @@ export default function TariffReliefArticlePage() {
           {/* Dynamic image — nested inside the hero, inset rather than full-bleed */}
           <div className="hero-image">
             <img
-              src="/images/homepage/DFS_2018.jpg"
+              src="https://images.unsplash.com/photo-1636998980792-63f27ddea4e3?fm=jpg&q=80&w=1200&auto=format&fit=crop"
               alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
             />
           </div>
