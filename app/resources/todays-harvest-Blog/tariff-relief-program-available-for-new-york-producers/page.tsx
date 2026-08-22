@@ -87,6 +87,7 @@ const pageStyles = `
     --grey-text: #686868;
     --charcoal: #231f20;
     --line: #d8d8d8;
+    --gutter: 20px;
     color: var(--charcoal);
     background: #fff;
   }
@@ -96,53 +97,46 @@ const pageStyles = `
     box-sizing: border-box;
   }
 
+  /* ==========================================================
+     HERO — mobile-first base, exact desktop geometry at >=992px
+     Desktop target: hero height 312px, left gutter 67px,
+     category top offset 15px, title top offset 80px,
+     author top offset 166px (all measured from hero top).
+     ========================================================== */
+
   .tariff-article-page .article-hero {
     position: relative;
     width: 100%;
-    margin: 0 0 30px;
-    padding: 30px 34px 0;
+    padding: 24px var(--gutter) 28px;
     background: var(--clay);
     color: #fff;
   }
 
-  .tariff-article-page .hero-image {
-    width: min(100%, 600px);
-    margin: 30px auto 0;
-  }
-
-  .tariff-article-page .hero-image img {
-    display: block;
-    width: 100%;
-    height: 356px;
-    object-fit: cover;
-    object-position: center;
-  }
-
   .tariff-article-page .article-date {
-    margin: 0 0 28px;
+    margin: 0 0 20px;
     text-align: right;
     color: #fff;
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.4;
   }
 
   .tariff-article-page .article-heading {
-    max-width: 1100px;
+    max-width: 100%;
   }
 
   .tariff-article-page .article-category {
     display: inline-block;
-    margin: 0 0 18px;
-    padding: 8px 16px;
+    margin: 0 0 14px;
+    padding: 6px 12px;
     border: 1px solid #fff;
     color: #fff;
     text-decoration: none;
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   .tariff-article-page .article-category:hover,
@@ -152,20 +146,19 @@ const pageStyles = `
 
   .tariff-article-page .article-title {
     margin: 0;
-    max-width: 1120px;
     color: var(--cream);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: clamp(34px, 4vw, 58px);
+    font-size: clamp(28px, 7vw, 40px);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.5px;
+    line-height: 1.12;
+    letter-spacing: -0.3px;
   }
 
   .tariff-article-page .article-byline {
-    margin: 18px 0 0;
+    margin: 14px 0 0;
     color: #fff;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.5;
   }
 
@@ -174,15 +167,34 @@ const pageStyles = `
     text-decoration: underline;
   }
 
+  /* Featured image — sibling of the hero, not nested inside it.
+     Mobile: normal stacked spacing, no overlap.
+     Desktop: negative margin pulls it up 37px into the hero. */
+  .tariff-article-page .hero-image-wrap {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
+    position: relative;
+  }
+
+  .tariff-article-page .hero-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 645 / 403;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .tariff-article-page .article-content {
-    width: min(91.8%, 1760px);
+    width: min(94%, 1400px);
     margin: 0 auto;
   }
 
   .tariff-article-page .article-copy {
-    width: min(100%, 1180px);
+    width: min(100%, 1040px);
     margin: 0 auto;
-    padding: 0 0 26px;
+    padding: 26px 0 26px;
   }
 
   .tariff-article-page .article-copy,
@@ -193,7 +205,7 @@ const pageStyles = `
 
   .tariff-article-page .article-copy p,
   .tariff-article-page .article-copy li {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.7;
   }
 
@@ -203,7 +215,7 @@ const pageStyles = `
 
   .tariff-article-page .article-copy h3,
   .tariff-article-page .article-copy h4 {
-    margin: 38px 0 16px;
+    margin: 34px 0 16px;
     color: var(--grey-text);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
     font-weight: 700;
@@ -211,16 +223,16 @@ const pageStyles = `
   }
 
   .tariff-article-page .article-copy h3 {
-    font-size: 25px;
+    font-size: 23px;
   }
 
   .tariff-article-page .article-copy h4 {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .tariff-article-page .article-copy ul {
     margin: 0 0 24px;
-    padding-left: 30px;
+    padding-left: 28px;
   }
 
   .tariff-article-page .article-copy li {
@@ -245,15 +257,15 @@ const pageStyles = `
 
   .tariff-article-page .primary-button {
     display: inline-flex;
-    min-height: 50px;
+    min-height: 46px;
     align-items: center;
     justify-content: center;
-    padding: 13px 28px;
+    padding: 12px 24px;
     border: 0;
     background: var(--clay);
     color: #fff !important;
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.2;
     text-decoration: none !important;
@@ -270,19 +282,19 @@ const pageStyles = `
     flex-wrap: wrap;
     gap: 6px;
     margin: 0 auto;
-    width: min(100%, 1180px);
-    padding: 22px 0 28px;
+    width: min(100%, 1040px);
+    padding: 20px 0 24px;
     border-top: 1px solid var(--line);
     color: var(--charcoal);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
   }
 
   .tariff-article-page .tag-icon {
     flex: 0 0 auto;
-    width: 17px;
-    height: 17px;
+    width: 16px;
+    height: 16px;
     margin-right: 2px;
     color: var(--forest);
   }
@@ -304,36 +316,36 @@ const pageStyles = `
   .tariff-article-page .social-author-row {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    width: min(100%, 1180px);
+    gap: 24px;
+    width: min(100%, 1040px);
     margin: 0 auto;
-    padding: 20px 0 52px;
+    padding: 18px 0 48px;
   }
 
   .tariff-article-page .grey-box {
-    min-height: 176px;
-    padding: 22px;
+    min-height: 160px;
+    padding: 20px;
     background: #f1f3f4;
   }
 
   .tariff-article-page .author-box {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 20px;
   }
 
   .tariff-article-page .author-photo {
     display: block;
-    width: 176px;
-    height: 176px;
-    flex: 0 0 176px;
+    width: 160px;
+    height: 160px;
+    flex: 0 0 160px;
     object-fit: cover;
   }
 
   .tariff-article-page .author-name {
     color: var(--forest);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.3;
     text-decoration: underline;
@@ -343,22 +355,22 @@ const pageStyles = `
     margin: 8px 0 0;
     color: var(--charcoal);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 1.4;
   }
 
   .tariff-article-page .share-box {
     display: flex;
-    min-height: 176px;
+    min-height: 160px;
     align-items: center;
   }
 
   .tariff-article-page .share-label {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
     color: var(--charcoal);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
   }
 
@@ -373,8 +385,8 @@ const pageStyles = `
 
   .tariff-article-page .share-list a {
     display: inline-flex;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
@@ -383,8 +395,8 @@ const pageStyles = `
   }
 
   .tariff-article-page .share-list svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .tariff-article-page .share-x {
@@ -409,16 +421,16 @@ const pageStyles = `
   }
 
   .tariff-article-page .related {
-    width: min(91.8%, 1760px);
+    width: min(94%, 1400px);
     margin: 0 auto;
-    padding: 34px 0 54px;
+    padding: 30px 0 46px;
   }
 
   .tariff-article-page .section-title {
     margin: 0;
     color: var(--forest);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 1.25;
   }
@@ -426,12 +438,12 @@ const pageStyles = `
   .tariff-article-page .related-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 34px;
-    margin-top: 20px;
+    gap: 28px;
+    margin-top: 18px;
   }
 
   .tariff-article-page .related-card {
-    padding-top: 26px;
+    padding-top: 22px;
   }
 
   .tariff-article-page .related-category {
@@ -440,7 +452,7 @@ const pageStyles = `
     background: var(--grey-badge);
     color: #fff;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -449,55 +461,55 @@ const pageStyles = `
 
   .tariff-article-page .related-title {
     display: block;
-    margin-top: 26px;
+    margin-top: 22px;
     color: var(--forest);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 700;
     line-height: 1.35;
     text-decoration: none;
   }
 
   .tariff-article-page .related-date {
-    margin: 26px 0 0;
+    margin: 22px 0 0;
     color: var(--grey-text);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
   }
 
   .tariff-article-page .authors-cta {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(200px, 1fr);
     align-items: center;
-    gap: 28px;
-    width: min(91.8%, 1760px);
+    gap: 24px;
+    width: min(94%, 1400px);
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 42px 0;
   }
 
   .tariff-article-page .authors-cta .section-title {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .tariff-article-page .authors-cta-text {
-    max-width: 900px;
+    max-width: 820px;
     color: var(--charcoal);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
   }
 
   .tariff-article-page .authors-cta-button {
     justify-self: end;
-    min-width: 205px;
+    min-width: 190px;
     background: var(--clay);
   }
 
   .tariff-article-page .newsletter {
     width: 100%;
-    padding: 60px 20px;
+    padding: 52px 20px;
     background: var(--forest);
     color: #fff;
     text-align: center;
@@ -507,16 +519,16 @@ const pageStyles = `
     margin: 0;
     color: #fff;
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 44px;
+    font-size: 36px;
     font-weight: 700;
     line-height: 1.15;
   }
 
   .tariff-article-page .newsletter-subhead {
-    margin-top: 22px;
+    margin-top: 20px;
     color: #fff;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 500;
     line-height: 1.4;
   }
@@ -524,7 +536,7 @@ const pageStyles = `
   .tariff-article-page .newsletter-input {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 26px;
   }
 
   .tariff-article-page .newsletter-inner {
@@ -542,21 +554,21 @@ const pageStyles = `
     margin-bottom: 9px;
     color: #fff;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     line-height: 1.3;
   }
 
   .tariff-article-page .newsletter-email {
-    width: 245px;
-    height: 44px;
+    width: 230px;
+    height: 42px;
     border: 0;
     border-radius: 2px;
     padding: 0 13px;
     background: #fff;
     color: var(--charcoal);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     outline: none;
   }
 
@@ -568,20 +580,20 @@ const pageStyles = `
     margin-top: 8px;
     color: #fff;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-style: italic;
   }
 
   .tariff-article-page .signup-button {
-    height: 44px;
-    min-width: 112px;
+    height: 42px;
+    min-width: 108px;
     border: 2px solid #fff;
     border-radius: 4px;
-    padding: 0 20px;
+    padding: 0 18px;
     background: var(--forest);
     color: #fff;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     cursor: pointer;
   }
@@ -590,160 +602,109 @@ const pageStyles = `
     background: var(--forest-dark);
   }
 
-  @media (max-width: 991px) {
+  /* ==========================================================
+     DESKTOP — exact geometry from spec, applied >=992px
+     Hero height 312px · left gutter 67px · category top offset
+     15px · title top offset 80px (52px font, 1.08 line-height)
+     · author top offset 166px · hero bottom = hero-top + 312.
+     Image: 645x403, centered, margin-top -37px => its top sits
+     37px above the hero's bottom edge (the "bridge" overlap),
+     the remaining ~366px of the image sits in the white section.
+     ========================================================== */
+  @media (min-width: 992px) {
     .tariff-article-page .article-hero {
-      width: calc(100% - 28px);
-      min-height: 250px;
-      padding: 26px 28px 30px;
+      height: 312px;
+      padding: 15px 67px 0;
+      overflow: visible;
+    }
+
+    .tariff-article-page .article-heading {
+      max-width: 1480px;
+    }
+
+    .tariff-article-page .article-category {
+      margin-bottom: 34px;
+      padding: 7px 14px;
+      font-size: 14px;
+      line-height: 1.2;
     }
 
     .tariff-article-page .article-title {
-      font-size: 45px;
+      max-width: 1480px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
     }
 
-    .tariff-article-page .article-content,
-    .tariff-article-page .related,
-    .tariff-article-page .authors-cta {
-      width: calc(100% - 56px);
+    .tariff-article-page .article-byline {
+      margin-top: 30px;
+      font-size: 17px;
+    }
+
+    .tariff-article-page .hero-image-wrap {
+      width: 645px;
+      max-width: 645px;
+      margin: -37px auto 0;
+    }
+
+    .tariff-article-page .hero-image-wrap img {
+      height: 403px;
+      aspect-ratio: auto;
     }
 
     .tariff-article-page .article-copy {
-      width: 100%;
-    }
-
-    .tariff-article-page .social-author-row {
-      width: 100%;
-    }
-
-    .tariff-article-page .related-grid {
-      gap: 24px;
+      padding-top: 60px;
     }
   }
 
   @media (max-width: 767px) {
     .tariff-article-page .article-hero {
-      width: 100%;
-      margin: 0 0 20px;
-      padding: 24px 14px 0;
-    }
-
-    .tariff-article-page .article-date {
-      margin-bottom: 22px;
-      text-align: left;
-      font-size: 14px;
-    }
-
-    .tariff-article-page .article-category {
-      margin-bottom: 14px;
-      font-size: 14px;
-    }
-
-    .tariff-article-page .article-title {
-      font-size: 35px;
-      line-height: 1.12;
-    }
-
-    .tariff-article-page .article-byline {
-      margin-top: 16px;
-      font-size: 16px;
-    }
-
-    .tariff-article-page .hero-image {
-      margin-top: 24px;
-    }
-
-    .tariff-article-page .hero-image img {
-      height: 230px;
-    }
-
-    .tariff-article-page .article-content,
-    .tariff-article-page .related,
-    .tariff-article-page .authors-cta {
-      width: calc(100% - 28px);
-    }
-
-    .tariff-article-page .article-copy p,
-    .tariff-article-page .article-copy li {
-      font-size: 17px;
-      line-height: 1.72;
-    }
-
-    .tariff-article-page .article-copy h3 {
-      margin-top: 32px;
-      font-size: 23px;
-    }
-
-    .tariff-article-page .article-copy h4 {
-      margin-top: 28px;
-      font-size: 20px;
-    }
-
-    .tariff-article-page .tags {
-      font-size: 15px;
+      padding: 20px 16px 24px;
     }
 
     .tariff-article-page .social-author-row {
       grid-template-columns: 1fr;
-      width: 100%;
-      gap: 18px;
-      padding-bottom: 35px;
+      gap: 16px;
+      padding-bottom: 32px;
     }
 
     .tariff-article-page .grey-box {
       min-height: 0;
-      padding: 18px;
+      padding: 16px;
     }
 
     .tariff-article-page .author-box {
       align-items: flex-start;
-      gap: 15px;
+      gap: 14px;
     }
 
     .tariff-article-page .author-photo {
-      width: 96px;
-      height: 96px;
-      flex-basis: 96px;
+      width: 88px;
+      height: 88px;
+      flex-basis: 88px;
     }
 
     .tariff-article-page .author-name {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .tariff-article-page .author-role {
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .tariff-article-page .share-box {
       min-height: 0;
     }
 
-    .tariff-article-page .related {
-      padding-top: 25px;
-      padding-bottom: 35px;
-    }
-
-    .tariff-article-page .section-title {
-      font-size: 27px;
-    }
-
     .tariff-article-page .related-grid {
       grid-template-columns: 1fr;
-      gap: 25px;
-    }
-
-    .tariff-article-page .related-title {
-      font-size: 20px;
+      gap: 22px;
     }
 
     .tariff-article-page .authors-cta {
       grid-template-columns: 1fr;
-      gap: 18px;
-      padding: 38px 0;
-    }
-
-    .tariff-article-page .authors-cta-text {
-      font-size: 17px;
-      line-height: 1.55;
+      gap: 16px;
+      padding: 32px 0;
     }
 
     .tariff-article-page .authors-cta-button {
@@ -751,20 +712,11 @@ const pageStyles = `
     }
 
     .tariff-article-page .newsletter {
-      padding: 48px 14px 52px;
+      padding: 40px 14px 44px;
     }
 
     .tariff-article-page .newsletter-title {
-      font-size: 31px;
-    }
-
-    .tariff-article-page .newsletter-subhead {
-      margin-top: 18px;
-      font-size: 17px;
-    }
-
-    .tariff-article-page .newsletter-input {
-      margin-top: 24px;
+      font-size: 27px;
     }
 
     .tariff-article-page .newsletter-inner {
@@ -792,7 +744,9 @@ export default function TariffReliefArticlePage() {
       <main
         className={`tariff-article-page w-full overflow-x-hidden ${montserrat.variable} ${barlow.variable}`}
       >
-        {/* Hero */}
+        {/* Hero — category, title, author only. Image lives outside as
+            a sibling so it can overlap the hero/white boundary via a
+            negative top margin at desktop, without absolute positioning. */}
         <section className="article-hero">
           <p className="article-date">July 1, 2026</p>
 
@@ -818,15 +772,16 @@ export default function TariffReliefArticlePage() {
               </Link>
             </p>
           </div>
-
-          {/* Dynamic image — nested inside the hero, inset rather than full-bleed */}
-          <div className="hero-image">
-            <img
-              src="https://images.unsplash.com/photo-1636998980792-63f27ddea4e3?fm=jpg&q=80&w=1200&auto=format&fit=crop"
-              alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
-            />
-          </div>
         </section>
+
+        {/* Featured image — bridges the hero and the white article
+            section (overlaps 37px into the hero at desktop). */}
+        <div className="hero-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1636998980792-63f27ddea4e3?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+            alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
+          />
+        </div>
 
         <div className="article-content">
           <article className="article-copy">
