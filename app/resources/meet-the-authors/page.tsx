@@ -491,12 +491,12 @@ export default function MeetTheAuthorsPage() {
           HERO — matched to the supplied Farm Funders reference
       ========================================================= */}
       <section className="bg-forest">
-        <div className="mx-auto flex min-h-[236px] w-[91.8%] max-w-[1760px] flex-col justify-center py-[52px]">
-          <h1 className="font-display text-[40px] font-bold leading-[1.08] tracking-[-0.5px] text-white sm:text-[46px] md:text-[50px] lg:text-[52px]">
+        <div className="mx-auto flex min-h-[180px] w-[91.8%] max-w-[1760px] flex-col justify-center py-[36px] sm:min-h-[236px] sm:py-[52px]">
+          <h1 className="font-display text-[32px] font-bold leading-[1.12] tracking-[-0.5px] text-white sm:text-[46px] md:text-[50px] lg:text-[52px]">
             {TITLE}
           </h1>
 
-          <p className="mt-[25px] max-w-[900px] font-sans text-[17px] leading-[1.6] text-cream sm:text-[18px]">
+          <p className="mt-[16px] max-w-[900px] font-sans text-[15px] leading-[1.55] text-cream sm:mt-[25px] sm:text-[18px]">
             {DESCRIPTION}
           </p>
         </div>
@@ -510,9 +510,9 @@ export default function MeetTheAuthorsPage() {
       <div
         className="
           mx-auto grid w-[93.4%] max-w-[1760px]
-          grid-cols-1 gap-10
-          py-[32px]
-          sm:py-[40px]
+          grid-cols-1 gap-6
+          py-[24px]
+          sm:gap-10 sm:py-[40px]
           lg:grid-cols-[344px_minmax(0,1fr)]
           lg:gap-[clamp(80px,12.86vw,212px)]
           lg:py-[32px]
@@ -526,38 +526,41 @@ export default function MeetTheAuthorsPage() {
             z-20 h-fit self-start rounded-[6px]
             border border-[#d0d5da]
             bg-[#e9edf1]
-            p-[25px]
+            p-[18px]
             shadow-[5px_5px_0_#d4d4d4]
+            sm:p-[25px]
             lg:sticky lg:top-[32px]
           "
         >
-          <h2 className="font-display text-[22px] font-semibold leading-[1.25] text-charcoal sm:text-[23px]">
+          <h2 className="font-display text-[19px] font-semibold leading-[1.25] text-charcoal sm:text-[23px]">
             Search by Last Name
           </h2>
 
-                    <ul className="mt-[25px] grid grid-cols-5 gap-x-[6px] gap-y-[18px] xs:grid-cols-6 lg:grid-cols-7 lg:gap-x-[7px] lg:gap-y-[21px]">
+                    <ul className="mt-[18px] flex flex-wrap gap-x-[10px] gap-y-[14px] sm:mt-[25px] sm:gap-x-[14px] sm:gap-y-[18px] lg:gap-x-[16px] lg:gap-y-[21px]">
             {LETTERS.map((letter) => {
               const active = activeLetters.includes(letter);
 
               return (
-                <li key={letter}>
+                <li key={letter} className="list-none">
                   {active ? (
                     <a
                       href={`#${letter}`}
                       className="
+                        flex items-center justify-center
                         font-display text-[16px] font-bold
                         text-[#496f85] underline decoration-1
                         underline-offset-2
                         transition-colors hover:text-forest-dark
                       "
-                      style={{ display: "inline-block", minHeight: "32px", minWidth: "24px" }}
+                      style={{ minHeight: "32px", minWidth: "24px" }}
                     >
                       {letter}
                     </a>
                   ) : (
                     <span
                       aria-hidden="true"
-                      className="font-display text-[16px] font-bold text-[#496f85]"
+                      className="flex items-center justify-center font-display text-[16px] font-bold text-[#496f85]"
+                      style={{ minHeight: "32px", minWidth: "24px" }}
                     >
                       {letter}
                     </span>
@@ -582,9 +585,9 @@ export default function MeetTheAuthorsPage() {
               <h2
                 id={`${letter}-heading`}
                 className={`
-                  font-display text-[36px] font-bold leading-[1.15]
-                  text-forest sm:text-[40px]
-                  ${letterIndex === 0 ? "mt-[98px] lg:mt-[98px]" : "mt-[64px]"}
+                  font-display text-[28px] font-bold leading-[1.15]
+                  text-forest sm:text-[36px] lg:text-[40px]
+                  ${letterIndex === 0 ? "mt-[40px] sm:mt-[98px] lg:mt-[98px]" : "mt-[40px] sm:mt-[64px]"}
                 `}
               >
                 {letter}
@@ -598,7 +601,8 @@ export default function MeetTheAuthorsPage() {
                     grid scroll-mt-[32px]
                     grid-cols-1
                     border-b border-[#dee2e6]
-                    py-[28px]
+                    py-[20px]
+                    sm:py-[28px]
                     md:grid-cols-[240px_minmax(0,1fr)]
                     lg:grid-cols-[315px_minmax(0,1fr)]
                     md:gap-0
@@ -607,8 +611,8 @@ export default function MeetTheAuthorsPage() {
                   {/* =================================================
                       AUTHOR IMAGE
                   ================================================= */}
-                                    <div className="flex h-[184px] w-full items-start md:pl-[30px] lg:pl-[55px]">
-                    <div className="h-[184px] w-[184px] overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)]">
+                                    <div className="flex w-full items-start md:pl-[30px] lg:pl-[55px]">
+                    <div className="h-[128px] w-[128px] shrink-0 overflow-hidden bg-grey-bg shadow-[4px_4px_5px_rgba(0,0,0,0.18)] sm:h-[184px] sm:w-[184px]">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={author.image}
@@ -626,24 +630,24 @@ export default function MeetTheAuthorsPage() {
                   {/* =================================================
                       AUTHOR CONTENT
                   ================================================= */}
-                                    <div className="min-w-0">
-                    <h3 className="font-display text-[24px] font-bold leading-[1.28] text-charcoal sm:text-[25px] sm:leading-[32px]">
+                                    <div className="mt-[14px] min-w-0 sm:mt-0">
+                    <h3 className="font-display text-[19px] font-bold leading-[1.28] text-charcoal sm:text-[25px] sm:leading-[32px]">
                       {author.name}
                     </h3>
 
                     {author.title && (
-                      <p className="mt-[2px] font-display text-[16px] font-bold leading-[1.5] text-[#727272] sm:text-[17px]">
+                      <p className="mt-[2px] font-display text-[14px] font-bold leading-[1.4] text-[#727272] sm:text-[17px] sm:leading-[1.5]">
                         {author.title}
                       </p>
                     )}
 
                     {(author.email || author.linkedin) && (
-                      <div className="mt-[17px] flex items-center gap-[8px]">
+                      <div className="mt-[13px] flex items-center gap-[4px] sm:mt-[17px] sm:gap-[8px]">
                         {author.email && (
                           <a
                             href={`mailto:${author.email}`}
                             aria-label={`Email ${author.name}`}
-                            className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
+                            className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
                           >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
@@ -654,7 +658,7 @@ export default function MeetTheAuthorsPage() {
                               loading="lazy"
                               decoding="async"
                               referrerPolicy="no-referrer"
-                              className="h-[32px] w-[32px] object-contain"
+                              className="h-[22px] w-[22px] object-contain sm:h-[26px] sm:w-[26px]"
                             />
                           </a>
                         )}
@@ -665,7 +669,7 @@ export default function MeetTheAuthorsPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`${author.name} on LinkedIn`}
-                            className="inline-flex h-[32px] w-[32px] items-center justify-center transition-opacity hover:opacity-70"
+                            className="inline-flex h-[40px] w-[40px] items-center justify-center transition-opacity hover:opacity-70"
                           >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
@@ -676,14 +680,14 @@ export default function MeetTheAuthorsPage() {
                               loading="lazy"
                               decoding="async"
                               referrerPolicy="no-referrer"
-                              className="h-[32px] w-[32px] object-contain"
+                              className="h-[22px] w-[22px] object-contain sm:h-[26px] sm:w-[26px]"
                             />
                           </a>
                         )}
                       </div>
                     )}
 
-                    <p className="mt-[31px] max-w-[68ch] font-sans text-[16px] leading-[1.65] text-charcoal sm:text-[17px] sm:leading-[28.8px]">
+                    <p className="mt-[16px] max-w-[68ch] font-sans text-[14px] leading-[1.55] text-charcoal sm:mt-[31px] sm:text-[17px] sm:leading-[28.8px]">
                       {author.bio}
                     </p>
 
@@ -691,7 +695,7 @@ export default function MeetTheAuthorsPage() {
                       href={`/resources/todays-harvest-Blog?author=${encodeURIComponent(
                         author.id
                       )}`}
-                      className="mt-[17px] inline-block font-display text-[16px] font-bold text-clay underline decoration-1 underline-offset-2 transition-colors hover:text-forest-dark"
+                      className="mt-[13px] inline-block font-display text-[14px] font-bold text-clay underline decoration-1 underline-offset-2 transition-colors hover:text-forest-dark sm:mt-[17px] sm:text-[16px]"
                     >
                       See All Articles
                     </Link>
