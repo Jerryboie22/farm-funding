@@ -82,24 +82,12 @@ const pageStyles = `
 
   .tariff-article-page .article-hero {
     position: relative;
-    width: 100%;
-    margin: 0 0 30px;
-    padding: 30px 34px 0;
+    width: calc(100% - 28px);
+    margin: 0 auto 30px;
+    padding: 30px 34px 34px;
+    min-height: 285px;
     background: var(--clay);
     color: #fff;
-  }
-
-  .tariff-article-page .hero-image {
-    width: min(100%, 600px);
-    margin: 30px auto 0;
-  }
-
-  .tariff-article-page .hero-image img {
-    display: block;
-    width: 100%;
-    height: 356px;
-    object-fit: cover;
-    object-position: center;
   }
 
   .tariff-article-page .article-date {
@@ -158,6 +146,20 @@ const pageStyles = `
     text-decoration: underline;
   }
 
+  .tariff-article-page .featured-image {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 44px;
+  }
+
+  .tariff-article-page .featured-image img {
+    display: block;
+    width: 100%;
+    height: clamp(230px, 31vw, 520px);
+    object-fit: cover;
+    object-position: center;
+  }
+
   .tariff-article-page .article-content {
     width: min(91.8%, 1760px);
     margin: 0 auto;
@@ -188,7 +190,7 @@ const pageStyles = `
   .tariff-article-page .article-copy h3,
   .tariff-article-page .article-copy h4 {
     margin: 38px 0 16px;
-    color: var(--grey-text);
+    color: var(--forest);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
     font-weight: 700;
     line-height: 1.25;
@@ -608,7 +610,8 @@ const pageStyles = `
     .tariff-article-page .article-hero {
       width: 100%;
       margin: 0 0 20px;
-      padding: 24px 14px 0;
+      min-height: 0;
+      padding: 24px 14px 30px;
     }
 
     .tariff-article-page .article-date {
@@ -632,11 +635,11 @@ const pageStyles = `
       font-size: 16px;
     }
 
-    .tariff-article-page .hero-image {
-      margin-top: 24px;
+    .tariff-article-page .featured-image {
+      margin-bottom: 28px;
     }
 
-    .tariff-article-page .hero-image img {
+    .tariff-article-page .featured-image img {
       height: 230px;
     }
 
@@ -800,15 +803,16 @@ export default function TariffReliefArticlePage() {
               </Link>
             </p>
           </div>
-
-          {/* Dynamic image — nested inside the hero, inset rather than full-bleed */}
-          <div className="hero-image">
-            <img
-              src="https://images.unsplash.com/photo-1636998980792-63f27ddea4e3?fm=jpg&q=80&w=1200&auto=format&fit=crop"
-              alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
-            />
-          </div>
         </section>
+
+        {/* Dynamic image */}
+        <div className="featured-image">
+          <img
+            src="/images/homepage/DFS_2018.jpg"
+            alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
+            className="h-full w-full"
+          />
+        </div>
 
         <div className="article-content">
           <article className="article-copy">
