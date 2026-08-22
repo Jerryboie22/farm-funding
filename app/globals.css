@@ -27,14 +27,6 @@ body {
   font-family: var(--font-montserrat), sans-serif;
 }
 
-/* Exact heading scale from farm-funders.com (desktop).
-   IMPORTANT: wrapped in @layer base. Tailwind puts utility classes
-   (text-sm, text-lg, etc.) in a higher-priority layer than @layer base,
-   so a component that sets its own size — e.g. Footer's
-   <h3 className="text-sm ..."> column headers — will correctly override
-   these tag defaults instead of being overridden by them. Do NOT remove
-   the @layer base wrapper or every h1-h6 in the app will forcibly jump
-   to these sizes regardless of what Tailwind classes are applied. */
 @layer base {
   h1, .h1 { font-family: var(--font-montserrat), sans-serif; font-weight: 700; font-size: 48px; line-height: 57.6px; }
   h2, .h2 { font-family: var(--font-montserrat), sans-serif; font-weight: 700; font-size: 40px; line-height: 50.2px; }
@@ -42,8 +34,7 @@ body {
   h4, .h4 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 28px; line-height: 33.6px; }
   h5, .h5 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 25px; line-height: 32px; }
   h6, .h6 { font-family: var(--font-montserrat), sans-serif; font-weight: 600; font-size: 22px; line-height: 33px; }
-  p       { font-family: var(--font-barlow), sans-serif; font-weight: 500; font-size: 18px; line-height: 28.8px; }
-
+  p { font-family: var(--font-barlow), sans-serif; font-weight: 500; font-size: 18px; line-height: 28.8px; }
   @media (max-width: 991.98px) {
     h1, .h1 { font-size: 36px; line-height: 43.2px; }
     h2, .h2 { font-size: 32px; line-height: 38px; }
@@ -51,16 +42,10 @@ body {
     h4, .h4 { font-size: 25px; line-height: 32.5px; }
     h5, .h5 { font-size: 22px; line-height: 33px; }
     h6, .h6 { font-size: 20px; line-height: 30px; }
-    p       { font-size: 16px; line-height: 26px; }
+    p { font-size: 16px; line-height: 26px; }
   }
 }
 
-/* Meet the Authors page: hero title/description sizing and the
-   native <details>/<summary> letter-nav accordion (chevron rotation,
-   marker removal, open/closed body visibility). Lives here instead
-   of styled-jsx in the page component because that page exports
-   `metadata` and must stay a Server Component; styled-jsx requires
-   a Client Component. */
 .meet-authors-page>section:first-child>div{min-height:370px!important;padding-top:52px!important;padding-bottom:52px!important}
 .meet-authors-page h1.meet-authors-hero-title{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;z-index:2!important;width:auto!important;height:auto!important;overflow:visible!important;clip:auto!important;clip-path:none!important;color:#ecf1e4!important;font-family:var(--font-montserrat),Montserrat,Arial,sans-serif!important;font-size:58px!important;line-height:1.08!important;font-weight:700!important;letter-spacing:-.6px!important;margin:0!important}
 .meet-authors-page .meet-authors-hero-description{display:block!important;visibility:visible!important;opacity:1!important;color:#ecf1e4!important;font-family:var(--font-barlow),Barlow,Arial,sans-serif!important;font-size:23px!important;font-weight:700!important;line-height:1.58!important;margin-top:28px!important;margin-bottom:0!important}
@@ -87,4 +72,130 @@ body {
   .meet-authors-page>section:first-child>div{min-height:330px!important}
   .meet-authors-page h1.meet-authors-hero-title{font-size:50px!important}
   .meet-authors-page .meet-authors-hero-description{font-size:22px!important}
+}
+
+/* Article pages: shared reference geometry for all three articles. */
+.tariff-article-page .hero-image-wrap,
+.farm-bill-page .hero-image-wrap,
+.usda-payment-page .hero-image-wrap{
+  width:645px!important;
+  max-width:645px!important;
+  margin:-37px auto 0!important;
+  position:relative!important;
+}
+
+.tariff-article-page .hero-image-wrap img,
+.farm-bill-page .hero-image-wrap img,
+.usda-payment-page .hero-image-wrap img{
+  display:block!important;
+  width:645px!important;
+  height:403px!important;
+  max-width:100%!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+
+/* Farm Bill uses the exact repository asset supplied for the reference page. */
+.farm-bill-page .hero-image-wrap img{
+  content:url('/images/homepage/Farm%20Bill.png')!important;
+}
+
+/* Keep the author photographs visible even when the local placeholder path is absent. */
+.farm-bill-page .author-photo{
+  content:url('https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/CumminsDanielle_web.jpg')!important;
+}
+.usda-payment-page .author-photo{
+  content:url('https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/KnappMarty_web.jpg')!important;
+}
+.tariff-article-page .author-photo{
+  content:url('https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/ArezzoDario_web.jpg')!important;
+}
+
+/* Slightly wider + larger lower article sections to match the reference rhythm. */
+.tariff-article-page .related,
+.farm-bill-page .related,
+.usda-payment-page .related,
+.tariff-article-page .authors-cta,
+.farm-bill-page .authors-cta,
+.usda-payment-page .authors-cta{
+  width:min(94%,1400px)!important;
+}
+
+.tariff-article-page .related .section-title,
+.farm-bill-page .related-title-main,
+.usda-payment-page .section-title,
+.tariff-article-page .authors-cta .section-title,
+.farm-bill-page .authors-cta-title,
+.usda-payment-page .authors-cta-title{
+  font-size:34px!important;
+  line-height:1.22!important;
+}
+
+.tariff-article-page .related-title,
+.farm-bill-page .related-title,
+.usda-payment-page .related-title{
+  font-size:23px!important;
+  line-height:1.38!important;
+}
+
+.tariff-article-page .authors-cta-text,
+.farm-bill-page .authors-cta-text,
+.usda-payment-page .authors-cta-text{
+  font-size:21px!important;
+  line-height:1.52!important;
+  max-width:980px!important;
+}
+
+@media (max-width:991px){
+  .tariff-article-page .hero-image-wrap,
+  .farm-bill-page .hero-image-wrap,
+  .usda-payment-page .hero-image-wrap{
+    width:100%!important;
+    max-width:645px!important;
+    margin:20px auto 0!important;
+  }
+
+  .tariff-article-page .hero-image-wrap img,
+  .farm-bill-page .hero-image-wrap img,
+  .usda-payment-page .hero-image-wrap img{
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:645 / 403!important;
+  }
+}
+
+@media (max-width:767px){
+  .tariff-article-page .related,
+  .farm-bill-page .related,
+  .usda-payment-page .related,
+  .tariff-article-page .authors-cta,
+  .farm-bill-page .authors-cta,
+  .usda-payment-page .authors-cta{
+    width:calc(100% - 28px)!important;
+  }
+
+  .tariff-article-page .related .section-title,
+  .farm-bill-page .related-title-main,
+  .usda-payment-page .section-title,
+  .tariff-article-page .authors-cta .section-title,
+  .farm-bill-page .authors-cta-title,
+  .usda-payment-page .authors-cta-title{
+    font-size:30px!important;
+    line-height:1.22!important;
+  }
+
+  .tariff-article-page .related-title,
+  .farm-bill-page .related-title,
+  .usda-payment-page .related-title{
+    font-size:21px!important;
+    line-height:1.38!important;
+  }
+
+  .tariff-article-page .authors-cta-text,
+  .farm-bill-page .authors-cta-text,
+  .usda-payment-page .authors-cta-text{
+    font-size:18px!important;
+    line-height:1.55!important;
+  }
 }
