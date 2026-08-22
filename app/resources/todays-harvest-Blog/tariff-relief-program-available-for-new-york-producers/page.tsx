@@ -25,16 +25,11 @@ const DESCRIPTION =
 const BLOG_PATH = "/resources/todays-harvest-Blog";
 const AUTHORS_PATH = "/resources/meet-the-authors";
 
-const ARTICLE_PATH =
-  "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers";
-
-const ARTICLE_URL = `https://farm-funding.com${ARTICLE_PATH}`;
-
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords:
-    "Tariff Relief Program Available for New York Producers, Farm Funding, New York agriculture producers, agriculture, Dario Arezzo",
+    "Tariff Relief Program Available for New York Producers, Farm Funders, New York agriculture producers, agriculture, Dario Arezzo",
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -121,7 +116,11 @@ const pageStyles = `
     margin: 0 0 20px;
     text-align: right;
     color: #fff;
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.4;
@@ -138,7 +137,11 @@ const pageStyles = `
     border: 1px solid #fff;
     color: #fff;
     text-decoration: none;
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.3;
@@ -152,7 +155,11 @@ const pageStyles = `
   .tariff-article-page .article-title {
     margin: 0;
     color: var(--cream);
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: clamp(28px, 7vw, 40px);
     font-weight: 700;
     line-height: 1.12;
@@ -162,7 +169,11 @@ const pageStyles = `
   .tariff-article-page .article-byline {
     margin: 14px 0 0;
     color: #fff;
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 15px;
     line-height: 1.5;
   }
@@ -210,7 +221,11 @@ const pageStyles = `
   .tariff-article-page .article-copy,
   .tariff-article-page .article-copy p,
   .tariff-article-page .article-copy li {
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
   }
 
   .tariff-article-page .article-copy p,
@@ -227,7 +242,11 @@ const pageStyles = `
   .tariff-article-page .article-copy h4 {
     margin: 34px 0 16px;
     color: var(--grey-text);
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-weight: 700;
     line-height: 1.25;
   }
@@ -278,7 +297,11 @@ const pageStyles = `
     border: 0;
     background: var(--clay);
     color: #fff !important;
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 15px;
     font-weight: 700;
     line-height: 1.2;
@@ -304,7 +327,11 @@ const pageStyles = `
     padding: 20px 0 24px;
     border-top: 1px solid var(--line);
     color: var(--charcoal);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 15px;
     line-height: 1.7;
   }
@@ -366,7 +393,11 @@ const pageStyles = `
 
   .tariff-article-page .author-name {
     color: var(--forest);
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 1.3;
@@ -376,7 +407,11 @@ const pageStyles = `
   .tariff-article-page .author-role {
     margin: 8px 0 0;
     color: var(--charcoal);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.4;
@@ -391,7 +426,11 @@ const pageStyles = `
   .tariff-article-page .share-label {
     margin: 0 0 14px;
     color: var(--charcoal);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 16px;
     font-weight: 600;
   }
@@ -455,7 +494,11 @@ const pageStyles = `
   .tariff-article-page .section-title {
     margin: 0;
     color: var(--forest);
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 26px;
     font-weight: 700;
     line-height: 1.25;
@@ -477,7 +520,11 @@ const pageStyles = `
     padding: 6px 14px;
     background: var(--grey-badge);
     color: #fff;
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -489,7 +536,11 @@ const pageStyles = `
     display: block;
     margin-top: 22px;
     color: var(--forest);
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 19px;
     font-weight: 700;
     line-height: 1.35;
@@ -499,14 +550,18 @@ const pageStyles = `
   .tariff-article-page .related-date {
     margin: 22px 0 0;
     color: var(--grey-text);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
   }
 
   /* ==========================================================
-     MEET THE AUTHORS CTA
+     MEET THE AUTHORS
      ========================================================== */
 
   .tariff-article-page .authors-cta {
@@ -526,7 +581,11 @@ const pageStyles = `
   .tariff-article-page .authors-cta-text {
     max-width: 820px;
     color: var(--charcoal);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 18px;
     line-height: 1.5;
   }
@@ -552,7 +611,11 @@ const pageStyles = `
   .tariff-article-page .newsletter-title {
     margin: 0;
     color: #fff;
-    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-family:
+      var(--font-montserrat),
+      Montserrat,
+      Arial,
+      sans-serif;
     font-size: 36px;
     font-weight: 700;
     line-height: 1.15;
@@ -561,7 +624,11 @@ const pageStyles = `
   .tariff-article-page .newsletter-subhead {
     margin-top: 20px;
     color: #fff;
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 19px;
     font-weight: 500;
     line-height: 1.4;
@@ -587,7 +654,11 @@ const pageStyles = `
     display: block;
     margin-bottom: 9px;
     color: #fff;
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 17px;
     font-weight: 700;
     line-height: 1.3;
@@ -601,7 +672,11 @@ const pageStyles = `
     padding: 0 13px;
     background: #fff;
     color: var(--charcoal);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 16px;
     outline: none;
   }
@@ -613,7 +688,11 @@ const pageStyles = `
   .tariff-article-page .required {
     margin-top: 8px;
     color: #fff;
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 13px;
     font-style: italic;
   }
@@ -626,7 +705,11 @@ const pageStyles = `
     padding: 0 18px;
     background: var(--forest);
     color: #fff;
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-family:
+      var(--font-barlow),
+      Barlow,
+      Arial,
+      sans-serif;
     font-size: 17px;
     font-weight: 700;
     cursor: pointer;
@@ -700,13 +783,7 @@ const pageStyles = `
     }
 
     .tariff-article-page .article-title {
-      font-size: clamp(28px, 8vw, 38px);
-    }
-
-    .tariff-article-page .article-copy p,
-    .tariff-article-page .article-copy li {
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: clamp(27px, 8vw, 38px);
     }
 
     .tariff-article-page .social-author-row {
@@ -982,10 +1059,6 @@ export default function TariffReliefArticlePage() {
               uncertainty and strengthen your operation for the future.
             </p>
 
-            {/* ==================================================
-                CONTACT CTA
-                ================================================== */}
-
             <div className="contact-wrap">
               <Link href="/contact" className="primary-button">
                 Contact Us Today!
@@ -1011,9 +1084,7 @@ export default function TariffReliefArticlePage() {
 
             {TAGS.map(([label, slug], index) => (
               <span key={slug}>
-                <Link href={`${BLOG_PATH}?tag=${slug}`}>
-                  {label}
-                </Link>
+                <Link href={`${BLOG_PATH}?tag=${slug}`}>{label}</Link>
 
                 {index < TAGS.length - 1 && (
                   <span className="tag-separator">,</span>
@@ -1032,7 +1103,7 @@ export default function TariffReliefArticlePage() {
           >
             <div className="grey-box author-box">
               <img
-                src="/images/authors/ArezzoDario_web.jpg"
+                src="https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/ArezzoDario_web.jpg"
                 alt="Professional business portrait of Dario Arezzo"
                 className="author-photo"
               />
@@ -1062,7 +1133,9 @@ export default function TariffReliefArticlePage() {
                       className="share-x"
                       href={`https://twitter.com/share?text=${encodeURIComponent(
                         TITLE
-                      )}&url=${encodeURIComponent(ARTICLE_URL)}`}
+                      )}&url=${encodeURIComponent(
+                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
+                      )}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Share on X"
@@ -1082,7 +1155,7 @@ export default function TariffReliefArticlePage() {
                     <a
                       className="share-facebook"
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                        ARTICLE_URL
+                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -1103,7 +1176,7 @@ export default function TariffReliefArticlePage() {
                     <a
                       className="share-linkedin"
                       href={`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
-                        ARTICLE_URL
+                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
                       )}&title=${encodeURIComponent(TITLE)}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -1125,7 +1198,9 @@ export default function TariffReliefArticlePage() {
                       className="share-email"
                       href={`mailto:?subject=${encodeURIComponent(
                         TITLE
-                      )}&body=${encodeURIComponent(ARTICLE_URL)}`}
+                      )}&body=${encodeURIComponent(
+                        "https://farm-funding.com/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers"
+                      )}`}
                       aria-label="Share by email"
                     >
                       <svg
