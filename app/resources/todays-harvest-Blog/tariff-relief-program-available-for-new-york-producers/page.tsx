@@ -18,17 +18,23 @@ const barlow = Barlow({
 });
 
 const TITLE = "Tariff Relief Program Available for New York Producers";
+
 const DESCRIPTION =
   "The Agricultural Resiliency Against Tariffs Program was recently appropriated $30 million to provide payments directly to NY agricultural producers. Applications are due by August 11, 2026.";
 
 const BLOG_PATH = "/resources/todays-harvest-Blog";
 const AUTHORS_PATH = "/resources/meet-the-authors";
 
+const ARTICLE_PATH =
+  "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers";
+
+const ARTICLE_URL = `https://farm-funding.com${ARTICLE_PATH}`;
+
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords:
-    "Tariff Relief Program Available for New York Producers, Farm Funders, New York agriculture producers, agriculture, Dario Arezzo",
+    "Tariff Relief Program Available for New York Producers, Farm Funding, New York agriculture producers, agriculture, Dario Arezzo",
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -52,7 +58,8 @@ const RELATED_ARTICLES = [
   {
     category: "Public Policy",
     categoryHref: `${BLOG_PATH}?category=public-policy`,
-    title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
+    title:
+      "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
     href: `${BLOG_PATH}/260707_2026FarmBillTakesShape`,
     date: "July 7, 2026",
   },
@@ -88,6 +95,7 @@ const pageStyles = `
     --charcoal: #231f20;
     --line: #d8d8d8;
     --gutter: 20px;
+
     color: var(--charcoal);
     background: #fff;
   }
@@ -98,10 +106,7 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     HERO — mobile-first base, exact desktop geometry at >=992px
-     Desktop target: hero height 312px, left gutter 67px,
-     category top offset 15px, title top offset 80px,
-     author top offset 166px (all measured from hero top).
+     HERO
      ========================================================== */
 
   .tariff-article-page .article-hero {
@@ -167,9 +172,10 @@ const pageStyles = `
     text-decoration: underline;
   }
 
-  /* Featured image — sibling of the hero, not nested inside it.
-     Mobile: normal stacked spacing, no overlap.
-     Desktop: negative margin pulls it up 37px into the hero. */
+  /* ==========================================================
+     FEATURED IMAGE
+     ========================================================== */
+
   .tariff-article-page .hero-image-wrap {
     width: 100%;
     max-width: 600px;
@@ -186,6 +192,10 @@ const pageStyles = `
     object-position: center;
   }
 
+  /* ==========================================================
+     ARTICLE CONTENT
+     ========================================================== */
+
   .tariff-article-page .article-content {
     width: min(94%, 1400px);
     margin: 0 auto;
@@ -194,7 +204,7 @@ const pageStyles = `
   .tariff-article-page .article-copy {
     width: min(100%, 1040px);
     margin: 0 auto;
-    padding: 26px 0 26px;
+    padding: 26px 0;
   }
 
   .tariff-article-page .article-copy,
@@ -250,6 +260,10 @@ const pageStyles = `
     color: var(--forest);
   }
 
+  /* ==========================================================
+     CONTACT BUTTON
+     ========================================================== */
+
   .tariff-article-page .contact-wrap {
     padding: 8px 0 30px;
     text-align: center;
@@ -275,6 +289,10 @@ const pageStyles = `
   .tariff-article-page .primary-button:hover {
     background: var(--clay-dark);
   }
+
+  /* ==========================================================
+     TAGS
+     ========================================================== */
 
   .tariff-article-page .tags {
     display: flex;
@@ -312,6 +330,10 @@ const pageStyles = `
     margin: 0 2px;
     color: var(--grey-text);
   }
+
+  /* ==========================================================
+     AUTHOR + SOCIAL
+     ========================================================== */
 
   .tariff-article-page .social-author-row {
     display: grid;
@@ -415,6 +437,10 @@ const pageStyles = `
     background: #34a853;
   }
 
+  /* ==========================================================
+     RELATED ARTICLES
+     ========================================================== */
+
   .tariff-article-page .related-wrap {
     width: 100%;
     background: var(--cream);
@@ -479,6 +505,10 @@ const pageStyles = `
     text-transform: uppercase;
   }
 
+  /* ==========================================================
+     MEET THE AUTHORS CTA
+     ========================================================== */
+
   .tariff-article-page .authors-cta {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(200px, 1fr);
@@ -506,6 +536,10 @@ const pageStyles = `
     min-width: 190px;
     background: var(--clay);
   }
+
+  /* ==========================================================
+     NEWSLETTER
+     ========================================================== */
 
   .tariff-article-page .newsletter {
     width: 100%;
@@ -603,14 +637,9 @@ const pageStyles = `
   }
 
   /* ==========================================================
-     DESKTOP — exact geometry from spec, applied >=992px
-     Hero height 312px · left gutter 67px · category top offset
-     15px · title top offset 80px (52px font, 1.08 line-height)
-     · author top offset 166px · hero bottom = hero-top + 312.
-     Image: 645x403, centered, margin-top -37px => its top sits
-     37px above the hero's bottom edge (the "bridge" overlap),
-     the remaining ~366px of the image sits in the white section.
+     DESKTOP
      ========================================================== */
+
   @media (min-width: 992px) {
     .tariff-article-page .article-hero {
       height: 312px;
@@ -657,9 +686,27 @@ const pageStyles = `
     }
   }
 
+  /* ==========================================================
+     MOBILE
+     ========================================================== */
+
   @media (max-width: 767px) {
     .tariff-article-page .article-hero {
       padding: 20px 16px 24px;
+    }
+
+    .tariff-article-page .article-date {
+      font-size: 13px;
+    }
+
+    .tariff-article-page .article-title {
+      font-size: clamp(28px, 8vw, 38px);
+    }
+
+    .tariff-article-page .article-copy p,
+    .tariff-article-page .article-copy li {
+      font-size: 16px;
+      line-height: 1.65;
     }
 
     .tariff-article-page .social-author-row {
@@ -744,9 +791,10 @@ export default function TariffReliefArticlePage() {
       <main
         className={`tariff-article-page w-full overflow-x-hidden ${montserrat.variable} ${barlow.variable}`}
       >
-        {/* Hero — category, title, author only. Image lives outside as
-            a sibling so it can overlap the hero/white boundary via a
-            negative top margin at desktop, without absolute positioning. */}
+        {/* ======================================================
+            HERO
+            ====================================================== */}
+
         <section className="article-hero">
           <p className="article-date">July 1, 2026</p>
 
@@ -774,14 +822,20 @@ export default function TariffReliefArticlePage() {
           </div>
         </section>
 
-        {/* Featured image — bridges the hero and the white article
-            section (overlaps 37px into the hero at desktop). */}
+        {/* ======================================================
+            FEATURED IMAGE
+            ====================================================== */}
+
         <div className="hero-image-wrap">
           <img
             src="/images/homepage/DFS_2018.jpg"
             alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
           />
         </div>
+
+        {/* ======================================================
+            ARTICLE
+            ====================================================== */}
 
         <div className="article-content">
           <article className="article-copy">
@@ -806,7 +860,9 @@ export default function TariffReliefArticlePage() {
             </ul>
 
             <ul>
-              <li>Livestock, Livestock Products, Specialty Crops, Aquaculture</li>
+              <li>
+                Livestock, Livestock Products, Specialty Crops, Aquaculture
+              </li>
             </ul>
 
             <p>
@@ -855,10 +911,12 @@ export default function TariffReliefArticlePage() {
 
             <ul>
               <li>Operating in 2025 and currently in business;</li>
+
               <li>
                 Has active agricultural production within New York State for
                 an eligible product(s);
               </li>
+
               <li>
                 Meets the eligible farm income requirement. An eligible farm
                 must have at least two-thirds of its federal gross income from
@@ -873,10 +931,12 @@ export default function TariffReliefArticlePage() {
                 </a>
                 .
               </li>
+
               <li>
                 This test is similar to the farmers who get certain tax
                 credits, such as the New York Farmers’ School Tax credit.
               </li>
+
               <li>
                 Program eligibility must be certified and attested to by a
                 qualified financial professional.
@@ -922,19 +982,21 @@ export default function TariffReliefArticlePage() {
               uncertainty and strengthen your operation for the future.
             </p>
 
+            {/* ==================================================
+                CONTACT CTA
+                ================================================== */}
+
             <div className="contact-wrap">
-              <a
-                href= /"contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="primary-button"
-              >
+              <Link href="/contact" className="primary-button">
                 Contact Us Today!
-              </a>
+              </Link>
             </div>
           </article>
 
-          {/* Tags */}
+          {/* ====================================================
+              TAGS
+              ==================================================== */}
+
           <div className="tags">
             <svg
               className="tag-icon"
@@ -944,10 +1006,15 @@ export default function TariffReliefArticlePage() {
             >
               <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 5 6.5 5 8 5.67 8 6.5 7.33 8 6.5 8z" />
             </svg>
+
             <span>Tags:</span>{" "}
+
             {TAGS.map(([label, slug], index) => (
               <span key={slug}>
-                <Link href={`${BLOG_PATH}?tag=${slug}`}>{label}</Link>
+                <Link href={`${BLOG_PATH}?tag=${slug}`}>
+                  {label}
+                </Link>
+
                 {index < TAGS.length - 1 && (
                   <span className="tag-separator">,</span>
                 )}
@@ -955,11 +1022,17 @@ export default function TariffReliefArticlePage() {
             ))}
           </div>
 
-          {/* Author + share */}
-          <section className="social-author-row" aria-label="Article author and sharing">
+          {/* ====================================================
+              AUTHOR + SHARE
+              ==================================================== */}
+
+          <section
+            className="social-author-row"
+            aria-label="Article author and sharing"
+          >
             <div className="grey-box author-box">
               <img
-                src="https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/ArezzoDario_web.jpg"
+                src="/images/authors/ArezzoDario_web.jpg"
                 alt="Professional business portrait of Dario Arezzo"
                 className="author-photo"
               />
@@ -983,64 +1056,83 @@ export default function TariffReliefArticlePage() {
                 <p className="share-label">Share this post on</p>
 
                 <ul className="share-list">
+                  {/* X */}
                   <li>
                     <a
                       className="share-x"
                       href={`https://twitter.com/share?text=${encodeURIComponent(
                         TITLE
-                      )}&url=${encodeURIComponent(
-                        "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
-                      )}`}
+                      )}&url=${encodeURIComponent(ARTICLE_URL)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Share on X"
                     >
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                       </svg>
                     </a>
                   </li>
+
+                  {/* Facebook */}
                   <li>
                     <a
                       className="share-facebook"
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                        "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
+                        ARTICLE_URL
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Share on Facebook"
                     >
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
                         <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" />
                       </svg>
                     </a>
                   </li>
+
+                  {/* LinkedIn */}
                   <li>
                     <a
                       className="share-linkedin"
                       href={`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
-                        "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
+                        ARTICLE_URL
                       )}&title=${encodeURIComponent(TITLE)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Share on LinkedIn"
                     >
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
                         <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
                       </svg>
                     </a>
                   </li>
+
+                  {/* Email */}
                   <li>
                     <a
                       className="share-email"
                       href={`mailto:?subject=${encodeURIComponent(
                         TITLE
-                      )}&body=${encodeURIComponent(
-                        "https://farm-funders.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
-                      )}`}
+                      )}&body=${encodeURIComponent(ARTICLE_URL)}`}
                       aria-label="Share by email"
                     >
-                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
                       </svg>
                     </a>
@@ -1051,7 +1143,10 @@ export default function TariffReliefArticlePage() {
           </section>
         </div>
 
-        {/* You Might Also Like */}
+        {/* ======================================================
+            YOU MIGHT ALSO LIKE
+            ====================================================== */}
+
         <div className="related-wrap">
           <section className="related">
             <h2 className="section-title">You Might Also Like</h2>
@@ -1059,7 +1154,10 @@ export default function TariffReliefArticlePage() {
             <div className="related-grid">
               {RELATED_ARTICLES.map((item) => (
                 <article key={item.title} className="related-card">
-                  <Link href={item.categoryHref} className="related-category">
+                  <Link
+                    href={item.categoryHref}
+                    className="related-category"
+                  >
                     {item.category}
                   </Link>
 
@@ -1075,10 +1173,14 @@ export default function TariffReliefArticlePage() {
           </section>
         </div>
 
-        {/* Meet the Authors CTA */}
+        {/* ======================================================
+            MEET THE AUTHORS
+            ====================================================== */}
+
         <section className="authors-cta">
           <div>
             <h2 className="section-title">Meet the Authors</h2>
+
             <p className="authors-cta-text">
               Connect with and discover our Today’s Harvest blog authors and
               their broad range of financial and northeast agricultural
@@ -1094,7 +1196,10 @@ export default function TariffReliefArticlePage() {
           </Link>
         </section>
 
-        {/* Newsletter — immediately before the global footer */}
+        {/* ======================================================
+            NEWSLETTER
+            ====================================================== */}
+
         <section className="newsletter">
           <h2 className="newsletter-title">
             Sign up for our Today&apos;s Harvest Blog.
@@ -1105,11 +1210,7 @@ export default function TariffReliefArticlePage() {
           </p>
 
           <div className="newsletter-input">
-            <form
-              className="newsletter-inner"
-              action="#"
-              method="post"
-            >
+            <form className="newsletter-inner" action="#" method="post">
               <div className="newsletter-group">
                 <label htmlFor="email" className="newsletter-label">
                   Enter your email*
