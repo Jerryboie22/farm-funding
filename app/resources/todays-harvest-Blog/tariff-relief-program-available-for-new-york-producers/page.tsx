@@ -1,20 +1,27 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 const TITLE = "Tariff Relief Program Available for New York Producers";
-
 const DESCRIPTION =
   "The Agricultural Resiliency Against Tariffs Program was recently appropriated $30 million to provide payments directly to NY agricultural producers. Applications are due by August 11, 2026.";
 
 const BLOG_PATH = "/resources/todays-harvest-Blog";
+const AUTHORS_PATH = "/resources/meet-the-authors";
 
 export const metadata: Metadata = {
-  title: `${TITLE} | Farm Funders`,
+  title: TITLE,
   description: DESCRIPTION,
+  keywords:
+    "Tariff Relief Program Available for New York Producers, Farm Funders, New York agriculture producers, agriculture, Dario Arezzo",
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/images/homepage/Dairy cows milking.jpg"],
+    images: [
+      {
+        url: "/images/homepage/DFS_2018.jpg",
+        alt: "Dairy cows eating hay at a feeding station inside a barn",
+      },
+    ],
   },
 };
 
@@ -23,433 +30,1078 @@ const RELATED_ARTICLES = [
     category: "Ag Economy",
     categoryHref: `${BLOG_PATH}?category=ag-economy`,
     title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
-    href: undefined as string | undefined,
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
     date: "July 10, 2026",
   },
   {
     category: "Public Policy",
     categoryHref: `${BLOG_PATH}?category=public-policy`,
-    title:
-      "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
+    title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
     href: `${BLOG_PATH}/260707_2026FarmBillTakesShape`,
     date: "July 7, 2026",
   },
   {
     category: "Crop Insurance",
-    categoryHref: "/crop-insurance",
+    categoryHref: `${BLOG_PATH}?category=Crop%20Insurance`,
     title:
-      "Understanding USDA\u2019s Base Acre Review Opportunity: What Farmers Need to Know",
-    href: undefined as string | undefined,
+      "Understanding USDA’s Base Acre Review Opportunity: What Farmers Need to Know",
+    href: `${BLOG_PATH}/260609CG_BaseAcreReviewForFarmers.html`,
     date: "June 9, 2026",
   },
 ];
 
 const TAGS = [
-  { label: "economy", slug: "economy" },
-  { label: "expenses", slug: "expenses" },
-  { label: "social programs", slug: "social-security" },
-  { label: "ag economy", slug: "ag-economy" },
-  { label: "risk management", slug: "risk-management" },
+  ["economy", "economy"],
+  ["expenses", "expenses"],
+  ["social programs", "social-security"],
+  ["ag economy", "ag-economy"],
+  ["risk management", "risk-management"],
 ];
+
+const pageStyles = `
+  .tariff-article-page {
+    --forest: #4f832a;
+    --forest-dark: #3f6e20;
+    --clay: #496d83;
+    --gold-line: #c36d15;
+    --cream: #ecf1e4;
+    --grey-bg: #f8f8f8;
+    --grey-text: #686868;
+    --charcoal: #231f20;
+    --line: #d8d8d8;
+    color: var(--charcoal);
+    background: #fff;
+  }
+
+  .tariff-article-page,
+  .tariff-article-page * {
+    box-sizing: border-box;
+  }
+
+  .tariff-article-page .article-hero {
+    position: relative;
+    width: calc(100% - 28px);
+    margin: 0 auto 30px;
+    padding: 30px 34px 34px;
+    min-height: 285px;
+    background: var(--forest);
+    color: #fff;
+  }
+
+  .tariff-article-page .article-date {
+    margin: 0 0 28px;
+    text-align: right;
+    color: #fff;
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .tariff-article-page .article-heading {
+    max-width: 1100px;
+  }
+
+  .tariff-article-page .article-category {
+    display: inline-block;
+    margin: 0 0 18px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .tariff-article-page .article-category:hover,
+  .tariff-article-page .article-author:hover {
+    text-decoration: underline;
+  }
+
+  .tariff-article-page .article-title {
+    margin: 0;
+    max-width: 1120px;
+    color: #fff;
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: clamp(34px, 4vw, 58px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+  }
+
+  .tariff-article-page .article-byline {
+    margin: 18px 0 0;
+    color: #fff;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .tariff-article-page .article-author {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .tariff-article-page .featured-image {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 44px;
+  }
+
+  .tariff-article-page .featured-image img {
+    display: block;
+    width: 100%;
+    height: clamp(230px, 31vw, 520px);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .tariff-article-page .article-content {
+    width: min(91.8%, 1760px);
+    margin: 0 auto;
+  }
+
+  .tariff-article-page .article-copy {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 0 0 26px;
+  }
+
+  .tariff-article-page .article-copy,
+  .tariff-article-page .article-copy p,
+  .tariff-article-page .article-copy li {
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+  }
+
+  .tariff-article-page .article-copy p,
+  .tariff-article-page .article-copy li {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .tariff-article-page .article-copy p {
+    margin: 0 0 24px;
+  }
+
+  .tariff-article-page .article-copy h3,
+  .tariff-article-page .article-copy h4 {
+    margin: 38px 0 16px;
+    color: var(--forest);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .tariff-article-page .article-copy h3 {
+    font-size: 25px;
+  }
+
+  .tariff-article-page .article-copy h4 {
+    font-size: 21px;
+  }
+
+  .tariff-article-page .article-copy ul {
+    margin: 0 0 24px;
+    padding-left: 30px;
+  }
+
+  .tariff-article-page .article-copy li {
+    margin-bottom: 7px;
+  }
+
+  .tariff-article-page .article-copy a {
+    color: var(--clay);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+
+  .tariff-article-page .article-copy a:hover {
+    color: var(--forest);
+  }
+
+  .tariff-article-page .contact-wrap {
+    padding: 8px 0 30px;
+    text-align: center;
+  }
+
+  .tariff-article-page .primary-button {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 28px;
+    border: 0;
+    background: var(--forest);
+    color: #fff !important;
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none !important;
+    transition: background-color 160ms ease;
+  }
+
+  .tariff-article-page .primary-button:hover {
+    background: var(--forest-dark);
+  }
+
+  .tariff-article-page .tags {
+    margin: 0 auto;
+    width: min(100%, 1180px);
+    padding: 22px 0 28px;
+    border-top: 1px solid var(--line);
+    color: var(--charcoal);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .tariff-article-page .tags a {
+    color: var(--clay);
+    text-decoration: none;
+  }
+
+  .tariff-article-page .tags a:hover {
+    text-decoration: underline;
+  }
+
+  .tariff-article-page .tag-separator {
+    margin: 0 6px;
+    color: var(--grey-text);
+  }
+
+  .tariff-article-page .social-author-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 20px 0 52px;
+  }
+
+  .tariff-article-page .grey-box {
+    min-height: 176px;
+    padding: 22px;
+    background: #f1f3f4;
+  }
+
+  .tariff-article-page .author-box {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .tariff-article-page .author-photo {
+    display: block;
+    width: 176px;
+    height: 176px;
+    flex: 0 0 176px;
+    object-fit: cover;
+  }
+
+  .tariff-article-page .author-name {
+    color: var(--forest);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  .tariff-article-page .author-role {
+    margin: 8px 0 0;
+    color: var(--grey-text);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .tariff-article-page .share-box {
+    display: flex;
+    min-height: 176px;
+    align-items: center;
+  }
+
+  .tariff-article-page .share-label {
+    margin: 0 0 16px;
+    color: var(--charcoal);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .tariff-article-page .share-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tariff-article-page .share-list a {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    background: #fff;
+    color: var(--clay);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 12%);
+  }
+
+  .tariff-article-page .related {
+    width: min(91.8%, 1760px);
+    margin: 0 auto;
+    padding: 34px 0 54px;
+  }
+
+  .tariff-article-page .section-title {
+    margin: 0;
+    color: var(--forest);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .tariff-article-page .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px;
+    margin-top: 20px;
+  }
+
+  .tariff-article-page .related-card {
+    padding-top: 26px;
+  }
+
+  .tariff-article-page .related-category {
+    color: var(--grey-text);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .tariff-article-page .related-title {
+    display: block;
+    margin-top: 26px;
+    color: var(--forest);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+
+  .tariff-article-page .related-date {
+    margin: 26px 0 0;
+    color: var(--grey-text);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .tariff-article-page .authors-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    align-items: center;
+    gap: 28px;
+    width: min(91.8%, 1760px);
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+
+  .tariff-article-page .authors-cta .section-title {
+    margin-bottom: 14px;
+  }
+
+  .tariff-article-page .authors-cta-text {
+    max-width: 900px;
+    color: var(--charcoal);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .tariff-article-page .authors-cta-button {
+    justify-self: end;
+    min-width: 205px;
+    background: var(--clay);
+  }
+
+  .tariff-article-page .newsletter {
+    width: 100%;
+    padding: 60px 20px;
+    background: var(--forest);
+    color: #fff;
+    text-align: center;
+  }
+
+  .tariff-article-page .newsletter-title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .tariff-article-page .newsletter-subhead {
+    margin-top: 22px;
+    color: #fff;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .tariff-article-page .newsletter-input {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .tariff-article-page .newsletter-inner {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .tariff-article-page .newsletter-group {
+    text-align: left;
+  }
+
+  .tariff-article-page .newsletter-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #fff;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .tariff-article-page .newsletter-email {
+    width: 245px;
+    height: 44px;
+    border: 0;
+    border-radius: 2px;
+    padding: 0 13px;
+    background: #fff;
+    color: var(--charcoal);
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 17px;
+    outline: none;
+  }
+
+  .tariff-article-page .newsletter-email:focus {
+    box-shadow: 0 0 0 2px rgb(255 255 255 / 55%);
+  }
+
+  .tariff-article-page .required {
+    margin-top: 8px;
+    color: #fff;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .tariff-article-page .signup-button {
+    height: 44px;
+    min-width: 112px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    padding: 0 20px;
+    background: var(--forest);
+    color: #fff;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .tariff-article-page .signup-button:hover {
+    background: var(--forest-dark);
+  }
+
+  @media (max-width: 991px) {
+    .tariff-article-page .article-hero {
+      width: calc(100% - 28px);
+      min-height: 250px;
+      padding: 26px 28px 30px;
+    }
+
+    .tariff-article-page .article-title {
+      font-size: 45px;
+    }
+
+    .tariff-article-page .article-content,
+    .tariff-article-page .related,
+    .tariff-article-page .authors-cta {
+      width: calc(100% - 56px);
+    }
+
+    .tariff-article-page .article-copy {
+      width: 100%;
+    }
+
+    .tariff-article-page .social-author-row {
+      width: 100%;
+    }
+
+    .tariff-article-page .related-grid {
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .tariff-article-page .article-hero {
+      width: 100%;
+      margin: 0 0 20px;
+      min-height: 0;
+      padding: 24px 14px 30px;
+    }
+
+    .tariff-article-page .article-date {
+      margin-bottom: 22px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .tariff-article-page .article-category {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .tariff-article-page .article-title {
+      font-size: 35px;
+      line-height: 1.12;
+    }
+
+    .tariff-article-page .article-byline {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    .tariff-article-page .featured-image {
+      margin-bottom: 28px;
+    }
+
+    .tariff-article-page .featured-image img {
+      height: 230px;
+    }
+
+    .tariff-article-page .article-content,
+    .tariff-article-page .related,
+    .tariff-article-page .authors-cta {
+      width: calc(100% - 28px);
+    }
+
+    .tariff-article-page .article-copy p,
+    .tariff-article-page .article-copy li {
+      font-size: 17px;
+      line-height: 1.72;
+    }
+
+    .tariff-article-page .article-copy h3 {
+      margin-top: 32px;
+      font-size: 23px;
+    }
+
+    .tariff-article-page .article-copy h4 {
+      margin-top: 28px;
+      font-size: 20px;
+    }
+
+    .tariff-article-page .tags {
+      font-size: 15px;
+    }
+
+    .tariff-article-page .social-author-row {
+      grid-template-columns: 1fr;
+      width: 100%;
+      gap: 18px;
+      padding-bottom: 35px;
+    }
+
+    .tariff-article-page .grey-box {
+      min-height: 0;
+      padding: 18px;
+    }
+
+    .tariff-article-page .author-box {
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .tariff-article-page .author-photo {
+      width: 96px;
+      height: 96px;
+      flex-basis: 96px;
+    }
+
+    .tariff-article-page .author-name {
+      font-size: 20px;
+    }
+
+    .tariff-article-page .author-role {
+      font-size: 15px;
+    }
+
+    .tariff-article-page .share-box {
+      min-height: 0;
+    }
+
+    .tariff-article-page .related {
+      padding-top: 25px;
+      padding-bottom: 35px;
+    }
+
+    .tariff-article-page .section-title {
+      font-size: 27px;
+    }
+
+    .tariff-article-page .related-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .tariff-article-page .related-title {
+      font-size: 20px;
+    }
+
+    .tariff-article-page .authors-cta {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 38px 0;
+    }
+
+    .tariff-article-page .authors-cta-text {
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .tariff-article-page .authors-cta-button {
+      justify-self: start;
+    }
+
+    .tariff-article-page .newsletter {
+      padding: 48px 14px 52px;
+    }
+
+    .tariff-article-page .newsletter-title {
+      font-size: 31px;
+    }
+
+    .tariff-article-page .newsletter-subhead {
+      margin-top: 18px;
+      font-size: 17px;
+    }
+
+    .tariff-article-page .newsletter-input {
+      margin-top: 24px;
+    }
+
+    .tariff-article-page .newsletter-inner {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .tariff-article-page .newsletter-email {
+      width: 100%;
+    }
+
+    .tariff-article-page .signup-button {
+      width: 100%;
+    }
+  }
+`;
 
 export default function TariffReliefArticlePage() {
   return (
-    <main className="w-full overflow-hidden bg-white text-charcoal">
-      {/* =========================================================
-          ARTICLE HERO
-      ========================================================= */}
-      <header className="w-full bg-forest">
-        <div className="mx-auto w-full max-w-[1180px] px-6 py-10 sm:px-8 sm:py-12 md:px-10 md:py-14 lg:px-12 lg:py-16">
-          <div className="max-w-[1040px]">
+    <>
+      <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
+
+      <main className="tariff-article-page w-full overflow-x-hidden">
+        {/* Hero 4 — the actual reference structure */}
+        <section className="article-hero">
+          <p className="article-date">July 1, 2026</p>
+
+          <div className="article-heading">
             <Link
               href={`${BLOG_PATH}?category=business-tips-and-tools`}
-              className="inline-block font-body text-[13px] font-bold uppercase tracking-[0.08em] text-white/85 transition-colors hover:text-white"
+              className="article-category"
             >
               Business Tips and Tools
             </Link>
 
-            <h1 className="mt-4 max-w-[1040px] font-display text-[36px] font-extrabold leading-[1.08] tracking-[-0.5px] text-white sm:text-[42px] md:text-[50px] lg:text-[56px]">
+            <h1 id="maincontent" className="article-title">
               {TITLE}
             </h1>
 
-            <div className="mt-6 flex flex-col gap-1.5 font-body text-[15px] leading-6 text-white/85 sm:flex-row sm:items-center sm:gap-3">
-              <time dateTime="2026-07-01">July 1, 2026</time>
-
-              <span
-                className="hidden text-white/50 sm:inline"
-                aria-hidden="true"
+            <p className="article-byline">
+              By:{" "}
+              <Link
+                href={`${AUTHORS_PATH}#Dario-Arezzo`}
+                className="article-author"
               >
-                |
-              </span>
+                Dario Arezzo
+              </Link>
+            </p>
+          </div>
+        </section>
 
-              <span>
-                By:{" "}
+        {/* Dynamic image */}
+        <div className="featured-image">
+          <img
+            src="https://farm-funders.com/-/media/farm-credit-east/featured-images/DFS_2018.ashx"
+            alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
+            className="h-full w-full"
+          />
+        </div>
+
+        <div className="article-content">
+          <article className="article-copy">
+            <p>
+              The Agricultural Resiliency Against Tariffs Program was recently
+              appropriated <strong>$30 million</strong> to provide payments
+              directly to agricultural producers. These payments range from
+              $1,000 to $25,000 per entity. Timing is of the essence as there
+              is an application process that currently runs through August 11.
+            </p>
+
+            <h3>Determining Product Eligibility</h3>
+
+            <p>
+              The first step is to determine if the agricultural product an
+              applicant is producing qualifies for the program. The following
+              products are eligible:
+            </p>
+
+            <ul>
+              <li>Milk (Dairy farms)</li>
+            </ul>
+
+            <ul>
+              <li>Livestock, Livestock Products, Specialty Crops, Aquaculture</li>
+            </ul>
+
+            <p>
+              Livestock and livestock products include eggs, cattle, sheep,
+              hogs, goats, poultry, natural fiber, cow dairy milk sold to
+              consumers raw, milk from non-bovine animals, and other animals
+              raised as livestock. Specialty crops include those products that
+              are listed as eligible under the{" "}
+              <a
+                href="https://www.ams.usda.gov/services/grants/scbgp/specialty-crop"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                USDA Specialty Crop Block Grant Program
+              </a>
+              .
+            </p>
+
+            <p>
+              Aquaculture products include fish, fish products, water plants
+              and shellfish (excluding wild harvested products).
+            </p>
+
+            <h4>What products don’t qualify?</h4>
+
+            <p>
+              Any row crops eligible under the{" "}
+              <a
+                href="https://www.fsa.usda.gov/resources/income-support/farmer-bridge-assistance-fba-program"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                USDA Farmer Bridge Assistance Program
+              </a>{" "}
+              (e.g., corn, soybeans, barley, wheat, etc.) are{" "}
+              <strong>ineligible</strong> under the Agricultural Resiliency
+              Against Tariffs Program.
+            </p>
+
+            <h3>Determining Farm Eligibility</h3>
+
+            <p>
+              The second step is to determine farm eligibility. To qualify,
+              applicants must meet the following criteria:
+            </p>
+
+            <ul>
+              <li>Operating in 2025 and currently in business;</li>
+              <li>
+                Has active agricultural production within New York State for
+                an eligible product(s);
+              </li>
+              <li>
+                Meets the eligible farm income requirement. An eligible farm
+                must have at least two-thirds of its federal gross income from
+                all sources in excess of $30,000 derived from agricultural
+                activities, as defined by{" "}
+                <a
+                  href="https://www.tax.ny.gov/pit/credits/eligible-farmer-income-test.htm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  New York State Tax Law
+                </a>
+                .
+              </li>
+              <li>
+                This test is similar to the farmers who get certain tax
+                credits, such as the New York Farmers’ School Tax credit.
+              </li>
+              <li>
+                Program eligibility must be certified and attested to by a
+                qualified financial professional.
+              </li>
+            </ul>
+
+            <h3>Completing the Application Process</h3>
+
+            <p>
+              After determining steps one and two, the next step is the
+              application. Eligible producers can access the application at
+              the following link:{" "}
+              <a
+                href="https://agriculture.ny.gov/agricultural-resiliency-against-tariffs-program"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://agriculture.ny.gov/agricultural-resiliency-against-tariffs-program
+              </a>
+              . There are two different tracks, one for dairy farms and another
+              for other eligible applicants with slightly different
+              requirements. Applications must be completed by August 11.
+            </p>
+
+            <p>
+              Farm Funders’s team of agricultural advisors can help applicants
+              navigate the process. Relief programs are helpful, but they are
+              most effective when aligned with a broader financial plan,
+              including budgeting and risk mitigation tools such as Dairy
+              Revenue Protection and crop insurance.
+            </p>
+
+            <p>
+              Farm Funders’s whole-farm, advisory approach connects programs,
+              insurance and financial strategy into a clear path forward.
+              Applicants are encouraged to start the application process now
+              and reach out to their advisors along the way.
+            </p>
+
+            <p>
+              At Farm Funders, we are committed to being a trusted advisor to
+              New York’s agricultural producers, helping you navigate
+              uncertainty and strengthen your operation for the future.
+            </p>
+
+            <div className="contact-wrap">
+              <a
+                href="https://farm-funders.com/ContactUs.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="primary-button"
+              >
+                Contact Us Today!
+              </a>
+            </div>
+          </article>
+
+          {/* Tags */}
+          <div className="tags">
+            <span>Tags:</span>{" "}
+            {TAGS.map(([label, slug], index) => (
+              <span key={slug}>
+                <Link href={`${BLOG_PATH}?tag=${slug}`}>{label}</Link>
+                {index < TAGS.length - 1 && (
+                  <span className="tag-separator">,</span>
+                )}
+              </span>
+            ))}
+          </div>
+
+          {/* Author + share */}
+          <section className="social-author-row" aria-label="Article author and sharing">
+            <div className="grey-box author-box">
+              <img
+                src="https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/ArezzoDario_web-1.jpg"
+                alt="Professional business portrait of Dario Arezzo"
+                className="author-photo"
+              />
+
+              <div>
                 <Link
-                  href="/resources/meet-the-authors#dario-arezzo"
-                  className="text-white underline-offset-2 hover:underline"
+                  href={`${AUTHORS_PATH}#Dario-Arezzo`}
+                  className="author-name"
                 >
                   Dario Arezzo
                 </Link>
-              </span>
+
+                <p className="author-role">
+                  Executive Vice President, Chief Financial Services Officer
+                </p>
+              </div>
             </div>
+
+            <div className="grey-box share-box">
+              <div>
+                <p className="share-label">Share this post on</p>
+
+                <ul className="share-list">
+                  <li>
+                    <a
+                      href={`https://twitter.com/share?text=${encodeURIComponent(
+                        TITLE
+                      )}&url=${encodeURIComponent(
+                        "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on Twitter"
+                    >
+                      X
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                        "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on Facebook"
+                    >
+                      f
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(
+                        "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
+                      )}&title=${encodeURIComponent(TITLE)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on LinkedIn"
+                    >
+                      in
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`mailto:?subject=${encodeURIComponent(
+                        TITLE
+                      )}&body=${encodeURIComponent(
+                        "https://farm-funders.com/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers"
+                      )}`}
+                      aria-label="Share by email"
+                    >
+                      @
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {/* You Might Also Like */}
+        <section className="related">
+          <h2 className="section-title">You Might Also Like</h2>
+
+          <div className="related-grid">
+            {RELATED_ARTICLES.map((item) => (
+              <article key={item.title} className="related-card">
+                <Link href={item.categoryHref} className="related-category">
+                  {item.category}
+                </Link>
+
+                <Link href={item.href} className="related-title">
+                  {item.title}
+                  <span aria-hidden="true"> ›</span>
+                </Link>
+
+                <p className="related-date">{item.date}</p>
+              </article>
+            ))}
           </div>
-        </div>
-      </header>
+        </section>
 
-      {/* =========================================================
-          FEATURED IMAGE
-      ========================================================= */}
-      <section
-        aria-label="Article featured image"
-        className="w-full bg-white"
-      >
-        <div className="mx-auto w-full max-w-[1180px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/homepage/Dairy cows milking.jpg"
-            alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background"
-            className="block h-auto max-h-[600px] w-full object-cover"
-          />
-        </div>
-      </section>
-
-      {/* =========================================================
-          ARTICLE CONTENT
-      ========================================================= */}
-      <article className="mx-auto w-full max-w-[850px] px-6 pb-14 pt-10 sm:px-8 md:px-10 md:pt-12 lg:px-0 lg:pt-14">
-        <div
-          className="
-            font-body
-            text-[17px]
-            leading-[1.8]
-            text-charcoal
-            md:text-[18px]
-          "
-        >
-          <p>
-            The Agricultural Resiliency Against Tariffs Program was recently
-            appropriated <strong>$30 million</strong> to provide payments
-            directly to agricultural producers. These payments range from
-            $1,000 to $25,000 per entity. Timing is of the essence as there
-            is an application process that currently runs through August 11.
-          </p>
-
-          <h2 className="mb-3 mt-10 font-display text-[21px] font-bold leading-[1.3] text-forest md:mt-12 md:text-[23px]">
-            Determining Product Eligibility
-          </h2>
-
-          <p>
-            The first step is to determine if the agricultural product an
-            applicant is producing qualifies for the program. The following
-            products are eligible:
-          </p>
-
-          <ul className="mt-4 list-disc space-y-2 pl-6">
-            <li>Milk (Dairy farms)</li>
-            <li>Livestock, Livestock Products, Specialty Crops, Aquaculture</li>
-          </ul>
-
-          <p className="mt-6">
-            Livestock and livestock products include eggs, cattle, sheep,
-            hogs, goats, poultry, natural fiber, cow dairy milk sold to
-            consumers raw, milk from non-bovine animals, and other animals
-            raised as livestock. Specialty crops include those products that
-            are listed as eligible under the{" "}
-            <a
-              rel="noopener noreferrer"
-              href="https://www.ams.usda.gov/services/grants/scbgp/specialty-crop"
-              target="_blank"
-              className="text-clay hover:underline"
-            >
-              USDA Specialty Crop Block Grant Program
-            </a>
-            .
-          </p>
-
-          <p className="mt-6">
-            Aquaculture products include fish, fish products, water plants
-            and shellfish (excluding wild harvested products).
-          </p>
-
-          <h3 className="mb-3 mt-8 font-display text-[19px] font-bold leading-[1.3] text-forest">
-            What products don&rsquo;t qualify?
-          </h3>
-
-          <p>
-            Any row crops eligible under the{" "}
-            <a
-              rel="noopener noreferrer"
-              href="https://www.fsa.usda.gov/resources/income-support/farmer-bridge-assistance-fba-program"
-              target="_blank"
-              className="text-clay hover:underline"
-            >
-              USDA Farmer Bridge Assistance Program
-            </a>{" "}
-            (e.g., corn, soybeans, barley, wheat, etc.) are{" "}
-            <strong>ineligible</strong> under the Agricultural Resiliency
-            Against Tariffs Program.
-          </p>
-
-          <h2 className="mb-3 mt-10 font-display text-[21px] font-bold leading-[1.3] text-forest md:mt-12 md:text-[23px]">
-            Determining Farm Eligibility
-          </h2>
-
-          <p>
-            The second step is to determine farm eligibility. To qualify,
-            applicants must meet the following criteria:
-          </p>
-
-          <ul className="mt-4 list-disc space-y-2 pl-6">
-            <li>Operating in 2025 and currently in business;</li>
-            <li>
-              Has active agricultural production within New York State for
-              an eligible product(s);
-            </li>
-            <li>
-              Meets the eligible farm income requirement. An eligible farm
-              must have at least two-thirds of its federal gross income from
-              all sources in excess of $30,000 derived from agricultural
-              activities, as defined by{" "}
-              <a
-                rel="noopener noreferrer"
-                href="https://www.tax.ny.gov/pit/credits/eligible-farmer-income-test.htm"
-                target="_blank"
-                className="text-clay hover:underline"
-              >
-                New York State Tax Law
-              </a>
-              .
-            </li>
-            <li>
-              This test is similar to the farmers who get certain tax
-              credits, such as the New York Farmers&rsquo; School Tax
-              credit.
-            </li>
-            <li>
-              Program eligibility must be certified and attested to by a
-              qualified financial professional.
-            </li>
-          </ul>
-
-          <h2 className="mb-3 mt-10 font-display text-[21px] font-bold leading-[1.3] text-forest md:mt-12 md:text-[23px]">
-            Completing the Application Process
-          </h2>
-
-          <p>
-            After determining steps one and two, the next step is the
-            application. Eligible producers can access the application at
-            the following link:{" "}
-            <a
-              rel="noopener noreferrer"
-              href="https://agriculture.ny.gov/agricultural-resiliency-against-tariffs-program"
-              target="_blank"
-              className="break-words text-clay hover:underline"
-            >
-              https://agriculture.ny.gov/agricultural-resiliency-against-tariffs-program
-            </a>
-            . There are two different tracks, one for dairy farms and
-            another for other eligible applicants with slightly different
-            requirements. Applications must be completed by August 11.
-          </p>
-
-          <p className="mt-6">
-            Farm Funders&rsquo;s team of agricultural advisors can help
-            applicants navigate the process. Relief programs are helpful,
-            but they are most effective when aligned with a broader
-            financial plan, including budgeting and risk mitigation tools
-            such as Dairy Revenue Protection and crop insurance.
-          </p>
-
-          <p className="mt-6">
-            Farm Funders&rsquo;s whole-farm, advisory approach connects
-            programs, insurance and financial strategy into a clear path
-            forward. Applicants are encouraged to start the application
-            process now and reach out to their advisors along the way.
-          </p>
-
-          <p className="mt-6">
-            At Farm Funders, we are committed to being a trusted advisor to
-            New York&rsquo;s agricultural producers, helping you navigate
-            uncertainty and strengthen your operation for the future.
-          </p>
-
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex rounded-sm bg-forest px-6 py-3.5 font-body text-sm font-bold text-white transition-colors hover:bg-forest-dark"
-            >
-              Contact Us Today!
-            </Link>
-          </div>
-        </div>
-
-        {/* =========================================================
-            TAGS
-        ========================================================= */}
-        <div className="mt-10 border-t border-charcoal/10 pt-6">
-          <span className="font-body text-[15px] text-charcoal">
-            Tags:{" "}
-          </span>
-
-          {TAGS.map((tag, index) => (
-            <span key={tag.slug}>
-              <Link
-                href={`${BLOG_PATH}?tag=${encodeURIComponent(tag.slug)}`}
-                className="font-body text-[15px] text-clay hover:underline"
-              >
-                {tag.label}
-              </Link>
-
-              {index < TAGS.length - 1 && (
-                <span className="mx-2 text-charcoal/60">,</span>
-              )}
-            </span>
-          ))}
-        </div>
-
-        {/* =========================================================
-            AUTHOR
-        ========================================================= */}
-        <div className="mt-8 flex items-center gap-4 border-t border-charcoal/10 pt-6">
-          <div className="h-[68px] w-[68px] shrink-0 overflow-hidden rounded-full bg-grey-bg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/ArezzoDario_web-1.jpg"
-              alt="Dario Arezzo"
-              width={68}
-              height={68}
-              loading="lazy"
-              decoding="async"
-              referrerPolicy="no-referrer"
-              className="block h-full w-full object-cover"
-            />
-          </div>
-
+        {/* Meet the Authors CTA */}
+        <section className="authors-cta">
           <div>
-            <Link
-              href="/resources/meet-the-authors#dario-arezzo"
-              className="font-display text-[16px] font-bold text-forest hover:underline"
-            >
-              Dario Arezzo
-            </Link>
-
-            <p className="font-body text-[14px] text-grey-text">
-              Executive Vice President, Chief Financial Services Officer
+            <h2 className="section-title">Meet the Authors</h2>
+            <p className="authors-cta-text">
+              Connect with and discover our Today’s Harvest blog authors and
+              their broad range of financial and northeast agricultural
+              expertise.
             </p>
           </div>
-        </div>
 
-        {/* =========================================================
-            BACK TO BLOG
-        ========================================================= */}
-        <div className="mt-8">
           <Link
-            href={BLOG_PATH}
-            className="font-body text-[15px] font-bold text-blue hover:underline"
+            href={AUTHORS_PATH}
+            className="primary-button authors-cta-button"
           >
-            ← Back to Today&apos;s Harvest
+            Meet the Authors
           </Link>
-        </div>
-      </article>
+        </section>
 
-      {/* =========================================================
-          YOU MIGHT ALSO LIKE
-      ========================================================= */}
-      <section className="mx-auto w-full max-w-[1180px] px-6 pb-14 pt-4 sm:px-8 md:px-10 lg:px-12">
-        <h2 className="font-display text-[26px] font-bold text-forest md:text-[30px]">
-          You Might Also Like
-        </h2>
+        {/* Newsletter — immediately before the global footer */}
+        <section className="newsletter">
+          <h2 className="newsletter-title">
+            Sign up for our Today&apos;s Harvest Blog.
+          </h2>
 
-        <div className="mt-6 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {RELATED_ARTICLES.map((item) => (
-            <div
-              key={item.title}
-              className="border-t border-charcoal/10 pt-5"
+          <p className="newsletter-subhead">
+            Get the latest blog articles delivered to your inbox.
+          </p>
+
+          <div className="newsletter-input">
+            <form
+              className="newsletter-inner"
+              action="#"
+              method="post"
             >
-              <Link
-                href={item.categoryHref}
-                className="font-body text-[13px] font-bold uppercase tracking-wide text-grey-text hover:underline"
-              >
-                {item.category}
-              </Link>
+              <div className="newsletter-group">
+                <label htmlFor="email" className="newsletter-label">
+                  Enter your email*
+                </label>
 
-              <div className="mt-3">
-                {item.href ? (
-                  <Link
-                    href={item.href}
-                    className="font-display text-[18px] font-bold leading-snug text-forest hover:underline"
-                  >
-                    {item.title}
-                  </Link>
-                ) : (
-                  <span className="font-display text-[18px] font-bold leading-snug text-forest">
-                    {item.title}
-                  </span>
-                )}
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  className="newsletter-email"
+                  placeholder="email@address.com"
+                  required
+                />
+
+                <div className="required">*Required Field</div>
               </div>
 
-              <p className="mt-3 font-body text-[13px] font-bold uppercase tracking-wide text-grey-text">
-                {item.date}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* =========================================================
-          MEET THE AUTHORS
-      ========================================================= */}
-      <section className="w-full bg-forest-dark px-6 py-14 text-center text-white sm:px-8 md:py-16">
-        <h2 className="font-display text-3xl font-bold text-white md:text-4xl">
-          Meet the Authors
-        </h2>
-
-        <p className="mx-auto mt-5 max-w-2xl font-body text-base leading-7 text-white/85">
-          Connect with and discover our Today&apos;s Harvest blog authors and
-          their broad range of financial and Northeast agricultural expertise.
-        </p>
-
-        <Link
-          href="/resources/meet-the-authors"
-          className="mx-auto mt-7 inline-flex rounded-sm bg-white px-6 py-3.5 font-body text-sm font-bold text-forest-dark transition-colors hover:bg-cream"
-        >
-          Meet the Authors
-        </Link>
-      </section>
-
-      {/* =========================================================
-          NEWSLETTER
-      ========================================================= */}
-      <section className="w-full bg-cream px-6 py-12 text-center sm:px-8 md:py-16">
-        <h2 className="font-display text-2xl font-bold text-forest md:text-3xl">
-          Sign up for our Today&apos;s Harvest Blog.
-        </h2>
-
-        <p className="mt-4 font-body text-base text-charcoal/80">
-          Get the latest blog articles delivered to your inbox.
-        </p>
-
-        <form className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
-          <label htmlFor="newsletter-email" className="sr-only">
-            Email address
-          </label>
-
-          <input
-            id="newsletter-email"
-            type="email"
-            required
-            placeholder="Enter your email*"
-            className="min-w-0 flex-1 rounded-sm border border-charcoal/20 bg-white px-4 py-3 font-body text-sm text-charcoal placeholder:text-grey-text focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
-          />
-
-          <button
-            type="submit"
-            className="rounded-sm bg-clay px-6 py-3 font-body text-sm font-bold text-white transition-colors hover:bg-clay-dark"
-          >
-            Sign Up
-          </button>
-        </form>
-      </section>
-    </main>
+              <button type="submit" className="signup-button">
+                Sign Up
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
