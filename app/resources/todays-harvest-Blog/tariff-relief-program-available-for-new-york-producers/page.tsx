@@ -778,7 +778,7 @@ export default function TariffReliefArticlePage() {
             section (overlaps 37px into the hero at desktop). */}
         <div className="hero-image-wrap">
           <img
-            src="https://images.unsplash.com/photo-1636998980792-63f27ddea4e3?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+            src="/images/homepage/DFS_2018.jpg"
             alt="Dairy cows eating hay at a feeding station inside a barn, with warm sunlight in the background."
           />
         </div>
@@ -902,7 +902,7 @@ export default function TariffReliefArticlePage() {
             </p>
 
             <p>
-              Farm Funders’s team of agricultural advisors can help applicants
+              Farm Funding’s team of agricultural advisors can help applicants
               navigate the process. Relief programs are helpful, but they are
               most effective when aligned with a broader financial plan,
               including budgeting and risk mitigation tools such as Dairy
@@ -910,21 +910,21 @@ export default function TariffReliefArticlePage() {
             </p>
 
             <p>
-              Farm Funders’s whole-farm, advisory approach connects programs,
+              Farm Funding’s whole-farm, advisory approach connects programs,
               insurance and financial strategy into a clear path forward.
               Applicants are encouraged to start the application process now
               and reach out to their advisors along the way.
             </p>
 
             <p>
-              At Farm Funders, we are committed to being a trusted advisor to
+              At Farm Funding, we are committed to being a trusted advisor to
               New York’s agricultural producers, helping you navigate
               uncertainty and strengthen your operation for the future.
             </p>
 
             <div className="contact-wrap">
               <a
-                href="https://farm-funders.com/ContactUs.html"
+                href= /"contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="primary-button"
