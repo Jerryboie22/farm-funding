@@ -1,0 +1,489 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+const TITLE = "Highlights from the Fiscal Year 2026-2027 NYS Budget";
+const DESCRIPTION =
+  "The New York State budget for Fiscal Year 2026-2027 includes several key wins for the state's farmers, including a five-year extension of the Investment Tax Credit and new funding for dairy and environmental stewardship programs.";
+
+const BLOG_PATH = "/resources/todays-harvest-Blog";
+const AUTHORS_PATH = "/resources/meet-the-authors";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords:
+    "NYS Budget 2026-2027, Investment Tax Credit, Farm Funding, Tax Talks, Austin Weaver, dairy farm modernization",
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [
+      {
+        url: "/images/homepage/DFS_2018.jpg",
+        alt: "Farmer hands using a smartphone in a field",
+      },
+    ],
+  },
+};
+
+const RELATED_ARTICLES = [
+  {
+    category: "Crop Insurance",
+    categoryHref: `${BLOG_PATH}?category=crop-insurance`,
+    title: "Understanding USDA's Base Acre Review Opportunity: What Farmers Need to Know",
+    href: `${BLOG_PATH}/260609CG_BaseAcreReviewForFarmers`,
+    date: "June 9, 2026",
+  },
+  {
+    category: "Knowledge Exchange Partner",
+    categoryHref: "/resources/Industry-Trends-and-Outlooks?category=knowledge-exchange-partner",
+    title: "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers.html",
+    date: "July 7, 2026",
+  },
+  {
+    category: "Tax Talks",
+    categoryHref: `${BLOG_PATH}?category=tax-talks`,
+    title: "A Smarter Safety Net: What the New USDA Payment Rules Mean for Your Farm",
+    href: `${BLOG_PATH}/260630NewUSDAPaymentRulesForYourFarm`,
+    date: "June 30, 2026",
+  },
+];
+
+const styles = `
+  .nysbudgetpage, .nysbudgetpage * { box-sizing: border-box; }
+  .nysbudgetpage {
+    --clay: #496d83; --clay-dark: #3b5a6d; --forest: #4f832a; --cream: #ecf1e4;
+    --grey: #686868; --line: #d8d8d8; --light: #f1f3f4; --charcoal: #231f20;
+    width: 100%; overflow-x: hidden; background: #fff; color: var(--grey);
+  }
+  .nysbudgetpage .hero { position: relative; width: 100%; height: 364px; background: var(--clay); color: #fff; }
+  .nysbudgetpage .hero-inner { width: min(1800px, calc(100% - 120px)); height: 100%; margin: 0 auto; padding: 16px 7px 0; }
+  .nysbudgetpage .category {
+    display: inline-block; margin: 0 0 31px; padding: 4px 7px 5px; border: 1px solid #fff;
+    color: #fff; font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 16px; font-weight: 700; line-height: 1.25; text-decoration: none;
+  }
+  .nysbudgetpage .category:hover, .nysbudgetpage .author-link:hover { text-decoration: underline; }
+  .nysbudgetpage h1 {
+    max-width: none; margin: 0; color: var(--cream);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;
+  }
+  .nysbudgetpage .byline {
+    margin: 25px 0 0; color: #fff; font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 18px; font-weight: 500; line-height: 1.4;
+  }
+  .nysbudgetpage .author-link { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+  .nysbudgetpage .image-wrap { position: relative; z-index: 2; width: 750px; max-width: calc(100% - 28px); margin: -253px auto 0; }
+  .nysbudgetpage .image-wrap img { display: block; width: 100%; height: auto; margin: 0; object-fit: cover; }
+  .nysbudgetpage .content { width: min(1106px, calc(100% - 56px)); margin: 48px auto 0; }
+  .nysbudgetpage .copy { width: 100%; padding-bottom: 28px; font-family: var(--font-barlow), Barlow, Arial, sans-serif; color: var(--grey); }
+  .nysbudgetpage .copy p, .nysbudgetpage .copy li {
+    margin: 0 0 24px; color: var(--grey); font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 18px; font-weight: 500; line-height: 1.72;
+  }
+  .nysbudgetpage .copy strong { font-weight: 700; }
+  .nysbudgetpage .copy h3 {
+    margin: 50px 0 35px; color: var(--grey); font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-weight: 700; line-height: 1.2; font-size: 30px; letter-spacing: -0.25px;
+  }
+  .nysbudgetpage .copy ul { margin: 0 0 20px; padding-left: 35px; }
+  .nysbudgetpage .copy li { margin-bottom: 14px; padding-left: 0; }
+  .nysbudgetpage .copy li:last-child { margin-bottom: 24px; }
+  .nysbudgetpage .copy a { color: var(--clay); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .nysbudgetpage .copy a:hover { color: var(--forest); }
+  .nysbudgetpage .contact { padding: 4px 0 28px; text-align: center; }
+  .nysbudgetpage .button {
+    display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: 13px 28px;
+    background: var(--clay); color: #fff; font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 16px; font-weight: 700; line-height: 1.2; text-decoration: none;
+  }
+  .nysbudgetpage .button:hover { background: var(--clay-dark); }
+  .nysbudgetpage .tags {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin: 0 auto; padding: 22px 0 28px;
+    border-top: 1px solid var(--line); color: var(--grey); font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 16px; line-height: 1.6;
+  }
+  .nysbudgetpage .tags svg { width: 17px; height: 17px; margin-right: 2px; color: var(--forest); }
+  .nysbudgetpage .tags a { color: var(--clay); text-decoration: underline; }
+  .nysbudgetpage .tags a:hover { color: var(--forest); }
+  .nysbudgetpage .tag-separator { color: var(--grey); margin-right: 2px; }
+  .nysbudgetpage .author-share { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 20px 0 52px; }
+  .nysbudgetpage .box { min-height: 176px; padding: 22px; background: var(--light); }
+  .nysbudgetpage .author-box { display: flex; align-items: center; gap: 22px; }
+  .nysbudgetpage .author-photo { width: 176px; height: 176px; flex: 0 0 176px; object-fit: cover; }
+  .nysbudgetpage .author-name {
+    color: var(--forest); font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 21px; font-weight: 700; line-height: 1.3; text-decoration: underline;
+  }
+  .nysbudgetpage .author-role {
+    margin: 8px 0 0; color: var(--charcoal); font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 17px; font-weight: 700; line-height: 1.4;
+  }
+  .nysbudgetpage .share-box { display: flex; align-items: center; }
+  .nysbudgetpage .share-label {
+    margin: 0 0 16px; color: var(--charcoal); font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 17px; font-weight: 600;
+  }
+  .nysbudgetpage .share-list { display: flex; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .nysbudgetpage .share-list a {
+    display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center;
+    border-radius: 4px; color: #fff; text-decoration: none;
+  }
+  .nysbudgetpage .share-list svg { width: 22px; height: 22px; }
+  .nysbudgetpage .share-x { background: #14171a; }
+  .nysbudgetpage .share-facebook { background: #1877f2; }
+  .nysbudgetpage .share-linkedin { background: #0a66c2; }
+  .nysbudgetpage .share-email { background: #34a853; }
+  .nysbudgetpage .related-wrap { width: 100%; background: var(--cream); }
+  .nysbudgetpage .related { width: min(1800px, calc(100% - 120px)); margin: 0 auto; padding: 34px 7px 54px; }
+  .nysbudgetpage .section-title {
+    margin: 0; color: var(--forest); font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 30px; font-weight: 700; line-height: 1.25;
+  }
+  .nysbudgetpage .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 20px; }
+  .nysbudgetpage .related-card { padding-top: 26px; }
+  .nysbudgetpage .related-category {
+    display: inline-block; padding: 6px 14px; background: var(--grey); color: #fff;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: .02em; text-transform: uppercase; text-decoration: none;
+  }
+  .nysbudgetpage .related-title {
+    display: block; margin-top: 26px; color: var(--forest);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 21px; font-weight: 700; line-height: 1.35; text-decoration: none;
+  }
+  .nysbudgetpage .related-date {
+    margin: 26px 0 0; color: var(--grey); font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 14px; font-weight: 700; text-transform: uppercase;
+  }
+  .nysbudgetpage .authors-cta {
+    display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 28px;
+    width: min(1800px, calc(100% - 120px)); margin: 0 auto; padding: 50px 7px;
+  }
+  .nysbudgetpage .authors-copy { max-width: 900px; }
+  .nysbudgetpage .authors-text {
+    margin: 14px 0 0; color: var(--charcoal); font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 20px; line-height: 1.5;
+  }
+  .nysbudgetpage .authors-button { justify-self: end; min-width: 205px; }
+  .nysbudgetpage .newsletter { width: 100%; padding: 60px 20px; background: var(--forest); color: #fff; text-align: center; }
+  .nysbudgetpage .newsletter-title {
+    margin: 0; color: #fff; font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 44px; font-weight: 700; line-height: 1.15;
+  }
+  .nysbudgetpage .newsletter-subhead {
+    margin: 22px 0 0; color: #fff; font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 21px; line-height: 1.4;
+  }
+  .nysbudgetpage .newsletter-form { display: flex; justify-content: center; margin-top: 30px; }
+  .nysbudgetpage .newsletter-inner { display: flex; align-items: flex-end; gap: 10px; }
+  .nysbudgetpage .newsletter-group { text-align: left; }
+  .nysbudgetpage .newsletter-label {
+    display: block; margin-bottom: 9px; color: #fff; font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 18px; font-weight: 700;
+  }
+  .nysbudgetpage .newsletter-email {
+    width: 245px; height: 44px; border: 0; border-radius: 2px; padding: 0 13px; background: #fff;
+    color: var(--charcoal); font-family: var(--font-barlow), Barlow, Arial, sans-serif; font-size: 17px; outline: none;
+  }
+  .nysbudgetpage .required { margin-top: 8px; color: #fff; font-family: var(--font-barlow), Barlow, Arial, sans-serif; font-size: 14px; font-style: italic; }
+  .nysbudgetpage .signup {
+    height: 44px; min-width: 112px; border: 2px solid #fff; border-radius: 4px; padding: 0 20px;
+    background: var(--forest); color: #fff; font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+    font-size: 18px; font-weight: 700; cursor: pointer;
+  }
+  @media (max-width: 1400px) { .nysbudgetpage h1 { font-size: 42px; } }
+  @media (max-width: 991px) {
+    .nysbudgetpage .hero { height: auto; min-height: 330px; }
+    .nysbudgetpage .hero-inner { width: calc(100% - 56px); padding: 22px 0 150px; }
+    .nysbudgetpage h1 { font-size: 38px; }
+    .nysbudgetpage .image-wrap { margin-top: -110px; width: min(750px, calc(100% - 56px)); }
+    .nysbudgetpage .content { width: calc(100% - 56px); margin-top: 42px; }
+    .nysbudgetpage .related, .nysbudgetpage .authors-cta { width: calc(100% - 56px); }
+  }
+  @media (max-width: 767px) {
+    .nysbudgetpage .hero { min-height: 0; }
+    .nysbudgetpage .hero-inner { width: 100%; padding: 24px 14px 135px; }
+    .nysbudgetpage .category { margin-bottom: 20px; font-size: 14px; }
+    .nysbudgetpage h1 { font-size: 30px; line-height: 1.18; }
+    .nysbudgetpage .byline { margin-top: 17px; font-size: 16px; }
+    .nysbudgetpage .image-wrap { width: calc(100% - 28px); margin-top: -105px; }
+    .nysbudgetpage .content { width: calc(100% - 28px); margin-top: 30px; }
+    .nysbudgetpage .copy p, .nysbudgetpage .copy li { font-size: 17px; line-height: 1.72; }
+    .nysbudgetpage .copy h3 { margin-top: 35px; margin-bottom: 24px; font-size: 25px; }
+    .nysbudgetpage .author-share { grid-template-columns: 1fr; gap: 18px; padding-bottom: 35px; }
+    .nysbudgetpage .box { min-height: 0; padding: 18px; }
+    .nysbudgetpage .author-box { align-items: flex-start; gap: 15px; }
+    .nysbudgetpage .author-photo { width: 96px; height: 96px; flex-basis: 96px; }
+    .nysbudgetpage .related { width: calc(100% - 28px); padding: 25px 0 35px; }
+    .nysbudgetpage .related-grid { grid-template-columns: 1fr; gap: 25px; }
+    .nysbudgetpage .authors-cta { grid-template-columns: 1fr; width: calc(100% - 28px); gap: 18px; padding: 38px 0; }
+    .nysbudgetpage .authors-button { justify-self: start; }
+    .nysbudgetpage .newsletter { padding: 48px 14px 52px; }
+    .nysbudgetpage .newsletter-title { font-size: 31px; }
+    .nysbudgetpage .newsletter-subhead { font-size: 17px; }
+    .nysbudgetpage .newsletter-inner { width: 100%; flex-direction: column; align-items: stretch; }
+    .nysbudgetpage .newsletter-email, .nysbudgetpage .signup { width: 100%; }
+  }
+`;
+
+export default function NYSBudgetHighlightsPage() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
+
+      <div className="nysbudgetpage">
+        <section className="hero">
+          <div className="hero-inner">
+            <Link href={`${BLOG_PATH}?category=tax-talks`} className="category">
+              Tax Talks
+            </Link>
+
+            <h1 id="maincontent">{TITLE}</h1>
+
+            <p className="byline">
+              By:{" "}
+              <Link href={`${AUTHORS_PATH}#Austin-Weaver`} className="author-link">
+                Austin Weaver
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        <div className="image-wrap">
+          <img src="/images/homepage/DFS_2018.jpg" alt="Farmer hands using a smartphone in a field" />
+        </div>
+
+        <div className="content">
+          <article className="copy">
+            <p>
+              After a lengthy negotiation, New York finalized its Fiscal Year 2026-2027 state
+              budget in late May 2026. For the state&rsquo;s farmers, the final package includes
+              several meaningful wins that had been priorities for the agricultural community
+              throughout the budget process, alongside continued funding for programs farmers
+              already rely on.
+            </p>
+
+            <h3>Investment Tax Credit: Five-Year Extension</h3>
+
+            <p>
+              The single biggest agricultural win in this year&rsquo;s budget is a five-year
+              extension of the Investment Tax Credit (ITC). The ITC allows eligible farmers &mdash;
+              generally those who derive at least two-thirds of their gross income from farming
+              &mdash; to claim a refundable credit on qualifying capital expenditures used in
+              production, such as equipment, machinery and farm buildings. Extending the ITC gives
+              farms greater certainty as they plan multi-year investments in expansion,
+              modernization and equipment replacement, rather than facing the credit&rsquo;s
+              expiration mid-planning-cycle.
+            </p>
+
+            <h3>New Funding for Dairy</h3>
+
+            <p>
+              The budget also directs new resources specifically toward the dairy sector, including:
+            </p>
+
+            <ul>
+              <li><strong>$15 million</strong> for the Dairy Farm Modernization Grant Program, supporting capital upgrades on dairy operations across the state</li>
+              <li>Continued support for Cornell PRO-DAIRY and related climate research initiatives</li>
+              <li>Increased funding for environmental stewardship and conservation programs that many dairy and livestock operations participate in</li>
+            </ul>
+
+            <h3>What This Means for Your Operation</h3>
+
+            <p>
+              A multi-year ITC extension is most valuable when it&rsquo;s built into a broader
+              capital planning strategy &mdash; rather than treated as a one-off benefit on a single
+              purchase. Farms weighing equipment purchases, facility upgrades or expansion projects
+              over the next several years now have a longer runway to plan around the credit with
+              confidence.
+            </p>
+
+            <p>
+              Similarly, the new dairy-specific grant funding and continued environmental
+              stewardship dollars are worth reviewing against your own operation&rsquo;s
+              modernization or conservation plans &mdash; timing an application or capital project to
+              align with when funding cycles open can make a meaningful difference.
+            </p>
+
+            <h3>How Farm Funding Can Help</h3>
+
+            <p>
+              Budget provisions like these are only useful if they&rsquo;re factored into your actual
+              tax and capital planning. Your Farm Funding tax advisor can help you:
+            </p>
+
+            <ul>
+              <li>Confirm your eligibility for the extended Investment Tax Credit</li>
+              <li>Model how ITC timing interacts with Section 179 and other depreciation elections</li>
+              <li>Identify whether your operation qualifies for the Dairy Farm Modernization Grant Program or related state funding</li>
+              <li>Build these provisions into a multi-year capital and tax plan</li>
+            </ul>
+
+            <p>
+              Reach out to your Farm Funding tax professional to talk through how this year&rsquo;s
+              budget provisions apply to your operation.
+            </p>
+
+            <div className="contact">
+              <Link href="/contact" className="button">
+                Get in Touch!
+              </Link>
+            </div>
+          </article>
+
+          <div className="tags">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.41l9 9c.36.36.86.59 1.41.59.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 5 6.5 5 8 5.67 8 6.5 7.33 8 6.5 8z" />
+            </svg>
+            <span>Tags:</span>{" "}
+            {[
+              ["tax planning", "tax-planning"],
+              ["legislation", "legislation"],
+              ["financing", "financing"],
+              ["dairy", "dairy"],
+            ].map(([label, slug], index, arr) => (
+              <span key={slug}>
+                <Link href={`${BLOG_PATH}?tag=${slug}`}>{label}</Link>
+                {index < arr.length - 1 && <span className="tag-separator">,</span>}
+              </span>
+            ))}
+          </div>
+
+          <section className="author-share" aria-label="Article author and sharing">
+            <div className="box author-box">
+              <img
+                src="/images/homepage/DFS_2018.jpg"
+                alt="Professional business portrait of Austin Weaver"
+                className="author-photo"
+              />
+              <div>
+                <Link href={`${AUTHORS_PATH}#Austin-Weaver`} className="author-name">
+                  Austin Weaver
+                </Link>
+                <p className="author-role">Tax Specialist</p>
+              </div>
+            </div>
+
+            <div className="box share-box">
+              <div>
+                <p className="share-label">Share this post on</p>
+                <ul className="share-list">
+                  <li>
+                    <a
+                      className="share-x"
+                      href={`https://twitter.com/share?text=${encodeURIComponent(TITLE)}&url=${encodeURIComponent("https://farm-funders.com/en/resources/todays-harvest-Blog/260604FarmHighlightsNYSBudget")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on X"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="share-facebook"
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://farm-funders.com/en/resources/todays-harvest-Blog/260604FarmHighlightsNYSBudget")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on Facebook"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="share-linkedin"
+                      href={`https://www.linkedin.com/shareArticle?url=${encodeURIComponent("https://farm-funders.com/en/resources/todays-harvest-Blog/260604FarmHighlightsNYSBudget")}&title=${encodeURIComponent(TITLE)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Share on LinkedIn"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="share-email"
+                      href={`mailto:?subject=${encodeURIComponent(TITLE)}&body=${encodeURIComponent("https://farm-funders.com/en/resources/todays-harvest-Blog/260604FarmHighlightsNYSBudget.html")}`}
+                      aria-label="Share by email"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div className="related-wrap">
+          <section className="related">
+            <h2 className="section-title">You Might Also Like</h2>
+            <div className="related-grid">
+              {RELATED_ARTICLES.map((item) => (
+                <article key={item.title} className="related-card">
+                  <Link href={item.categoryHref} className="related-category">
+                    {item.category}
+                  </Link>
+                  <Link href={item.href} className="related-title">
+                    {item.title} <span aria-hidden="true">&rsaquo;</span>
+                  </Link>
+                  <p className="related-date">{item.date}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <section className="authors-cta">
+          <div className="authors-copy">
+            <h2 className="section-title">Meet the Authors</h2>
+            <p className="authors-text">
+              Connect with and discover our Today&rsquo;s Harvest blog authors and their broad
+              range of financial and northeast agricultural expertise.
+            </p>
+          </div>
+          <Link href={AUTHORS_PATH} className="button authors-button">
+            Meet the Authors
+          </Link>
+        </section>
+
+        <section className="newsletter">
+          <h2 className="newsletter-title">Sign up for our Today&apos;s Harvest Blog.</h2>
+          <p className="newsletter-subhead">Get the latest blog articles delivered to your inbox.</p>
+          <div className="newsletter-form">
+            <form className="newsletter-inner" action="#" method="post">
+              <div className="newsletter-group">
+                <label htmlFor="email" className="newsletter-label">
+                  Enter your email*
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  className="newsletter-email"
+                  placeholder="email@address.com"
+                  required
+                />
+                <div className="required">*Required Field</div>
+              </div>
+              <button type="submit" className="signup">
+                Sign Up
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}

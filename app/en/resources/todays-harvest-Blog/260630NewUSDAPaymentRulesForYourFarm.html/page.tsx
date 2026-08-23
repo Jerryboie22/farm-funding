@@ -15,9 +15,9 @@ const HERO_IMAGE="/images/homepage/Business Consulting.jpg";
 export const metadata: Metadata={title:`${TITLE} | Farm Funding`,description:DESCRIPTION,openGraph:{title:TITLE,description:DESCRIPTION,images:[{url:HERO_IMAGE,alt:"Business consulting"}]}};
 
 const RELATED=[
- {category:"Knowledge Exchange Partner",categoryHref:`${BLOG_PATH}?category=knowledge-exchange-partner`,title:"United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",href:undefined as string|undefined,date:"July 7, 2026"},
- {category:"Crop Insurance",categoryHref:`${BLOG_PATH}?category=crop-insurance`,title:"Understanding USDA’s Base Acre Review Opportunity: What Farmers Need to Know",href:`${BLOG_PATH}/260609CG_BaseAcreReviewForFarmers.html`,date:"June 9, 2026"},
- {category:"Tax Talks",categoryHref:`${BLOG_PATH}?category=tax-talks`,title:"Highlights from the Fiscal Year 2026-2027 NYS Budget",href:undefined as string|undefined,date:"June 4, 2026"}
+ {category:"Knowledge Exchange Partner",categoryHref:`${BLOG_PATH}?category=knowledge-exchange-partner`,title:"United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",href:"/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers",date:"July 7, 2026"},
+ {category:"Crop Insurance",categoryHref:`${BLOG_PATH}?category=crop-insurance`,title:"Understanding USDA’s Base Acre Review Opportunity: What Farmers Need to Know",href:`${BLOG_PATH}/260609CG_BaseAcreReviewForFarmers`,date:"June 9, 2026"},
+ {category:"Tax Talks",categoryHref:`${BLOG_PATH}?category=tax-talks`,title:"Highlights from the Fiscal Year 2026-2027 NYS Budget",href:"/resources/todays-harvest-Blog/260604FarmHighlightsNYSBudget",date:"June 4, 2026"}
 ];
 const TAGS=[["business management","business-management"],["farm management","farm-management"],["tax planning","tax-planning"],["taxes","taxes"]];
 const AUTHOR_IMAGE="https://farm-funders.com/-/media/farm-credit-east/Blog/Authors/KnappMarty_web.jpg";
