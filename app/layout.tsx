@@ -3,6 +3,7 @@ import { Montserrat, Barlow } from "next/font/google";
 import "./globals.css";
 import "./article-reference.css";
 import "./article-reference-fine.css";
+import "./article-responsive.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HomeArticleRouting from "@/components/HomeArticleRouting";
