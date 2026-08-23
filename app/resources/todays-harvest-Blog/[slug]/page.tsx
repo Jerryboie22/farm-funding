@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ALL_REFERENCE_ARTICLES, getReferenceArticle } from "../registry";
+import { ALL_REFERENCE_ARTICLES, getReferenceArticle } from "../../blog/registry";
 
-const BLOG_PATH = "/resources/blog";
+const BLOG_PATH = "/resources/todays-harvest-Blog";
 
 export const dynamicParams = false;
 
@@ -13,8 +13,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = getReferenceArticle(slug);
-  if (!article) return { title: "Today's Harvest Blog | Farm Funders" };
-  return { title: `${article.title} | Farm Funders`, description: article.excerpt };
+  if (!article) return { title: "Today's Harvest Blog | Farm Funding" };
+  return { title: `${article.title} | Farm Funding`, description: article.excerpt };
 }
 
 function formatDate(date: string) {
@@ -63,6 +63,10 @@ export default async function HarvestArticlePage({ params }: { params: Promise<{
             ))}
           </div>
         ) : null}
+
+        <div className="mt-12 border-t border-black/10 pt-8">
+          <Link href={BLOG_PATH} className="font-display font-bold text-blue hover:underline">← Back to Today&apos;s Harvest</Link>
+        </div>
       </article>
     </main>
   );
