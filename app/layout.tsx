@@ -3,6 +3,7 @@ import { Montserrat, Barlow } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HomeArticleRouting from "@/components/HomeArticleRouting";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="min-h-full flex flex-col bg-white text-charcoal"
         suppressHydrationWarning
       >
+        <HomeArticleRouting />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

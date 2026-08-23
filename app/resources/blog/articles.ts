@@ -7,6 +7,7 @@ export type HarvestArticle = {
   image: string;
   excerpt: string;
   sourceUrl: string;
+  tags?: string[];
   sections: { heading: string; body: string }[];
 };
 
@@ -80,6 +81,7 @@ export const HARVEST_ARTICLES: HarvestArticle[] = [
     image: "/images/resources/farmer-smartphone.jpg",
     excerpt: "Some mortgage and home-service mailings can resemble legitimate lender communications. Verify unexpected requests independently before sharing information or sending payment.",
     sourceUrl: "https://www.farmcrediteast.com/resources/todays-harvest-Blog/260616-StayAlertToMisleadingMailMortageandHomeWarrantyCommunications",
+    tags: ["cybersecurity", "technology"],
     sections: [
       { heading: "Warning signs", body: "Be cautious of documents that resemble invoices, create unusual urgency, or ask you to respond or pay before you have independently verified the sender." },
       { heading: "Verify independently", body: "Use contact information from a trusted statement or official website rather than calling a number supplied in an unexpected mailing." },
@@ -155,10 +157,13 @@ export const HARVEST_ARTICLES: HarvestArticle[] = [
     image: "/images/crop-insurance/Insurance-Resources.jpg",
     excerpt: "Updates to Dairy Revenue Protection, Livestock Gross Margin and Livestock Risk Protection are intended to improve flexibility and expand coverage opportunities beginning with the 2027 crop year.",
     sourceUrl: "https://www.farmcrediteast.com/en/resources/todays-harvest-Blog/260603CG_KeyChangesToDRPandLGMandLRP",
+    tags: ["crop insurance", "dairy", "livestock", "risk management"],
     sections: [
-      { heading: "Program-wide updates", body: "The changes include updated beginning-farmer subsidies, concurrent coverage opportunities and requirements around policy use and continuation." },
-      { heading: "DRP and LGM", body: "The updates adjust sales timing and several livestock coverage parameters, including weight and ownership provisions." },
-      { heading: "LRP", body: "Additional disaster exemptions, expanded weights, longer cull-cow coverage and new unborn-feeder categories add flexibility for eligible producers." },
+      { heading: "Uniform Changes Across Programs", body: "The changes include updated beginning-farmer subsidies, concurrent coverage opportunities and requirements around policy use and continuation." },
+      { heading: "DRP Updates", body: "The updates adjust sales timing and several dairy coverage parameters, providing producers with additional flexibility in managing revenue risk." },
+      { heading: "LGM Changes", body: "Livestock Gross Margin updates adjust coverage parameters and program flexibility for eligible livestock producers." },
+      { heading: "Updates to LRP Coverage", body: "Additional disaster exemptions, expanded weights, longer cull-cow coverage and new unborn-feeder categories add flexibility for eligible producers." },
+      { heading: "What This Means for Producers", body: "Producers should review the changes with their crop-insurance agent and consider how the updated options fit into their broader risk-management plan." },
     ],
   },
   {
