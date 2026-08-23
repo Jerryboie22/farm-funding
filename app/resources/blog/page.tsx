@@ -9,6 +9,7 @@ export const metadata = {
 const CATEGORIES = ["Ag Economy", "Business Tips and Tools", "Crop Insurance", "Farm Credit", "FarmStart and Beginning Farmers", "Financial Management", "Innovation and Emerging Markets", "Knowledge Exchange Partner", "Profitability", "Public Policy", "Tax Talks", "Transition Planning"];
 const YEARS = ["2023", "2024", "2025", "2026"];
 const PAGE_SIZE = 4;
+const ARTICLE_PATH = "/resources/todays-harvest-Blog";
 
 function pageHref({ query, category, year, page }: { query: string; category: string; year: string; page?: number }) {
   const params = new URLSearchParams();
@@ -50,10 +51,10 @@ export default async function TodaysHarvestBlogPage({ searchParams }: { searchPa
       <section className="w-full px-[4%] py-12 md:py-16 bg-white">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-forest">Latest From Today&apos;s Harvest Blog</h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <Link href={`/resources/blog/${CURRENT_FEATURED_ARTICLE.slug}`} className="block"><img src={CURRENT_FEATURED_ARTICLE.image} alt="Picture of Megan Clancy, Farm Credit East Risk Advisor standing in a dairy barn with black and white cows in the background" className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm" /></Link>
+          <Link href={`${ARTICLE_PATH}/${CURRENT_FEATURED_ARTICLE.slug}`} className="block"><img src={CURRENT_FEATURED_ARTICLE.image} alt={CURRENT_FEATURED_ARTICLE.title} className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm" /></Link>
           <div>
             <span className="inline-block text-grey-text text-xs font-bold uppercase tracking-wide">{CURRENT_FEATURED_ARTICLE.category}</span>
-            <Link href={`/resources/blog/${CURRENT_FEATURED_ARTICLE.slug}`}><h3 className="mt-3 font-display text-2xl md:text-3xl font-semibold text-gold leading-snug hover:underline">{CURRENT_FEATURED_ARTICLE.title}</h3></Link>
+            <Link href={`${ARTICLE_PATH}/${CURRENT_FEATURED_ARTICLE.slug}`}><h3 className="mt-3 font-display text-2xl md:text-3xl font-semibold text-gold leading-snug hover:underline">{CURRENT_FEATURED_ARTICLE.title}</h3></Link>
             <p className="mt-3 text-sm text-grey-text">{CURRENT_FEATURED_ARTICLE.author}</p>
             <p className="mt-4 text-base text-charcoal/80 leading-relaxed">{CURRENT_FEATURED_ARTICLE.excerpt}</p>
             <p className="mt-4 text-sm text-grey-text">{CURRENT_FEATURED_ARTICLE.date}</p>
@@ -64,10 +65,10 @@ export default async function TodaysHarvestBlogPage({ searchParams }: { searchPa
       <section className="w-full px-[4%] py-12 md:py-16 bg-grey-bg">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-forest">Latest Tax Talk</h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <Link href={`/resources/blog/${CURRENT_LATEST_TAX_TALK.slug}`} className="block"><img src={CURRENT_LATEST_TAX_TALK.image} alt="Woman in front of tractor in agriculture field holding and looking at a laptop computer, with tax talk logo in corner" className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm" /></Link>
+          <Link href={`${ARTICLE_PATH}/${CURRENT_LATEST_TAX_TALK.slug}`} className="block"><img src={CURRENT_LATEST_TAX_TALK.image} alt={CURRENT_LATEST_TAX_TALK.title} className="block w-full h-[260px] md:h-[340px] object-cover rounded-sm" /></Link>
           <div>
             <span className="inline-block text-grey-text text-xs font-bold uppercase tracking-wide">{CURRENT_LATEST_TAX_TALK.category}</span>
-            <Link href={`/resources/blog/${CURRENT_LATEST_TAX_TALK.slug}`}><h3 className="mt-3 font-display text-2xl md:text-3xl font-semibold text-gold leading-snug hover:underline">{CURRENT_LATEST_TAX_TALK.title}</h3></Link>
+            <Link href={`${ARTICLE_PATH}/${CURRENT_LATEST_TAX_TALK.slug}`}><h3 className="mt-3 font-display text-2xl md:text-3xl font-semibold text-gold leading-snug hover:underline">{CURRENT_LATEST_TAX_TALK.title}</h3></Link>
             <p className="mt-4 text-base text-charcoal/80 leading-relaxed">{CURRENT_LATEST_TAX_TALK.excerpt}</p>
             <p className="mt-4 text-sm text-grey-text">{CURRENT_LATEST_TAX_TALK.date}</p>
           </div>
@@ -84,13 +85,13 @@ export default async function TodaysHarvestBlogPage({ searchParams }: { searchPa
           {(query || category || year) && <Link href="/resources/blog" className="h-12 inline-flex items-center text-sm font-semibold text-clay hover:text-forest whitespace-nowrap">Reset Filters</Link>}
         </form>
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-7 gap-y-12">
-          {visiblePosts.map((post) => <article key={post.slug}><Link href={`/resources/blog/${post.slug}`} className="block"><img src={post.image} alt={post.title} className="block w-full h-[190px] object-cover rounded-sm" /></Link><span className="mt-4 inline-block text-grey-text text-xs font-bold uppercase tracking-wide">{post.category}</span><Link href={`/resources/blog/${post.slug}`}><h3 className="mt-2 font-display text-lg font-semibold text-gold leading-snug hover:underline">{post.title}</h3></Link><p className="mt-3 text-sm text-charcoal/80 leading-relaxed">{post.excerpt}</p><p className="mt-3 text-xs text-grey-text">{post.date}</p></article>)}
+          {visiblePosts.map((post) => <article key={post.slug}><Link href={`${ARTICLE_PATH}/${post.slug}`} className="block"><img src={post.image} alt={post.title} className="block w-full h-[190px] object-cover rounded-sm" /></Link><span className="mt-4 inline-block text-grey-text text-xs font-bold uppercase tracking-wide">{post.category}</span><Link href={`${ARTICLE_PATH}/${post.slug}`}><h3 className="mt-2 font-display text-lg font-semibold text-gold leading-snug hover:underline">{post.title}</h3></Link><p className="mt-3 text-sm text-charcoal/80 leading-relaxed">{post.excerpt}</p><p className="mt-3 text-xs text-grey-text">{post.date}</p></article>)}
         </div>
         {visiblePosts.length === 0 && <p className="py-12 text-center text-sm text-grey-text">No results found. Please modify your search criteria and try again.</p>}
         {totalPages > 1 && <nav aria-label="Blog pagination" className="mt-12 flex justify-center items-center gap-2">{Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => <Link key={number} href={pageHref({ query, category, year, page: number })} aria-current={page === number ? "page" : undefined} className={`min-w-10 h-10 px-3 inline-flex items-center justify-center border text-sm font-semibold transition-colors ${page === number ? "bg-clay text-white border-clay" : "bg-white text-charcoal border-charcoal/20 hover:border-clay hover:text-clay"}`}>{number}</Link>)}</nav>}
       </section>
 
-      <section className="w-full bg-forest-dark text-white text-center py-14 md:py-16 px-[4%]"><h2 className="font-display text-3xl md:text-4xl font-bold text-white">Meet the Authors</h2><p className="mt-5 max-w-2xl mx-auto text-base text-white/85">Connect with and discover our Today&apos;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p><Link href="/contact" className="mt-7 inline-flex w-fit mx-auto px-6 py-3.5 bg-white text-forest-dark text-sm font-bold rounded-sm hover:bg-cream transition-colors">Meet the Authors</Link></section>
+      <section className="w-full bg-forest-dark text-white text-center py-14 md:py-16 px-[4%]"><h2 className="font-display text-3xl md:text-4xl font-bold text-white">Meet the Authors</h2><p className="mt-5 max-w-2xl mx-auto text-base text-white/85">Connect with and discover our Today&apos;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p><Link href="/resources/meet-the-authors" className="mt-7 inline-flex w-fit mx-auto px-6 py-3.5 bg-white text-forest-dark text-sm font-bold rounded-sm hover:bg-cream transition-colors">Meet the Authors</Link></section>
 
       <section className="w-full bg-cream px-[4%] py-12 md:py-16 text-center"><h2 className="font-display text-2xl md:text-3xl font-bold text-forest">Sign up for our Today&apos;s Harvest Blog.</h2><p className="mt-4 text-base text-charcoal/80">Get the latest blog articles delivered to your inbox.</p><form className="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"><label htmlFor="newsletter-email" className="sr-only">Email address</label><input id="newsletter-email" type="email" required placeholder="Enter your email*" className="flex-1 px-4 py-3 border border-charcoal/20 rounded-sm text-sm text-charcoal placeholder:text-grey-text bg-white" /><button type="submit" className="px-6 py-3 bg-clay text-white text-sm font-bold rounded-sm hover:bg-clay-dark transition-colors">Sign Up</button></form></section>
     </main>
