@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source:
+          "/resources/todays-harvest-Blog/260603CG_KeyChangesToDRPandLGMandLRP.html",
+        destination:
+          "/en/resources/todays-harvest-Blog/260603CG_KeyChangesToDRPandLGMandLRP.html",
+      },
+      {
+        source:
           "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape",
         destination:
           "/en/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape.html",
