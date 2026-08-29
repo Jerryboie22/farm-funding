@@ -10,7 +10,7 @@ const ARTICLE_URL =
   "https://farm-funding.com/en/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers.html";
 const OUTLOOKS_PATH = "/resources/Industry-Trends-and-Outlooks";
 const BLOG_PATH = "/resources/todays-harvest-Blog";
-const AUTHORS_PATH = "/resources/Meet-the-Authors";
+const AUTHORS_PATH = "en/resources/Meet-the-Authors";
 
 const CATEGORY = "Knowledge Exchange Partner";
 const CATEGORY_HREF = `${OUTLOOKS_PATH}?category=Knowledge%20Exchange%20Partner`;
