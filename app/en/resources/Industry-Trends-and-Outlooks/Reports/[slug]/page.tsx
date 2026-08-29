@@ -16,27 +16,6 @@ type Report = {
 };
 
 const REPORTS: Record<string, Report> = {
-  "2607KEP_H2AForDairyEmployers.html": {
-    title: "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",
-    date: "July 7, 2026",
-    issue: "Volume 20, Issue 7",
-    category: "Knowledge Exchange Partner",
-    image: "/images/homepage/Dairy cows milking.jpg",
-    intro:
-      "A new USCIS policy provides a potential H-2A pathway for qualifying dairy employers, addressing a long-standing workforce challenge for year-round dairy operations.",
-    contents: ["H-2A for Dairies", "The Statutory Foundation", "Employer's Need", "How to Establish Need", "What USCIS Will Be Looking For", "Practical Takeaways", "A Word of Caution"],
-    sections: [
-      { heading: "H-2A for Dairies", paragraphs: ["Dairy operations have historically faced difficulty using the H-2A temporary agricultural worker program because milking and herd-care work is performed year-round. New USCIS guidance clarifies circumstances in which dairy employers may demonstrate a qualifying temporary or seasonal need."] },
-      { heading: "The Statutory Foundation", paragraphs: ["The policy guidance builds on existing federal definitions of agricultural labor and agriculture. Those definitions include dairying, so the central question is whether the employer can establish the required temporary or seasonal nature of the need."] },
-      { heading: "Employer's Need", paragraphs: ["Employers should be prepared to explain why additional workers are needed, how the need is connected to seasonal conditions and why the requested period is temporary. Documentation should tell a clear, evidence-based story."] },
-      { heading: "How to Establish Need", paragraphs: ["Workforce records, production cycles, staffing history, operational changes and other supporting evidence can help demonstrate a temporary labor requirement. Producers considering the program should work with qualified immigration counsel before filing."] },
-      { heading: "What USCIS Will Be Looking For", paragraphs: ["USCIS will evaluate the petition against the statutory requirements and the facts presented by the employer. Consistency between the petition, supporting records and the farm's actual operating pattern is essential."] },
-      { heading: "Practical Takeaways", paragraphs: ["Dairy employers should assess whether their operation has a defensible temporary or seasonal workforce need, gather supporting records early and coordinate with experienced counsel on the petition process."] },
-      { heading: "A Word of Caution", paragraphs: ["The availability of a potential pathway does not mean every dairy operation will qualify. Immigration rules are fact-specific and can change, so producers should obtain current legal advice before relying on the program."] },
-    ],
-    byline: "L.J. D’Arrigo, Harris Beach Murtha Attorneys at Law",
-    contributors: "Republished with permission from Harris Beach Murtha Attorneys at Law.",
-  },
   "2606KEP_FuelFertilizerandConflictinMiddleEast.html": {
     title: "Fuel, Fertilizer and Conflict in the Middle East: What to Know Now",
     date: "June 2, 2026",
