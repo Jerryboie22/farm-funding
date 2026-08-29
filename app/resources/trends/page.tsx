@@ -20,7 +20,7 @@ const REPORTS = [
     title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
     date: "July 10, 2026",
     image: "/images/homepage/Dairy cows milking.jpg",
-    href: "/en/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
     excerpt:
       "The annual Northeast dairy farm summary reviews regional financial performance and provides an outlook for the remainder of 2026.",
   },

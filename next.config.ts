@@ -1,6 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
+        destination:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
+        permanent: true,
+      },
+      {
+        source:
+          "/en/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
+        destination:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
@@ -8,12 +26,6 @@ const nextConfig: NextConfig = {
           "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape",
         destination:
           "/en/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape.html",
-      },
-      {
-        source:
-          "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
-        destination:
-          "/en/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
       },
       {
         source:

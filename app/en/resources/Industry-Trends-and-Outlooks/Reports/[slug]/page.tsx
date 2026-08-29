@@ -16,24 +16,6 @@ type Report = {
 };
 
 const REPORTS: Record<string, Report> = {
-  "2025NEDairyFarmSummary2026MidYearOutlook.html": {
-    title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
-    date: "July 10, 2026",
-    issue: "2025 Northeast Dairy Farm Summary",
-    category: "Ag Economy",
-    image: "/images/homepage/Dairy cows milking.jpg",
-    intro:
-      "Farm Funders presents the 2025 Northeast Dairy Farm Summary and the outlook for the remainder of 2026. The annual study provides a regional view of dairy-farm financial performance and the conditions shaping the industry.",
-    contents: ["2025 Highlights", "Farm Financial Performance", "Production and Costs", "Cash Flow and Balance Sheets", "2026 Mid-Year Outlook"],
-    sections: [
-      { heading: "2025 Highlights", paragraphs: ["The 2025 sample showed stronger net earnings across Northeast dairy operations. Average earnings increased materially from the prior year even as milk prices softened and feed costs remained elevated.", "The study covers 136 Northeast dairy farms ranging from smaller family operations to herds of more than 5,000 cows, giving producers and industry leaders a useful regional benchmark."] },
-      { heading: "Farm Financial Performance", paragraphs: ["Financial performance improved in 2025, supported by production gains, changes in non-milk income and lower net cost of production. Total costs nevertheless continued to rise, keeping cost control and productivity central to profitability."] },
-      { heading: "Production and Costs", paragraphs: ["Feed remained the largest individual expense and increased on a per-cow basis. At the same time, milk production per cow and cows-per-worker improved, showing continued productivity gains across the sample."] },
-      { heading: "Cash Flow and Balance Sheets", paragraphs: ["Average cash flow was sufficient to meet operating expenses, debt repayment, family living and tax obligations. Leverage increased, however, and debt per cow rose, making liquidity and capital planning important considerations for producers."] },
-      { heading: "2026 Mid-Year Outlook", paragraphs: ["The remainder of 2026 will require attention to milk markets, feed costs, labor, interest rates and balance-sheet strength. Producers can use their own benchmarks alongside the regional data to evaluate margins and prepare for market volatility."] },
-    ],
-    byline: "Farm Credit East",
-  },
   "2607KEP_H2AForDairyEmployers.html": {
     title: "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers",
     date: "July 7, 2026",

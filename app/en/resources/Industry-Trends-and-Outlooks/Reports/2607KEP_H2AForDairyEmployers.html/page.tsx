@@ -58,7 +58,7 @@ const RELATED_ARTICLES = [
     category: "Ag Economy",
     categoryHref: `${OUTLOOKS_PATH}?category=ag-economy`,
     title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
-    href: `${OUTLOOKS_PATH}/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html`,
+    href: `${OUTLOOKS_PATH}/Reports/2025NEDairyFarmSummary2026MidYearOutlook`,
     date: "July 10, 2026",
   },
   {
