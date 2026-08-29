@@ -7,11 +7,10 @@ const DESCRIPTION =
   "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers";
 
 const ARTICLE_URL =
-  "https://farm-funding.vercel.app/en/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers.html";
+  "https://farm-funding.com/en/resources/Industry-Trends-and-Outlooks/Reports/2607KEP_H2AForDairyEmployers.html";
 const OUTLOOKS_PATH = "/resources/Industry-Trends-and-Outlooks";
 const BLOG_PATH = "/resources/todays-harvest-Blog";
 const AUTHORS_PATH = "/resources/Meet-the-Authors";
-const CONTACT_PATH = "/ContactUs";
 
 const CATEGORY = "Knowledge Exchange Partner";
 const CATEGORY_HREF = `${OUTLOOKS_PATH}?category=Knowledge%20Exchange%20Partner`;
@@ -21,13 +20,18 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords:
-    "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers, Farm Funders, Knowledge Exchange Partner, dairy, labor, H-2A, L.J. D\u2019Arrigo, Harris Beach Murtha Attorneys at Law, Chris Laughton",
+    "United States Citizenship and Immigration Service Clears H-2A Path for Dairy Employers, Farm Funding, Knowledge Exchange Partner, dairy, labor, H-2A, L.J. D\u2019Arrigo, Harris Beach Murtha Attorneys at Law, Chris Laughton",
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     url: ARTICLE_URL,
     type: "article",
     publishedTime: "2026-07-07",
+    images: [
+      {
+        url: "https://farm-funding.com/-/media/farm-credit-east/featured-images/Dairy-cows-milking.ashx",
+      },
+    ],
   },
 };
 
@@ -75,33 +79,17 @@ const RELATED_ARTICLES = [
   },
 ];
 
-/**
- * Page-scoped styles, rebuilt against the live rendered page
- * (screenshots + fetched markup) rather than the previous
- * "Tariff Relief reference" assumptions. Notable corrections
- * versus the prior implementation:
- *   - No featured/hero image exists on the live page at all —
- *     removed entirely (FEATURED_IMAGE, .image-wrap, negative
- *     margins built around it).
- *   - The live page has a "Contents" box that sits beside the
- *     article and stays in view (position: sticky) while the
- *     reader scrolls the article column.
- *   - There is no separate hero "byline" line and no author
- *     photo/name box near the tags — the author is only
- *     credited inline in the article body and in the share row
- *     has no companion author card.
- *   - The "Volume / Issue" line and the disclaimers are plain
- *     paragraphs, not boxed callouts.
- *   - This page does not have a newsletter signup section.
- */
+
 const styles = `
   .h2a-page,
   .h2a-page * { box-sizing: border-box; }
 
-  .h2a-page {
+    .h2a-page {
+    scroll-behavior: smooth;
     --clay: #496d83;
     --clay-dark: #3b5a6d;
     --forest: #4f832a;
+    --olive: #5a4400;
     --orange: #c36d15;
     --cream: #ecf1e4;
     --grey: #686868;
@@ -109,7 +97,8 @@ const styles = `
     --light: #f1f3f4;
     --charcoal: #231f20;
     width: 100%;
-    overflow-x: hidden;
+    /* was overflow-x: hidden — see comment above the styles block */
+    overflow-x: clip;
     background: #fff;
     color: var(--charcoal);
   }
@@ -118,7 +107,7 @@ const styles = `
   .h2a-page .hero {
     position: relative;
     width: 100%;
-    padding-bottom: 48px;
+    padding-bottom: 88px;
     background: var(--clay);
     color: #fff;
   }
@@ -126,7 +115,7 @@ const styles = `
   .h2a-page .hero-inner {
     width: min(1800px, calc(100% - 120px));
     margin: 0 auto;
-    padding: 16px 7px 0;
+    padding: 40px 7px 0;
   }
 
   .h2a-page .date {
@@ -165,38 +154,66 @@ const styles = `
     letter-spacing: -0.7px;
   }
 
-  /* Two-column layout: sticky Contents + article */
-  .h2a-page .layout {
-    width: min(1400px, calc(100% - 56px));
+  /* Two-column layout: sticky Contents + article.
+     grid + align-items: start (plus align-self: start and height: fit-content
+     on .sidebar itself) is what keeps the Contents box from stretching to the
+     article's height — do not add a fixed/percentage height to .sidebar. */
+            .h2a-page .layout {
+    width: min(1280px, calc(100% - 32px));
     margin: 48px auto 0;
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 56px;
+    grid-template-columns: 300px minmax(0, 820px);
+    column-gap: 220px;
+    justify-content: start;
     align-items: start;
   }
 
   .h2a-page .sidebar {
     position: sticky;
-    top: 32px;
-    padding: 24px;
-    background: var(--light);
+    /* Offset below the site header. This page component doesn't include
+       the global header, so 96px is an estimate — set this to your
+       header's actual rendered height (plus a little breathing room). */
+    top: 96px;
+    align-self: start;
+    height: fit-content;
+    width: 100%;
+    padding: 16px 18px 18px;
+    background: #e9edf1;
+    border: 1px solid #f1a24a;
+    border-radius: 4px;
+    box-shadow: 3px 4px 0 rgba(35, 31, 32, 0.16);
   }
 
+    .h2a-page .toc-static { display: block; width: 100%; }
+  .h2a-page .toc-dropdown { display: none; width: 100%; }
+
+  /* .toc-title now targets the <summary>. Forcing display: flex (instead of
+     the browser default display: list-item) removes the native disclosure
+     triangle in every engine without needing ::marker/::-webkit-details-marker
+     hacks, and lets us right-align a custom chevron next to the label. */
   .h2a-page .toc-title {
-    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 14px;
+    padding: 0 0 12px;
     color: var(--charcoal);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 700;
+    line-height: 1.25;
   }
 
-  .h2a-page .toc-list {
+    .h2a-page .toc-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 8px;
   }
 
-  .h2a-page .toc-list a {
+    .h2a-page .toc-list a {
+    display: block;
+    padding: 4px 0;
     color: var(--clay);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
     font-size: 16px;
@@ -211,6 +228,7 @@ const styles = `
 
   .h2a-page .copy {
     width: 100%;
+    max-width: 820px;
     padding-bottom: 12px;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
     color: var(--charcoal);
@@ -222,8 +240,8 @@ const styles = `
     color: var(--charcoal);
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
     font-size: 18px;
-    font-weight: 500;
-    line-height: 1.72;
+    font-weight: 400;
+    line-height: 1.68;
   }
 
   .h2a-page .copy .lede {
@@ -235,11 +253,16 @@ const styles = `
   .h2a-page .copy strong { font-weight: 700; }
   .h2a-page .copy em { font-style: italic; }
 
+    .h2a-page .copy h3,
+  .h2a-page .copy > div[id] {
+    scroll-margin-top: 110px;
+  }
+
   .h2a-page .copy h3 {
-    margin: 46px 0 24px;
+    margin: 46px 0 20px;
     color: var(--charcoal);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
-    font-size: 34px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.25px;
@@ -247,11 +270,17 @@ const styles = `
 
   .h2a-page .copy ul,
   .h2a-page .copy ol {
-    margin: 0 0 24px;
+    margin: 0 0 28px;
     padding-left: 30px;
   }
 
-  .h2a-page .copy li { margin-bottom: 18px; }
+  .h2a-page .copy ul { list-style: disc; }
+  .h2a-page .copy ol { list-style: decimal; }
+
+  .h2a-page .copy li {
+    margin-bottom: 14px;
+    padding-left: 4px;
+  }
   .h2a-page .copy li:last-child { margin-bottom: 0; }
   .h2a-page .copy li strong { display: inline; }
 
@@ -276,14 +305,14 @@ const styles = `
     line-height: 1.72;
   }
 
-  .h2a-page .copy hr {
+    .h2a-page .copy hr {
     margin: 28px 0;
     border: none;
     border-top: 1px solid var(--line);
   }
 
-  .h2a-page .contact {
-    padding: 4px 0 28px;
+  @media (prefers-reduced-motion: reduce) {
+    .h2a-page { scroll-behavior: auto; }
   }
 
   .h2a-page .button {
@@ -393,7 +422,7 @@ const styles = `
   .h2a-page .related-title {
     display: block;
     margin-top: 26px;
-    color: var(--forest);
+    color: var(--olive);
     font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
     font-size: 21px;
     font-weight: 700;
@@ -430,15 +459,54 @@ const styles = `
   }
   .h2a-page .authors-button { justify-self: end; min-width: 205px; }
 
-  @media (max-width: 1400px) {
+    @media (max-width: 1400px) {
     .h2a-page h1 { font-size: 46px; }
   }
 
   @media (max-width: 991px) {
     .h2a-page .hero-inner { width: calc(100% - 56px); padding: 22px 0 36px; }
     .h2a-page h1 { font-size: 42px; line-height: 1.1; }
-    .h2a-page .layout { width: calc(100% - 56px); grid-template-columns: 1fr; gap: 32px; margin-top: 36px; }
-    .h2a-page .sidebar { position: static; }
+    .h2a-page .layout {
+      width: calc(100% - 56px);
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-top: 36px;
+    }
+    /* Tablet/mobile: Contents stacks above the article and sticky is
+       disabled entirely, per spec. The box itself now behaves as a
+       dropdown: collapsed by default, toggled by tapping the
+       "Contents" summary row. */
+        .h2a-page .sidebar { position: static; top: auto; }
+    .h2a-page .toc-static { display: none; }
+    .h2a-page .toc-dropdown { display: block; }
+    .h2a-page .toc-title {
+      cursor: pointer;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .h2a-page .toc-dropdown[open] .toc-title {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+        .h2a-page .toc-title::after {
+      content: "";
+      display: block;
+      flex: none;
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid var(--clay);
+      border-bottom: 2px solid var(--clay);
+      transform: rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+    .h2a-page .toc-dropdown[open] .toc-title::after {
+      transform: rotate(-135deg);
+    }
+    .h2a-page .toc-dropdown:not([open]) .toc-list {
+      display: none;
+    }
+    .h2a-page .copy { max-width: none; }
     .h2a-page .related,
     .h2a-page .authors-cta { width: calc(100% - 56px); }
   }
@@ -448,10 +516,14 @@ const styles = `
     .h2a-page .date { margin-bottom: 12px; font-size: 15px; }
     .h2a-page .category { margin-bottom: 20px; font-size: 14px; }
     .h2a-page h1 { font-size: 32px; line-height: 1.14; letter-spacing: -.35px; }
-    .h2a-page .layout { width: calc(100% - 28px); margin-top: 28px; }
+    .h2a-page .layout { width: calc(100% - 28px); margin-top: 28px; gap: 24px; }
+    .h2a-page .sidebar { padding: 14px 16px 16px; }
+    .h2a-page .toc-title { font-size: 18px; }
+    .h2a-page .toc-dropdown[open] .toc-title { margin-bottom: 10px; padding-bottom: 10px; }
+    .h2a-page .toc-list { gap: 6px; }
     .h2a-page .copy p,
-    .h2a-page .copy li { font-size: 17px; line-height: 1.72; }
-    .h2a-page .copy h3 { margin-top: 34px; margin-bottom: 20px; font-size: 26px; }
+    .h2a-page .copy li { font-size: 16px; line-height: 1.65; }
+    .h2a-page .copy h3 { margin-top: 34px; margin-bottom: 18px; font-size: 24px; line-height: 1.22; }
     .h2a-page .related { width: calc(100% - 28px); padding: 25px 0 35px; }
     .h2a-page .related-grid { grid-template-columns: 1fr; gap: 25px; }
     .h2a-page .authors-cta { grid-template-columns: 1fr; width: calc(100% - 28px); gap: 18px; padding: 38px 0; }
@@ -479,17 +551,30 @@ export default function H2ADairyEmployersPage() {
           </div>
         </section>
 
-        {/* CONTENTS (sticky) + ARTICLE */}
+        {/* CONTENTS (sticky on desktop, dropdown on mobile/tablet) + ARTICLE */}
         <div className="layout">
-          <aside className="sidebar" aria-label="Table of contents">
-            <p className="toc-title">Contents</p>
-            <nav className="toc-list">
-              {TOC.map((item) => (
-                <a key={item.href} href={item.href}>
-                  {item.label}
-                </a>
-              ))}
-            </nav>
+                    <aside className="sidebar" aria-label="Table of contents">
+            <div className="toc-static">
+              <p className="toc-title">Contents</p>
+              <nav className="toc-list">
+                {TOC.map((item) => (
+                  <a key={item.href} href={item.href}>
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            <details className="toc-dropdown">
+              <summary className="toc-title">Contents</summary>
+              <nav className="toc-list">
+                {TOC.map((item) => (
+                  <a key={item.href} href={item.href}>
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </details>
           </aside>
 
           <div className="article">
@@ -535,7 +620,7 @@ export default function H2ADairyEmployersPage() {
                   <strong>June 17, 2026</strong>, USCIS issued Policy
                   Memorandum PM-602-0200, &ldquo;
                   <a
-                    href="https://farm-funders.com/sites/default/files/document/policy-alerts/PM-602-0200-H2APetitionsForDairying-20260617.pdf"
+                    href="https://farm-funding.com/sites/default/files/document/policy-alerts/PM-602-0200-H2APetitionsForDairying-20260617.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -567,7 +652,7 @@ export default function H2ADairyEmployersPage() {
                 101(a)(15)(H)(ii)(a) of the Immigration and Nationality Act
                 (INA), as amended by Section 301 of the{" "}
                 <a
-                  href="https://farm-funders.com/sites/default/files/eoir/legacy/2009/03/04/IRCA.pdf"
+                  href="https://farm-funding.com/sites/default/files/eoir/legacy/2009/03/04/IRCA.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -684,8 +769,9 @@ export default function H2ADairyEmployersPage() {
 
               <ol>
                 <li>
-                  <strong>Distinct Calving and Breeding Cycles.</strong> USCIS
-                  recognizes that dairy cows are typically milked for
+                  <strong>Distinct Calving and Breeding Cycles</strong>
+                  <br />
+                  USCIS recognizes that dairy cows are typically milked for
                   approximately 10 months after calving before being
                   &ldquo;dried off&rdquo; for two months prior to calving
                   again. For dairies that implement distinct breeding
@@ -694,20 +780,23 @@ export default function H2ADairyEmployersPage() {
                   tied to each calving cycle.
                 </li>
                 <li>
-                  <strong>Seasonally Differentiated Duties.</strong> Even
-                  dairies without discrete breeding seasons may qualify by
-                  showing that herdsmen perform materially different duties
-                  at different times of year &mdash; for example,
+                  <strong>Seasonally Differentiated Duties</strong>
+                  <br />
+                  Even dairies without discrete breeding seasons may qualify
+                  by showing that herdsmen perform materially different
+                  duties at different times of year &mdash; for example,
                   pasture-based management in spring/summer versus
                   barn-based care, calf-rearing, or winterization tasks in
                   fall/winter &mdash; even though some tasks (like milking)
                   remain constant throughout the year.
                 </li>
                 <li>
-                  <strong>Extraordinary Circumstances.</strong> A petitioner
-                  may also establish a need lasting longer than one year (but
-                  not indefinitely) by showing, by a preponderance of the
-                  evidence, that extraordinary circumstances exist.
+                  <strong>Extraordinary Circumstances</strong>
+                  <br />
+                  A petitioner may also establish a need lasting longer than
+                  one year (but not indefinitely) by showing, by a
+                  preponderance of the evidence, that extraordinary
+                  circumstances exist.
                 </li>
               </ol>
 
@@ -874,11 +963,11 @@ export default function H2ADairyEmployersPage() {
                 Legal disclaimer: This article provides general information
                 only and is not intended to be investment, tax or legal
                 advice and should not be relied upon by recipients for such
-                purposes. Farm Funders does not make any representation or
+                purposes. Farm Funding does not make any representation or
                 warranty regarding the content, and disclaims any
                 responsibility for the information, materials, third-party
                 opinions, and data included in this article. In no event will
-                Farm Funders be liable for any decision made or actions taken
+                Farm Funding be liable for any decision made or actions taken
                 by any person or persons relying on the information contained
                 in this report. All legal implementation of any advice should
                 be handled by your retained, licensed estate planning or
@@ -913,18 +1002,24 @@ export default function H2ADairyEmployersPage() {
               </p>
 
               <p className="byline-note">
-                Farm Funders Disclaimer: The information provided in this
+                Farm Funding Disclaimer: The information provided in this
                 communication/newsletter is not intended to be investment,
                 tax, or legal advice and should not be relied upon by
-                recipients for such purposes. Farm Funders does not make any
+                recipients for such purposes. Farm Funding does not make any
                 representation or warranty regarding the content, and
                 disclaims any responsibility for the information, materials,
                 third-party opinions, and data included in this report. In no
-                event will Farm Funders be liable for any decision made or
+                event will Farm Funding be liable for any decision made or
                 actions taken by any person or persons relying on the
                 information contained in this report.
               </p>
             </article>
+
+                        <p style={{ margin: "0 0 24px" }}>
+              <a href="#maincontent" style={{ color: "var(--clay)", textDecoration: "underline", textUnderlineOffset: "2px", fontFamily: "var(--font-barlow), Barlow, Arial, sans-serif", fontWeight: 600 }}>
+                ↑ Back to top
+              </a>
+            </p>
 
             <div className="tags">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
