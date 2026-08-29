@@ -194,15 +194,15 @@ const styles = `
      ============================================================ */
 
   .dfs-page .report-embed {
-    width: 100%;
-    max-width: 700px;
+    width: 292px;
+    max-width: 100%;
     margin: 34px auto 48px;
   }
 
   .dfs-page .report-embed-frame {
     position: relative;
-    width: 100%;
-    aspect-ratio: 631 / 900;
+    width: 292px;
+    height: 377px;
     overflow: hidden;
     background: #fff;
   }
