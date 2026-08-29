@@ -40,22 +40,6 @@ export const CURRENT_REFERENCE_ARTICLES: HarvestArticle[] = [
     ],
   },
   {
-    slug: "260701TariffReliefProgramNYProducers",
-    title: "Tariff Relief Program Available for New York Producers",
-    category: "Business Tips and Tools",
-    date: "July 1, 2026",
-    author: "Dario Arezzo",
-    image: "/images/homepage/5-cow_adobestock_206891243.jpg",
-    excerpt: "The Agricultural Resiliency Against Tariffs Program was appropriated $30 million to provide payments directly to agricultural producers.",
-    sourceUrl: "https://farm-funders.com/en/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers.html",
-    sections: [
-      { heading: "Determining Product Eligibility", body: "Eligible products include dairy, livestock and livestock products, qualifying specialty crops and aquaculture. Certain row crops covered by another USDA program are excluded." },
-      { heading: "Determining Farm Eligibility", body: "The farm must meet the operating, New York production and farm-income requirements and have eligibility certified by a qualified financial professional." },
-      { heading: "Completing the Application Process", body: "Eligible producers complete the appropriate application track and provide the required information within the program window." },
-      { heading: "Building the Relief Into a Broader Plan", body: "Tariff relief should be considered alongside the operation's broader financial and risk-management strategy." },
-    ],
-  },
-  {
     slug: "260630NewUSDAPaymentRulesForYourFarm",
     title: "A Smarter Safety Net: What the New USDA Payment Rules Mean for Your Farm",
     category: "Business Tips and Tools",
