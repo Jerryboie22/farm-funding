@@ -53,12 +53,6 @@ const nextConfig: NextConfig = {
       },
       {
         source:
-          "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers.html",
-        destination:
-          "/en/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers.html",
-      },
-      {
-        source:
           "/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast.html",
         destination:
           "/en/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast.html",
