@@ -1,48 +1,7 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 
-/**
- * ============================================================
- * SOURCE OF TRUTH
- * ============================================================
- * This page was rebuilt against the LIVE reference at:
- *   https://farm-funders.com/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html
- *
- * The live HTML was fetched directly and used to source:
- *   - exact copy (intro paragraphs, all 7 highlight bullets,
- *     all 3 footnotes, tag labels, related-article titles/
- *     categories/dates, Meet the Authors copy)
- *   - exact link targets (tag hrefs, related-article hrefs,
- *     the live Issuu embed URL, the Meet the Authors href)
- *   - exact page structure/order (hero -> intro -> Issuu embed
- *     -> highlights -> footnotes -> tags -> share -> related
- *     -> meet the authors)
- *
- * Visual proportions (spacing, widths, font sizes) are matched
- * against the three provided screenshots since a fetched page
- * returns extracted markdown, not the live stylesheet. Flag
- * anything that still looks off against your browser and I'll
- * tighten it further with exact devtools measurements.
- *
- * ============================================================
- * STRUCTURAL DECISIONS (per the brief)
- * ============================================================
- * - NO sticky sidebar / table of contents (this page never had
- *   one on the live site — that pattern only exists on the H-2A
- *   article, which has a genuine multi-anchor TOC in its source).
- * - NO fabricated author card, no newsletter block, no hero image.
- * - This page assumes your project's global header and footer are
- *   already rendered by a parent layout (e.g. app/layout.tsx) and
- *   wrap every route. This component intentionally renders ONLY
- *   the article-specific region (hero through Meet the Authors) so
- *   the global header/footer are never duplicated. If your project
- *   does NOT already wrap pages with a shared header/footer, import
- *   your existing <SiteHeader /> / <SiteFooter /> components here
- *   and place them immediately before/after the <div className="dfs-page">
- *   wrapper below — do not rebuild them from scratch.
- * - Single content column throughout; no two-column grid anywhere
- *   on this page.
- */
 
 const TITLE = "2025 Northeast Dairy Farm Summary & Mid-Year Outlook";
 const DESCRIPTION = TITLE;
@@ -702,12 +661,8 @@ export default function DairyFarmSummaryPage() {
  *   "...in 2025,1 from..."   (mid-sentence, after a comma)
  *   "...per cwt. of $2.12.3" (end of sentence, after a period)
  */
-function renderHighlight(text: string) {
-  const match = text.match(/^(.*?)([123])(\s.*|\.\s*)$|^(.*[123])$/);
-  // Simpler, robust approach: split on known footnote insertion points
-  // by looking for a digit 1-3 immediately followed by a space or end,
-  // preceded by a comma or period, and not part of a larger number.
-  const parts: (string | JSX.Element)[] = [];
+function renderHighlight(text: string): ReactNode[] {
+  const parts: ReactNode[] = [];
   const regex = /([,.])([123])(?=\s|$)/g;
   let lastIndex = 0;
   let m: RegExpExecArray | null;
