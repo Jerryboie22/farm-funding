@@ -194,26 +194,27 @@ const styles = `
      ============================================================ */
 
   .dfs-page .report-embed {
-    width: 292px;
-    max-width: 100%;
+    width: 100%;
     margin: 34px auto 48px;
   }
 
   .dfs-page .report-embed-frame {
     position: relative;
-    width: 292px;
-    height: 377px;
-    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-top: max(60%, 326px);
     background: #fff;
   }
 
   .dfs-page .report-embed-frame iframe {
     position: absolute;
-    inset: 0;
-    display: block;
+    border: none;
     width: 100%;
     height: 100%;
-    border: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
   }
 
   /* ============================================================
