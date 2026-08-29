@@ -48,7 +48,7 @@ const TRENDS_LIST = [
     tag: "Reports",
     title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
     date: "July 10, 2026",
-    href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
+    href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
   },
   {
     tag: "Reports",
