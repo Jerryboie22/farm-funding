@@ -195,7 +195,7 @@ const styles = `
 
   .dfs-page .report-embed {
     width: 100%;
-    max-width: 900px;
+    max-width: 700px;
     margin: 34px auto 48px;
   }
 
