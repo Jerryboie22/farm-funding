@@ -70,7 +70,7 @@ const RELATED_ARTICLES = [
     category: "Business Tips and Tools",
     categoryHref: `${BLOG_PATH}?category=business-tips-and-tools`,
     title: "Tariff Relief Program Available for New York Producers",
-    href: `${BLOG_PATH}/260701TariffReliefProgramNYProducers.html`,
+    href: "https://farm-funding.vercel.app/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers",
     date: "July 1, 2026",
   },
 ];
