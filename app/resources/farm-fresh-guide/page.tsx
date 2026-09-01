@@ -5,7 +5,7 @@ export const metadata = { title: "Northeast Farm Fresh Guide | Farm Funding" };
 const states = ["Connecticut", "Maine", "Massachusetts", "New Hampshire", "New Jersey", "New York", "Rhode Island", "Vermont"];
 
 export default function FarmFreshGuidePage() {
-  return <ReferenceContentPage title="Northeast Farm Fresh Guide" intro="Looking for fresh, quality farm products in your local area? Explore resources for finding local products, farmers' markets, farm stands, wineries, breweries and other agricultural experiences across our eight-state region." image="/images/resources/Northeast Farm Fresh Guide.jpg" sections={[
+  return <ReferenceContentPage title="Northeast Farm Fresh Guide" intro="Looking for fresh, quality farm products in your local area? Explore resources for finding local products, farmers' markets, farm stands, wineries, breweries and other agricultural experiences across our eight-state region." image="/images/industries/Vegetables_shutterstock_1125187883.jpg" sections={[
     { title: "Find By State", body: "Choose a state to explore local food and agriculture resources.", bullets: states },
     { title: "Connecticut", body: "Explore farm stands, farmers' markets, CSAs, vineyards, wineries and breweries through regional agricultural guides and organizations." },
     { title: "Maine", body: "Find Maine farms, food and wood products, farmers' markets, vineyards, wineries and breweries using state and regional resources." },
