@@ -1,21 +1,16 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import type { Metadata } from "next";
+import ReferenceIndustryPage from "@/components/ReferenceIndustryPage";
 
-export const metadata = { title: "Livestock/Equine | Farm Funding" };
+export const metadata: Metadata = { title: "Livestock & Equine Producers | Farm Funding" };
 
-export default function Page() {
-  return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Livestock/Equine
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
-  );
+export default function LivestockEquinePage() {
+  return <ReferenceIndustryPage data={{
+    title: "Livestock & Equine Producers",
+    description: "From cattle and sheep to equine operations, Farm Funding provides financing and business services built around the realities of livestock production.",
+    image: "/images/industries/Equine_iStock-862128746.jpg",
+    imageAlt: "Horse in a farm pasture",
+    services: ["Operating Loans", "Equipment Financing", "Facility Loans", "Tax Planning and Prep", "Recordkeeping", "Business Consulting", "Estate Planning", "Livestock Insurance"],
+    programs: ["Young, Beginning, Small & Veteran Farmer Incentives", "FarmStart", "GenerationNext"],
+    related: [{ label: "Crop Insurance", title: "Dairy & Livestock Insurance", href: "/crop-insurance/dairy-livestock", date: "2026" }, { label: "Financing", title: "Operating Loans", href: "/financing/operating-loans", date: "2026" }]
+  }} />;
 }
