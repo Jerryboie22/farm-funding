@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 type RelatedArticle = {
   category: string;
+  categoryHref: string;
   title: string;
   date: string;
   href: string;
@@ -31,6 +32,9 @@ type Report = {
 
 const SITE_URL = "https://farm-funding.vercel.app";
 const REPORT_SLUG = "2606KEP_FuelFertilizerandConflictinMiddleEast";
+const OUTLOOKS_PATH = "/resources/Industry-Trends-and-Outlooks";
+const BLOG_PATH = "/resources/todays-harvest-Blog";
+const AUTHORS_PATH = "/en/resources/Meet-the-Authors";
 
 const REPORTS: Record<string, Report> = {
   "2606KEP_FuelFertilizerandConflictinMiddleEast.html": {
@@ -75,21 +79,24 @@ const REPORTS: Record<string, Report> = {
     relatedArticles: [
       {
         category: "Ag Economy",
+        categoryHref: `${OUTLOOKS_PATH}?category=ag-economy`,
         title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
         date: "July 10, 2026",
-        href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
+        href: `${OUTLOOKS_PATH}/Reports/2025NEDairyFarmSummary2026MidYearOutlook`,
       },
       {
         category: "Public Policy",
+        categoryHref: `${BLOG_PATH}?category=public-policy`,
         title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
         date: "July 7, 2026",
-        href: "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape",
+        href: `${BLOG_PATH}/260707_2026FarmBillTakesShape`,
       },
       {
         category: "Business Tips and Tools",
+        categoryHref: `${BLOG_PATH}?category=business-tips-and-tools`,
         title: "Tariff Relief Program Available for New York Producers",
         date: "July 1, 2026",
-        href: "/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers",
+        href: `${BLOG_PATH}/tariff-relief-program-available-for-new-york-producers`,
       },
     ],
   },
@@ -112,29 +119,18 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const report = REPORTS[slug];
   if (!report) notFound();
 
-  const pageUrl = `${SITE_URL}/resources/Industry-Trends-and-Outlooks/Reports/${REPORT_SLUG}`;
-  const encodedTitle = encodeURIComponent(report.title);
-  const encodedUrl = encodeURIComponent(pageUrl);
-
-  const shareLinks = [
-    { name: "X", icon: "/images/icons/social/Twitter.png", href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}` },
-    { name: "Facebook", icon: "/images/icons/social/Facebook.png", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
-    { name: "LinkedIn", icon: "/images/icons/social/LinkedIn.png", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
-    { name: "Email", icon: "/images/icons/social/Email.png", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}` },
-  ];
+  const pageUrl = `${SITE_URL}${OUTLOOKS_PATH}/Reports/${REPORT_SLUG}`;
+  const shareText = encodeURIComponent(report.title);
+  const shareUrl = encodeURIComponent(pageUrl);
 
   return (
     <main className="w-full overflow-x-hidden bg-white text-[#686868]">
       <section className="relative w-full bg-[#496d83] px-[6%] py-[40px] sm:px-[5%] sm:py-[52px] md:h-[449px] md:px-[4.05%] md:py-0">
         <div className="relative mx-auto h-full max-w-[1800px]">
-          <p className="mb-[18px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] sm:text-[14px] md:absolute md:right-0 md:top-[78px] md:mb-0 md:text-[16px] lg:text-[17px]">
-            {report.date}
-          </p>
+          <p className="mb-[18px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] sm:text-[14px] md:absolute md:right-0 md:top-[78px] md:mb-0 md:text-[16px] lg:text-[17px]">{report.date}</p>
           <div className="md:absolute md:left-0 md:right-0 md:top-[112px]">
-            <Link href="/resources/Industry-Trends-and-Outlooks?category=knowledge-exchange-partner" className="inline-block border border-[#ecf1e4] px-[6px] py-[5px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] no-underline transition-colors hover:bg-[#ecf1e4] hover:text-[#496d83] sm:text-[14px] md:text-[15px]">
-              {report.category}
-            </Link>
-            <h1 className="mt-[18px] max-w-[1720px] font-display text-[28px] font-bold leading-[1.18] tracking-[-0.2px] text-[#ecf1e4] sm:text-[36px] sm:leading-[1.12] sm:tracking-[-0.3px] md:mt-[32px] md:text-[46px] md:tracking-[-0.5px] lg:mt-[40px] lg:text-[58px] lg:leading-[1.08] lg:tracking-[-0.6px]">{report.title}</h1>
+            <Link href={`${OUTLOOKS_PATH}?category=Knowledge%20Exchange%20Partner`} className="inline-block border border-[#ecf1e4] px-[6px] py-[5px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] no-underline transition-colors hover:bg-[#ecf1e4] hover:text-[#496d83] sm:text-[14px] md:text-[15px]">{report.category}</Link>
+            <h1 className="mt-[18px] max-w-[1720px] font-display text-[28px] font-bold leading-[1.18] tracking-[-0.2px] text-[#ecf1e4] sm:text-[36px] sm:leading-[1.12] md:mt-[32px] md:text-[46px] lg:mt-[40px] lg:text-[58px] lg:leading-[1.08]">{report.title}</h1>
           </div>
         </div>
       </section>
@@ -147,7 +143,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           </div>
 
           {report.sections.map((section) => (
-            <section key={section.id} id={section.id} className="mb-[52px] scroll-mt-[20px] last:mb-0 sm:mb-[64px] sm:scroll-mt-[30px] md:mb-[78px] md:scroll-mt-[35px]">
+            <section key={section.id} id={section.id} className="mb-[52px] scroll-mt-[20px] last:mb-0 sm:mb-[64px] md:mb-[78px] md:scroll-mt-[35px]">
               <h2 className="mb-[18px] font-display text-[26px] font-bold leading-[1.2] text-[#686868] sm:mb-[24px] sm:text-[31px] md:mb-[30px] md:text-[36px] lg:text-[38px]">{section.heading}</h2>
               {section.image && (
                 <figure className="mb-[22px] sm:mb-[28px] md:mb-[34px]">
@@ -158,17 +154,8 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                   {section.source && <p className="m-0 mt-[2px] font-sans text-[12px] leading-[1.5] text-[#686868] sm:text-[13px]">{section.source}</p>}
                 </figure>
               )}
-              <div>
-                {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="mb-[18px] font-sans text-[16px] font-medium leading-[1.55] text-[#686868] last:mb-0 sm:mb-[22px] sm:text-[17px] md:mb-[24px] md:text-[18px] md:leading-[1.6]">{paragraph}</p>
-                ))}
-              </div>
-              {section.id === "fertilizer" && (
-                <div className="mt-[24px] border-t border-[#686868] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[28px] sm:pt-[18px] sm:text-[14px]">
-                  <p className="m-0"><sup>1</sup>International Food Policy Research Institute</p>
-                  <p className="m-0"><sup>2</sup>Argus Analytics</p>
-                </div>
-              )}
+              {section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-[18px] font-sans text-[16px] font-medium leading-[1.55] text-[#686868] last:mb-0 sm:mb-[22px] sm:text-[17px] md:mb-[24px] md:text-[18px] md:leading-[1.6]">{paragraph}</p>)}
+              {section.id === "fertilizer" && <div className="mt-[24px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[28px] sm:text-[14px]"><p className="m-0"><sup>1</sup> International Food Policy Research Institute</p><p className="m-0"><sup>2</sup> Argus Analytics</p></div>}
             </section>
           ))}
 
@@ -178,54 +165,50 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           </div>
 
           <div className="mt-[28px] border-t border-[#d8d8d8] pt-[24px] font-sans text-[14px] leading-[1.65] text-[#686868]">
-            <p className="m-0"><Link href="https://www.farmcrediteast.com/resources/knowledge-exchange-partner" className="font-semibold text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">View previous editions of the KEP</Link></p>
+            <p className="m-0"><a href="https://www.farmcrediteast.com/resources/knowledge-exchange-partner" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">View previous editions of the KEP</a></p>
             <p className="mt-[18px]"><strong className="font-bold text-[#231f20]">Farm Funders Disclaimer:</strong>{" "}The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funders does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report.</p>
             <p className="mt-[12px]">In no event will Farm Funders be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.</p>
           </div>
 
           <div className="mt-[24px] border-t border-[#d8d8d8] pt-[20px] font-sans text-[14px] leading-[1.65] text-[#686868]">
             <span className="font-bold text-[#231f20]">Tags:</span>{" "}
-            {report.tags.map((tag, index) => (
-              <span key={tag}>
-                <Link href={`/resources/Industry-Trends-and-Outlooks?tag=${encodeURIComponent(tag)}`} className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">{tag}</Link>
-                {index < report.tags.length - 1 && ", "}
-              </span>
-            ))}
+            {report.tags.map((tag, index) => <span key={tag}><Link href={`${OUTLOOKS_PATH}?tag=${encodeURIComponent(tag)}`} className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">{tag}</Link>{index < report.tags.length - 1 && ", "}</span>)}
           </div>
 
-          <div className="mt-[16px] flex flex-wrap items-center gap-[16px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[20px] sm:gap-[14px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]">
-            <span className="font-bold text-[#231f20]">Share this post on</span>
-            {shareLinks.map((item) => (
-              <a key={item.name} href={item.href} title={item.name} target="_blank" rel="noopener noreferrer" className="inline-flex h-[28px] w-[28px] items-center justify-center">
-                <Image src={item.icon} alt={item.name} width={28} height={28} className="h-full w-full object-contain" />
-              </a>
-            ))}
-          </div>
+          <section className="mt-[16px] border-t border-[#d8d8d8] pt-[16px] font-sans sm:mt-[20px] sm:pt-[20px]" aria-label="Share this article">
+            <p className="m-0 mb-[16px] text-[17px] font-semibold text-[#231f20]">Share this post on</p>
+            <ul className="m-0 flex list-none gap-[10px] p-0">
+              <li><a href={`https://twitter.com/share?text=${shareText}&url=${shareUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Share on X" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#14171a] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a></li>
+              <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#1877f2] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" /></svg></a></li>
+              <li><a href={`https://www.linkedin.com/shareArticle?url=${shareUrl}&title=${shareText}`} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#0a66c2] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg></a></li>
+              <li><a href={`mailto:?subject=${shareText}&body=${shareUrl}`} aria-label="Share by email" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#34a853] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg></a></li>
+            </ul>
+          </section>
         </article>
       </section>
 
-      <section className="w-full bg-[#ecf1e4] px-[24px] py-[70px] md:px-[5%] lg:px-[7%] lg:py-[82px]">
-        <div className="mx-auto max-w-[1760px]">
-          <h2 className="mb-[46px] font-display text-[38px] font-bold leading-[1.15] text-[#4f832a] md:text-[44px]">You Might Also Like</h2>
-          <div className="grid grid-cols-1 gap-[38px] md:grid-cols-3 md:gap-[80px]">
-            {report.relatedArticles.map((article) => (
-              <article key={article.title} className="min-w-0">
-                <Link href={article.href} className="inline-block bg-[#686868] px-[14px] py-[8px] font-sans text-[16px] font-bold uppercase leading-[1.15] text-white no-underline transition-colors hover:bg-[#496d83]">{article.category}</Link>
-                <Link href={article.href} className="mt-[18px] block font-display text-[30px] font-bold leading-[1.25] text-[#5a4400] no-underline hover:underline hover:underline-offset-[3px]">{article.title} <span aria-hidden="true">&#8250;</span></Link>
-                <p className="mt-[20px] font-sans text-[14px] font-bold uppercase leading-[1.3] text-[#686868]">{article.date}</p>
+      <section className="w-full bg-[#ecf1e4]">
+        <div className="mx-auto w-[calc(100%-120px)] max-w-[1800px] px-[7px] py-[34px] sm:py-[42px] md:py-[54px]">
+          <h2 className="m-0 font-display text-[30px] font-bold leading-[1.25] text-[#4f832a]">You Might Also Like</h2>
+          <div className="mt-[20px] grid grid-cols-1 gap-[25px] md:grid-cols-3 md:gap-[34px]">
+            {report.relatedArticles.map((item) => (
+              <article key={item.title} className="pt-[26px]">
+                <Link href={item.categoryHref} className="inline-block bg-[#686868] px-[14px] py-[6px] font-sans text-[13px] font-bold uppercase tracking-[.02em] text-white no-underline">{item.category}</Link>
+                <Link href={item.href} className="mt-[26px] block font-display text-[21px] font-bold leading-[1.35] text-[#5a4400] no-underline hover:underline">{item.title} <span aria-hidden="true">&#8250;</span></Link>
+                <p className="mt-[26px] font-sans text-[14px] font-bold uppercase text-[#686868]">{item.date}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-white px-[24px] py-[70px] md:px-[5%] lg:px-[7%] lg:py-[78px]">
-        <div className="mx-auto grid max-w-[1760px] grid-cols-1 items-center gap-[28px] md:grid-cols-[minmax(0,1fr)_auto] md:gap-[50px]">
-          <div className="min-w-0">
-            <h2 className="font-display text-[38px] font-bold leading-[1.15] text-[#4f832a] md:text-[44px]">Meet the Authors</h2>
-            <p className="mt-[18px] max-w-[980px] font-sans text-[18px] font-medium leading-[1.65] text-[#686868] md:text-[20px]">Connect with and discover our Today&rsquo;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p>
+      <section className="w-full bg-white">
+        <div className="mx-auto grid w-[calc(100%-120px)] max-w-[1800px] grid-cols-1 items-center gap-[28px] px-[7px] py-[50px] md:grid-cols-[2fr_1fr] md:py-[50px]">
+          <div className="max-w-[900px]">
+            <h2 className="m-0 font-display text-[30px] font-bold leading-[1.25] text-[#4f832a]">Meet the Authors</h2>
+            <p className="m-[14px_0_0] font-sans text-[20px] leading-[1.5] text-[#686868]">Connect with and discover our Today&rsquo;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p>
           </div>
-          <Link href="/resources/Meet-the-Authors.html" className="inline-flex min-w-[205px] items-center justify-center border border-[#496d83] bg-[#496d83] px-[22px] py-[13px] font-display text-[16px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] hover:border-[#3b5a6d]">Meet the Authors</Link>
+          <Link href={AUTHORS_PATH} className="inline-flex min-w-[205px] justify-self-start items-center justify-center bg-[#496d83] px-[22px] py-[13px] font-display text-[15px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] md:justify-self-end">Meet the Authors</Link>
         </div>
       </section>
     </main>
