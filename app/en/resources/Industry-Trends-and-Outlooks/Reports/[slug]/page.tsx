@@ -17,6 +17,7 @@ type Report = {
 
 const SITE_URL = "https://farm-funding.vercel.app";
 const REPORT_SLUG = "2606KEP_FuelFertilizerandConflictinMiddleEast";
+const AUTHORS_PATH = "/en/resources/Meet-the-Authors";
 
 const REPORTS: Record<string, Report> = {
   "2606KEP_FuelFertilizerandConflictinMiddleEast.html": {
@@ -67,11 +68,10 @@ const REPORTS: Record<string, Report> = {
 };
 
 function ShareIcon({ name }: { name: string }) {
-  const common = { fill: "currentColor" };
-  if (name === "X") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.963 6.817H1.684l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" /></svg>;
-  if (name === "Facebook") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M13.5 22v-8h2.75l.5-3h-3.25V9.05c0-.87.29-1.55 1.6-1.55h1.8V4.82c-.31-.04-1.37-.13-2.6-.13-2.58 0-4.35 1.57-4.35 4.45V11H7v3h2.95v8h3.55Z" /></svg>;
-  if (name === "LinkedIn") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M5.2 3.5A2.2 2.2 0 1 1 5.2 7.9a2.2 2.2 0 0 1 0-4.4ZM3.35 9.25h3.7V21h-3.7V9.25ZM9.3 9.25h3.55v1.61h.05c.49-.93 1.69-1.91 3.48-1.91 3.72 0 4.41 2.45 4.41 5.63V21h-3.7v-5.68c0-1.36-.03-3.11-1.9-3.11-1.91 0-2.2 1.49-2.2 3.01V21H9.3V9.25Z" /></svg>;
-  return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M2.5 5.5A2.5 2.5 0 0 1 5 3h14a2.5 2.5 0 0 1 2.5 2.5v13A2.5 2.5 0 0 1 19 21H5a2.5 2.5 0 0 1-2.5-2.5v-13Zm3.1.5 6.4 5.1L18.4 6H5.6Zm13.4 2.1-7 5.57L5 8.1v9.4c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5V8.1Z" /></svg>;
+  if (name === "X") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[22px] w-[22px]" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>;
+  if (name === "Facebook") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[22px] w-[22px]" fill="currentColor"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" /></svg>;
+  if (name === "LinkedIn") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[22px] w-[22px]" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg>;
+  return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[22px] w-[22px]" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>;
 }
 
 export function generateStaticParams() {
@@ -90,13 +90,13 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   if (!report) notFound();
 
   const pageUrl = `${SITE_URL}/resources/Industry-Trends-and-Outlooks/Reports/${REPORT_SLUG}`;
-  const encodedTitle = encodeURIComponent(report.title);
-  const encodedUrl = encodeURIComponent(pageUrl);
+  const shareText = encodeURIComponent(report.title);
+  const shareUrl = encodeURIComponent(pageUrl);
   const shareLinks = [
-    { name: "X", href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}` },
-    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
-    { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
-    { name: "Email", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}` },
+    { name: "X", href: `https://twitter.com/share?text=${shareText}&url=${shareUrl}`, className: "share-x" },
+    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, className: "share-facebook" },
+    { name: "LinkedIn", href: `https://www.linkedin.com/shareArticle?url=${shareUrl}&title=${shareText}`, className: "share-linkedin" },
+    { name: "Email", href: `mailto:?subject=${shareText}&body=${shareUrl}`, className: "share-email" },
   ];
 
   return (
@@ -134,13 +134,17 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
           <div className="mt-[18px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[24px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]"><span className="font-bold text-[#231f20]">Tags:</span>{" "}{report.tags.map((tag, index) => <span key={tag}><Link href={`/resources/Industry-Trends-and-Outlooks?tag=${encodeURIComponent(tag)}`} className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">{tag}</Link>{index < report.tags.length - 1 && ", "}</span>)}</div>
 
-          <div className="mt-[16px] flex flex-wrap items-center gap-[12px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[20px] sm:gap-[14px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]">
+          <div className="mt-[16px] flex flex-wrap items-center gap-[12px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[20px] sm:gap-[10px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]">
             <span className="mr-[2px] font-bold text-[#231f20]">Share this post on</span>
-            {shareLinks.map((item) => (
-              <a key={item.name} href={item.href} title={`Share on ${item.name}`} aria-label={`Share on ${item.name}`} target={item.name === "Email" ? undefined : "_blank"} rel={item.name === "Email" ? undefined : "noopener noreferrer"} className="inline-flex h-[32px] w-[32px] items-center justify-center rounded-full text-[#496d83] transition-colors hover:bg-[#ecf1e4] hover:text-[#4f832a] sm:h-[30px] sm:w-[30px]">
-                <ShareIcon name={item.name} />
-              </a>
-            ))}
+            <ul className="m-0 flex list-none gap-[10px] p-0">
+              {shareLinks.map((item) => (
+                <li key={item.name}>
+                  <a href={item.href} title={`Share on ${item.name}`} aria-label={`Share on ${item.name}`} target={item.name === "Email" ? undefined : "_blank"} rel={item.name === "Email" ? undefined : "noopener noreferrer"} className={`inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] text-white no-underline transition-opacity hover:opacity-90 ${item.className}`}>
+                    <ShareIcon name={item.name} />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </article>
       </section>
@@ -166,7 +170,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             <h2 className="font-display text-[28px] font-bold leading-[1.18] text-[#4f832a] sm:text-[34px] md:text-[38px] lg:text-[44px]">Meet the Authors</h2>
             <p className="mt-[14px] max-w-[980px] font-sans text-[15px] font-medium leading-[1.55] text-[#686868] sm:mt-[16px] sm:text-[17px] md:mt-[18px] md:text-[18px] md:leading-[1.65] lg:text-[20px]">Connect with and discover our Today&rsquo;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p>
           </div>
-          <Link href="/resources/Meet-the-Authors.html" className="inline-flex w-full min-w-[205px] items-center justify-center border border-[#496d83] bg-[#496d83] px-[22px] py-[13px] font-display text-[16px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] hover:border-[#3b5a6d] sm:w-auto">Meet the Authors</Link>
+          <Link href={AUTHORS_PATH} className="inline-flex w-full min-w-[205px] items-center justify-center border border-[#496d83] bg-[#496d83] px-[22px] py-[13px] font-display text-[16px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] hover:border-[#3b5a6d] sm:w-auto">Meet the Authors</Link>
         </div>
       </section>
     </main>
