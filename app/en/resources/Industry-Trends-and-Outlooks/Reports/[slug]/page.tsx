@@ -99,7 +99,7 @@ const REPORTS: Record<string, Report> = {
         category: "Business Tips and Tools",
         title: "Tariff Relief Program Available for New York Producers",
         date: "July 1, 2026",
-        href: "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers.html",
+        href: "https://farm-funding.vercel.app/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers",
       },
     ],
   },
@@ -305,30 +305,32 @@ export default async function ReportPage({
 
       {/* YOU MIGHT ALSO LIKE */}
       <section className="w-full bg-[#ecf1e4] px-[24px] py-[70px] md:px-[5%] lg:px-[7%] lg:py-[82px]">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="mb-[42px] font-display text-[38px] font-bold leading-[1.15] text-[#496d83] md:text-[42px]">
+        <div className="mx-auto max-w-[1760px]">
+          <h2 className="mb-[46px] font-display text-[38px] font-bold leading-[1.15] text-[#4f832a] md:text-[44px]">
             You Might Also Like
           </h2>
 
-          <div className="grid grid-cols-1 gap-[38px] md:grid-cols-3 md:gap-[28px]">
+          <div className="grid grid-cols-1 gap-[38px] md:grid-cols-3 md:gap-[80px]">
             {report.relatedArticles.map((article) => (
-              <Link
-                key={article.title}
-                href={article.href}
-                className="group block bg-white p-[28px] no-underline transition-transform duration-200 hover:-translate-y-[3px]"
-              >
-                <span className="inline-block border border-[#496d83] px-[7px] py-[5px] font-display text-[13px] font-bold leading-[1.2] text-[#496d83]">
+              <article key={article.title} className="min-w-0">
+                <Link
+                  href={article.href}
+                  className="inline-block bg-[#686868] px-[14px] py-[8px] font-sans text-[16px] font-bold uppercase leading-[1.15] text-white no-underline transition-colors hover:bg-[#496d83]"
+                >
                   {article.category}
-                </span>
+                </Link>
 
-                <h3 className="mt-[22px] font-display text-[23px] font-bold leading-[1.2] text-[#496d83] transition-colors group-hover:text-[#4f832a]">
-                  {article.title}
-                </h3>
+                <Link
+                  href={article.href}
+                  className="mt-[18px] block font-display text-[30px] font-bold leading-[1.25] text-[#5a4400] no-underline hover:underline hover:underline-offset-[3px]"
+                >
+                  {article.title} <span aria-hidden="true">&#8250;</span>
+                </Link>
 
-                <p className="mt-[18px] font-sans text-[14px] leading-[1.5] text-[#686868]">
+                <p className="mt-[20px] font-sans text-[14px] font-bold uppercase leading-[1.3] text-[#686868]">
                   {article.date}
                 </p>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
@@ -336,27 +338,25 @@ export default async function ReportPage({
 
       {/* MEET THE AUTHORS */}
       <section className="w-full bg-white px-[24px] py-[70px] md:px-[5%] lg:px-[7%] lg:py-[78px]">
-        <div className="mx-auto max-w-[1200px]">
-          <h2 className="font-display text-[38px] font-bold leading-[1.15] text-[#496d83] md:text-[42px]">
-            Meet the Authors
-          </h2>
+        <div className="mx-auto grid max-w-[1760px] grid-cols-1 items-center gap-[28px] md:grid-cols-[minmax(0,1fr)_auto] md:gap-[50px]">
+          <div className="min-w-0">
+            <h2 className="font-display text-[38px] font-bold leading-[1.15] text-[#4f832a] md:text-[44px]">
+              Meet the Authors
+            </h2>
 
-          <div className="mt-[24px] max-w-[820px]">
-            <p className="m-0 font-sans text-[18px] font-medium leading-[1.65] text-[#686868]">
-              Connect with and discover our Today’s Harvest blog authors and
-              their broad range of financial and Northeast agricultural
+            <p className="mt-[18px] max-w-[980px] font-sans text-[18px] font-medium leading-[1.65] text-[#686868] md:text-[20px]">
+              Connect with and discover our Today&rsquo;s Harvest blog authors
+              and their broad range of financial and Northeast agricultural
               expertise.
             </p>
           </div>
 
-          <div className="mt-[28px]">
-            <Link
-              href="/resources/Meet-the-Authors.html"
-              className="inline-flex items-center border border-[#496d83] bg-[#496d83] px-[22px] py-[12px] font-display text-[15px] font-bold text-[#ecf1e4] no-underline transition-colors hover:bg-[#4f832a] hover:border-[#4f832a]"
-            >
-              Meet the Authors
-            </Link>
-          </div>
+          <Link
+            href="/resources/Meet-the-Authors.html"
+            className="inline-flex min-w-[205px] items-center justify-center border border-[#496d83] bg-[#496d83] px-[22px] py-[13px] font-display text-[16px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] hover:border-[#3b5a6d]"
+          >
+            Meet the Authors
+          </Link>
         </div>
       </section>
     </main>
