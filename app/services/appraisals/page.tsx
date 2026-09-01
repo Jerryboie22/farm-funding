@@ -7,8 +7,7 @@ export const metadata: Metadata = {
     "Agricultural appraisal expertise for farms, rural property and lending decisions.",
 };
 
-const REFERENCE_APPRAISAL_IMAGE =
-  "https://www.farm-funders.com/-/media/farm-credit-east/services/Appraisals_AdobeStock_171103079.jpg?hash=9EE2A22686C3EA017337978F30D5F251&iar=0";
+const REFERENCE_APPRAISAL_IMAGE = "/images/services/Appraisals.jpg";
 
 export default function AppraisalsPage() {
   return (
