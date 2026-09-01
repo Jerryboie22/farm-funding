@@ -1,21 +1,16 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import type { Metadata } from "next";
+import ReferenceIndustryPage from "@/components/ReferenceIndustryPage";
 
-export const metadata = { title: "Dairy | Farm Funding" };
+export const metadata: Metadata = { title: "Dairy Farmers | Farm Funding" };
 
-export default function Page() {
-  return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Dairy
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
-  );
+export default function DairyPage() {
+  return <ReferenceIndustryPage data={{
+    title: "Dairy Farmers",
+    description: "Farm Funding works with dairy producers on financing, risk management, financial planning and the long-term decisions that shape a dairy business.",
+    image: "/images/industries/Dairy_Farm Image-1.jpg",
+    imageAlt: "Dairy farm and cows",
+    services: ["Operating Loans", "Facility Loans", "Equipment Financing", "Dairy Revenue Protection", "Tax Planning and Prep", "Recordkeeping", "Business Consulting", "Estate Planning"],
+    programs: ["FarmStart", "GenerationNext", "Young, Beginning, Small & Veteran Farmer Incentives"],
+    related: [{ label: "Dairy", title: "Dairy and livestock insurance options", href: "/crop-insurance/dairy-livestock", date: "2026" }, { label: "Resources", title: "Industry Trends & Outlooks", href: "/resources/trends", date: "2026" }]
+  }} />;
 }
