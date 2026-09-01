@@ -1,4 +1,3 @@
-```tsx
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -363,4 +362,3 @@ export default async function ReportPage({
     </main>
   );
 }
-```
