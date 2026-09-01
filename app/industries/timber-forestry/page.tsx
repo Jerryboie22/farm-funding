@@ -1,21 +1,16 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import type { Metadata } from "next";
+import ReferenceIndustryPage from "@/components/ReferenceIndustryPage";
 
-export const metadata = { title: "Timber/Forestry | Farm Funding" };
+export const metadata: Metadata = { title: "Timber & Forestry Producers | Farm Funding" };
 
-export default function Page() {
-  return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Timber/Forestry
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
-  );
+export default function TimberForestryPage() {
+  return <ReferenceIndustryPage data={{
+    title: "Timber & Forestry Producers",
+    description: "Farm Funding understands the long cycles, land values and specialized equipment that shape timber and forestry businesses.",
+    image: "/images/industries/Timber_iStock_000018089726XLarge.jpg",
+    imageAlt: "Forested landscape",
+    services: ["Land Loans", "Operating Loans", "Equipment Financing", "Facility Loans", "Tax Planning and Prep", "Recordkeeping", "Business Consulting", "Estate Planning"],
+    programs: ["Young, Beginning, Small & Veteran Farmer Incentives", "GenerationNext"],
+    related: [{ label: "Financing", title: "Land Loans", href: "/financing/land-loans", date: "2026" }, { label: "Industries", title: "Explore all industries", href: "/industries", date: "2026" }]
+  }} />;
 }
