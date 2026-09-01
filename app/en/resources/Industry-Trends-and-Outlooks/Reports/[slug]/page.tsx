@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 
 type RelatedArticle = {
   category: string;
-  categoryHref: string;
   title: string;
   date: string;
   href: string;
@@ -32,9 +31,6 @@ type Report = {
 
 const SITE_URL = "https://farm-funding.vercel.app";
 const REPORT_SLUG = "2606KEP_FuelFertilizerandConflictinMiddleEast";
-const OUTLOOKS_PATH = "/resources/Industry-Trends-and-Outlooks";
-const BLOG_PATH = "/resources/todays-harvest-Blog";
-const AUTHORS_PATH = "/en/resources/Meet-the-Authors";
 
 const REPORTS: Record<string, Report> = {
   "2606KEP_FuelFertilizerandConflictinMiddleEast.html": {
@@ -79,28 +75,36 @@ const REPORTS: Record<string, Report> = {
     relatedArticles: [
       {
         category: "Ag Economy",
-        categoryHref: `${OUTLOOKS_PATH}?category=ag-economy`,
         title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
         date: "July 10, 2026",
-        href: `${OUTLOOKS_PATH}/Reports/2025NEDairyFarmSummary2026MidYearOutlook`,
+        href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
       },
       {
         category: "Public Policy",
-        categoryHref: `${BLOG_PATH}?category=public-policy`,
         title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
         date: "July 7, 2026",
-        href: `${BLOG_PATH}/260707_2026FarmBillTakesShape`,
+        href: "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape",
       },
       {
         category: "Business Tips and Tools",
-        categoryHref: `${BLOG_PATH}?category=business-tips-and-tools`,
         title: "Tariff Relief Program Available for New York Producers",
         date: "July 1, 2026",
-        href: `${BLOG_PATH}/tariff-relief-program-available-for-new-york-producers`,
+        href: "/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers",
       },
     ],
   },
 };
+
+const footerColumns = [
+  { title: "FINANCING", links: ["Land Loans", "Rural Home Loans", "Operating Loans", "Facility Loans", "Equipment Financing", "Leases", "Beginning Farmer Programs"] },
+  { title: "SERVICES", links: ["Tax Planning and Prep", "Recordkeeping", "Appraisals", "Business Consulting", "Financial Benchmarking", "Estate Planning", "Grant Writing", "Farm Credit Connect"] },
+  { title: "CROP INSURANCE", links: ["Crop Insurance Products", "Dairy & Livestock Insurance Products", "Insurance Resources", "Crop Insurance Agent Finder", "File Notice of Loss", "Non-Discrimination Statement"] },
+  { title: "INDUSTRIES", links: ["Cash Grain", "Dairy", "Livestock/Equine", "Timber/Forestry", "Fruit/Winery", "Vegetables", "Fishing/Aquatic", "Greenhouse/Nursery", "Maple"] },
+  { title: "RESOURCES", links: ["Today's Harvest Blog", "Industry Trends & Outlooks", "Events & Webinars", "Calculators", "DTN Markets & Weather", "Northeast Farm Fresh Guide", "Calendar Photo Contest", "Go To Assist"] },
+  { title: "ABOUT", links: ["Who We Are", "Leadership", "Cooperative Involvement", "Newsroom", "Financial Reports", "Community Support", "Information Security", "Careers"] },
+];
+
+const footerLink = (label: string) => `/${label.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 
 export function generateStaticParams() {
   return Object.keys(REPORTS).map((slug) => ({ slug }));
@@ -109,9 +113,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const report = REPORTS[slug];
-  return report
-    ? { title: `${report.title} | Farm Funding`, description: report.title }
-    : { title: "Industry Trends & Outlooks | Farm Funding" };
+  return report ? { title: `${report.title} | Farm Funding`, description: report.title } : { title: "Industry Trends & Outlooks | Farm Funding" };
 }
 
 export default async function ReportPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -119,9 +121,16 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const report = REPORTS[slug];
   if (!report) notFound();
 
-  const pageUrl = `${SITE_URL}${OUTLOOKS_PATH}/Reports/${REPORT_SLUG}`;
-  const shareText = encodeURIComponent(report.title);
-  const shareUrl = encodeURIComponent(pageUrl);
+  const pageUrl = `${SITE_URL}/resources/Industry-Trends-and-Outlooks/Reports/${REPORT_SLUG}`;
+  const encodedTitle = encodeURIComponent(report.title);
+  const encodedUrl = encodeURIComponent(pageUrl);
+
+  const shareLinks = [
+    { name: "X", icon: "/images/icons/social/Twitter.png", href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}` },
+    { name: "Facebook", icon: "/images/icons/social/Facebook.png", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
+    { name: "LinkedIn", icon: "/images/icons/social/LinkedIn.png", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
+    { name: "Email", icon: "/images/icons/social/Email.png", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}` },
+  ];
 
   return (
     <main className="w-full overflow-x-hidden bg-white text-[#686868]">
@@ -129,88 +138,73 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <div className="relative mx-auto h-full max-w-[1800px]">
           <p className="mb-[18px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] sm:text-[14px] md:absolute md:right-0 md:top-[78px] md:mb-0 md:text-[16px] lg:text-[17px]">{report.date}</p>
           <div className="md:absolute md:left-0 md:right-0 md:top-[112px]">
-            <Link href={`${OUTLOOKS_PATH}?category=Knowledge%20Exchange%20Partner`} className="inline-block border border-[#ecf1e4] px-[6px] py-[5px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] no-underline transition-colors hover:bg-[#ecf1e4] hover:text-[#496d83] sm:text-[14px] md:text-[15px]">{report.category}</Link>
-            <h1 className="mt-[18px] max-w-[1720px] font-display text-[28px] font-bold leading-[1.18] tracking-[-0.2px] text-[#ecf1e4] sm:text-[36px] sm:leading-[1.12] md:mt-[32px] md:text-[46px] lg:mt-[40px] lg:text-[58px] lg:leading-[1.08]">{report.title}</h1>
+            <Link href="/resources/Industry-Trends-and-Outlooks?category=knowledge-exchange-partner" className="inline-block border border-[#ecf1e4] px-[6px] py-[5px] font-display text-[13px] font-bold leading-[1.2] text-[#ecf1e4] no-underline transition-colors hover:bg-[#ecf1e4] hover:text-[#496d83] sm:text-[14px] md:text-[15px]">{report.category}</Link>
+            <h1 className="mt-[18px] max-w-[1720px] font-display text-[28px] font-bold leading-[1.18] tracking-[-0.2px] text-[#ecf1e4] sm:text-[36px] sm:leading-[1.12] sm:tracking-[-0.3px] md:mt-[32px] md:text-[46px] md:tracking-[-0.5px] lg:mt-[40px] lg:text-[58px] lg:leading-[1.08] lg:tracking-[-0.6px]">{report.title}</h1>
           </div>
         </div>
       </section>
 
       <section className="w-full bg-white">
         <article className="mx-auto max-w-[800px] px-[20px] pb-[56px] pt-[40px] sm:px-[24px] sm:pb-[64px] sm:pt-[52px] md:px-[24px] md:pb-[80px] md:pt-[68px] lg:px-0 lg:pt-[70px]">
-          <div className="mb-[36px] font-display text-[17px] font-semibold leading-[1.4] text-[#686868] sm:mb-[46px] sm:text-[18px] md:mb-[55px] md:text-[20px]">
-            <p className="m-0">{report.issue}</p>
-            <p className="m-0">June 2026</p>
-          </div>
+          <div className="mb-[36px] font-display text-[17px] font-semibold leading-[1.4] text-[#686868] sm:mb-[46px] sm:text-[18px] md:mb-[55px] md:text-[20px]"><p className="m-0">{report.issue}</p><p className="m-0">June 2026</p></div>
 
           {report.sections.map((section) => (
-            <section key={section.id} id={section.id} className="mb-[52px] scroll-mt-[20px] last:mb-0 sm:mb-[64px] md:mb-[78px] md:scroll-mt-[35px]">
+            <section key={section.id} id={section.id} className="mb-[52px] scroll-mt-[20px] last:mb-0 sm:mb-[64px] sm:scroll-mt-[30px] md:mb-[78px] md:scroll-mt-[35px]">
               <h2 className="mb-[18px] font-display text-[26px] font-bold leading-[1.2] text-[#686868] sm:mb-[24px] sm:text-[31px] md:mb-[30px] md:text-[36px] lg:text-[38px]">{section.heading}</h2>
-              {section.image && (
-                <figure className="mb-[22px] sm:mb-[28px] md:mb-[34px]">
-                  <div className="relative w-full overflow-hidden bg-white">
-                    <Image src={section.image} alt={section.imageAlt || ""} width={800} height={section.id === "motor-fuels" ? 568 : 601} sizes="(max-width: 799px) 100vw, 800px" className="block h-auto w-full object-contain" priority={section.id === "motor-fuels"} />
-                  </div>
-                  {section.caption && <figcaption className="mt-[8px] font-sans text-[13px] leading-[1.5] text-[#686868] sm:text-[14px]">{section.caption}</figcaption>}
-                  {section.source && <p className="m-0 mt-[2px] font-sans text-[12px] leading-[1.5] text-[#686868] sm:text-[13px]">{section.source}</p>}
-                </figure>
-              )}
-              {section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-[18px] font-sans text-[16px] font-medium leading-[1.55] text-[#686868] last:mb-0 sm:mb-[22px] sm:text-[17px] md:mb-[24px] md:text-[18px] md:leading-[1.6]">{paragraph}</p>)}
-              {section.id === "fertilizer" && <div className="mt-[24px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[28px] sm:text-[14px]"><p className="m-0"><sup>1</sup> International Food Policy Research Institute</p><p className="m-0"><sup>2</sup> Argus Analytics</p></div>}
+              {section.image && <figure className="mb-[22px] sm:mb-[28px] md:mb-[34px]"><div className="relative w-full overflow-hidden bg-white"><Image src={section.image} alt={section.imageAlt || ""} width={800} height={section.id === "motor-fuels" ? 568 : 601} sizes="(max-width: 799px) 100vw, 800px" className="block h-auto w-full object-contain" priority={section.id === "motor-fuels"} /></div>{section.caption && <figcaption className="mt-[8px] font-sans text-[13px] leading-[1.5] text-[#686868] sm:text-[14px]">{section.caption}</figcaption>}{section.source && <p className="m-0 mt-[2px] font-sans text-[12px] leading-[1.5] text-[#686868] sm:text-[13px]">{section.source}</p>}</figure>}
+              <div>{section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-[18px] font-sans text-[16px] font-medium leading-[1.55] text-[#686868] last:mb-0 sm:mb-[22px] sm:text-[17px] md:mb-[24px] md:text-[18px] md:leading-[1.6]">{paragraph}</p>)}</div>
+              {section.id === "fertilizer" && <div className="mt-[24px] border-t border-[#686868] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[28px] sm:pt-[18px] sm:text-[14px] md:mt-[34px] md:pt-[20px] md:leading-[1.65]"><p className="m-0"><sup>1</sup>International Food Policy Research Institute</p><p className="m-0"><sup>2</sup>Argus Analytics</p></div>}
             </section>
           ))}
 
-          <div className="mt-[34px] border-t border-[#d8d8d8] pt-[24px] font-sans text-[14px] leading-[1.65] text-[#686868]">
-            {report.editor && <p className="m-0"><strong className="font-bold text-[#231f20]">Editor:</strong>{" "}{report.editor}</p>}
-            {report.contributors && <p className="m-0 mt-[7px]"><strong className="font-bold text-[#231f20]">Contributors:</strong>{" "}{report.contributors}</p>}
+          <div className="mt-[24px] border-t border-[#d8d8d8] pt-[18px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[28px] sm:pt-[20px] sm:text-[14px] md:mt-[34px] md:pt-[24px] md:leading-[1.65]">{report.editor && <p className="m-0"><strong className="font-bold text-[#231f20]">Editor:</strong>{" "}{report.editor}</p>}{report.contributors && <p className="m-0 mt-[6px] sm:mt-[7px]"><strong className="font-bold text-[#231f20]">Contributors:</strong>{" "}{report.contributors}</p>}</div>
+
+          <div className="mt-[20px] border-t border-[#d8d8d8] pt-[18px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[24px] sm:pt-[20px] sm:text-[14px] md:mt-[28px] md:pt-[24px] md:leading-[1.65]">
+            <p className="m-0"><Link href="/resources/Industry-Trends-and-Outlooks?category=knowledge-exchange-partner" className="font-semibold text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">View previous editions of the KEP</Link></p>
+            <p className="mt-[14px] sm:mt-[18px]"><strong className="font-bold text-[#231f20]">Farm Funding Disclaimer:</strong>{" "}The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funding does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report.</p>
+            <p className="mt-[10px] sm:mt-[12px]">In no event will Farm Funding be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.</p>
           </div>
 
-          <div className="mt-[28px] border-t border-[#d8d8d8] pt-[24px] font-sans text-[14px] leading-[1.65] text-[#686868]">
-            <p className="m-0"><a href="https://www.farmcrediteast.com/resources/knowledge-exchange-partner" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">View previous editions of the KEP</a></p>
-            <p className="mt-[18px]"><strong className="font-bold text-[#231f20]">Farm Funders Disclaimer:</strong>{" "}The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funders does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report.</p>
-            <p className="mt-[12px]">In no event will Farm Funders be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.</p>
-          </div>
+          <div className="mt-[18px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[24px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]"><span className="font-bold text-[#231f20]">Tags:</span>{" "}{report.tags.map((tag, index) => <span key={tag}><Link href={`/resources/Industry-Trends-and-Outlooks?tag=${encodeURIComponent(tag)}`} className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">{tag}</Link>{index < report.tags.length - 1 && ", "}</span>)}</div>
 
-          <div className="mt-[24px] border-t border-[#d8d8d8] pt-[20px] font-sans text-[14px] leading-[1.65] text-[#686868]">
-            <span className="font-bold text-[#231f20]">Tags:</span>{" "}
-            {report.tags.map((tag, index) => <span key={tag}><Link href={`${OUTLOOKS_PATH}?tag=${encodeURIComponent(tag)}`} className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">{tag}</Link>{index < report.tags.length - 1 && ", "}</span>)}
-          </div>
-
-          <section className="mt-[16px] border-t border-[#d8d8d8] pt-[16px] font-sans sm:mt-[20px] sm:pt-[20px]" aria-label="Share this article">
-            <p className="m-0 mb-[16px] text-[17px] font-semibold text-[#231f20]">Share this post on</p>
-            <ul className="m-0 flex list-none gap-[10px] p-0">
-              <li><a href={`https://twitter.com/share?text=${shareText}&url=${shareUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Share on X" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#14171a] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a></li>
-              <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#1877f2] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" /></svg></a></li>
-              <li><a href={`https://www.linkedin.com/shareArticle?url=${shareUrl}&title=${shareText}`} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#0a66c2] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg></a></li>
-              <li><a href={`mailto:?subject=${shareText}&body=${shareUrl}`} aria-label="Share by email" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[4px] bg-[#34a853] text-white"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg></a></li>
-            </ul>
-          </section>
+          <div className="mt-[16px] flex flex-wrap items-center gap-[16px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[20px] sm:gap-[14px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]"><span className="font-bold text-[#231f20]">Share this post on</span>{shareLinks.map((item) => <a key={item.name} href={item.href} title={item.name} target="_blank" rel="noopener noreferrer" className="inline-flex h-[32px] w-[32px] items-center justify-center sm:h-[28px] sm:w-[28px]"><Image src={item.icon} alt={item.name} width={28} height={28} className="h-full w-full object-contain" /></a>)}</div>
         </article>
       </section>
 
-      <section className="w-full bg-[#ecf1e4]">
-        <div className="mx-auto w-[calc(100%-120px)] max-w-[1800px] px-[7px] py-[34px] sm:py-[42px] md:py-[54px]">
-          <h2 className="m-0 font-display text-[30px] font-bold leading-[1.25] text-[#4f832a]">You Might Also Like</h2>
-          <div className="mt-[20px] grid grid-cols-1 gap-[25px] md:grid-cols-3 md:gap-[34px]">
-            {report.relatedArticles.map((item) => (
-              <article key={item.title} className="pt-[26px]">
-                <Link href={item.categoryHref} className="inline-block bg-[#686868] px-[14px] py-[6px] font-sans text-[13px] font-bold uppercase tracking-[.02em] text-white no-underline">{item.category}</Link>
-                <Link href={item.href} className="mt-[26px] block font-display text-[21px] font-bold leading-[1.35] text-[#5a4400] no-underline hover:underline">{item.title} <span aria-hidden="true">&#8250;</span></Link>
-                <p className="mt-[26px] font-sans text-[14px] font-bold uppercase text-[#686868]">{item.date}</p>
+      {/* Exact reference content/layout, with mobile-first spacing retained. */}
+      <section className="w-full bg-[#ecf1e4] px-[20px] py-[48px] sm:px-[24px] sm:py-[56px] md:px-[5%] md:py-[70px] lg:px-[7%] lg:py-[82px]">
+        <div className="mx-auto max-w-[1760px]">
+          <h2 className="mb-[28px] font-display text-[28px] font-bold leading-[1.18] text-[#4f832a] sm:mb-[36px] sm:text-[34px] md:mb-[46px] md:text-[38px] lg:text-[44px]">You Might Also Like</h2>
+          <div className="grid grid-cols-1 gap-[30px] sm:grid-cols-2 sm:gap-[34px] md:grid-cols-3 md:gap-[80px]">
+            {report.relatedArticles.map((article) => (
+              <article key={article.title} className="min-w-0">
+                <Link href={article.href} className="inline-block bg-[#686868] px-[12px] py-[7px] font-sans text-[14px] font-bold uppercase leading-[1.15] text-white no-underline transition-colors hover:bg-[#496d83] sm:text-[15px] md:px-[14px] md:py-[8px] md:text-[16px]">{article.category}</Link>
+                <Link href={article.href} className="mt-[14px] block font-display text-[21px] font-bold leading-[1.28] text-[#5a4400] no-underline hover:underline hover:underline-offset-[3px] sm:mt-[16px] sm:text-[25px] md:mt-[18px] md:text-[30px] md:leading-[1.25]">{article.title} <span aria-hidden="true">&#8250;</span></Link>
+                <p className="mt-[14px] font-sans text-[13px] font-bold uppercase leading-[1.3] text-[#686868] sm:mt-[18px] sm:text-[14px] md:mt-[20px]">{article.date}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-white">
-        <div className="mx-auto grid w-[calc(100%-120px)] max-w-[1800px] grid-cols-1 items-center gap-[28px] px-[7px] py-[50px] md:grid-cols-[2fr_1fr] md:py-[50px]">
-          <div className="max-w-[900px]">
-            <h2 className="m-0 font-display text-[30px] font-bold leading-[1.25] text-[#4f832a]">Meet the Authors</h2>
-            <p className="m-[14px_0_0] font-sans text-[20px] leading-[1.5] text-[#686868]">Connect with and discover our Today&rsquo;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p>
+      <section className="w-full bg-white px-[20px] py-[48px] sm:px-[24px] sm:py-[56px] md:px-[5%] md:py-[70px] lg:px-[7%] lg:py-[78px]">
+        <div className="mx-auto grid max-w-[1760px] grid-cols-1 items-start gap-[22px] sm:items-center md:grid-cols-[minmax(0,1fr)_auto] md:gap-[50px]">
+          <div className="min-w-0">
+            <h2 className="font-display text-[28px] font-bold leading-[1.18] text-[#4f832a] sm:text-[34px] md:text-[38px] lg:text-[44px]">Meet the Authors</h2>
+            <p className="mt-[14px] max-w-[980px] font-sans text-[15px] font-medium leading-[1.55] text-[#686868] sm:mt-[16px] sm:text-[17px] md:mt-[18px] md:text-[18px] md:leading-[1.65] lg:text-[20px]">Connect with and discover our Today&rsquo;s Harvest blog authors and their broad range of financial and Northeast agricultural expertise.</p>
           </div>
-          <Link href={AUTHORS_PATH} className="inline-flex min-w-[205px] justify-self-start items-center justify-center bg-[#496d83] px-[22px] py-[13px] font-display text-[15px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] md:justify-self-end">Meet the Authors</Link>
+          <Link href="/resources/Meet-the-Authors.html" className="inline-flex w-full min-w-[205px] items-center justify-center border border-[#496d83] bg-[#496d83] px-[22px] py-[13px] font-display text-[16px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] hover:border-[#3b5a6d] sm:w-auto">Meet the Authors</Link>
         </div>
       </section>
+
+      <footer className="bg-[#496d83] text-white">
+        <div className="mx-auto max-w-[1760px] px-[20px] pb-[36px] pt-[36px] sm:px-[24px] md:px-[5%] md:pb-[46px] md:pt-[52px] lg:px-[7%]">
+          <div className="flex flex-col gap-[20px] border-b border-white/30 pb-[24px] sm:gap-[28px] sm:pb-[30px] md:flex-row md:items-center md:justify-between"><div className="font-display text-[22px] font-bold tracking-[-0.2px] sm:text-[25px] md:text-[28px] md:tracking-[-0.3px]">Farm Funding</div><div className="flex flex-wrap gap-x-[20px] gap-y-[10px] font-sans text-[13px]"><Link href="/sign-in" className="hover:underline">Sign In</Link><Link href="/search" className="hover:underline">Search</Link><Link href="/office-locator" className="hover:underline">Office Locator</Link><Link href="/contact-us" className="hover:underline">Contact Us</Link><Link href="/en-espanol" className="hover:underline">En Español</Link></div></div>
+          <div className="grid grid-cols-2 gap-x-[20px] gap-y-[28px] pt-[28px] sm:grid-cols-3 sm:gap-x-[28px] sm:gap-y-[38px] sm:pt-[42px] md:grid-cols-6">{footerColumns.map((column) => <div key={column.title}><h3 className="mb-[13px] font-display text-[13px] font-bold tracking-[0.3px] sm:mb-[17px] sm:text-[15px] sm:tracking-[0.4px]">{column.title}</h3><ul className="space-y-[8px] font-sans text-[12px] leading-[1.35] text-white/90 sm:space-y-[9px] sm:text-[13px]">{column.links.map((label) => <li key={label}><Link href={footerLink(label)} className="hover:underline">{label}</Link></li>)}</ul></div>)}</div>
+          <div className="mt-[28px] flex flex-col gap-[16px] border-t border-white/30 pt-[20px] sm:mt-[42px] sm:gap-[22px] sm:pt-[25px] md:flex-row md:items-center md:justify-between"><div className="flex flex-wrap gap-x-[16px] gap-y-[8px] font-sans text-[12px] sm:text-[13px]"><a href="https://x.com/fceast" target="_blank" rel="noopener noreferrer" className="hover:underline">X (formerly Twitter)</a><a href="https://www.facebook.com/farmcrediteast" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook</a><a href="https://www.youtube.com/@FarmCreditEast" target="_blank" rel="noopener noreferrer" className="hover:underline">YouTube</a><a href="https://www.linkedin.com/company/farm-credit-east-aca" target="_blank" rel="noopener noreferrer" className="hover:underline">Linked In</a><a href="https://www.instagram.com/farmcrediteast" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a></div><div className="font-sans text-[11px] text-white/80 sm:text-[12px]">Copyright 2026 Farm Funding</div></div>
+          <div className="mt-[14px] flex flex-wrap gap-x-[12px] gap-y-[6px] font-sans text-[10px] text-white/75 sm:mt-[16px] sm:gap-x-[14px] sm:gap-y-[7px] sm:text-[11px]"><Link href="/sitemap" className="hover:underline">SiteMap</Link><Link href="/privacy-statement" className="hover:underline">Privacy Statement</Link><Link href="/equal-opportunity-legal" className="hover:underline">Equal Opportunity &amp; Legal</Link><Link href="/data-rights" className="hover:underline">Data Rights for California Residents</Link><Link href="/terms-of-use" className="hover:underline">Terms of Use</Link><Link href="/whistleblower" className="hover:underline">Whistleblower</Link><Link href="/non-discrimination" className="hover:underline">Non-Discrimination Statement</Link><Link href="/privacy-settings" className="hover:underline">Privacy Settings</Link></div>
+        </div>
+      </footer>
     </main>
   );
 }
