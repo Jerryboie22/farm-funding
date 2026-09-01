@@ -1,21 +1,16 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import type { Metadata } from "next";
+import ReferenceIndustryPage from "@/components/ReferenceIndustryPage";
 
-export const metadata = { title: "Cash Grain | Farm Funding" };
+export const metadata: Metadata = { title: "Cash Grain Producers | Farm Funding" };
 
-export default function Page() {
-  return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Cash Grain
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
-  );
+export default function CashGrainPage() {
+  return <ReferenceIndustryPage data={{
+    title: "Cash Grain Producers",
+    description: "Farm Funding understands the financial needs of cash grain producers and the importance of managing markets, input costs and working capital.",
+    image: "/images/industries/Cash Grain_shutterstock_1153070285-1.jpg",
+    imageAlt: "Cash grain field",
+    services: ["Operating Loans", "Equipment Financing", "Facility Loans", "Tax Planning and Prep", "Recordkeeping", "Business Consulting", "Crop Insurance"],
+    programs: ["Young, Beginning, Small & Veteran Farmer Incentives", "FarmStart", "GenerationNext"],
+    related: [{ label: "Business Tips and Tools", title: "Agricultural market and risk-management insights", href: "/resources/blog", date: "2026" }, { label: "Resources", title: "Explore our crop insurance resources", href: "/crop-insurance/resources", date: "2026" }]
+  }} />;
 }
