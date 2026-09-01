@@ -1,37 +1,91 @@
 import type { Metadata } from "next";
-import ReferenceServicePage from "@/components/ReferenceServicePage";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Estate Planning | Farm Funding",
   description: "Estate and farm succession planning for Northeast families.",
 };
 
+const faqs = [
+  {
+    q: "When should I begin estate planning?",
+    a: "The earlier a family starts, the more time there is to prepare for retirement, develop successors and adjust the plan as circumstances change.",
+  },
+];
+
 export default function EstatePlanningPage() {
   return (
-    <ReferenceServicePage
-      data={{
-        title: "Estate Planning",
-        description:
-          "Build a practical plan for your family, your assets and the future of your agricultural business with guidance from an experienced Farm Funding consultant.",
-        image: "/images/services/Estate Planning_shutterstock_383350174.jpg",
-        imageAlt: "Horse grazing beside a red farm barn",
-        introTitle: "You can trust Farm Funding for the estate planning you need.",
-        highlights: [
-          { title: "More expertise", body: "Our consultants have helped Northeast farm families work through complex financial and transition decisions." },
-          { title: "We simplify the process", body: "Planning is broken into manageable decisions so families can understand the choices and keep moving forward." },
-          { title: "We understand your legacy", body: "A farm transfer involves more than assets. We help families address the financial and personal realities of passing a business forward." },
-        ],
-        sections: [
-          { title: "Why estate planning matters", bullets: ["Direct assets toward the people and purposes you choose", "Reduce the chance of costly surprises for your family", "Plan for retirement needs", "Prepare the next generation for ownership and management", "Give the farm and family a clearer path forward"] },
-          { title: "Family business transfers", body: "A strong transition plan considers retirement needs, successor development, continuity of the business and the responsibilities each family member will carry." },
-          { title: "Start the conversation", body: "Estate planning works best when it starts early. Contact your local Farm Funding office to discuss your family, your timeline and the areas that need attention first." },
-        ],
-        faqs: [
-          { q: "When should I begin estate planning?", a: "Earlier is generally better. Starting before a transition is urgent gives a family time to build resources, develop successors and work through difficult decisions." },
-          { q: "Does transferring ownership also transfer control?", a: "Not necessarily. There are multiple structures that can separate the timing of equity transfers from management and control decisions." },
-          { q: "Who should consider estate planning?", a: "Any agricultural business owner with assets, a family transition or retirement goals can benefit from a well-organized plan." },
-        ],
-      }}
-    />
+    <main className="bg-white text-[#333]">
+      <section className="grid md:grid-cols-2 min-h-[430px] bg-[#f3f0e8]">
+        <div className="flex flex-col justify-center px-[7%] py-14 md:py-20">
+          <h1 className="text-[#174b35] font-display text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.05]">Estate Planning</h1>
+          <p className="mt-6 max-w-xl text-base md:text-lg leading-7">Estate planning can give your family a clear path for protecting assets, preparing the next generation and preserving the future of the business.</p>
+          <Link href="/contact" className="mt-8 w-fit bg-[#b55b3c] px-7 py-4 text-white font-bold text-sm uppercase tracking-wide">Contact My Office</Link>
+        </div>
+        <div className="min-h-[320px] md:min-h-full">
+          <img src="/images/services/Estate Planning_shutterstock_383350174.jpg" alt="Horse grazing in front of a red barn" className="h-full w-full object-cover" />
+        </div>
+      </section>
+
+      <section className="px-[7%] py-16 md:py-20">
+        <h2 className="text-[#174b35] font-display text-3xl md:text-4xl font-bold">You can trust Farm Funders for the estate planning you need.</h2>
+        <div className="mt-12 grid gap-10 md:grid-cols-3">
+          {[
+            ["More expertise", "Farm families can work with experienced consultants who understand agricultural businesses and succession decisions."],
+            ["We demystify the process", "A complicated transition can be broken into practical decisions that are easier for the family to understand."],
+            ["We understand your needs", "Planning a legacy involves financial decisions as well as the emotions and relationships within a family."],
+          ].map(([title, body]) => (
+            <div key={title}>
+              <h3 className="text-[#174b35] font-display text-2xl font-bold">{title}</h3>
+              <p className="mt-4 leading-7 text-[#555]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#f3f0e8] px-[7%] py-16 md:py-20">
+        <h2 className="text-[#174b35] font-display text-3xl md:text-4xl font-bold">Why estate planning is important</h2>
+        <ul className="mt-8 max-w-4xl grid gap-3 list-disc pl-6 leading-7 text-[#555]">
+          <li>Direct assets toward the people and purposes you choose.</li>
+          <li>Protect your family from avoidable financial and legal difficulties.</li>
+          <li>Plan for a comfortable retirement.</li>
+          <li>Prepare the next generation to take responsibility.</li>
+          <li>Give the farm and your family greater certainty about the future.</li>
+        </ul>
+      </section>
+
+      <section className="px-[7%] py-16 md:py-20">
+        <h2 className="text-[#174b35] font-display text-3xl md:text-4xl font-bold">Family business transfers</h2>
+        <div className="mt-7 max-w-4xl space-y-5 leading-7 text-[#555]">
+          <p>We help families assess retirement needs while protecting the long-term viability of the business.</p>
+          <p>Successor development can include Farm Funders programs such as GenerationNext, giving the next generation an opportunity to prepare for leadership.</p>
+          <p>Continuity, management responsibilities and each family member’s role are important parts of a complete transition plan.</p>
+        </div>
+      </section>
+
+      <section className="bg-[#f7f7f5] px-[7%] py-16 md:py-20">
+        <h2 className="text-[#174b35] font-display text-3xl md:text-4xl font-bold">Estate Planning FAQs</h2>
+        <div className="mt-8 max-w-5xl divide-y divide-[#d4d1c8] border-y border-[#d4d1c8]">
+          {faqs.map((faq) => (
+            <details key={faq.q} className="group py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-8 text-lg md:text-xl font-bold">{faq.q}<span className="text-[#b55b3c] text-2xl transition-transform group-open:rotate-45">+</span></summary>
+              <p className="pt-4 max-w-4xl leading-7 text-[#555]">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-[7%] py-16 md:py-20">
+        <div className="grid md:grid-cols-2 gap-10 items-center max-w-6xl">
+          <img src="/images/services/Estate Planning_shutterstock_383350174.jpg" alt="Farm estate planning" className="w-full aspect-[4/3] object-cover" />
+          <div>
+            <p className="text-[#b55b3c] font-bold uppercase tracking-wide text-sm">View From the Field</p>
+            <h2 className="mt-3 text-[#174b35] font-display text-3xl md:text-4xl font-bold">Planning for the future</h2>
+            <p className="mt-5 leading-7 text-[#555]">A thoughtful succession plan can make a complicated family transition easier to navigate and help protect the work built over generations.</p>
+            <Link href="/contact" className="mt-7 inline-flex border-2 border-[#174b35] px-7 py-3.5 text-[#174b35] font-bold text-sm uppercase tracking-wide hover:bg-[#174b35] hover:text-white">Contact Us</Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
