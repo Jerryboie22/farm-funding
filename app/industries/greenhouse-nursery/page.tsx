@@ -1,21 +1,16 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import type { Metadata } from "next";
+import ReferenceIndustryPage from "@/components/ReferenceIndustryPage";
 
-export const metadata = { title: "Greenhouse/Nursery | Farm Funding" };
+export const metadata: Metadata = { title: "Greenhouse & Nursery Producers | Farm Funding" };
 
-export default function Page() {
-  return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Greenhouse/Nursery
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
-  );
+export default function GreenhouseNurseryPage() {
+  return <ReferenceIndustryPage data={{
+    title: "Greenhouse & Nursery Producers",
+    description: "Greenhouse and nursery businesses have specialized production cycles and capital needs. Farm Funding combines agricultural financing with business expertise for these operations.",
+    image: "/images/industries/Green_AdobeStock_184545898.jpg",
+    imageAlt: "Greenhouse production",
+    services: ["Operating Loans", "Equipment Financing", "Facility Loans", "Tax Planning and Prep", "Recordkeeping", "Business Consulting", "Financial Benchmarking", "Crop Insurance"],
+    programs: ["FarmStart", "GenerationNext", "Young, Beginning, Small & Veteran Farmer Incentives"],
+    related: [{ label: "Services", title: "Business Consulting", href: "/services/business-consulting", date: "2026" }, { label: "Services", title: "Financial Benchmarking", href: "/services/benchmarking", date: "2026" }]
+  }} />;
 }
