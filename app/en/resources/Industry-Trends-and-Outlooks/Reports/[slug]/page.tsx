@@ -29,6 +29,10 @@ type Report = {
   relatedArticles: RelatedArticle[];
 };
 
+const SITE_URL = "https://farm-funders.com";
+const REPORT_SLUG =
+  "2606KEP_FuelFertilizerandConflictinMiddleEast.html";
+
 const REPORTS: Record<string, Report> = {
   "2606KEP_FuelFertilizerandConflictinMiddleEast.html": {
     title: "Fuel, Fertilizer and Conflict in the Middle East: What to Know Now",
@@ -137,6 +141,33 @@ export default async function ReportPage({
 
   if (!report) notFound();
 
+  const pageUrl = `${SITE_URL}/en/resources/Industry-Trends-and-Outlooks/Reports/${REPORT_SLUG}`;
+  const encodedTitle = encodeURIComponent(report.title);
+  const encodedUrl = encodeURIComponent(pageUrl);
+
+  const shareLinks = [
+    {
+      name: "Twitter",
+      icon: "/images/icons/social/Twitter.png",
+      href: `https://twitter.com/share?text=${encodedTitle}&url=${encodedUrl}`,
+    },
+    {
+      name: "Facebook",
+      icon: "/images/icons/social/Facebook.png",
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&t=${encodedTitle}`,
+    },
+    {
+      name: "LinkedIn",
+      icon: "/images/icons/social/LinkedIn.png",
+      href: `http://www.linkedin.com/shareArticle?url=${encodedUrl}&title=${encodedTitle}`,
+    },
+    {
+      name: "Email",
+      icon: "/images/icons/social/Email.png",
+      href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
+    },
+  ];
+
   return (
     <main className="w-full overflow-x-hidden bg-white text-[#686868]">
       {/* HERO */}
@@ -222,9 +253,11 @@ export default async function ReportPage({
               {section.id === "fertilizer" && (
                 <div className="mt-[34px] font-sans text-[14px] leading-[1.65] text-[#686868]">
                   <p className="m-0">
-                    ¹ International Food Policy Research Institute
+                    <sup>1</sup>International Food Policy Research Institute
                   </p>
-                  <p className="m-0">² Argus Analytics</p>
+                  <p className="m-0">
+                    <sup>2</sup>Argus Analytics
+                  </p>
                 </div>
               )}
             </section>
@@ -298,6 +331,29 @@ export default async function ReportPage({
 
                 {index < report.tags.length - 1 && ", "}
               </span>
+            ))}
+          </div>
+
+          {/* SHARE */}
+          <div className="mt-[20px] flex flex-wrap items-center gap-[14px] border-t border-[#d8d8d8] pt-[20px] font-sans text-[14px] leading-[1.65] text-[#686868]">
+            <span className="font-bold text-[#231f20]">Share this post on</span>
+            {shareLinks.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                title={item.name}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-[28px] w-[28px] items-center justify-center"
+              >
+                <Image
+                  src={item.icon}
+                  alt={item.name}
+                  width={28}
+                  height={28}
+                  className="h-full w-full object-contain"
+                />
+              </a>
             ))}
           </div>
         </article>
