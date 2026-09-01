@@ -1,6 +1,14 @@
+```tsx
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+type RelatedArticle = {
+  category: string;
+  title: string;
+  date: string;
+  href: string;
+};
 
 type Report = {
   title: string;
@@ -19,6 +27,7 @@ type Report = {
   editor?: string;
   contributors?: string;
   tags: string[];
+  relatedArticles: RelatedArticle[];
 };
 
 const REPORTS: Record<string, Report> = {
@@ -27,6 +36,7 @@ const REPORTS: Record<string, Report> = {
     date: "June 2, 2026",
     issue: "Volume 20, Issue 6",
     category: "Knowledge Exchange Partner",
+
     sections: [
       {
         id: "motor-fuels",
@@ -42,6 +52,7 @@ const REPORTS: Record<string, Report> = {
         caption: "U.S. Average Motor Fuel Cost, May 2025-May 2026",
         source: "Source: U.S. Energy Information Administration",
       },
+
       {
         id: "fertilizer",
         heading: "Fertilizer",
@@ -58,8 +69,11 @@ const REPORTS: Record<string, Report> = {
         source: "Source: Bloomberg",
       },
     ],
+
     editor: "Chris Laughton",
-    contributors: "Chris Laughton, Farm Funders, Director of Knowledge Exchange",
+    contributors:
+      "Chris Laughton, Farm Funders, Director of Knowledge Exchange",
+
     tags: [
       "outlook",
       "business management",
@@ -67,6 +81,27 @@ const REPORTS: Record<string, Report> = {
       "economy",
       "expenses",
       "international",
+    ],
+
+    relatedArticles: [
+      {
+        category: "Ag Economy",
+        title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
+        date: "July 10, 2026",
+        href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook.html",
+      },
+      {
+        category: "Public Policy",
+        title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
+        date: "July 7, 2026",
+        href: "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape.html",
+      },
+      {
+        category: "Business Tips and Tools",
+        title: "Tariff Relief Program Available for New York Producers",
+        date: "July 1, 2026",
+        href: "/resources/todays-harvest-Blog/260701TariffReliefProgramNYProducers.html",
+      },
     ],
   },
 };
@@ -105,8 +140,7 @@ export default async function ReportPage({
 
   return (
     <main className="w-full overflow-x-hidden bg-white text-[#686868]">
-      {/* Reference hero: Farm Funders blue/clay background, white category/date,
-          and the large cream article title. */}
+      {/* HERO */}
       <section className="relative h-[449px] w-full bg-[#496d83]">
         <div className="relative mx-auto h-full max-w-[1800px] px-[4.05%]">
           <p className="absolute right-[4.05%] top-[78px] m-0 font-display text-[16px] font-bold leading-[1.2] text-[#ecf1e4] md:text-[17px]">
@@ -128,15 +162,16 @@ export default async function ReportPage({
         </div>
       </section>
 
-      {/* The reference article is a single centered column. There is no
-          contents sidebar on this report. */}
+      {/* ARTICLE */}
       <section className="w-full bg-white">
         <article className="mx-auto max-w-[1000px] px-[24px] pb-[80px] pt-[66px] md:px-[28px] md:pt-[68px] lg:px-0 lg:pt-[70px]">
+          {/* ISSUE / DATE */}
           <div className="mb-[55px] font-display text-[19px] font-semibold leading-[1.45] text-[#686868] md:text-[20px]">
             <p className="m-0">{report.issue}</p>
             <p className="m-0">June 2026</p>
           </div>
 
+          {/* ARTICLE SECTIONS */}
           {report.sections.map((section) => (
             <section
               key={section.id}
@@ -187,44 +222,145 @@ export default async function ReportPage({
 
               {section.id === "fertilizer" && (
                 <div className="mt-[34px] font-sans text-[14px] leading-[1.65] text-[#686868]">
-                  <p className="m-0">¹ International Food Policy Research Institute</p>
+                  <p className="m-0">
+                    ¹ International Food Policy Research Institute
+                  </p>
                   <p className="m-0">² Argus Analytics</p>
                 </div>
               )}
             </section>
           ))}
 
+          {/* EDITOR / CONTRIBUTORS */}
           <div className="mt-[34px] border-t border-[#d8d8d8] pt-[24px] font-sans text-[14px] leading-[1.65] text-[#686868]">
             {report.editor && (
               <p className="m-0">
-                <strong className="font-bold text-[#231f20]">Editor:</strong>{" "}
+                <strong className="font-bold text-[#231f20]">
+                  Editor:
+                </strong>{" "}
                 {report.editor}
               </p>
             )}
+
             {report.contributors && (
               <p className="m-0 mt-[7px]">
-                <strong className="font-bold text-[#231f20]">Contributors:</strong>{" "}
+                <strong className="font-bold text-[#231f20]">
+                  Contributors:
+                </strong>{" "}
                 {report.contributors}
               </p>
             )}
           </div>
 
-          <div className="mt-[28px] border-t border-[#d8d8d8] pt-[20px] font-sans text-[14px] leading-[1.65] text-[#686868]">
+          {/* PREVIOUS EDITIONS + DISCLAIMER */}
+          <div className="mt-[28px] border-t border-[#d8d8d8] pt-[24px] font-sans text-[14px] leading-[1.65] text-[#686868]">
+            <p className="m-0">
+              <Link
+                href="https://www.farmcrediteast.com/resources/knowledge-exchange-partner"
+                className="font-semibold text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]"
+              >
+                View previous editions of the KEP
+              </Link>
+            </p>
+
+            <p className="mt-[18px]">
+              <strong className="font-bold text-[#231f20]">
+                Farm Funders Disclaimer:
+              </strong>{" "}
+              The information provided in this communication/newsletter is not
+              intended to be investment, tax, or legal advice and should not be
+              relied upon by recipients for such purposes. Farm Funders does
+              not make any representation or warranty regarding the content,
+              and disclaims any responsibility for the information, materials,
+              third-party opinions, and data included in this report.
+            </p>
+
+            <p className="mt-[12px]">
+              In no event will Farm Funders be liable for any decision made or
+              actions taken by any person or persons relying on the information
+              contained in this report.
+            </p>
+          </div>
+
+          {/* TAGS */}
+          <div className="mt-[24px] border-t border-[#d8d8d8] pt-[20px] font-sans text-[14px] leading-[1.65] text-[#686868]">
             <span className="font-bold text-[#231f20]">Tags:</span>{" "}
+
             {report.tags.map((tag, index) => (
               <span key={tag}>
                 <Link
-                  href={`/resources/Industry-Trends-and-Outlooks?tag=${encodeURIComponent(tag)}`}
+                  href={`/resources/Industry-Trends-and-Outlooks?tag=${encodeURIComponent(
+                    tag
+                  )}`}
                   className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]"
                 >
                   {tag}
                 </Link>
+
                 {index < report.tags.length - 1 && ", "}
               </span>
             ))}
           </div>
         </article>
       </section>
+
+      {/* YOU MIGHT ALSO LIKE */}
+      <section className="w-full bg-[#ecf1e4] px-[24px] py-[70px] md:px-[5%] lg:px-[7%] lg:py-[82px]">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="mb-[42px] font-display text-[38px] font-bold leading-[1.15] text-[#496d83] md:text-[42px]">
+            You Might Also Like
+          </h2>
+
+          <div className="grid grid-cols-1 gap-[38px] md:grid-cols-3 md:gap-[28px]">
+            {report.relatedArticles.map((article) => (
+              <Link
+                key={article.title}
+                href={article.href}
+                className="group block bg-white p-[28px] no-underline transition-transform duration-200 hover:-translate-y-[3px]"
+              >
+                <span className="inline-block border border-[#496d83] px-[7px] py-[5px] font-display text-[13px] font-bold leading-[1.2] text-[#496d83]">
+                  {article.category}
+                </span>
+
+                <h3 className="mt-[22px] font-display text-[23px] font-bold leading-[1.2] text-[#496d83] transition-colors group-hover:text-[#4f832a]">
+                  {article.title}
+                </h3>
+
+                <p className="mt-[18px] font-sans text-[14px] leading-[1.5] text-[#686868]">
+                  {article.date}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MEET THE AUTHORS */}
+      <section className="w-full bg-white px-[24px] py-[70px] md:px-[5%] lg:px-[7%] lg:py-[78px]">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="font-display text-[38px] font-bold leading-[1.15] text-[#496d83] md:text-[42px]">
+            Meet the Authors
+          </h2>
+
+          <div className="mt-[24px] max-w-[820px]">
+            <p className="m-0 font-sans text-[18px] font-medium leading-[1.65] text-[#686868]">
+              Connect with and discover our Today’s Harvest blog authors and
+              their broad range of financial and Northeast agricultural
+              expertise.
+            </p>
+          </div>
+
+          <div className="mt-[28px]">
+            <Link
+              href="/resources/Meet-the-Authors.html"
+              className="inline-flex items-center border border-[#496d83] bg-[#496d83] px-[22px] py-[12px] font-display text-[15px] font-bold text-[#ecf1e4] no-underline transition-colors hover:bg-[#4f832a] hover:border-[#4f832a]"
+            >
+              Meet the Authors
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
+```
