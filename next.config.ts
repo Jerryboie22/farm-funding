@@ -57,6 +57,12 @@ const nextConfig: NextConfig = {
         destination:
           "/en/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast.html",
       },
+      {
+        source:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast",
+        destination:
+          "/en/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast.html",
+      },
     ];
   },
 };
