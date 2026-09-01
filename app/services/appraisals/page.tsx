@@ -3,8 +3,12 @@ import ReferenceServicePage from "@/components/ReferenceServicePage";
 
 export const metadata: Metadata = {
   title: "Appraisals | Farm Funding",
-  description: "Agricultural and rural property appraisal services from Farm Funding.",
+  description:
+    "Agricultural appraisal expertise for farms, rural property and lending decisions.",
 };
+
+const REFERENCE_APPRAISAL_IMAGE =
+  "https://www.farm-funders.com/-/media/farm-credit-east/services/Appraisals_AdobeStock_171103079.jpg?hash=9EE2A22686C3EA017337978F30D5F251&iar=0";
 
 export default function AppraisalsPage() {
   return (
@@ -12,23 +16,74 @@ export default function AppraisalsPage() {
       data={{
         title: "Appraisals",
         description:
-          "Accurate, defensible valuations help farmers, landowners and lenders make confident decisions about agricultural and rural property.",
-        image: "/images/services/Appraisals_AdobeStock_171103079.jpg",
-        imageAlt: "Aerial view of farms and rural property",
-        introTitle: "Appraisal expertise built around agriculture",
+          "Our appraisal professionals understand agricultural property and the factors that influence value across the Northeast.",
+        image: REFERENCE_APPRAISAL_IMAGE,
+        imageAlt: "Agricultural property appraisal",
+        introTitle: "Agricultural appraisal expertise",
         highlights: [
-          { title: "Agricultural expertise", body: "Our appraisal approach is grounded in the realities of farms, land, improvements, timber and other rural property uses." },
-          { title: "Local knowledge", body: "We understand Northeast agricultural markets and the factors that can influence rural property value." },
-          { title: "Clear, useful reports", body: "Our work is designed to give customers and lending teams a practical valuation they can use for planning and financing decisions." },
+          {
+            title: "Agricultural knowledge",
+            body: "Our team understands farms, farmland, improvements and the specialized characteristics of agricultural real estate.",
+          },
+          {
+            title: "Local market perspective",
+            body: "Appraisal decisions are informed by knowledge of Northeast agricultural markets and rural property conditions.",
+          },
+          {
+            title: "Useful valuations",
+            body: "We provide valuation work that supports financing, planning, transfers and other important farm-business decisions.",
+          },
         ],
         sections: [
-          { title: "What we appraise", body: "Our appraisal work can support farmland, rural residences, agricultural improvements, specialty operations and other property connected to an agricultural business." },
-          { title: "When an appraisal can help", bullets: ["Purchasing or refinancing agricultural real estate", "Planning a farm transfer or estate", "Evaluating an expansion, improvement or new enterprise", "Supporting financing and collateral decisions", "Understanding the value of land and improvements"] },
-          { title: "A practical process", body: "We review the property, its intended use, relevant market evidence and the characteristics that make agricultural real estate different from conventional residential or commercial property." },
+          {
+            title: "Appraisal services",
+            body: "Our appraisal work can address agricultural land, rural residences, farm improvements and other property associated with an agricultural operation.",
+          },
+          {
+            title: "When an appraisal may be needed",
+            bullets: [
+              "Purchasing or refinancing agricultural real estate",
+              "Farm transfer and estate planning",
+              "Business expansion and capital improvements",
+              "Financing and collateral decisions",
+              "Establishing an informed property value",
+            ],
+          },
+          {
+            title: "An agriculture-focused approach",
+            body: "Agricultural property requires more than a conventional real-estate comparison. Our process considers the property's use, improvements, location, market evidence and the characteristics of the operation.",
+          },
         ],
         faqs: [
-          { q: "What types of property can be appraised?", a: "Agricultural land, rural homes, farm improvements and other rural property can be evaluated depending on the assignment." },
-          { q: "How do I request an appraisal?", a: "Contact your local Farm Funding office and a representative can help determine the appropriate next step." },
+          {
+            q: "What types of property can be appraised?",
+            a: "Assignments may include agricultural land, rural residences, farm improvements and other rural property, depending on the purpose and scope of the appraisal.",
+          },
+          {
+            q: "When should I request an appraisal?",
+            a: "An appraisal can be useful when you are purchasing, refinancing, transferring, expanding or otherwise making an important decision involving agricultural real estate.",
+          },
+          {
+            q: "How do I get started?",
+            a: "Contact your local office to discuss your property and determine the appropriate next step.",
+          },
+        ],
+        related: [
+          {
+            label: "SERVICES",
+            title: "Business Consulting",
+            href: "/services/business-consulting",
+          },
+          {
+            label: "SERVICES",
+            title: "Estate Planning",
+            href: "/services/estate-planning",
+          },
+          {
+            label: "FINANCING",
+            title: "Land Loans",
+            href: "/financing/land-loans",
+          },
         ],
       }}
     />
