@@ -2,27 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-type RelatedArticle = {
-  category: string;
-  title: string;
-  date: string;
-  href: string;
-};
-
+type RelatedArticle = { category: string; title: string; date: string; href: string };
 type Report = {
   title: string;
   date: string;
   issue: string;
   category: string;
-  sections: {
-    id: string;
-    heading: string;
-    paragraphs: string[];
-    image?: string;
-    imageAlt?: string;
-    caption?: string;
-    source?: string;
-  }[];
+  sections: { id: string; heading: string; paragraphs: string[]; image?: string; imageAlt?: string; caption?: string; source?: string }[];
   editor?: string;
   contributors?: string;
   tags: string[];
@@ -70,41 +56,23 @@ const REPORTS: Record<string, Report> = {
       },
     ],
     editor: "Chris Laughton",
-    contributors: "Chris Laughton, Farm Funders, Director of Knowledge Exchange",
+    contributors: "Chris Laughton, Farm Funding, Director of Knowledge Exchange",
     tags: ["outlook", "business management", "cost of production", "economy", "expenses", "international"],
     relatedArticles: [
-      {
-        category: "Ag Economy",
-        title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook",
-        date: "July 10, 2026",
-        href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook",
-      },
-      {
-        category: "Public Policy",
-        title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals",
-        date: "July 7, 2026",
-        href: "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape",
-      },
-      {
-        category: "Business Tips and Tools",
-        title: "Tariff Relief Program Available for New York Producers",
-        date: "July 1, 2026",
-        href: "/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers",
-      },
+      { category: "Ag Economy", title: "2025 Northeast Dairy Farm Summary & Mid-Year Outlook", date: "July 10, 2026", href: "/resources/Industry-Trends-and-Outlooks/Reports/2025NEDairyFarmSummary2026MidYearOutlook" },
+      { category: "Public Policy", title: "2026 Farm Bill Takes Shape: Comparing the House and Senate Proposals", date: "July 7, 2026", href: "/resources/todays-harvest-Blog/260707_2026FarmBillTakesShape" },
+      { category: "Business Tips and Tools", title: "Tariff Relief Program Available for New York Producers", date: "July 1, 2026", href: "/resources/todays-harvest-Blog/tariff-relief-program-available-for-new-york-producers" },
     ],
   },
 };
 
-const footerColumns = [
-  { title: "FINANCING", links: ["Land Loans", "Rural Home Loans", "Operating Loans", "Facility Loans", "Equipment Financing", "Leases", "Beginning Farmer Programs"] },
-  { title: "SERVICES", links: ["Tax Planning and Prep", "Recordkeeping", "Appraisals", "Business Consulting", "Financial Benchmarking", "Estate Planning", "Grant Writing", "Farm Credit Connect"] },
-  { title: "CROP INSURANCE", links: ["Crop Insurance Products", "Dairy & Livestock Insurance Products", "Insurance Resources", "Crop Insurance Agent Finder", "File Notice of Loss", "Non-Discrimination Statement"] },
-  { title: "INDUSTRIES", links: ["Cash Grain", "Dairy", "Livestock/Equine", "Timber/Forestry", "Fruit/Winery", "Vegetables", "Fishing/Aquatic", "Greenhouse/Nursery", "Maple"] },
-  { title: "RESOURCES", links: ["Today's Harvest Blog", "Industry Trends & Outlooks", "Events & Webinars", "Calculators", "DTN Markets & Weather", "Northeast Farm Fresh Guide", "Calendar Photo Contest", "Go To Assist"] },
-  { title: "ABOUT", links: ["Who We Are", "Leadership", "Cooperative Involvement", "Newsroom", "Financial Reports", "Community Support", "Information Security", "Careers"] },
-];
-
-const footerLink = (label: string) => `/${label.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+function ShareIcon({ name }: { name: string }) {
+  const common = { fill: "currentColor" };
+  if (name === "X") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817-5.963 6.817H1.684l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" /></svg>;
+  if (name === "Facebook") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M13.5 22v-8h2.75l.5-3h-3.25V9.05c0-.87.29-1.55 1.6-1.55h1.8V4.82c-.31-.04-1.37-.13-2.6-.13-2.58 0-4.35 1.57-4.35 4.45V11H7v3h2.95v8h3.55Z" /></svg>;
+  if (name === "LinkedIn") return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M5.2 3.5A2.2 2.2 0 1 1 5.2 7.9a2.2 2.2 0 0 1 0-4.4ZM3.35 9.25h3.7V21h-3.7V9.25ZM9.3 9.25h3.55v1.61h.05c.49-.93 1.69-1.91 3.48-1.91 3.72 0 4.41 2.45 4.41 5.63V21h-3.7v-5.68c0-1.36-.03-3.11-1.9-3.11-1.91 0-2.2 1.49-2.2 3.01V21H9.3V9.25Z" /></svg>;
+  return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[20px] w-[20px]" {...common}><path d="M2.5 5.5A2.5 2.5 0 0 1 5 3h14a2.5 2.5 0 0 1 2.5 2.5v13A2.5 2.5 0 0 1 19 21H5a2.5 2.5 0 0 1-2.5-2.5v-13Zm3.1.5 6.4 5.1L18.4 6H5.6Zm13.4 2.1-7 5.57L5 8.1v9.4c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5V8.1Z" /></svg>;
+}
 
 export function generateStaticParams() {
   return Object.keys(REPORTS).map((slug) => ({ slug }));
@@ -124,12 +92,11 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const pageUrl = `${SITE_URL}/resources/Industry-Trends-and-Outlooks/Reports/${REPORT_SLUG}`;
   const encodedTitle = encodeURIComponent(report.title);
   const encodedUrl = encodeURIComponent(pageUrl);
-
   const shareLinks = [
-    { name: "X", icon: "/images/icons/social/Twitter.png", href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}` },
-    { name: "Facebook", icon: "/images/icons/social/Facebook.png", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
-    { name: "LinkedIn", icon: "/images/icons/social/LinkedIn.png", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
-    { name: "Email", icon: "/images/icons/social/Email.png", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}` },
+    { name: "X", href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}` },
+    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
+    { name: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
+    { name: "Email", href: `mailto:?subject=${encodedTitle}&body=${encodedUrl}` },
   ];
 
   return (
@@ -151,7 +118,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           {report.sections.map((section) => (
             <section key={section.id} id={section.id} className="mb-[52px] scroll-mt-[20px] last:mb-0 sm:mb-[64px] sm:scroll-mt-[30px] md:mb-[78px] md:scroll-mt-[35px]">
               <h2 className="mb-[18px] font-display text-[26px] font-bold leading-[1.2] text-[#686868] sm:mb-[24px] sm:text-[31px] md:mb-[30px] md:text-[36px] lg:text-[38px]">{section.heading}</h2>
-              {section.image && <figure className="mb-[22px] sm:mb-[28px] md:mb-[34px]"><div className="relative w-full overflow-hidden bg-white"><Image src={section.image} alt={section.imageAlt || ""} width={800} height={section.id === "motor-fuels" ? 568 : 601} sizes="(max-width: 799px) 100vw, 800px" className="block h-auto w-full object-contain" priority={section.id === "motor-fuels"} /></div>{section.caption && <figcaption className="mt-[8px] font-sans text-[13px] leading-[1.5] text-[#686868] sm:text-[14px]">{section.caption}</figcaption>}{section.source && <p className="m-0 mt-[2px] font-sans text-[12px] leading-[1.5] text-[#686868] sm:text-[13px]">{section.source}</p>}</figure>}
+              {section.image && <figure className="mb-[22px] sm:mb-[28px] md:mb-[34px]"><div className="relative mx-auto w-[96%] overflow-hidden bg-white sm:w-[96%] md:w-full"><Image src={section.image} alt={section.imageAlt || ""} width={800} height={section.id === "motor-fuels" ? 568 : 601} sizes="(max-width: 799px) 96vw, 800px" className="block h-auto w-full object-contain" priority={section.id === "motor-fuels"} /></div>{section.caption && <figcaption className="mt-[8px] font-sans text-[13px] leading-[1.5] text-[#686868] sm:text-[14px]">{section.caption}</figcaption>}{section.source && <p className="m-0 mt-[2px] font-sans text-[12px] leading-[1.5] text-[#686868] sm:text-[13px]">{section.source}</p>}</figure>}
               <div>{section.paragraphs.map((paragraph) => <p key={paragraph} className="mb-[18px] font-sans text-[16px] font-medium leading-[1.55] text-[#686868] last:mb-0 sm:mb-[22px] sm:text-[17px] md:mb-[24px] md:text-[18px] md:leading-[1.6]">{paragraph}</p>)}</div>
               {section.id === "fertilizer" && <div className="mt-[24px] border-t border-[#686868] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[28px] sm:pt-[18px] sm:text-[14px] md:mt-[34px] md:pt-[20px] md:leading-[1.65]"><p className="m-0"><sup>1</sup>International Food Policy Research Institute</p><p className="m-0"><sup>2</sup>Argus Analytics</p></div>}
             </section>
@@ -167,11 +134,17 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
           <div className="mt-[18px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[24px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]"><span className="font-bold text-[#231f20]">Tags:</span>{" "}{report.tags.map((tag, index) => <span key={tag}><Link href={`/resources/Industry-Trends-and-Outlooks?tag=${encodeURIComponent(tag)}`} className="text-[#496d83] underline underline-offset-2 hover:text-[#4f832a]">{tag}</Link>{index < report.tags.length - 1 && ", "}</span>)}</div>
 
-          <div className="mt-[16px] flex flex-wrap items-center gap-[16px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[20px] sm:gap-[14px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]"><span className="font-bold text-[#231f20]">Share this post on</span>{shareLinks.map((item) => <a key={item.name} href={item.href} title={item.name} target="_blank" rel="noopener noreferrer" className="inline-flex h-[32px] w-[32px] items-center justify-center sm:h-[28px] sm:w-[28px]"><Image src={item.icon} alt={item.name} width={28} height={28} className="h-full w-full object-contain" /></a>)}</div>
+          <div className="mt-[16px] flex flex-wrap items-center gap-[12px] border-t border-[#d8d8d8] pt-[16px] font-sans text-[13px] leading-[1.6] text-[#686868] sm:mt-[20px] sm:gap-[14px] sm:pt-[20px] sm:text-[14px] md:leading-[1.65]">
+            <span className="mr-[2px] font-bold text-[#231f20]">Share this post on</span>
+            {shareLinks.map((item) => (
+              <a key={item.name} href={item.href} title={`Share on ${item.name}`} aria-label={`Share on ${item.name}`} target={item.name === "Email" ? undefined : "_blank"} rel={item.name === "Email" ? undefined : "noopener noreferrer"} className="inline-flex h-[32px] w-[32px] items-center justify-center rounded-full text-[#496d83] transition-colors hover:bg-[#ecf1e4] hover:text-[#4f832a] sm:h-[30px] sm:w-[30px]">
+                <ShareIcon name={item.name} />
+              </a>
+            ))}
+          </div>
         </article>
       </section>
 
-      {/* Exact reference content/layout, with mobile-first spacing retained. */}
       <section className="w-full bg-[#ecf1e4] px-[20px] py-[48px] sm:px-[24px] sm:py-[56px] md:px-[5%] md:py-[70px] lg:px-[7%] lg:py-[82px]">
         <div className="mx-auto max-w-[1760px]">
           <h2 className="mb-[28px] font-display text-[28px] font-bold leading-[1.18] text-[#4f832a] sm:mb-[36px] sm:text-[34px] md:mb-[46px] md:text-[38px] lg:text-[44px]">You Might Also Like</h2>
@@ -196,15 +169,6 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           <Link href="/resources/Meet-the-Authors.html" className="inline-flex w-full min-w-[205px] items-center justify-center border border-[#496d83] bg-[#496d83] px-[22px] py-[13px] font-display text-[16px] font-bold text-white no-underline transition-colors hover:bg-[#3b5a6d] hover:border-[#3b5a6d] sm:w-auto">Meet the Authors</Link>
         </div>
       </section>
-
-      <footer className="bg-[#496d83] text-white">
-        <div className="mx-auto max-w-[1760px] px-[20px] pb-[36px] pt-[36px] sm:px-[24px] md:px-[5%] md:pb-[46px] md:pt-[52px] lg:px-[7%]">
-          <div className="flex flex-col gap-[20px] border-b border-white/30 pb-[24px] sm:gap-[28px] sm:pb-[30px] md:flex-row md:items-center md:justify-between"><div className="font-display text-[22px] font-bold tracking-[-0.2px] sm:text-[25px] md:text-[28px] md:tracking-[-0.3px]">Farm Funding</div><div className="flex flex-wrap gap-x-[20px] gap-y-[10px] font-sans text-[13px]"><Link href="/sign-in" className="hover:underline">Sign In</Link><Link href="/search" className="hover:underline">Search</Link><Link href="/office-locator" className="hover:underline">Office Locator</Link><Link href="/contact-us" className="hover:underline">Contact Us</Link><Link href="/en-espanol" className="hover:underline">En Español</Link></div></div>
-          <div className="grid grid-cols-2 gap-x-[20px] gap-y-[28px] pt-[28px] sm:grid-cols-3 sm:gap-x-[28px] sm:gap-y-[38px] sm:pt-[42px] md:grid-cols-6">{footerColumns.map((column) => <div key={column.title}><h3 className="mb-[13px] font-display text-[13px] font-bold tracking-[0.3px] sm:mb-[17px] sm:text-[15px] sm:tracking-[0.4px]">{column.title}</h3><ul className="space-y-[8px] font-sans text-[12px] leading-[1.35] text-white/90 sm:space-y-[9px] sm:text-[13px]">{column.links.map((label) => <li key={label}><Link href={footerLink(label)} className="hover:underline">{label}</Link></li>)}</ul></div>)}</div>
-          <div className="mt-[28px] flex flex-col gap-[16px] border-t border-white/30 pt-[20px] sm:mt-[42px] sm:gap-[22px] sm:pt-[25px] md:flex-row md:items-center md:justify-between"><div className="flex flex-wrap gap-x-[16px] gap-y-[8px] font-sans text-[12px] sm:text-[13px]"><a href="https://x.com/fceast" target="_blank" rel="noopener noreferrer" className="hover:underline">X (formerly Twitter)</a><a href="https://www.facebook.com/farmcrediteast" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook</a><a href="https://www.youtube.com/@FarmCreditEast" target="_blank" rel="noopener noreferrer" className="hover:underline">YouTube</a><a href="https://www.linkedin.com/company/farm-credit-east-aca" target="_blank" rel="noopener noreferrer" className="hover:underline">Linked In</a><a href="https://www.instagram.com/farmcrediteast" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a></div><div className="font-sans text-[11px] text-white/80 sm:text-[12px]">Copyright 2026 Farm Funding</div></div>
-          <div className="mt-[14px] flex flex-wrap gap-x-[12px] gap-y-[6px] font-sans text-[10px] text-white/75 sm:mt-[16px] sm:gap-x-[14px] sm:gap-y-[7px] sm:text-[11px]"><Link href="/sitemap" className="hover:underline">SiteMap</Link><Link href="/privacy-statement" className="hover:underline">Privacy Statement</Link><Link href="/equal-opportunity-legal" className="hover:underline">Equal Opportunity &amp; Legal</Link><Link href="/data-rights" className="hover:underline">Data Rights for California Residents</Link><Link href="/terms-of-use" className="hover:underline">Terms of Use</Link><Link href="/whistleblower" className="hover:underline">Whistleblower</Link><Link href="/non-discrimination" className="hover:underline">Non-Discrimination Statement</Link><Link href="/privacy-settings" className="hover:underline">Privacy Settings</Link></div>
-        </div>
-      </footer>
     </main>
   );
 }
