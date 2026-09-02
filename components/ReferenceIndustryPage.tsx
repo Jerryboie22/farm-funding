@@ -7,6 +7,7 @@ type IndustryData = {
   imageAlt: string;
   update?: { title: string; body: string; href?: string };
   webinar?: { title: string; body: string; href?: string };
+  servicesHeading?: string;
   services: string[];
   programs?: string[];
   related?: { title: string; href: string; date: string; label: string }[];
@@ -93,7 +94,7 @@ export default function ReferenceIndustryPage({ data }: { data: IndustryData }) 
 
       <section className="w-full px-[4%] py-12 md:py-16 bg-grey-bg">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-forest">
-          Financing &amp; Services We Offer {data.title.replace("Producers", "").trim()}
+          {data.servicesHeading ?? `Financing & Services We Offer ${data.title.replace("Producers", "").trim()}`}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9 mt-8 max-w-6xl">
           {data.services.map((service) => (
