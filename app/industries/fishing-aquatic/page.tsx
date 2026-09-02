@@ -24,6 +24,7 @@ export default function FishingAquaticPage() {
           body: "Bob Rheault of East Coast Shellfish Growers Association provided an outlook on oyster farming approaches, challenges and markets.",
           href: "/resources/Industry-Trends-and-Outlooks",
         },
+        servicesHeading: "Financing & Services We Offer Fishermen & Aquatic Producers",
         services: [
           "Operating Loans",
           "Equipment Financing",
