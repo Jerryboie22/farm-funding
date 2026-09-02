@@ -16,7 +16,7 @@ const COLUMNS = [
   {
     title: "Crop Insurance",
     links: [
-      ["Crop Insurance Products", "/crop-insurance/products"], ["Dairy & Livestock Insurance Products", "/crop-insurance/dairy-livestock"], ["Insurance Resources", "/crop-insurance/resources"], ["Crop Insurance Agent Finder", "/crop-insurance/agent-finder"], ["File Notice of Loss", "/crop-insurance/notice-of-loss"], ["Non-Discrimination Statement", "/en/Non-Discrimination-Statement.html"],
+      ["Crop Insurance Products", "/crop-insurance/products"], ["Dairy & Livestock Insurance Products", "/crop-insurance/dairy-livestock"], ["Insurance Resources", "/crop-insurance/resources"], ["Crop Insurance Agent Finder", "/crop-insurance/agent-finder"], ["File Notice of Loss", "/crop-insurance/notice-of-loss"], ["Non-Discrimination Statement", "/crop-insurance/non-discrimination-statement"],
     ],
   },
   {
@@ -49,7 +49,7 @@ const SOCIAL = [
 ];
 
 const LEGAL_LINKS: [string, string][] = [
-  ["SiteMap", "/en/Sitemap.html"], ["Privacy Statement", "/en/Privacy-Statement.html"], ["Equal Opportunity & Legal", "/en/Equal-Opportunity-and-Legal.html"], ["Data Rights for California Residents", "/en/Data-Rights-for-California-Residents.html"], ["Terms of Use", "/en/Terms-of-Use.html"], ["Whistleblower", "/en/Whistleblower.html"], ["Non-Discrimination Statement", "/en/Non-Discrimination-Statement.html"], ["Privacy Settings", "/privacy#settings"],
+  ["SiteMap", "/sitemap"], ["Privacy Statement", "/privacy"], ["Equal Opportunity & Legal", "/equal-opportunity"], ["Data Rights for California Residents", "/data-rights-california"], ["Terms of Use", "/terms"], ["Whistleblower", "/whistleblower"], ["Non-Discrimination Statement", "/crop-insurance/non-discrimination-statement"], ["Privacy Settings", "/privacy#settings"],
 ];
 
 export default function Footer() {

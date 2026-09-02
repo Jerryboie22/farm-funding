@@ -13,7 +13,7 @@ export default function ContactPage() {
           OFFICE LOCATOR
       ========================================================= */}
 
-      <section className="w-full bg-cream">
+      <section id="offices" className="w-full bg-cream scroll-mt-24">
         <div className="px-[4%] pt-16 pb-20 md:pt-24 md:pb-24">
           <div className="max-w-[1500px] mx-auto">
 
