@@ -105,7 +105,7 @@ export default function ServicesPage() {
             </h1>
 
             <p className="mt-5 max-w-3xl text-base md:text-lg text-charcoal/80 leading-relaxed">
-              Whether you're a small family operation or large agribusiness
+              Whether you&apos;re a small family operation or large agribusiness
               with diverse markets, we can provide the financial products,
               services and management support that will help you run your ag
               business smarter.

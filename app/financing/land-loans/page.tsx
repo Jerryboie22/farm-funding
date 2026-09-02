@@ -26,8 +26,8 @@ const LOAN_FEATURES = [
         >
           patronage
         </Link>{" "}
-        - a portion of our net earnings returned to members. It's a benefit
-        you'll find nowhere else.
+        - a portion of our net earnings returned to members. It&apos;s a benefit
+        you&apos;ll find nowhere else.
       </>
     ),
   },

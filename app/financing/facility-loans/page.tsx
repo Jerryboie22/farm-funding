@@ -114,7 +114,7 @@ const STEPS = [
     title: "Complete your application.",
     body: (
       <>
-        Fill out the application we provide. Once it's filled out, we'll review
+        Fill out the application we provide. Once it&apos;s filled out, we&apos;ll review
         it to ensure your success and get you on your way to advancing your
         business
       </>
@@ -279,7 +279,7 @@ export default function FacilityLoansPage() {
                   patronage
                 </Link>{" "}
                 &mdash; a portion of our net earnings returned to members.
-                It's a benefit you'll find nowhere else.
+                It&apos;s a benefit you&apos;ll find nowhere else.
               </BodyText>
             </div>
           </div>

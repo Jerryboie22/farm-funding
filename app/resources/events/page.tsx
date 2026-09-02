@@ -22,7 +22,7 @@ export default function CustomerAppreciationMeetingPage() {
               <p className="mt-[34px] max-w-[760px] text-[18px] font-semibold leading-[31px] text-white lg:text-[19px] lg:leading-[31px]">
                 As a cooperative, our customers are at the core of everything
                 we do. Farm Funders continues to be successful thanks to the
-                strength and innovation of our members. We hope you'll join us
+                strength and innovation of our members. We hope you&apos;ll join us
                 at an event this summer to show our appreciation.
               </p>
             </div>
