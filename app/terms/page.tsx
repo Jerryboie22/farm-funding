@@ -1,21 +1,32 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import ReferenceContentPage from "@/components/ReferenceContentPage";
 
-export const metadata = { title: "Terms of Use | Farm Funding" };
+export const metadata = {
+  title: "Terms of Use | Farm Funding",
+  description:
+    "The terms governing your use of Farm Funding's website and online banking services.",
+};
 
-export default function Page() {
+export default function TermsPage() {
   return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Terms of Use
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
+    <ReferenceContentPage
+      title="Terms of Use"
+      intro="Thank you for your interest in Farm Funding's website and online services. These terms explain what you agree to by using our digital platforms, including online account access."
+      sections={[
+        {
+          title: "Using our online services",
+          body: "By enrolling in online access, you agree to keep your User ID and password confidential and to update your account information regularly. It's strongly recommended that you change your password periodically to help protect your financial information.",
+        },
+        {
+          title: "Reporting unauthorized use",
+          body: "If you suspect unauthorized use of your account, notify us immediately. Prompt notification helps minimize any losses that could otherwise result from unauthorized access.",
+          links: [{ label: "Contact Us", href: "/contact" }],
+        },
+        {
+          title: "Website content",
+          body: "Content on this site is provided for general informational purposes and is subject to change without notice. Use of this website does not create a lender-borrower relationship; that relationship is established only through a signed loan or service agreement.",
+        },
+      ]}
+      cta="Need help with your online account?"
+    />
   );
 }

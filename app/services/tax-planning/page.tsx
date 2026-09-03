@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import VideoHero from "@/components/VideoHero";
 
 /* ---- design tokens pulled directly from style.min.css ---- */

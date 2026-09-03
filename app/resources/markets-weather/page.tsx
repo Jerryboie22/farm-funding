@@ -1,21 +1,33 @@
-import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import ReferenceContentPage from "@/components/ReferenceContentPage";
 
-export const metadata = { title: "Markets & Weather | Farm Funding" };
+export const metadata = {
+  title: "DTN Markets & Weather | Farm Funding",
+  description:
+    "Track commodity prices, market news, and hyperlocal weather forecasts built for Northeast agriculture.",
+};
 
-export default function Page() {
+export default function MarketsWeatherPage() {
   return (
-    <section className="max-w-5xl mx-auto px-6 md:px-8 py-14">
-      <h1 className="font-display text-3xl md:text-4xl font-semibold text-forest">
-        Markets & Weather
-      </h1>
-      <PlaceholderImage label="Section photo" className="h-56 rounded-sm mt-6" />
-      <p className="mt-8 text-sm text-charcoal/60">
-        Placeholder page — pending client copy.
-      </p>
-      <Link href="/" className="mt-6 inline-block text-sm font-semibold text-clay hover:text-forest">
-        ← Back to home
-      </Link>
-    </section>
+    <ReferenceContentPage
+      title="DTN Markets & Weather"
+      intro="Stay ahead of the season with real-time commodity prices, market news, and hyperlocal weather forecasts — the same tools our team uses to advise customers across the Northeast."
+      image="/images/resources/farmer-smartphone.jpg"
+      sections={[
+        {
+          title: "Commodity markets",
+          body: "Track futures and cash prices across grain, dairy, and livestock markets, along with the news driving daily price movement.",
+          bullets: ["Grain and oilseed futures", "Dairy and livestock pricing", "Daily market commentary"],
+        },
+        {
+          title: "Weather forecasting",
+          body: "Get field-level forecasts, radar, and seasonal outlooks tailored to Northeast growing conditions, so you can plan planting, spraying, and harvest around the weather rather than around it.",
+        },
+        {
+          title: "Ag Globe Trotter",
+          body: "A closer look at global agricultural trends and how international markets ripple back into Northeast farm decisions.",
+        },
+      ]}
+      cta="Want this data delivered to your inbox?"
+    />
   );
 }
