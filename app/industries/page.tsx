@@ -37,7 +37,7 @@ const INDUSTRIES = [
   },
   {
     title: "Vegetables",
-    href: "/industries/vegetable-farmers",
+    href: "/industries/vegetables",
     image: "/images/industries/Vegetables_shutterstock_1125187883.jpg",
     alt: "Close-up of rows of tomato plants",
   },
@@ -49,7 +49,7 @@ const INDUSTRIES = [
   },
   {
     title: "Green Industries",
-    href: "/industries/greenhouse",
+    href: "/industries/greenhouse-nursery",
     image: "/images/industries/Green_AdobeStock_184545898.jpg",
     alt: "Two females stand cross-armed in greenhouse full of flowers",
   },
@@ -86,7 +86,7 @@ export default function IndustriesPage() {
             </p>
 
             <Link
-              href="/contact-us"
+              href="/contact"
               className="mt-8 inline-flex w-fit items-center gap-2 px-6 py-3.5 bg-[#496d83] text-white text-sm font-bold rounded-sm hover:bg-[#3d5b6d] transition-colors"
             >
               Contact My Office

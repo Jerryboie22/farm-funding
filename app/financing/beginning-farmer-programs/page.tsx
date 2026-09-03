@@ -25,7 +25,7 @@ const FEATURED_PROGRAMS = [
       "/images/financing/beginning-farmer-programs/Young Beginning Small  Veteranfarmercouple20211021220619utc.jpg",
     alt: "Young man and woman growers in a greenhouse with heads of lettuce",
     button: "Explore Incentives",
-    href: "/FINANCING/Beginning-Farmer-Programs/Young-Beginning-Small-Veteran-Farmers.html",
+    href: "/financing/beginning-farmer-programs/young-beginning-small-veteran-farmer-incentives",
     imageLeft: false,
     background: "white",
   },
@@ -36,7 +36,7 @@ const FEATURED_PROGRAMS = [
       "/images/financing/beginning-farmer-programs/GenNext.jpg",
     alt: "GenerationNext logo",
     button: "GenerationNext",
-    href: "/FINANCING/Beginning-Farmer-Programs/GenerationNext",
+    href: "/financing/beginning-farmer-programs/generationnext",
     imageLeft: true,
     background: "white",
   },
@@ -270,7 +270,7 @@ export default function BeginningFarmerProgramsPage() {
               </p>
 
               <Link
-                href="/FINANCING/Beginning-Farmer-Programs/Young-Beginning-Small-Veteran-Farmers.html"
+                href="/financing/beginning-farmer-programs/young-beginning-small-veteran-farmer-incentives"
                 className="mt-[31px] inline-flex min-h-[51px] items-center justify-center bg-[#496d83] px-[23px] text-[16px] font-[700] text-white"
               >
                 Explore Incentives
@@ -329,7 +329,7 @@ export default function BeginningFarmerProgramsPage() {
               </p>
 
               <Link
-                href="/FINANCING/Beginning-Farmer-Programs/GenerationNext"
+                href="/financing/beginning-farmer-programs/generationnext"
                 className="mt-[31px] inline-flex min-h-[51px] items-center justify-center bg-[#496d83] px-[23px] text-[16px] font-[700] text-white"
               >
                 GenerationNext
@@ -365,7 +365,7 @@ export default function BeginningFarmerProgramsPage() {
               </p>
 
               <Link
-                href="/FINANCING/Beginning-Farmer-Programs/Harvesting-a-Profit.html"
+                href="/financing/beginning-farmer-programs/harvesting-a-profit"
                 className="mt-[31px] inline-flex min-h-[51px] items-center justify-center bg-[#496d83] px-[23px] text-[16px] font-[700] text-white"
               >
                 Get Your Guide
@@ -467,7 +467,7 @@ export default function BeginningFarmerProgramsPage() {
           </div>
 
           <Link
-            href="/ContactUs.html"
+            href="/contact"
             className="mt-[30px] inline-flex min-h-[51px] items-center justify-center bg-[#496d83] px-[23px] text-[16px] font-[700] text-white md:mt-0"
           >
             Contact Us

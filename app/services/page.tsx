@@ -113,7 +113,7 @@ export default function ServicesPage() {
 
             <div className="pt-[30px]">
               <Link
-                href="/contact-us"
+                href="/contact"
                 className="inline-flex items-center justify-center px-6 py-3.5 bg-clay text-white text-sm font-bold rounded-sm hover:bg-clay-dark transition-colors"
               >
                 Contact My Office

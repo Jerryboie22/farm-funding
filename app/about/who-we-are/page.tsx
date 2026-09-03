@@ -206,7 +206,7 @@ const faqs = [
         farming is one of our long-term commitments to Northeast agriculture.
         Programs include our{" "}
         <Link
-          href="/FINANCING/Beginning-Farmer-Programs/Young-Beginning-Small-Veteran-Farmers.html"
+          href="/financing/beginning-farmer-programs/young-beginning-small-veteran-farmer-incentives"
           className="text-[#496f88] underline"
         >
           young and beginning farmer incentives

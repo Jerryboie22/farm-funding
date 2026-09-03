@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const CONTACT_URL = "/contact";
-const OFFICE_LOCATOR_URL = "/office-locator";
+const OFFICE_LOCATOR_URL = "/contact#offices";
 const AGDIRECT_URL = "https://www.agdirect.com/";
 const AGDIRECT_TOOLS_URL = "https://www.agdirect.com/resources/tools";
 

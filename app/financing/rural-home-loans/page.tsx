@@ -53,7 +53,7 @@ const START_STEPS = [
       <>
         Reach out to your{" "}
         <Link
-          href="/office-locator"
+          href="/contact#offices"
           className="text-clay-light underline underline-offset-2 hover:text-clay"
         >
           local Country Living Loans office

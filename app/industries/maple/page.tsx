@@ -325,20 +325,20 @@ export default function MaplePage() {
             get started is one of our long-term commitments to Northeast
             agriculture. Programs include our{" "}
             <Link
-              href="/FINANCING/Beginning Farmer Programs/Young-Beginning-Small-Veteran-Farmers.html"
+              href="/financing/beginning-farmer-programs/young-beginning-small-veteran-farmer-incentives"
               className="text-[#496d83] underline"
             >
               young, beginning, small and veteran farmer incentives,
             </Link>{" "}
             <Link
-              href="/FINANCING/Beginning Farmer Programs/FarmStart.html"
+              href="/financing/beginning-farmer-programs/farm-start"
               className="text-[#496d83] underline"
             >
               FarmStart
             </Link>{" "}
             and{" "}
             <Link
-              href="/FINANCING/Beginning Farmer Programs/GenerationNext"
+              href="/financing/beginning-farmer-programs/generationnext"
               className="text-[#496d83] underline"
             >
               GenerationNext

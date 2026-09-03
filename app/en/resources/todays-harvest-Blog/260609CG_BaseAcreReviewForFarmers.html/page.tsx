@@ -617,7 +617,7 @@ export default function BaseAcreReviewPage() {
             </p>
 
             <div className="contact">
-              <Link href="/CROP-INSURANCE/Find-An-Agent" className="button">
+              <Link href="/crop-insurance/agent-finder" className="button">
                 Contact an Agent
               </Link>
             </div>

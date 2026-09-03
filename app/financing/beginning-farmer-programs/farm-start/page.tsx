@@ -111,7 +111,7 @@ export default function FarmStartPage() {
         <p>
           Learn more by contacting your local{" "}
           <Link
-            href="/office-locator"
+            href="/contact#offices"
             className="underline underline-offset-2 hover:no-underline"
           >
             Farm Funders office

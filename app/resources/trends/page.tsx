@@ -32,14 +32,6 @@ const REPORTS = [
     excerpt:
       "Global conflict is affecting fuel and fertilizer markets. The report examines potential implications for input costs, margins and farm planning.",
   },
-  {
-    title: "Dairy Markets Show Positive Trends",
-    date: "May 3, 2026",
-    image: "/images/homepage/Dairy cows milking.jpg",
-    href: "/en/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends.html",
-    excerpt:
-      "Improving dairy margins, strong protein demand and continued dairy-plant investment are supporting a more positive market outlook, while volatility remains a risk.",
-  },
 ];
 
 export default function Page() {

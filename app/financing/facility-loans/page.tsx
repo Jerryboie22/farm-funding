@@ -327,7 +327,7 @@ export default function FacilityLoansPage() {
             </BodyText>
 
             <Link
-              href="/FINANCING/Facility-Loans/NYS-Farm-Worker-Housing.html"
+              href="/contact"
               className="mt-[20px] inline-flex items-center gap-[4px] text-[16px] font-bold leading-[26px] text-[#496d83] no-underline"
             >
               Learn more
