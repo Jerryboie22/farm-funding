@@ -54,7 +54,7 @@ const classIV = [
   "The situation was more dramatic in the Class IV space. In August 2025, all contracts for the March 2026 to July 2026 window traded above $19 per hundredweight. By January 9, 2026, those same contracts dropped to the $14 to $15 range. After the impact of strong butterfat exports and the recent tightening nonfat dry milk market that sent prices to record highs, April to July 2026 CME Class IV futures climbed to pre-August 2025 trading levels and in some months those contracts traded close to or over $20.",
   "Protein has become the most important consumer demand trend and that’s where the growing U.S. dairy cow herd comes into play as beef prices stand at record highs. That begs the question: how much larger will the U.S. dairy cow herd grow to reap rewards from beef-on-dairy calves and may that resulting growth in milk production cause an oversupply in the marketplace?",
   "The U.S. dairy cow milking herd is at its largest in over 30 years at 9.621 million head in March. Compared to a year ago, the herd is 187,000 head (+1.9%) larger and produced about the same amount of milk per cow. However, these additional cows added to total milk production, which grew by 2.3%. March butterfat production grew 3.3% and protein pounds were up 3.6% reflecting feeding adjustments for lower butterfat prices in recent months.",
-  "Beef-on-dairy calves are one of the primary reasons to keep dairy cows longer in the herd, especially after notching a record $1,918 per head in mid-April. Recent visits by CoBank (Farm Funders’s lending bank) staff to feedlots in Texas mentioned 15% to 20% of cattle on feed are beef-on-dairy animals. These crossbreds grow well in the feedlot and can weigh over 1,700 pounds before heading to the beef packer due to the larger frame provided by the dairy genetics. Strong interest in beef-on-dairy calves should continue given the U.S. beef cow herd is at the lowest level in 65 years. Plus, beef sales to consumers have shown 27 straight months of volume growth.",
+  "Beef-on-dairy calves are one of the primary reasons to keep dairy cows longer in the herd, especially after notching a record $1,918 per head in mid-April. Recent visits by CoBank (Farm Funding’s lending bank) staff to feedlots in Texas mentioned 15% to 20% of cattle on feed are beef-on-dairy animals. These crossbreds grow well in the feedlot and can weigh over 1,700 pounds before heading to the beef packer due to the larger frame provided by the dairy genetics. Strong interest in beef-on-dairy calves should continue given the U.S. beef cow herd is at the lowest level in 65 years. Plus, beef sales to consumers have shown 27 straight months of volume growth.",
   "While the are many reasons for optimism, dairy markets are not out of the proverbial woods. The 2025 export year might have been even better had there not been geopolitical issues and tariffs making an impact. The largest catalyst supporting U.S. sales growth was lower cheese and butter prices compared to the world’s top two dairy exporters – the EU and New Zealand. Given this situation, dairy farmers and processors alike should consider hedging opportunities when market prices look favorable and cover expenses because small product movements could significantly move prices.",
 ];
 
@@ -169,19 +169,66 @@ const styles = `
     letter-spacing: -0.7px;
   }
 
+  /* Two-column layout: sticky Contents sidebar + article copy.
+     grid + align-items: start (plus align-self: start and height: fit-content
+     on .sidebar itself) keeps the Contents box from stretching to the
+     article's height — do not add a fixed/percentage height to .sidebar. */
   .dairy-report .article-container {
-    width: min(984px, calc(100% - 40px));
+    width: min(1280px, calc(100% - 40px));
     margin: 48px auto 0;
     padding-bottom: 0;
+    display: grid;
+    grid-template-columns: 320px minmax(0, 820px);
+    column-gap: 140px;
+    align-items: start;
+    justify-content: start;
   }
+
+  .dairy-report .sidebar {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+    height: fit-content;
+    width: 100%;
+    padding: 20px 22px 22px;
+    background: #e9edf1;
+    border-radius: 2px;
+    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+  }
+
+  .dairy-report .sidebar-title {
+    margin: 0 0 14px;
+    color: var(--charcoal);
+    font-family: var(--font-montserrat), Montserrat, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .dairy-report .sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dairy-report .sidebar-list a {
+    display: block;
+    color: var(--grey);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .dairy-report .sidebar-list a:hover { color: var(--clay); }
+
+  .dairy-report .article { min-width: 0; }
 
   .dairy-report .copy,
   .dairy-report .meta,
   .dairy-report .footnotes {
     width: 100%;
-    max-width: 820px;
-    margin-left: auto;
-    margin-right: auto;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
   }
 
@@ -193,31 +240,6 @@ const styles = `
     font-weight: 400;
     line-height: 1.68;
   }
-
-  .dairy-report .contents {
-    margin: 0 0 28px;
-    padding: 18px 0 16px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    font-family: var(--font-barlow), Barlow, Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.6;
-  }
-
-  .dairy-report .contents-title {
-    margin: 0 0 8px !important;
-    color: var(--charcoal) !important;
-    font-weight: 700 !important;
-  }
-
-  .dairy-report .contents a {
-    margin-right: 18px;
-    color: var(--grey);
-    text-decoration: none;
-  }
-
-  .dairy-report .contents a:hover { text-decoration: underline; }
 
   .dairy-report .issue {
     margin: 0 0 55px;
@@ -279,6 +301,8 @@ const styles = `
 
   .dairy-report .meta {
     margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
     color: var(--grey);
     font-size: 14px;
     line-height: 1.65;
@@ -293,8 +317,8 @@ const styles = `
     align-items: center;
     flex-wrap: wrap;
     gap: 5px;
-    width: min(984px, 100%);
-    margin: 28px auto 0;
+    width: 100%;
+    margin: 28px 0 0;
     padding: 22px 0;
     border-top: 1px solid var(--line);
     color: var(--grey);
@@ -320,8 +344,8 @@ const styles = `
   .dairy-report .tag-separator { margin-right: 2px; color: var(--grey); }
 
   .dairy-report .share {
-    width: min(984px, 100%);
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     padding: 8px 0 62px;
   }
 
@@ -487,8 +511,12 @@ const styles = `
 
     .dairy-report .article-container {
       width: min(960px, calc(100% - 56px));
+      grid-template-columns: 260px minmax(0, 1fr);
+      column-gap: 48px;
       margin-top: 36px;
     }
+
+    .dairy-report .sidebar { padding: 18px 20px 20px; }
 
     .dairy-report .related,
     .dairy-report .authors-cta { width: calc(100% - 56px); }
@@ -524,8 +552,12 @@ const styles = `
 
     .dairy-report .article-container {
       width: calc(100% - 28px);
+      grid-template-columns: 1fr;
+      row-gap: 24px;
       margin-top: 28px;
     }
+
+    .dairy-report .sidebar { padding: 16px 18px 18px; }
 
     .dairy-report .copy,
     .dairy-report .meta,
@@ -533,9 +565,6 @@ const styles = `
 
     .dairy-report .copy p { font-size: 16px; line-height: 1.65; }
     .dairy-report .issue p { font-size: 16px; }
-
-    .dairy-report .contents { line-height: 1.9; }
-    .dairy-report .contents a { display: block; margin: 0; }
 
     .dairy-report .report-section { margin-bottom: 52px; }
     .dairy-report .report-section h2 { font-size: 30px; margin-bottom: 22px; }
@@ -629,10 +658,10 @@ export default function DairyMidYearTrendsPage() {
           </div>
         </header>
 
-        <article className="article-container">
-          <div className="copy">
-            <div className="contents">
-              <p className="contents-title">Contents</p>
+        <div className="article-container">
+          <aside className="sidebar" aria-label="Table of contents">
+            <p className="sidebar-title">Contents</p>
+            <nav className="sidebar-list">
               <a href="#butterfat-growth">Butterfat Growth</a>
               <a href="#low-milkfat">Low-milkfat Products</a>
               <a href="#butter-imports">Butter Imports</a>
@@ -640,8 +669,11 @@ export default function DairyMidYearTrendsPage() {
               <a href="#class-iii">Class III Milk Futures</a>
               <a href="#class-iv">Class IV Futures</a>
               <a href="#risk-management">Protecting Margins</a>
-            </div>
+            </nav>
+          </aside>
 
+          <article className="article">
+          <div className="copy">
             <div className="issue">
               <p>Volume 20, Issue 5</p>
               <p>May 2026</p>
@@ -751,7 +783,7 @@ export default function DairyMidYearTrendsPage() {
               </a>
             </p>
             <p>
-              <strong>Farm Funders Disclaimer:</strong> The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funders does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report. In no event will Farm Funders be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.
+              <strong>Farm Funding Disclaimer:</strong> The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funding does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report. In no event will Farm Funding be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.
             </p>
           </div>
 
@@ -795,7 +827,8 @@ export default function DairyMidYearTrendsPage() {
               </li>
             </ul>
           </section>
-        </article>
+          </article>
+        </div>
 
         <div className="related-wrap">
           <section className="related">

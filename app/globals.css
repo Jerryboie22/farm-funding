@@ -200,13 +200,14 @@ body {
   }
 }
 
-/* Dairy KEP report: keep the Contents panel stationed while the article scrolls. */
+/* Dairy KEP report: keep the Contents sidebar stationed while the article
+   scrolls on desktop/tablet. The sidebar's own top offset/background are
+   already set in the page's scoped styles; this just layers the sticky
+   behavior + stacking order on top without fighting page-level overrides. */
 @media (min-width: 768px) {
-  .dairy-report .contents {
+  .dairy-report .sidebar {
     position: sticky !important;
-    top: 96px !important;
     z-index: 20 !important;
-    background: #fff !important;
   }
 }
 
@@ -247,7 +248,7 @@ body {
 }
 
 @media (max-width: 767px) {
-  .dairy-report .contents {
+  .dairy-report .sidebar {
     position: static !important;
   }
 
