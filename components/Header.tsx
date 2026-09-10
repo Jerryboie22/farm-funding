@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -282,18 +283,13 @@ export default function Header() {
           href="/"
           className="flex items-center gap-2 font-display text-xl font-extrabold text-charcoal tracking-tight"
         >
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 40 40"
-            fill="none"
-            aria-hidden="true"
-          >
-            <use href="#logo-petal" />
-            <use href="#logo-petal" transform="rotate(90 20 20)" />
-            <use href="#logo-petal" transform="rotate(180 20 20)" />
-            <use href="#logo-petal" transform="rotate(270 20 20)" />
-          </svg>
+          <Image
+            src="/images/brand/fce-logo.png"
+            alt="Farm Funding logo"
+            width={30}
+            height={30}
+            className="shrink-0"
+          />
 
           FARM FUNDING
         </Link>
@@ -381,19 +377,13 @@ export default function Header() {
               className="flex items-center gap-2 w-[228px]"
               onClick={() => setMobileOpen(false)}
             >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 40 40"
-                fill="none"
-                aria-hidden="true"
+              <Image
+                src="/images/brand/fce-logo.png"
+                alt="Farm Funding logo"
+                width={28}
+                height={28}
                 className="shrink-0"
-              >
-                <use href="#logo-petal" />
-                <use href="#logo-petal" transform="rotate(90 20 20)" />
-                <use href="#logo-petal" transform="rotate(180 20 20)" />
-                <use href="#logo-petal" transform="rotate(270 20 20)" />
-              </svg>
+              />
               <span className="font-display text-[17px] font-extrabold uppercase tracking-tight text-black leading-none whitespace-nowrap">
                 Farm Funding
               </span>
@@ -603,16 +593,6 @@ export default function Header() {
           </div>
         </div>
       )}
-
-      {/* shared logo sprite defs, rendered once, off-screen */}
-      <svg width="0" height="0" className="absolute" aria-hidden="true">
-        <defs>
-          <g id="logo-petal">
-            <path d="M20 20C13 15 13 5 20 2c2 6 2 12 0 18Z" fill="#6ea23f" />
-            <path d="M20 20c0-6 0-12 0-18 5 3 5 13 0 18Z" fill="#3e6e2e" />
-          </g>
-        </defs>
-      </svg>
     </header>
   );
 }
