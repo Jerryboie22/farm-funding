@@ -185,6 +185,8 @@ const styles = `
   }
 
   .dairy-report .sidebar {
+    grid-column: 1;
+    grid-row: 1;
     position: sticky;
     top: 96px;
     align-self: start;
@@ -223,14 +225,18 @@ const styles = `
 
   .dairy-report .sidebar-list a:hover { color: var(--clay); }
 
-  .dairy-report .article { min-width: 0; }
+  .dairy-report .article { display: contents; }
 
   .dairy-report .copy,
   .dairy-report .meta,
   .dairy-report .footnotes {
+    grid-column: 2;
     width: 100%;
+    min-width: 0;
     font-family: var(--font-barlow), Barlow, Arial, sans-serif;
   }
+
+  .dairy-report .copy { grid-row: 1; }
 
   .dairy-report .copy p {
     margin: 0 0 24px;
@@ -317,6 +323,7 @@ const styles = `
     align-items: center;
     flex-wrap: wrap;
     gap: 5px;
+    grid-column: 2;
     width: 100%;
     margin: 28px 0 0;
     padding: 22px 0;
@@ -344,6 +351,7 @@ const styles = `
   .dairy-report .tag-separator { margin-right: 2px; color: var(--grey); }
 
   .dairy-report .share {
+    grid-column: 2;
     width: 100%;
     margin: 0;
     padding: 8px 0 62px;
@@ -556,6 +564,16 @@ const styles = `
       row-gap: 24px;
       margin-top: 28px;
     }
+
+    .dairy-report .sidebar,
+    .dairy-report .copy,
+    .dairy-report .meta,
+    .dairy-report .tags,
+    .dairy-report .share {
+      grid-column: 1;
+    }
+
+    .dairy-report .copy { grid-row: auto; }
 
     .dairy-report .sidebar { padding: 16px 18px 18px; }
 
