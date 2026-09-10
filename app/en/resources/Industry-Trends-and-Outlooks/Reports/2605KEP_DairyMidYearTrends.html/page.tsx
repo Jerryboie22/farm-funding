@@ -235,7 +235,7 @@ const styles = `
   }
 
   .dairy-kep-page .copy .lede { font-weight: 700; }
-  .dairy-kep-page .copy .byline-note { font-style: italic; }
+  .dairy-kep-page .copy .byline-note { font-style: italic; font-size: 13px; }
   .dairy-kep-page .copy strong { font-weight: 700; }
   .dairy-kep-page .copy em { font-style: italic; }
 
@@ -285,7 +285,7 @@ const styles = `
 
   .dairy-kep-page .copy figure img {
     display: block;
-    width: 100%;
+    max-width: 100%;
     height: auto;
     border: 1px solid var(--line);
   }
@@ -631,7 +631,9 @@ export default function DairyMidYearTrendsPage() {
                 <figure>
                   <img
                     src={`${IMG_BASE}/Low-Milkfat-Products.png`}
-                    alt="Chart: Low Milkfat Products"
+                    alt="Low Milkfat Products"
+                    width={624}
+                    height={350}
                   />
                 </figure>
 
@@ -663,7 +665,9 @@ export default function DairyMidYearTrendsPage() {
                 <figure>
                   <img
                     src={`${IMG_BASE}/Butter-Imports.png`}
-                    alt="Chart: Butter Imports"
+                    alt="Butter Imports"
+                    width={624}
+                    height={347}
                   />
                 </figure>
               </div>
@@ -713,7 +717,9 @@ export default function DairyMidYearTrendsPage() {
                 <figure>
                   <img
                     src={`${IMG_BASE}/Butterfat-Exports.png`}
-                    alt="Chart: Butterfat Exports"
+                    alt="Butterfat Exports"
+                    width={624}
+                    height={352}
                   />
                 </figure>
               </div>
@@ -735,7 +741,9 @@ export default function DairyMidYearTrendsPage() {
                 <figure>
                   <img
                     src={`${IMG_BASE}/Class-III-Milk-Futures.png`}
-                    alt="Chart: Class III Milk Futures"
+                    alt="Class III Milk Futures"
+                    width={712}
+                    height={424}
                   />
                 </figure>
               </div>
@@ -756,7 +764,9 @@ export default function DairyMidYearTrendsPage() {
                 <figure>
                   <img
                     src={`${IMG_BASE}/Class-IV-Futures.png`}
-                    alt="Chart: Class IV Futures"
+                    alt="Class IV Futures"
+                    width={844}
+                    height={413}
                   />
                 </figure>
               </div>
@@ -882,17 +892,17 @@ export default function DairyMidYearTrendsPage() {
                 <a href="mailto:Chris.Laughton@FarmCreditEast.com?subject=Knowledge%20Exchange%20Partner">
                   Chris Laughton
                 </a>
-                <br />
-                <strong>Contributors:</strong>{" "}
-                <em>
-                  <a
-                    href="https://www.cobank.com/people/expert/corey-geiger"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Corey Geiger, Lead Economist, Dairy, CoBank
-                  </a>
-                </em>
+              </p>
+
+              <p>
+                <strong>Contributors: </strong>
+                <a
+                  href="https://www.cobank.com/people/expert/corey-geiger"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Corey Geiger, Lead Economist, Dairy, CoBank
+                </a>
               </p>
 
               <hr />
