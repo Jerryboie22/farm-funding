@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root{--color-forest:#4f832a;--color-forest-dark:#3f6821;--color-clay:#496d83;--color-clay-dark:#3a576a;--color-gold:#5a4400;--color-cream:#ecf1e4;--color-grey-bg:#f8f8f8;--color-charcoal:#231f20;--color-grey-text:#686868;--color-line:#c36d15}
+:root{--color-forest:#4f832a;--color-forest-dark:#3f6821;--color-clay:#496d83;--color-clay-dark:#3a576a;--color-gold:#5a4400;--color-cream:#ecf1e4;--color-grey-bg:#f8f8f8;--color-charcoal:#231f20;--color-grey-text:#686868;--color-line:#d8d8d8}
 
 @theme inline {
   --color-forest: var(--color-forest);
