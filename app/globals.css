@@ -210,21 +210,40 @@ body {
   }
 }
 
-/* The reference renders the report graphics at their native width and centers them;
-   do not stretch 624px/712px/844px source graphics to the full 820px text column. */
+/* Match the source graphics' intrinsic dimensions instead of stretching every chart
+   to the full text-column width. The source files are 624px, 712px and 844px wide. */
 .dairy-report .report-image {
-  width: auto !important;
+  display: table !important;
+  width: fit-content !important;
   max-width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
 .dairy-report .report-image img {
+  display: block !important;
   width: auto !important;
   max-width: 100% !important;
   height: auto !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* The reference uses a centered asterisk divider before Risk Management. */
+.dairy-report .risk-section {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.dairy-report .risk-section::before {
+  content: "* * *";
+  display: block;
+  margin: 4px 0 28px;
+  color: var(--grey);
+  text-align: center;
+  font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1;
 }
 
 @media (max-width: 767px) {
