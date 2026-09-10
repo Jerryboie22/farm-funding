@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 const REPLACEMENTS: [RegExp, string][] = [
-  [/Farm Funders/g, "Farm Funding"],
-  [/Farm Fundy/g, "Farm Funding"],
-  [/Farm Credit East/g, "Farm Funding"],
+  [/Farm\s+Funders/gi, "Farm Funding"],
+  [/Farm\s+Fundy/gi, "Farm Funding"],
+  [/Farm\s+Credit\s+East/gi, "Farm Funding"],
 ];
 
 function normalizeTextNode(node: Text) {
@@ -25,8 +25,18 @@ function normalize(root: Node) {
 }
 
 export default function BrandTextNormalizer() {
+  const normalizeBody = () => {
+    if (typeof document !== "undefined" && document.body) normalize(document.body);
+  };
+
+  // Run before the browser paints after hydration so legacy branding does not
+  // remain visible while the normal client effect is waiting to run.
+  useLayoutEffect(() => {
+    normalizeBody();
+  }, []);
+
   useEffect(() => {
-    normalize(document.body);
+    normalizeBody();
 
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
