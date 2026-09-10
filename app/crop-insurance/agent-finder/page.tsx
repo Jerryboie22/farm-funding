@@ -40,7 +40,7 @@ export default function CropInsuranceAgentFinderPage() {
             }}
           >
             Thank you for your interest in Crop Growers insurance. You can
-            reach our Crop Growers Service Center at 800-234-7012. Our local
+            reach our Crop Growers Service Center at (707) 234-5941. Our local
             specialists are here to answer any questions and get you on the
             right track to the crop, dairy and livestock coverage you desire.
           </p>

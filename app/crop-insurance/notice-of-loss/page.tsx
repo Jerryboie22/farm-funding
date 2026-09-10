@@ -45,7 +45,7 @@ export default function NoticeOfLossPage() {
             Crop Growers policyholders can submit a notice of loss
             electronically. If an adjuster hasn&apos;t been in touch within
             two business days, call the Crop Growers Service Center at
-            800-234-7012 right away.
+            (707) 234-5941 right away.
           </p>
         </div>
       </section>
@@ -115,7 +115,7 @@ export default function NoticeOfLossPage() {
               className="mt-[24px] text-[18px] leading-[26px] text-[#231f20] md:mt-[42px] md:text-[20px] md:leading-[30px]"
               style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
             >
-              Call the Crop Growers Service Center at 800-234-7012.
+              Call the Crop Growers Service Center at (707) 234-5941.
             </p>
           </div>
 

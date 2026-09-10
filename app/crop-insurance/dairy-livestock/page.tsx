@@ -125,7 +125,7 @@ export default function DairyLivestockPage() {
             style={{ fontFamily: "var(--font-barlow)", fontWeight: 500 }}
           >
             Find your local agent or reach the Crop Growers Service Center at
-            800-234-7012.
+            (707) 234-5941.
           </p>
           <div className="mt-[32px] flex justify-center">
             <Link

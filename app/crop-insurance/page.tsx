@@ -325,7 +325,7 @@ export default function CropInsurancePage() {
             specialists answer any questions and find the coverage that fits
             your operation.
             <br />
-            Contact the Crop Growers Service Center at 800-234-7012 or submit
+            Contact the Crop Growers Service Center at (707) 234-5941 or submit
             an email inquiry by clicking below.
           </p>
 
@@ -526,7 +526,7 @@ export default function CropInsurancePage() {
             Crop Growers crop insurance policyholders may electronically
             submit a notice of loss. If an adjuster has not been in contact
             within two business days, call the Crop Growers Service Center at
-            800-234-7012 immediately.
+            (707) 234-5941 immediately.
           </p>
 
           <div className="mt-[35px] flex justify-center">
