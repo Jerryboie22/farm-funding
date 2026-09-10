@@ -281,13 +281,13 @@ export default function Header() {
       <div className="flex items-center justify-between px-6 md:px-8 py-3">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-xl font-extrabold text-charcoal tracking-tight"
+          className="flex items-center gap-2 font-display text-2xl font-extrabold text-charcoal tracking-tight"
         >
           <Image
             src="/images/brand/fce-logo.png"
             alt="Farm Funding logo"
-            width={30}
-            height={30}
+            width={42}
+            height={42}
             className="shrink-0"
           />
 
@@ -374,17 +374,17 @@ export default function Header() {
           <div className="flex items-center justify-between h-[54px] pl-[12px] pr-[10px] bg-white">
             <Link
               href="/"
-              className="flex items-center gap-2 w-[228px]"
+              className="flex items-center gap-2 w-[240px]"
               onClick={() => setMobileOpen(false)}
             >
               <Image
                 src="/images/brand/fce-logo.png"
                 alt="Farm Funding logo"
-                width={28}
-                height={28}
+                width={36}
+                height={36}
                 className="shrink-0"
               />
-              <span className="font-display text-[17px] font-extrabold uppercase tracking-tight text-black leading-none whitespace-nowrap">
+              <span className="font-display text-[20px] font-extrabold uppercase tracking-tight text-black leading-none whitespace-nowrap">
                 Farm Funding
               </span>
             </Link>
