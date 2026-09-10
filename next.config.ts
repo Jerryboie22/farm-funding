@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
         source:
           "/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForYourFarm.html",
         destination:
-          "/en/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForYourFarm.html",
+          "/en/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForFarmers.html",
       },
       {
         source:
@@ -62,6 +62,18 @@ const nextConfig: NextConfig = {
           "/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast",
         destination:
           "/en/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast.html",
+      },
+      {
+        source:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
+        destination:
+          "/en/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
+      },
+      {
+        source:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends.html",
+        destination:
+          "/en/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
       },
     ];
   },
