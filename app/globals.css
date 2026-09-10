@@ -199,3 +199,42 @@ body {
     line-height:1.55!important;
   }
 }
+
+/* Dairy KEP report: keep the Contents panel stationed while the article scrolls. */
+@media (min-width: 768px) {
+  .dairy-report .contents {
+    position: sticky !important;
+    top: 96px !important;
+    z-index: 20 !important;
+    background: #fff !important;
+  }
+}
+
+/* The reference renders the report graphics at their native width and centers them;
+   do not stretch 624px/712px/844px source graphics to the full 820px text column. */
+.dairy-report .report-image {
+  width: auto !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.dairy-report .report-image img {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 767px) {
+  .dairy-report .contents {
+    position: static !important;
+  }
+
+  .dairy-report .report-image,
+  .dairy-report .report-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
