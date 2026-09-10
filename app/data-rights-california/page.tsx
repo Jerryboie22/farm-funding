@@ -27,8 +27,8 @@ export default function DataRightsCaliforniaPage() {
       <p className="mt-4 text-[16px] md:text-[18px] leading-[1.7] text-charcoal max-w-[820px]">
         This right is reserved for California residents only. You can also
         reach us by phone at{" "}
-        <a href="tel:8005622235" className="underline hover:text-clay">
-          (800) 562-2235
+        <a href="tel:7072345941" className="underline hover:text-clay">
+          (707) 234-5941
         </a>
         . You may submit a request for yourself, or on behalf of another
         person as their parent or guardian. We do not knowingly collect
