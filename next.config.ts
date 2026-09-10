@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
         source:
           "/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForYourFarm.html",
         destination:
-          "/en/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForFarmers.html",
+          "/en/resources/todays-harvest-Blog/260630NewUSDAPaymentRulesForYourFarm.html",
       },
       {
         source:
