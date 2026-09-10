@@ -199,3 +199,62 @@ body {
     line-height:1.55!important;
   }
 }
+
+/* Dairy KEP report: keep the Contents sidebar stationed while the article
+   scrolls on desktop/tablet. The sidebar's own top offset/background are
+   already set in the page's scoped styles; this just layers the sticky
+   behavior + stacking order on top without fighting page-level overrides. */
+@media (min-width: 768px) {
+  .dairy-report .sidebar {
+    position: sticky !important;
+    z-index: 20 !important;
+  }
+}
+
+/* Match the source graphics' intrinsic dimensions instead of stretching every chart
+   to the full text-column width. The source files are 624px, 712px and 844px wide. */
+.dairy-report .report-image {
+  display: table !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.dairy-report .report-image img {
+  display: block !important;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* The reference uses a centered asterisk divider before Risk Management. */
+.dairy-report .risk-section {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.dairy-report .risk-section::before {
+  content: "* * *";
+  display: block;
+  margin: 4px 0 28px;
+  color: var(--grey);
+  text-align: center;
+  font-family: var(--font-barlow), Barlow, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+}
+
+@media (max-width: 767px) {
+  .dairy-report .sidebar {
+    position: static !important;
+  }
+
+  .dairy-report .report-image,
+  .dairy-report .report-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

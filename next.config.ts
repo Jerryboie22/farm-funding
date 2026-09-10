@@ -63,6 +63,18 @@ const nextConfig: NextConfig = {
         destination:
           "/en/resources/Industry-Trends-and-Outlooks/Reports/2606KEP_FuelFertilizerandConflictinMiddleEast.html",
       },
+      {
+        source:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
+        destination:
+          "/en/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
+      },
+      {
+        source:
+          "/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends.html",
+        destination:
+          "/en/resources/Industry-Trends-and-Outlooks/Reports/2605KEP_DairyMidYearTrends",
+      },
     ];
   },
 };

@@ -7,6 +7,7 @@ import "./article-responsive.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HomeArticleRouting from "@/components/HomeArticleRouting";
+import BrandTextNormalizer from "@/components/BrandTextNormalizer";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <BrandTextNormalizer />
       </body>
     </html>
   );
