@@ -85,7 +85,7 @@ export default function Home() {
       {/* HERO — stacked on mobile (text, then image), side-by-side from md up */}
       <section className="grid w-full grid-cols-1 md:grid-cols-2 md:min-h-[690px]">
         <div className="flex items-center bg-white py-[36px] md:py-[65px] lg:py-[70px]">
-          <div className={`${CONTAINER} w-full sm:px-[24px] lg:px-[4.05%]`}>
+          <div className={`${CONTAINER} w-full`}>
             <div className="max-w-[700px]">
               <h1
                 className="
