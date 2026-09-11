@@ -310,7 +310,7 @@ const styles = `
     padding-top: 24px;
     border-top: 1px solid var(--line);
     color: var(--grey);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.65;
   }
 
