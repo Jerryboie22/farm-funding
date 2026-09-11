@@ -144,6 +144,10 @@ export default function Header() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileOpenIdx, setMobileOpenIdx] = useState<number | null>(null);
+  const closeMenu = () => {
+    setMobileOpen(false);
+    setMobileOpenIdx(null);
+  };
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
@@ -354,7 +358,7 @@ export default function Header() {
       <div className="lg:hidden px-6 py-2">
         <button
           className="flex items-center justify-center w-[36px] h-[36px] text-charcoal"
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() => (mobileOpen ? closeMenu() : setMobileOpen(true))}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
           {mobileOpen ? (
@@ -437,7 +441,7 @@ export default function Header() {
                             key={item.href}
                             href={item.href}
                             className="font-display text-[17px] font-bold leading-[1.3] text-[#676964] hover:text-[#496D83] transition-colors"
-                            onClick={() => setMobileOpen(false)}
+                            onClick={closeMenu}
                           >
                             {item.label}
                           </Link>
@@ -446,7 +450,7 @@ export default function Header() {
                         <Link
                           href={section.href}
                           className="font-display text-[14px] font-bold uppercase text-[#676964] hover:text-[#496D83] transition-colors"
-                          onClick={() => setMobileOpen(false)}
+                          onClick={closeMenu}
                         >
                           {section.seeAllLabel}
                         </Link>
@@ -468,7 +472,7 @@ export default function Header() {
               <Link
                 href="/search"
                 className="flex items-center gap-[11px] font-sans text-[19px] font-normal text-[#676964]"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMenu}
               >
                 <svg
                   width="25"
@@ -488,7 +492,7 @@ export default function Header() {
               <Link
                 href="/resources/calculators"
                 className="flex items-center gap-[11px] font-sans text-[19px] font-normal text-[#676964]"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMenu}
               >
                 <svg
                   width="25"
@@ -511,7 +515,7 @@ export default function Header() {
               <Link
                 href="/contact#offices"
                 className="flex items-center gap-[11px] font-sans text-[19px] font-normal text-[#676964]"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMenu}
               >
                 <svg
                   width="25"
@@ -531,7 +535,7 @@ export default function Header() {
               <Link
                 href="/contact"
                 className="flex items-center gap-[11px] font-sans text-[19px] font-normal text-[#676964]"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMenu}
               >
                 <svg
                   width="25"
@@ -564,7 +568,7 @@ export default function Header() {
                   backgroundColor: "#496D83",
                   borderRadius: "2px",
                 }}
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMenu}
               >
                 SIGN IN
               </Link>
