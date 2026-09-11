@@ -11,7 +11,7 @@ const BLOG_PATH = "/resources/todays-harvest-Blog";
 const AUTHORS_PATH = "/resources/Meet-the-Authors";
 
 const CATEGORY = "Knowledge Exchange Partner";
-const CATEGORY_HREF = `${OUTLOOKS_PATH}?category=knowledge-exchange-partner`;
+const CATEGORY_HREF = `${OUTLOOKS_PATH}?category=Knowledge%20Exchange%20Partner`;
 const DATE = "May 3, 2026";
 
 const IMAGE_BASE =
@@ -93,7 +93,7 @@ const RELATED_ARTICLES = [
 ];
 
 const TAGS: [string, string][] = [
-  ["outlook", "outlook"],
+  ["outlook", "ag-outlook"],
   ["dairy", "dairy"],
   ["economy", "economy"],
   ["risk management", "risk-management"],
@@ -259,8 +259,8 @@ const styles = `
   }
 
   .dairy-report .contributor {
-    font-weight: 700 !important;
-    color: var(--charcoal) !important;
+    font-style: italic;
+    font-size: 13px !important;
   }
 
   .dairy-report .report-section {
@@ -289,8 +289,8 @@ const styles = `
 
   .dairy-report .risk-contributor,
   .dairy-report .risk-provider {
-    color: var(--charcoal) !important;
-    font-weight: 700 !important;
+    font-style: italic;
+    font-size: 13px !important;
   }
 
   .dairy-report .report-image {
@@ -301,7 +301,7 @@ const styles = `
 
   .dairy-report .report-image img {
     display: block;
-    width: 100%;
+    max-width: 100%;
     height: auto;
   }
 
@@ -317,6 +317,7 @@ const styles = `
   .dairy-report .meta p { margin: 0 0 10px; }
   .dairy-report .meta strong { color: var(--charcoal); }
   .dairy-report .meta a { color: var(--clay); }
+  .dairy-report .meta .disclaimer { font-style: italic; font-size: 13px; }
 
   .dairy-report .tags {
     display: flex;
@@ -633,14 +634,18 @@ function ReportImage({
   id,
   src,
   alt,
+  width,
+  height,
 }: {
   id: string;
   src: string;
   alt: string;
+  width: number;
+  height: number;
 }) {
   return (
     <figure id={id} className="report-image">
-      <img src={src} alt={alt} />
+      <img src={src} alt={alt} width={width} height={height} />
     </figure>
   );
 }
@@ -680,13 +685,13 @@ export default function DairyMidYearTrendsPage() {
           <aside className="sidebar" aria-label="Table of contents">
             <p className="sidebar-title">Contents</p>
             <nav className="sidebar-list">
-              <a href="#butterfat-growth">Butterfat Growth</a>
-              <a href="#low-milkfat">Low-milkfat Products</a>
-              <a href="#butter-imports">Butter Imports</a>
-              <a href="#butterfat-exports">Butterfat Exports</a>
-              <a href="#class-iii">Class III Milk Futures</a>
-              <a href="#class-iv">Class IV Futures</a>
-              <a href="#risk-management">Protecting Margins</a>
+              <a href="#butterfat">Butterfat Growth</a>
+              <a href="#milkfat">Low-milkfat Products</a>
+              <a href="#butter">Butter Imports</a>
+              <a href="#butterfatexports">Butterfat Exports</a>
+              <a href="#milkfutures">Class III Milk Futures</a>
+              <a href="#futures">Class IV Futures</a>
+              <a href="#risk">Protecting Margins</a>
             </nav>
           </aside>
 
@@ -703,7 +708,7 @@ export default function DairyMidYearTrendsPage() {
 
             <Paragraphs paragraphs={intro} />
 
-            <section id="butterfat-growth" className="report-section">
+            <section id="butterfat" className="report-section">
               <h2>Butterfat growth remains strong</h2>
 
               <p>{butterfatGrowth[0]}</p>
@@ -711,18 +716,22 @@ export default function DairyMidYearTrendsPage() {
               <p>{butterfatGrowth[2]}</p>
 
               <ReportImage
-                id="low-milkfat"
+                id="milkfat"
                 src={`${IMAGE_BASE}/Low%20Milkfat%20Products.png`}
-                alt="Low-milkfat products outpacing milk fat in U.S. dairy exports"
+                alt="Low Milkfat Products"
+                width={624}
+                height={350}
               />
 
               <p>{butterfatGrowth[3]}</p>
               <p>{butterfatGrowth[4]}</p>
 
               <ReportImage
-                id="butter-imports"
+                id="butter"
                 src={`${IMAGE_BASE}/Butter%20Imports.png`}
-                alt="Butter imports into the U.S. dropped 57% in 2025"
+                alt="Butter Imports"
+                width={624}
+                height={347}
               />
 
               <p>{butterfatGrowth[5]}</p>
@@ -730,39 +739,39 @@ export default function DairyMidYearTrendsPage() {
               <p>{butterfatGrowth[7]}</p>
 
               <ReportImage
-                id="butterfat-exports"
+                id="butterfatexports"
                 src={`${IMAGE_BASE}/Butterfat%20Exports.png`}
-                alt="Butterfat exports set a record in 2025"
+                alt="Butterfat Exports"
+                width={624}
+                height={352}
               />
 
               <p>{butterfatGrowth[8]}</p>
-            </section>
 
-            <section id="class-iii" className="report-section">
-              <h2>Class III Milk Futures</h2>
               <Paragraphs paragraphs={classIII} />
 
               <ReportImage
+                id="milkfutures"
                 src={`${IMAGE_BASE}/Class%20III%20Milk%20Futures.png`}
-                alt="Class III milk futures have rebounded from January 2026 lows"
-                id="class-iii-chart"
+                alt="Class III Milk Futures"
+                width={712}
+                height={424}
               />
-            </section>
 
-            <section id="class-iv" className="report-section">
-              <h2>Class IV Futures</h2>
               <p>{classIV[0]}</p>
 
               <ReportImage
+                id="futures"
                 src={`${IMAGE_BASE}/Class%20IV%20Futures.png`}
-                alt="Class IV futures quickly turned from bearish to bullish"
-                id="class-iv-chart"
+                alt="Class IV Futures"
+                width={844}
+                height={413}
               />
 
               <Paragraphs paragraphs={classIV.slice(1)} />
             </section>
 
-            <section id="risk-management" className="report-section risk-section">
+            <section id="risk" className="report-section risk-section">
               <h2>Risk Management Update: Protecting Margins in a Volatile Market</h2>
               <p className="risk-contributor">{riskManagement[0]}</p>
               <p className="risk-provider">{riskManagement[1]}</p>
@@ -784,24 +793,23 @@ export default function DairyMidYearTrendsPage() {
           <div className="meta">
             <p>
               <strong>Editor:</strong>{" "}
-              <a href="mailto:Chris.Laughton@FarmCreditEast.com">
+              <a href="mailto:Chris.Laughton@FarmCreditEast.com?subject=Knowledge%20Exchange%20Partner">
                 Chris Laughton
               </a>
             </p>
             <p>
-              <strong>Contributors:</strong>{" "}
-              <a href="https://www.cobank.com" target="_blank" rel="noreferrer">
+              <strong>Contributors: </strong>
+              <a href="https://www.cobank.com/people/expert/corey-geiger" target="_blank" rel="noreferrer">
                 Corey Geiger, Lead Economist, Dairy, CoBank
               </a>
             </p>
             <p>
-              <strong>Previous editions:</strong>{" "}
-              <a href="https://www.farmcrediteast.com/resources/knowledge-exchange-partners" target="_blank" rel="noreferrer">
+              <a href="https://www.farmcrediteast.com/resources/Industry-Trends-and-Outlooks?category=Knowledge%20Exchange%20Partner" target="_blank" rel="noreferrer">
                 View previous editions of the KEP
               </a>
             </p>
-            <p>
-              <strong>Farm Funding Disclaimer:</strong> The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funding does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report. In no event will Farm Funding be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.
+            <p className="disclaimer">
+              Farm Funding Disclaimer: The information provided in this communication/newsletter is not intended to be investment, tax, or legal advice and should not be relied upon by recipients for such purposes. Farm Funding does not make any representation or warranty regarding the content, and disclaims any responsibility for the information, materials, third-party opinions, and data included in this report. In no event will Farm Funding be liable for any decision made or actions taken by any person or persons relying on the information contained in this report.
             </p>
           </div>
 

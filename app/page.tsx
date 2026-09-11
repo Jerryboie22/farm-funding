@@ -92,11 +92,10 @@ export default function Home() {
                   m-0
                   max-w-[750px]
                   font-display
-                  text-[28px]
-                  font-normal
-                  leading-[1.18]
+                  text-[32px]
+                  font-bold
+                  leading-[1.15]
                   text-[#4f832a]
-                  xs:text-[32px]
                   sm:text-[36px]
                   md:text-[40px]
                   md:leading-[1.12]
@@ -112,11 +111,9 @@ export default function Home() {
                   m-0
                   mt-[18px]
                   max-w-[650px]
-                  text-[16px]
-                  leading-[25px]
+                  text-[18px]
+                  leading-[27px]
                   text-[#231f20]
-                  sm:text-[17px]
-                  sm:leading-[27px]
                   md:mt-[28px]
                   lg:text-[19px]
                   lg:leading-[31px]
@@ -189,7 +186,7 @@ export default function Home() {
           </div>
         </div>
 
-        <HeroCarousel className="relative h-[200px] xs:h-[240px] md:h-[500px] lg:h-[645px]" />
+        <HeroCarousel className="relative h-[240px] md:h-[500px] lg:h-[645px]" />
       </section>
 
       {/* PROMO CARDS — flush under hero, thin white divider between stacked cards on mobile */}
@@ -713,7 +710,7 @@ export default function Home() {
               Enter your email*
             </label>
 
-            <div className="flex w-full items-stretch gap-[8px]">
+            <div className="flex w-full flex-col items-stretch gap-[12px] sm:flex-row sm:gap-[8px]">
               <input
                 id="newsletter-email"
                 type="email"
@@ -745,7 +742,7 @@ export default function Home() {
                 className="
                   inline-flex
                   h-[44px]
-                  w-[92px]
+                  w-full
                   shrink-0
                   items-center
                   justify-center

@@ -89,7 +89,7 @@ export default function WhyUsCarousel() {
 
                 {/* TEXT — second on mobile, first column on desktop */}
                 <div className="order-2 px-[22px] pb-[30px] pt-[32px] md:order-1 md:px-0 md:pt-0">
-                  <h3 className="font-display text-[26px] font-bold leading-[1.2] text-[#496d83] md:text-[32px] md:leading-[38px]">
+                  <h3 className="font-display text-[26px] font-bold leading-[1.2] text-[#4f832a] md:text-[32px] md:leading-[38px]">
                     {slide.title}
                   </h3>
 
