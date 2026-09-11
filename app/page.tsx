@@ -710,7 +710,7 @@ export default function Home() {
               Enter your email*
             </label>
 
-            <div className="flex w-full items-stretch gap-[8px]">
+            <div className="flex w-full flex-col items-stretch gap-[12px] sm:flex-row sm:gap-[8px]">
               <input
                 id="newsletter-email"
                 type="email"
@@ -742,7 +742,7 @@ export default function Home() {
                 className="
                   inline-flex
                   h-[44px]
-                  w-[92px]
+                  w-full
                   shrink-0
                   items-center
                   justify-center
