@@ -302,7 +302,7 @@ export default function Home() {
                     rounded-none
                     border
                     border-white/50
-                    bg-[#686a5c]
+                    bg-[#686868]
                     px-[10px]
                     py-[5px]
                     text-[12px]
@@ -360,7 +360,7 @@ export default function Home() {
                       rounded-none
                       border
                       border-white/50
-                      bg-[#686a5c]
+                      bg-[#686868]
                       px-[10px]
                       py-[5px]
                       text-[12px]
@@ -386,7 +386,7 @@ export default function Home() {
                       text-[19px]
                       font-bold
                       leading-[25px]
-                      text-[#705600]
+                      text-[#5a4400]
                       transition-colors
                       group-hover:text-[#496d83]
                       sm:text-[22px]
@@ -511,7 +511,7 @@ export default function Home() {
                     rounded-none
                     border
                     border-white/50
-                    bg-[#686a5c]
+                    bg-[#686868]
                     px-[10px]
                     py-[6px]
                     text-[13px]
@@ -587,7 +587,7 @@ export default function Home() {
                       rounded-none
                       border
                       border-[#231f20]/20
-                      bg-[#686a5c]
+                      bg-[#686868]
                       px-[10px]
                       py-[6px]
                       text-[13px]
@@ -705,7 +705,7 @@ export default function Home() {
           <form className="mt-[22px] flex w-full max-w-[360px] flex-col items-center sm:mt-[28px] lg:mt-[38px]">
             <label
               htmlFor="newsletter-email"
-              className="mb-[10px] text-[16px] font-bold leading-[22px] text-white sm:mb-[12px] sm:text-[18px] lg:text-[20px]"
+              className="mb-[10px] self-start text-left text-[16px] font-bold leading-[22px] text-white sm:mb-[12px] sm:text-[18px] lg:text-[20px]"
             >
               Enter your email*
             </label>
@@ -742,10 +742,11 @@ export default function Home() {
                 className="
                   inline-flex
                   h-[44px]
-                  w-full
+                  w-[112px]
                   shrink-0
                   items-center
                   justify-center
+                  self-center
                   whitespace-nowrap
                   rounded-[4px]
                   border-2
@@ -757,7 +758,6 @@ export default function Home() {
                   text-white
                   transition-colors
                   hover:bg-[#436d23]
-                  sm:w-[112px]
                   sm:text-[18px]
                 "
               >
@@ -765,7 +765,7 @@ export default function Home() {
               </button>
             </div>
 
-            <p className="mt-[12px] text-[13px] font-bold italic leading-[18px] text-white sm:mt-[14px] sm:text-[14px] lg:text-[15px]">
+            <p className="mt-[12px] self-start text-left text-[13px] font-bold italic leading-[18px] text-white sm:mt-[14px] sm:text-[14px] lg:text-[15px]">
               *Required Field
             </p>
           </form>
