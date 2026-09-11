@@ -304,7 +304,7 @@ export default function Header() {
             >
               <Link
                 href={section.href}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-bold uppercase tracking-wide text-charcoal hover:text-clay transition-colors"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-bold uppercase tracking-wide text-charcoal hover:text-clay transition-colors whitespace-nowrap"
               >
                 {section.label}
                 <svg
@@ -348,65 +348,44 @@ export default function Header() {
             </div>
           ))}
         </nav>
+      </div>
 
+      {/* mobile menu toggle — its own row, left-aligned, matching reference */}
+      <div className="lg:hidden px-6 py-2">
         <button
-          className="lg:hidden text-charcoal"
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
+          className="flex items-center justify-center w-[36px] h-[36px] text-charcoal"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round" />
-          </svg>
+          {mobileOpen ? (
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+            >
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round" />
+            </svg>
+          )}
         </button>
       </div>
 
-      {/* mobile full-screen menu — unchanged */}
+      {/* mobile dropdown menu — sits below the header, doesn't cover the logo */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-white overflow-y-auto">
-          {/* header: logo + close, ~54px tall */}
-          <div className="flex items-center justify-between h-[54px] pl-[12px] pr-[10px] bg-white">
-            <Link
-              href="/"
-              className="flex items-center gap-2 w-[240px]"
-              onClick={() => setMobileOpen(false)}
-            >
-              <Image
-                src="/images/brand/fce-logo.png"
-                alt="Farm Funding logo"
-                width={36}
-                height={36}
-                className="shrink-0"
-              />
-              <span className="font-display text-[20px] font-extrabold uppercase tracking-tight text-black leading-none whitespace-nowrap">
-                Farm Funding
-              </span>
-            </Link>
-
-            <button
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close menu"
-              className="flex items-center justify-center w-[44px] h-[44px] text-[#676964]"
-            >
-              <svg
-                width="27"
-                height="27"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-
+        <div className="lg:hidden bg-white max-h-[calc(100vh-96px)] overflow-y-auto">
           {/* nav panel */}
           <div className="bg-[#EDF1E3] pt-[30px] pl-[50px] pr-[44px] min-h-full">
             {NAV.map((section, idx) => {
