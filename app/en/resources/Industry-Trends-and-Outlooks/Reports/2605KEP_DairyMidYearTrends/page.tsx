@@ -310,7 +310,7 @@ const styles = `
     padding-top: 24px;
     border-top: 1px solid var(--line);
     color: var(--grey);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.65;
   }
 
@@ -785,7 +785,7 @@ export default function DairyMidYearTrendsPage() {
             <p>
               <strong>Editor:</strong>{" "}
               <a href="mailto:Chris.Laughton@FarmCreditEast.com">
-                Chris Laughton (Chris.Laughton@FarmCreditEast.com)
+                Chris Laughton
               </a>
             </p>
             <p>
