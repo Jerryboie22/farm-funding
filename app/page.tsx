@@ -92,9 +92,9 @@ export default function Home() {
                   m-0
                   max-w-[750px]
                   font-display
-                  text-[32px]
+                  text-[34px]
                   font-bold
-                  leading-[1.15]
+                  leading-[42px]
                   text-[#4f832a]
                   sm:text-[36px]
                   md:text-[40px]
@@ -111,8 +111,8 @@ export default function Home() {
                   m-0
                   mt-[18px]
                   max-w-[650px]
-                  text-[18px]
-                  leading-[27px]
+                  text-[20px]
+                  leading-[32px]
                   text-[#231f20]
                   md:mt-[28px]
                   lg:text-[19px]
@@ -532,9 +532,9 @@ export default function Home() {
                   className="
                     m-0
                     font-display
-                    text-[22px]
+                    text-[27px]
                     font-bold
-                    leading-[1.25]
+                    leading-[34px]
                     text-white
                     sm:text-[28px]
                     lg:text-[36px]
@@ -543,7 +543,7 @@ export default function Home() {
                   {TRENDS_FEATURE.title} <span aria-hidden="true">›</span>
                 </h3>
 
-                <p className="m-0 mt-[16px] text-[15px] leading-[23px] text-white sm:mt-[20px] sm:text-[16px] sm:leading-[25px]">
+                <p className="m-0 mt-[16px] text-[16px] leading-[26px] text-white sm:mt-[20px] sm:text-[16px] sm:leading-[25px]">
                   A new USCIS policy is opening the door for dairy producers to
                   access the H-2A temporary agricultural worker program, a
                   workforce option that has long been out of reach for
@@ -608,9 +608,9 @@ export default function Home() {
                     className="
                       m-0
                       font-display
-                      text-[19px]
+                      text-[17px]
                       font-bold
-                      leading-[1.28]
+                      leading-[33px]
                       text-[#5a4400]
                       transition-colors
                       group-hover:text-[#496d83]
@@ -672,9 +672,9 @@ export default function Home() {
               m-0
               max-w-[900px]
               font-display
-              text-[26px]
+              text-[28px]
               font-bold
-              leading-[1.2]
+              leading-[40px]
               text-white
               sm:text-[38px]
               lg:text-[44px]
@@ -689,12 +689,11 @@ export default function Home() {
               m-0
               mt-[18px]
               max-w-[700px]
-              text-[16px]
+              text-[20px]
               font-semibold
-              leading-[1.4]
+              leading-[28px]
               text-white
               sm:mt-[26px]
-              sm:text-[18px]
               lg:mt-[42px]
               lg:text-[21px]
             "
@@ -705,7 +704,7 @@ export default function Home() {
           <form className="mt-[22px] flex w-full max-w-[360px] flex-col items-center sm:mt-[28px] lg:mt-[38px]">
             <label
               htmlFor="newsletter-email"
-              className="mb-[10px] self-start text-left text-[16px] font-bold leading-[22px] text-white sm:mb-[12px] sm:text-[18px] lg:text-[20px]"
+              className="mb-[10px] self-start text-left text-[18px] font-bold leading-[24px] text-white sm:mb-[12px] sm:text-[18px] lg:text-[20px]"
             >
               Enter your email*
             </label>
