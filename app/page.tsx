@@ -709,7 +709,7 @@ export default function Home() {
               Enter your email*
             </label>
 
-            <div className="flex w-full flex-col items-stretch gap-[12px] sm:flex-row sm:gap-[8px]">
+            <div className="flex w-full flex-col items-stretch gap-[12px] sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-[8px] sm:gap-y-[10px]">
               <input
                 id="newsletter-email"
                 type="email"
@@ -729,12 +729,17 @@ export default function Home() {
                   placeholder:text-[13px]
                   placeholder:text-[#686868]
                   outline-none
+                  sm:order-1
                   sm:w-[245px]
                   sm:flex-none
                   sm:text-[16px]
                   sm:placeholder:text-[18px]
                 "
               />
+
+              <p className="self-start text-left text-[13px] font-bold italic leading-[18px] text-white sm:order-3 sm:w-full sm:basis-full sm:text-[14px] lg:text-[15px]">
+                *Required Field
+              </p>
 
               <button
                 type="submit"
@@ -757,16 +762,13 @@ export default function Home() {
                   text-white
                   transition-colors
                   hover:bg-[#436d23]
+                  sm:order-2
                   sm:text-[18px]
                 "
               >
                 Sign Up
               </button>
             </div>
-
-            <p className="mt-[12px] self-start text-left text-[13px] font-bold italic leading-[18px] text-white sm:mt-[14px] sm:text-[14px] lg:text-[15px]">
-              *Required Field
-            </p>
           </form>
         </div>
       </section>
