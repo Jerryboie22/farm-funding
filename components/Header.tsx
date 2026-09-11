@@ -285,7 +285,7 @@ export default function Header() {
       <div className="flex items-center justify-between px-6 md:px-8 py-3">
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-2xl font-extrabold text-charcoal tracking-tight"
+          className="flex items-center gap-2 font-display text-[20px] font-extrabold text-charcoal tracking-tight"
         >
           <Image
             src="/images/brand/fce-logo.png"

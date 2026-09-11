@@ -93,7 +93,7 @@ export default function WhyUsCarousel() {
                     {slide.title}
                   </h3>
 
-                  <p className="mt-[16px] text-[18px] leading-[1.5] text-[#231f20] md:mt-[18px] md:max-w-[480px] md:text-[17px] md:leading-[27px]">
+                  <p className="mt-[16px] text-[20px] leading-[26px] text-[#231f20] md:mt-[18px] md:max-w-[480px] md:text-[17px] md:leading-[27px]">
                     {slide.bodyParts.map((part, partIndex) =>
                       typeof part === "string" ? (
                         <span key={partIndex}>{part}</span>

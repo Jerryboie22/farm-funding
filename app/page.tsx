@@ -92,9 +92,9 @@ export default function Home() {
                   m-0
                   max-w-[750px]
                   font-display
-                  text-[32px]
+                  text-[34px]
                   font-bold
-                  leading-[1.15]
+                  leading-[42px]
                   text-[#4f832a]
                   sm:text-[36px]
                   md:text-[40px]
@@ -111,8 +111,8 @@ export default function Home() {
                   m-0
                   mt-[18px]
                   max-w-[650px]
-                  text-[18px]
-                  leading-[27px]
+                  text-[20px]
+                  leading-[32px]
                   text-[#231f20]
                   md:mt-[28px]
                   lg:text-[19px]
