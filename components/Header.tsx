@@ -352,12 +352,9 @@ export default function Header() {
             </div>
           ))}
         </nav>
-      </div>
 
-      {/* mobile menu toggle — its own row, left-aligned, matching reference */}
-      <div className="lg:hidden px-6 py-2">
         <button
-          className="flex items-center justify-center w-[36px] h-[36px] text-charcoal"
+          className="lg:hidden flex items-center justify-center w-[36px] h-[36px] text-charcoal"
           onClick={() => (mobileOpen ? closeMenu() : setMobileOpen(true))}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >

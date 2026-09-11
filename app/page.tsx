@@ -93,7 +93,7 @@ export default function Home() {
                   max-w-[750px]
                   font-display
                   text-[28px]
-                  font-normal
+                  font-bold
                   leading-[1.18]
                   text-[#4f832a]
                   xs:text-[32px]
